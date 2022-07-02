@@ -18,7 +18,7 @@ public class LargestElementInArray {
         return -1;
     }
 
-    //T: O(N)
+    //T: O(N), infact Theta(N)
     static int getLargestElIndex2(int arr[]) {
         int n = arr.length;
         int largestIdx = 0;

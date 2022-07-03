@@ -3,7 +3,7 @@ package arrays;
 public class LargestElementInArray {
     //Naive approach
     //T: O(N^2)
-    static int getLargestElIndex(int arr[]) {
+     static int getLargestElIndex(int arr[]) {
         int n = arr.length;
         for (int i = 0; i<n; i++) {
             boolean flag = true;
@@ -30,7 +30,7 @@ public class LargestElementInArray {
 
     public static void main(String[] args) {
         int arr[] = { 21, 2 ,300, 42, 5};
-        //System.out.println(getLargestElIndex(arr));
+        System.out.println(getLargestElIndex(arr));
         System.out.println(getLargestElIndex2(arr));
     }
 }

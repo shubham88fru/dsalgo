@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class ReverseAnArray {
 
-    //T: O(N), S:O(N)
+    //T: O(N), S:O(1)
     static int[] reverse(int arr[]) {
         int start = 0;
         int end = arr.length - 1;

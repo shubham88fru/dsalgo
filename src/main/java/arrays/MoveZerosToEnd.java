@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class MoveZerosToEnd {
 
-    //My soln - doesn't work
+    //My soln - doesn't work.
     static int[] moveZerosToEnd(int arr[]) {
         int zeroIdx = 0;
         int nonZeroIdx = 0;

@@ -2,6 +2,7 @@ package recursion;
 
 public class SumOfNNaturalNums {
 
+    //T: O(N), S:O(N)
     static int sumOfNNaturalNums(int n) {
         if (n==0) return 0;
         return n+sumOfNNaturalNums(n-1);

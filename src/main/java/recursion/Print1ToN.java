@@ -9,6 +9,9 @@ public class Print1ToN {
         System.out.print(n+" ");
     }
 
+    //Tail recursive soln are faster for large
+    //inputs due to copiler optimisation compared
+    // to non tail recursive
     static void print1ToNTailRecursive(int n, int k) {
         if (n==0) return;
         System.out.print(k+" ");

@@ -2,7 +2,7 @@ package hashing;
 
 import java.util.Arrays;
 
-//Image a situation where you have a 1000 keys
+//Imagine a situation where you have a 1000 keys
 //with values from 0 to 999, implement the following
 //in O(1)
 //1) Search

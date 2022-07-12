@@ -11,6 +11,7 @@ import java.util.Arrays;
 public class DirectAddressTable {
     private static int[] table = new int[1000];
 
+    // 0 - not present, 1 - present
     DirectAddressTable() {
         Arrays.fill(table, 0);
     }

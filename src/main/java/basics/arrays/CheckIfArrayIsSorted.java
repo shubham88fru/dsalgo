@@ -1,4 +1,4 @@
-package arrays;
+package basics.arrays;
 
 public class CheckIfArrayIsSorted {
     //Naive soln.

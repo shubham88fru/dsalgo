@@ -1,4 +1,4 @@
-package recursion;
+package basics.recursion;
 
 //Find value of fibonacci series
 //at nth index.

@@ -1,4 +1,4 @@
-package recursion;
+package basics.recursion;
 
 //Assume N >=1
 public class PrintNTo1 {

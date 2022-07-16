@@ -1,4 +1,4 @@
-package hashing;
+package basics.hashing;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -10,7 +10,7 @@ public class ChainingImplNaive {
     public ChainingImplNaive(int size) {
         mod = size;
         // This is bad, java doesn't
-        // allow arrays of  generics.
+        // allow basics.arrays of  generics.
         arr = new LinkedList[size];
         Arrays.fill(arr, null);
     }

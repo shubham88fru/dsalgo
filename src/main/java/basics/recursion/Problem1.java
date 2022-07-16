@@ -1,4 +1,4 @@
-package recursion;
+package basics.recursion;
 
 /*
 Given a rope of length n, you need to find maximum number of

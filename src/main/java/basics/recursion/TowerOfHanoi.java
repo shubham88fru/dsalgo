@@ -1,4 +1,4 @@
-package recursion;
+package basics.recursion;
 
 /*
 We have 3 towers A, B, C.

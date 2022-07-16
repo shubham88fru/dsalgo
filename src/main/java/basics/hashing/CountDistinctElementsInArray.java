@@ -1,4 +1,4 @@
-package hashing;
+package basics.hashing;
 
 import java.util.*;
 

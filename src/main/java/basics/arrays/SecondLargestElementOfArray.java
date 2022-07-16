@@ -1,4 +1,4 @@
-package arrays;
+package basics.arrays;
 
 public class SecondLargestElementOfArray {
     //Naive sol (two traversals)

@@ -3,6 +3,8 @@ package hashing;
 import java.util.HashMap;
 import java.util.Map;
 
+//Order of print doesn't matter.
+//if it does, use linked hash map.
 public class FrequencyOfElementsInArray {
 
     void printFrequencyOfElements(int[] arr) {

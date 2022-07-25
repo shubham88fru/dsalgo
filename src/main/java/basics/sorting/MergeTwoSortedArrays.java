@@ -37,10 +37,13 @@ public class MergeTwoSortedArrays {
 
         // Finally append all appending elements
         // of larger array
-        if (arr1.length<arr2.length) {
-            for (int k=j; k<arr2.length;k++) System.out.print(arr2[k] + " ");
-        } else {
-            for (int k=i; k<arr1.length;k++) System.out.print(arr1[k] + " ");
+        while (i<arr1.length) {
+            System.out.print(arr1[i] + " ");
+            i++;
+        }
+        while (j<arr2.length) {
+            System.out.print(arr2[j] + " ");
+            j++;
         }
     }
 
@@ -49,5 +52,8 @@ public class MergeTwoSortedArrays {
         mergeTwoSortedArrays.mergeSortedArrays1(new int[]{10, 15, 20, 20}, new int[]{1, 12});
         System.out.println("-----------------------------");
         mergeTwoSortedArrays.mergeSortedArrays(new int[]{10, 15, 20, 20}, new int[]{1, 12});
+        System.out.println("-----------------------------");
+        mergeTwoSortedArrays.mergeSortedArrays(new int[]{10, 15, 20, 40}, new int[]{8, 11, 55});
+
     }
 }

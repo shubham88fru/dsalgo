@@ -1,2 +1,4 @@
-package basics.sorting;public class MergeSort {
+package basics.sorting;
+
+public class MergeSort {
 }

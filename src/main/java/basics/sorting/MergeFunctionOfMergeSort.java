@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class MergeFunctionOfMergeSort {
 
     //T: Theta(N), N -> no. of els from low to high;
-    void sortFromLowToHighMy(int[] arr, int low, int mid, int high) {
+    static void  sortFromLowToHighMy(int[] arr, int low, int mid, int high) {
         int[] left = Arrays.copyOfRange(arr, low, mid+1);
         int[] right = Arrays.copyOfRange(arr, mid+1, high+1);
         int[] temp = new int[high-low+1];
@@ -42,11 +42,69 @@ public class MergeFunctionOfMergeSort {
         System.out.println(Arrays.toString(temp));
     }
 
+    static void mergeFunctionSir(int[] arr, int low, int mid, int high) {
+        int n1=mid-low+1, n2=high-mid;
+        int[] left = new int[n1];
+        int[] right = new int[n2];
+        System.arraycopy(arr, low, left, 0, n1);
+        System.arraycopy(arr, n1, right, 0, n2);
+
+        int i=0,j=0,k=0;
+        while(i<n1 && j<n2) {
+            if (left[i] <= right[j]) {
+                arr[k] = left[i];
+                i++;
+                k++;
+            } else {
+                arr[k] = right[j];
+                k++;
+                j++;
+            }
+        }
+        while (i<n1) {
+            arr[k] = left[i];
+            i++;
+            k++;
+        }
+        while (j<n2) {
+            arr[k] = right[j];
+            j++;
+            k++;
+        }
+        //System.out.println(Arrays.toString(arr));
+    }
+
+
+    //This method works with mergeSort algo.
+    //TODO: Need to check what is wrong with above two methods.
+    //since they aren't working with merge sort algo.
+    static void mergeFunctionSir2(int[] arr, int l, int m, int h) {
+        int n1=m-l+1, n2=h-m;
+        int[] left=new int[n1];int[]right=new int[n2];
+        System.arraycopy(arr, l, left, 0, n1);
+        for(int j=0;j<n2;j++)
+            right[j]=arr[m+1+j];
+        int i=0,j=0,k=l;
+        while(i<n1 && j<n2) {
+            if(left[i]<=right[j])
+                arr[k++]=left[i++];
+            else
+                arr[k++]=right[j++];
+        }
+        while(i<n1)
+            arr[k++]=left[i++];
+        while(j<n2)
+            arr[k++]=right[j++];
+    }
     public static void main(String[] args) {
-        MergeFunctionOfMergeSort mergeFunctionOfMergeSort = new MergeFunctionOfMergeSort();
-        mergeFunctionOfMergeSort.sortFromLowToHighMy(new int[]{10, 15, 20, 40, 8, 11, 55}, 0, 3, 6);
+        sortFromLowToHighMy(new int[]{10, 15, 20, 40, 8, 11, 55}, 0, 3, 6);
         System.out.println("------------------------------");
-        mergeFunctionOfMergeSort.sortFromLowToHighMy(new int[]{10, 20, 40, 20, 30}, 0, 2, 4);
+        sortFromLowToHighMy(new int[]{10, 20, 40, 20, 30}, 0, 2, 4);
+
+        mergeFunctionSir(new int[]{10, 15, 20, 40, 8, 11, 55}, 0, 3, 6);
+        System.out.println("------------------------------");
+        mergeFunctionSir(new int[]{10, 20, 40, 20, 30}, 0, 2, 4);
+
 
     }
 }

@@ -8,6 +8,7 @@ public class MergeSort {
 
     //l -> first index (left)
     //r -> last index (right)
+    //T: Theta(nlogn), S: Theta(n)
     void mergeSort(int[] arr, int l, int r) {
         if (r>l) { //check if atleast two els present.
             int m = l+(r-l)/2; //same as (l+r)/2;

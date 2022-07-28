@@ -29,8 +29,15 @@ public class PartitionFunctionOfQuickSort {
         System.out.println(Arrays.toString(arr));
     }
 
+    //T: O(N), S: O(1)
+    //Does only one traversal of array unlike the
+    //above naive sol.
     int lomutoPartition(int[] arr, int low, int high) {
-        int pivot = arr[high]; //we assume that pivot is always the last element.
+        //standard lomuto assumes, that pivot is always the last element.
+        //in case it is not, we need to add a line and as a first step,
+        //swap the provided partition/pivot element with last el of array
+        //and then rest of code remains same.
+        int pivot = arr[high];
         int i = low-1; //window of smaller elements (than pivot)
         for (int j=low; j<=high-1; j++) {
             if (arr[j] < pivot) {

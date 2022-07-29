@@ -10,7 +10,7 @@ public class PartitionFunctionOfQuickSort {
 
     //T: O(N), S: O(N)
     //needs 3 traversals of array
-    void partitionFunctionNaive(int[] arr, int low, int high, int partitionIndex) {
+    static void partitionFunctionNaive(int[] arr, int low, int high, int partitionIndex) {
         int[] temp = new int[high - low + 1];
         int index = 0;
         for (int i=low; i<=high; i++) {
@@ -34,7 +34,7 @@ public class PartitionFunctionOfQuickSort {
     //above naive sol.
     //lomuto and hoares partition both are unstable
     //sorting algos
-    int lomutoPartition(int[] arr, int low, int high) {
+    static int lomutoPartition(int[] arr, int low, int high) {
         //standard lomuto assumes, that pivot is always the last element.
         //in case it is not, we need to add a line and as a first step,
         //swap the provided partition/pivot element with last el of array
@@ -71,7 +71,7 @@ public class PartitionFunctionOfQuickSort {
     //will be smaller than pivot while the els to right
     //will be grater than pivot.
     //Assumes first element at pivot unlike lomuto
-    int hoaresPartition(int[] arr, int low, int high) {
+    static int hoaresPartition(int[] arr, int low, int high) {
         int pivot = arr[low]; //first element is pivot always
         int i = low - 1;
         int j = high + 1;
@@ -93,12 +93,10 @@ public class PartitionFunctionOfQuickSort {
     }
 
     public static void main(String[] args) {
-        PartitionFunctionOfQuickSort partitionFunctionOfQuickSort =
-                        new PartitionFunctionOfQuickSort();
 
-        partitionFunctionOfQuickSort.partitionFunctionNaive(new int[] {5, 13, 6, 9, 12, 11, 8}, 0, 6, 6);
+        PartitionFunctionOfQuickSort.partitionFunctionNaive(new int[] {5, 13, 6, 9, 12, 11, 8}, 0, 6, 6);
 
-        partitionFunctionOfQuickSort.lomutoPartition(new int[] {10, 80, 30, 90, 40, 50, 70}, 0, 6);
+        PartitionFunctionOfQuickSort.lomutoPartition(new int[] {10, 80, 30, 90, 40, 50, 70}, 0, 6);
         //TODO: try below corner cases with lomuto partition
         //[70, 60, 80, 40, 30] --> pivot is smaller than all other els.
         //[30, 40, 20, 50, 80] --> pivot is greater than all other els.

@@ -32,6 +32,8 @@ public class PartitionFunctionOfQuickSort {
     //T: O(N), S: O(1)
     //Does only one traversal of array unlike the
     //above naive sol.
+    //lomuto and hoares partition both are unstable
+    //sorting algos
     int lomutoPartition(int[] arr, int low, int high) {
         //standard lomuto assumes, that pivot is always the last element.
         //in case it is not, we need to add a line and as a first step,
@@ -57,6 +59,37 @@ public class PartitionFunctionOfQuickSort {
         arr[high] = temp;
         System.out.println(Arrays.toString(arr));
         return i+1; //final pos of pivot.
+    }
+
+    //Hoare's partition
+    //T:O(N), S:O(1)
+    //better that lomuto, however
+    //this partition does not guarantee that
+    //after partition pivot will be placed at its
+    //correct pos, rather only gurantees that the index
+    //it returns will be such that all els to left of it
+    //will be smaller than pivot while the els to right
+    //will be grater than pivot.
+    //Assumes first element at pivot unlike lomuto
+    int hoaresPartition(int[] arr, int low, int high) {
+        int pivot = arr[low]; //first element is pivot always
+        int i = low - 1;
+        int j = high + 1;
+        while(true) {
+            do {
+                i++;
+            } while (arr[i]<pivot);
+            do {
+                j--;
+            } while(arr[j]>pivot);
+            if (i>=j) return j;
+
+            //swap(arr[i], arr[j])
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+
     }
 
     public static void main(String[] args) {

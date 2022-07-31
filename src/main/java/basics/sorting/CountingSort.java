@@ -18,7 +18,7 @@ public class CountingSort {
         }
     }
 
-    void countSort(int[] arr, int k) {
+    static void countSort(int[] arr, int k) {
         int[] count = new int[k];
         int n = arr.length;
         for (int i=0;i<k;i++) count[i] = 0;
@@ -43,11 +43,11 @@ public class CountingSort {
         System.out.println(Arrays.toString(arr));
 
         int[] arr2 = new int[] {1,4,4,1,0,1};
-        countingSort.countSort(arr2, 5);
+        countSort(arr2, 5);
         System.out.println(Arrays.toString(arr2));
 
         int[] arr3 = new int[] {5, 6, 5, 2};
-        countingSort.countSort(arr3, 7);
+        countSort(arr3, 7);
         System.out.println(Arrays.toString(arr3));
     }
 }

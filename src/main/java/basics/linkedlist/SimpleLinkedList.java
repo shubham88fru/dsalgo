@@ -29,11 +29,11 @@ public class SimpleLinkedList {
     }
 
     public static void main(String[] args) {
-        Node<Integer> node1 = new Node<>(10);
+        Node<Integer> head = new Node<>(10);
         Node<Integer> node2 = new Node<>(20);
         Node<Integer> node3 = new Node<>(30);
 
-        node1.setNextNode(node2);
+        head.setNextNode(node2);
         node2.setNextNode(node3);
         node3.setNextNode(null);
     }

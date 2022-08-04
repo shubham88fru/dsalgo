@@ -2,6 +2,7 @@ package basics.linkedlist;
 
 public class SimpleLinkedList {
 
+    static int size = 0;
     public static class Node<T> {
         private T data;
         private Node<T> nextNode;
@@ -21,11 +22,17 @@ public class SimpleLinkedList {
 
         public void setNextNode(Node<T> nextNode) {
             this.nextNode = nextNode;
+            SimpleLinkedList.size++;
         }
 
         public Node<T> getNextNode() {
             return this.nextNode;
         }
+
+    }
+
+    public int size() {
+        return size;
     }
 
     public static void main(String[] args) {

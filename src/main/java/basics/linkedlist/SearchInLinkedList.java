@@ -2,6 +2,7 @@ package basics.linkedlist;
 
 public class SearchInLinkedList {
 
+    //T:O(N), S:O(1)
     int search(SimpleLinkedList.Node<Integer> head, int key) {
         SimpleLinkedList.Node<Integer> curr = head;
         int pos = 0;
@@ -15,6 +16,7 @@ public class SearchInLinkedList {
         return -1;
     }
 
+    //T:O(N), S:O(N)
     int searchRecursively(SimpleLinkedList.Node<Integer> node, int key, int pos) {
         SimpleLinkedList.Node<Integer> curr = node;
         if (curr==null) return -1;
@@ -22,6 +24,18 @@ public class SearchInLinkedList {
         pos++;
         curr = curr.getNextNode();
         return searchRecursively(curr, key, pos);
+    }
+
+    //T:O(N), S:O(N)
+    int searchRecursivelySir(SimpleLinkedList.Node<Integer> node, int key) {
+
+        if (node == null) return -1;
+        if (node.getData() == key) return 0;
+        else {
+            int res = searchRecursivelySir(node.getNextNode(), key);
+            if (res == -1) return -1;
+            else return (res+1);
+        }
     }
 
     public static void main(String[] args) {
@@ -41,12 +55,16 @@ public class SearchInLinkedList {
         System.out.println(linkedList.search(head, 20));
         System.out.println(linkedList.search(head, 40));
         System.out.println(linkedList.search(head, 4));
-
         System.out.println("-----------------------");
-
         System.out.println(linkedList.searchRecursively(head, 10, 0));
         System.out.println(linkedList.searchRecursively(head, 20, 0));
         System.out.println(linkedList.searchRecursively(head, 40, 0));
         System.out.println(linkedList.searchRecursively(head, 4, 0));
+        System.out.println("-----------------------");
+        System.out.println(linkedList.searchRecursivelySir(head, 10));
+        System.out.println(linkedList.searchRecursivelySir(head, 20));
+        System.out.println(linkedList.searchRecursivelySir(head, 40));
+        System.out.println(linkedList.searchRecursivelySir(head, 4));
+
     }
 }

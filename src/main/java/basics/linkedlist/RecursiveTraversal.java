@@ -2,6 +2,7 @@ package basics.linkedlist;
 
 public class RecursiveTraversal {
 
+    //T: O(N), S: O(N)
     void recursivelyTraverse(SimpleLinkedList.Node<Integer> node) {
         SimpleLinkedList.Node<Integer> curr = node;
         if (curr == null) {

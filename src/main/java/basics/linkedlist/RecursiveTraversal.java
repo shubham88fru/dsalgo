@@ -9,7 +9,7 @@ public class RecursiveTraversal {
             return;
         }
         System.out.println(curr.getData());
-        curr = node.getNextNode();
+        curr = curr.getNextNode();
         recursivelyTraverse(curr);
     }
 

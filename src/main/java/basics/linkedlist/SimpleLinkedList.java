@@ -52,6 +52,7 @@ public class SimpleLinkedList {
         return head;
     }
 
+    //T: O(1)
     public static Node<Integer> deleteHead(Node<Integer> head) {
         if (head == null) return null;
         return head.getNextNode();

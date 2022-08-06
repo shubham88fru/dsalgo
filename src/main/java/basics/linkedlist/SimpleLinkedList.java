@@ -52,6 +52,11 @@ public class SimpleLinkedList {
         return head;
     }
 
+    public static Node<Integer> deleteHead(Node<Integer> head) {
+        if (head == null) return null;
+        return head.getNextNode();
+    }
+
     public int size() {
         return size;
     }
@@ -79,6 +84,10 @@ public class SimpleLinkedList {
 
         System.out.println("````````````````````");
         head = insertAtEnd(head, 80);
+        traverseLinkedList.traverse(head);
+
+        System.out.println("````````````````````");
+        head = deleteHead(head);
         traverseLinkedList.traverse(head);
 
     }

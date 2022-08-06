@@ -31,6 +31,12 @@ public class SimpleLinkedList {
 
     }
 
+    public static Node<Integer> insertAtStart(Node<Integer> head, int val) {
+        Node<Integer> newNode = new Node<>(val);
+        newNode.setNextNode(head);
+        return newNode;
+    }
+
     public int size() {
         return size;
     }
@@ -43,5 +49,19 @@ public class SimpleLinkedList {
         head.setNextNode(node2);
         node2.setNextNode(node3);
         node3.setNextNode(null);
+
+        System.out.println("====================");
+        head = insertAtStart(head, 5);
+        TraverseLinkedList traverseLinkedList = new TraverseLinkedList();
+        traverseLinkedList.traverse(head);
+        System.out.println("====================");
+        head = insertAtStart(head, 23);
+        traverseLinkedList.traverse(head);
+        System.out.println("====================");
+        head = insertAtStart(head, 50);
+        System.out.println("====================");
+        traverseLinkedList.traverse(head);
+
+
     }
 }

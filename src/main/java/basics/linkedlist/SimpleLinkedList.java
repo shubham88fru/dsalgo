@@ -58,6 +58,17 @@ public class SimpleLinkedList {
         return head.getNextNode();
     }
 
+    //T: O(N)
+    public static Node<Integer> deleteLast(Node<Integer> head) {
+        if (head==null || head.getNextNode()==null) return null;
+        Node<Integer> curr = head;
+        while (curr.getNextNode().getNextNode() != null) {
+            curr = curr.getNextNode();
+        }
+        curr.setNextNode(null);
+        return head;
+    }
+
     public int size() {
         return size;
     }
@@ -91,5 +102,11 @@ public class SimpleLinkedList {
         head = deleteHead(head);
         traverseLinkedList.traverse(head);
 
+        System.out.println("````````````````````");
+        head = deleteLast(head);
+        traverseLinkedList.traverse(head);
+        System.out.println("````````````````````");
+        head = deleteLast(head);
+        traverseLinkedList.traverse(head);
     }
 }

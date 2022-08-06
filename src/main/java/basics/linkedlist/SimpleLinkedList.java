@@ -31,6 +31,7 @@ public class SimpleLinkedList {
 
     }
 
+    //T:O(1)
     public static Node<Integer> insertAtStart(Node<Integer> head, int val) {
         Node<Integer> newNode = new Node<>(val);
         newNode.setNextNode(head);

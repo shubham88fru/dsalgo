@@ -38,6 +38,20 @@ public class SimpleLinkedList {
         return newNode;
     }
 
+    public static Node<Integer> insertAtEnd(Node<Integer> head, int key) {
+        Node<Integer> curr = head;
+        Node<Integer> newNode = new Node<>(key);
+        if (curr == null) {
+            head = newNode;
+            return head;
+        }
+        while (curr.getNextNode()!=null) {
+            curr = curr.getNextNode();
+        }
+        curr.setNextNode(newNode);
+        return head;
+    }
+
     public int size() {
         return size;
     }
@@ -63,6 +77,9 @@ public class SimpleLinkedList {
         System.out.println("====================");
         traverseLinkedList.traverse(head);
 
+        System.out.println("````````````````````");
+        head = insertAtEnd(head, 80);
+        traverseLinkedList.traverse(head);
 
     }
 }

@@ -84,6 +84,18 @@ public class SimpleLinkedList {
         return head;
     }
 
+    static Node<Integer> sortedInsert(Node<Integer> head, int data) {
+        if (head==null) return new Node<>(data);
+        Node<Integer> curr = head;
+        int i=0;
+        while (data > curr.getData()) {
+            curr = curr.getNextNode();
+            i++;
+            if (curr == null) return insertAtEnd(head, data);
+        }
+        return insertAtIndex(head, i, data);
+    }
+
     public static int size() {
         return size;
     }
@@ -133,5 +145,18 @@ public class SimpleLinkedList {
         System.out.println("--------------------");
         head = insertAtIndex(head, 0, 123);
         traverseLinkedList.traverse(head);
+
+        Node<Integer> head2 = new Node<>(10);
+        Node<Integer> node22 = new Node<>(20);
+        Node<Integer> node23 = new Node<>(30);
+        head2.setNextNode(node22);
+        node22.setNextNode(node23);
+        node23.setNextNode(null);
+        System.out.println("--------------------");
+        head2 = sortedInsert(head2, 15);
+        traverseLinkedList.traverse(head2);
+        System.out.println("--------------------");
+        head2 = sortedInsert(head2, 155);
+        traverseLinkedList.traverse(head2);
     }
 }

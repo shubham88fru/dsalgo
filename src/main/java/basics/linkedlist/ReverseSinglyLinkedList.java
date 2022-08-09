@@ -44,6 +44,15 @@ public class ReverseSinglyLinkedList {
         return rest_head;
     }
 
+    static SimpleLinkedList.Node<Integer>
+            recursiveReverse2(SimpleLinkedList.Node<Integer> curr, SimpleLinkedList.Node<Integer> prev) {
+
+        if (curr == null) return prev;
+        SimpleLinkedList.Node<Integer> next = curr.getNextNode();
+        curr.setNextNode(prev);
+        return recursiveReverse2(next, curr);
+    }
+
     public static void main(String[] args) {
         SimpleLinkedList.Node<Integer> head = new SimpleLinkedList.Node<>(10);
         SimpleLinkedList.Node<Integer> node2 = new SimpleLinkedList.Node<>(20);
@@ -61,6 +70,9 @@ public class ReverseSinglyLinkedList {
         traverseLinkedList.traverse(head);
         System.out.println("--------------------");
         head = recursiveReverse1(head);
+        traverseLinkedList.traverse(head);
+        System.out.println("--------------------");
+        head = recursiveReverse2(head, null);
         traverseLinkedList.traverse(head);
     }
 }

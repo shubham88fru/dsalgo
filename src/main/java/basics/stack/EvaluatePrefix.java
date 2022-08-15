@@ -1,20 +1,19 @@
 package basics.stack;
 
-//Sample input -> "10 2 * 3 +"
-public class EvaluatePostFix {
+public class EvaluatePrefix {
 
-    //My Sol, not sure if 100% correct.
-    int evaluatePostFix(String postFixExpression) {
+    //doesn't work.
+    int evaluatePreFix(String postFixExpression) {
         String[] els = postFixExpression.split(" ");
-        int start = 0;
-        while (start<els.length) {
-            if (isOperator(els[start])) {
-                els[start] = operateOnLastTwo(els[start-2], els[start-1], els[start]);
+        int end = els.length-1;
+        while (end>=0) {
+            if (isOperator(els[end])) {
+                els[end] = operateOnLastTwo(els[end+2], els[end+1], els[end]);
             } else {
-                start++;
+                end--;
             }
         }
-        return Integer.parseInt(els[start-1]);
+        return Integer.parseInt(els[0]);
     }
 
     private boolean isOperator(String s) {
@@ -42,8 +41,8 @@ public class EvaluatePostFix {
     }
 
     public static void main(String[] args) {
-        EvaluatePostFix evaluatePostFix = new EvaluatePostFix();
-        System.out.println(evaluatePostFix.evaluatePostFix("10 2 * 3 +"));
-        System.out.println(evaluatePostFix.evaluatePostFix("10 2 + 3 *"));
+        EvaluatePrefix evaluatePreFix = new EvaluatePrefix();
+        System.out.println(evaluatePreFix.evaluatePreFix("+ * 10 2 3"));
+        System.out.println(evaluatePreFix.evaluatePreFix("* + 10 2 3"));
     }
 }

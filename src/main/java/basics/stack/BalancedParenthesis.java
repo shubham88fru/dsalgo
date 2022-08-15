@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Stack;
 
 //Possible chars - {,},(,),[,]
+//Balanced means -> Whatever opens late, closes first and vice-versa.
 public class BalancedParenthesis {
 
     //Not correct.
@@ -32,7 +33,7 @@ public class BalancedParenthesis {
         for (int i=0; i<s.length(); i++) {
             if (s.charAt(i) == '[' || s.charAt(i) == '('
              || s.charAt(i) == '{') {
-                stack.push(s.charAt(i));
+                stack.push(s.charAt(i)); //push to stack if opening.
             } else {
                 if (stack.empty()) return false;
                 if (!matching(stack.peek(), s.charAt(i)))

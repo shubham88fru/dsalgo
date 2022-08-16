@@ -3,6 +3,8 @@ package basics.stack;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+//Find first instance of previous
+//greater element.
 public class PreviousGreaterElement {
 
     //T: O(N^2), S:Theta(1)

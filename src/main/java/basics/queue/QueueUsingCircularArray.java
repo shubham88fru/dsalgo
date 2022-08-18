@@ -2,37 +2,33 @@ package basics.queue;
 
 import java.util.Arrays;
 
-//Using plain array.
-//dequeue operation is
-//O(N). Rest all are O(1).
-public class QueueUsingArray {
-
+//Better than plain array.
+//All ops are O(1)
+//Even dequeue op is O(1)
+public class QueueUsingCircularArray {
     private final int[] queue;
     private final int cap;
     private int size;
-    private int front = -1;
-    private int rear = -1;
+    private int front;
 
-    public QueueUsingArray(int cap) {
+    public QueueUsingCircularArray(int cap) {
         this.cap = cap;
         this.size = 0;
         queue = new int[cap];
     }
 
     public void enqueue(int num) {
-        if (!isFull())
-            queue[size++] = num;
-        front = 0;
-        rear = size-1;
+        if (isFull()) return;
+        int rear = getRear();
+        rear =  (rear+1)%cap;
+        queue[rear] = num;
+        size++;
     }
 
     public void dequeue() {
         if (isEmpty()) return;
-        if (size >= 0)
-            System.arraycopy(queue,
-                    1, queue, 0, size);
+        front = (front+1)%cap;
         size--;
-        rear = size - 1;
     }
 
     public boolean isFull() {
@@ -54,7 +50,7 @@ public class QueueUsingArray {
 
     public int getRear() {
         if (isEmpty()) return -1;
-        return rear;
+        return (front+size-1)%cap;
     }
 
     @Override
@@ -63,9 +59,9 @@ public class QueueUsingArray {
     }
 }
 
-class Test {
+class Test2 {
     public static void main(String[] args) {
-        QueueUsingArray queue = new QueueUsingArray(5);
+        QueueUsingCircularArray queue = new QueueUsingCircularArray(5);
         queue.enqueue(10);
         queue.enqueue(20);
         queue.enqueue(30);

@@ -7,7 +7,7 @@ package basics.queue;
 //and removed from front.
 public class QueueUsingLinkedList {
     Node front, rear;
-
+    int size;
     QueueUsingLinkedList() {
         front = rear = null;
     }
@@ -25,12 +25,18 @@ public class QueueUsingLinkedList {
         }
         rear.nextNode = newNode; //curr rear's next is newNode
         rear = newNode; //rear points to newNode.
+        size++;
     }
 
     void dequeue() {
         if (front==null) return;
         front = front.nextNode;
         if (front==null) rear = null;
+        size--;
+    }
+
+    int getSize() {
+        return size;
     }
 
     public void print() {

@@ -20,6 +20,7 @@ public class MaxInAllSubarraysOfSizeK {
         }
     }
 
+    //T: Theta(N), S:Theta(K)
     void printMax(int[] arr, int k) {
         Deque<Integer> dq = new ArrayDeque<>();
 

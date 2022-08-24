@@ -4,6 +4,8 @@ package basics.binary_tree;
 //the inorder traversal of the tree.
 public class PreOrderTraversal {
 
+    //T: O(N) -> cause constant amt of work for every node.
+    //S: O(height) -> cause there will atmost this num of recursive calls on stack
     void preorder(Node root) {
         if (root != null) {
             //root - left - right

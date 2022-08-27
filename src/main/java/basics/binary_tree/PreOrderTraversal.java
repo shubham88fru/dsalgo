@@ -32,7 +32,7 @@ public class PreOrderTraversal {
         }
     }
 
-    //T:O(N), S:O(N)
+    //T:O(N), S:O(N) --> Note: Not O(H) space.
     void preorderIterativeSir(Node root) {
         if (root==null) return;
         ArrayDeque<Node> stack = new ArrayDeque<>();

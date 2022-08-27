@@ -17,22 +17,34 @@ public class PreOrderTraversal {
         }
     }
 
+    //T:O(N), but S: O(H) therefore  spacewise
+    //better than below soln. It optimises space because
+    //it stores only right node in stack. while the below
+    //soln pushes both left and right to stack.
     void preorderIterativeMy(Node root) {
         ArrayDeque<Node> stack = new ArrayDeque<>();
         Node curr = root;
         while (curr != null || !stack.isEmpty()) {
             while (curr != null) {
+                //print
                 System.out.print(curr.key + " ");
-                stack.push(curr);
+
+                //keep pushing right node to stack.
+                if (curr.right !=null)
+                    stack.push(curr.right);
+
+                //keep going left
                 curr = curr.left;
             }
 
-            curr = stack.pop();
-            curr = curr.right;
+            if (!stack.isEmpty())
+                curr = stack.pop();
         }
     }
 
     //T:O(N), S:O(N) --> Note: Not O(H) space.
+    //Therefore, space wise this is not better than
+    //above soln.
     void preorderIterativeSir(Node root) {
         if (root==null) return;
         ArrayDeque<Node> stack = new ArrayDeque<>();

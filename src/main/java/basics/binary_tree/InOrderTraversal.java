@@ -1,5 +1,7 @@
 package basics.binary_tree;
 
+import java.util.ArrayDeque;
+
 //Given root of a binary tree, print
 //the inorder traversal of the tree.
 public class InOrderTraversal {
@@ -18,12 +20,35 @@ public class InOrderTraversal {
         inorderMy(root.right);
     }
 
+    //Recursive Soln.
     //T:O(N), S:O(H) ; where `N` is no. of nodes, `H` is height of binary tree.
     void inorderSir(Node root) {
         if (root!=null) {
             inorderSir(root.left);
             System.out.print(root.key+" ");
             inorderSir(root.right);
+        }
+    }
+
+    //Iterative Soln.
+    //We need to use a stack data str.
+    //T:Theta(N), S:(H)
+    void inorderIterative(Node root) {
+        ArrayDeque<Node> stack = new ArrayDeque<>();
+        Node curr = root;
+        while (curr!=null || !stack.isEmpty()) {
+            //Push all left nodes first at beginning of loop.
+            while (curr!=null) {
+                stack.push(curr);
+                curr = curr.left;
+            }
+
+            //Pop last pushed node (from leaf towards root)
+            //Process it (i.e. print)
+            //then go to right, so that it can be processed next
+            curr = stack.pop();
+            System.out.print(curr.key+" ");
+            curr = curr.right;
         }
     }
 
@@ -37,7 +62,11 @@ public class InOrderTraversal {
         InOrderTraversal inOrderTraversal =
                 new InOrderTraversal();
         inOrderTraversal.inorderMy(root);
+        System.out.println("=============");
+        inOrderTraversal.inorderIterative(root);
         System.out.println("-------------");
         inOrderTraversal.inorderSir(root);
+        System.out.println("=============");
+        inOrderTraversal.inorderIterative(root);
     }
 }

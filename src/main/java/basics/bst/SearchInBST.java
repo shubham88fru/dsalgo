@@ -22,8 +22,6 @@ public class SearchInBST {
         Time complexity of search will become O(N).
         Else if binary search tree is balanced, best case
         time complexity of search can become O(logn)
-     *
-     /
      */
     //T: O(Height), S: O(Height)
     boolean searchRecursive(Node root, int key) {

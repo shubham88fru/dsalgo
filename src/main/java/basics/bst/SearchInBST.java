@@ -14,6 +14,17 @@ class Node {
 
 public class SearchInBST {
 
+
+    /*
+        Note that `Height` of a binary search
+        tree can easily become `n` (no. of nodes)
+        if it is completely unbalanced. And so the
+        Time complexity of search will become O(N).
+        Else if binary search tree is balanced, best case
+        time complexity of search can become O(logn)
+     *
+     /
+     */
     //T: O(Height), S: O(Height)
     boolean searchRecursive(Node root, int key) {
         if (root == null) return false;

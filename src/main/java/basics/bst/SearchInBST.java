@@ -10,6 +10,11 @@ class Node {
     Node(int k) {
         key = k;
     }
+
+    @Override
+    public String toString() {
+        return "key="+key+"left="+left+"right="+right;
+    }
 }
 
 public class SearchInBST {

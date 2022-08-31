@@ -116,6 +116,65 @@ public class MinHeap implements IHeap {
         return min;
     }
 
+    //given an index i and key x,
+    //replace the element in min heap
+    //at index i with x and then rearrange
+    //the heap.
+    //T: O(log(size))
+    void decreaseKey(int i, int x) {
+        arr[i] = x;
+
+        //similar to insert function.
+        //once new value inserted, keep
+        //swapping with parent to position
+        //the newly inserted element at correct
+        //place.
+        //TODO: why can't we simply call minheapify() ??
+        while (i!=0 && arr[parent(i)]>arr[i]) {
+            int temp = arr[i];
+            arr[i] = arr[parent(i)];
+            arr[parent(i)] = temp;
+
+            i = parent(i);
+        }
+    }
+
+
+    //T:O(log(size))
+    void deleteKey(int i) {
+        //Call decrease key with -infinity
+        //on the element to be removed. This
+        //will change the value at i to -inifinity
+        //and as logic of decrease key goes, it will
+        //place -infinity at root with subsequent
+        //swapping.
+        decreaseKey(i, Integer.MIN_VALUE);
+
+        //Once at root, we'll call extract min.
+        //This will extract the -infinity element
+        //and subsequently minheapify.
+        extractMin();
+    }
+
+
+    //given a random array, we need to
+    //convert it to min heap.
+    //T: O(N) --> build heap is not a O(log(size))
+    //check sir's explanation
+    void buildHeap() {
+        //begin with bottom-most-right-most internal
+        //node(not leaf node) and keep minheapifying
+        //upwards.
+
+        //to find index of bottom-most-right-most internal
+        //node -> last el = size-1 -> parent = (i-1)/2 -> (size-1-1)/2
+        //coz bottom-most-right-most node will be parent of
+        //last(leaf) node
+        for (int i=(size-2)/2; i>=0; i--)
+            minHeapify(i);
+    }
+
+
     @Override
     public String toString() {
         return Arrays.toString(arr);

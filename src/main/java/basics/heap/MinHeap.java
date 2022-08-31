@@ -3,6 +3,7 @@ package basics.heap;
 import java.util.Arrays;
 
 public class MinHeap implements IHeap {
+    //Binary heap is nothing but an array.
     private final int[] arr;
     private int size;
     private final int capacity;
@@ -29,7 +30,7 @@ public class MinHeap implements IHeap {
         return (i-1)/2;
     }
 
-    //T: log(size)
+    //T: O(log(size)) --> `H` for a min heap is log(size)
     @Override
     public void insert(int key) {
         //already full, don't insert
@@ -60,6 +61,59 @@ public class MinHeap implements IHeap {
             i = parent(i);
         }
 
+    }
+
+    //Given a binary heap with one possible
+    //index that is violating the min heap rule
+    //we need to fix it.
+    //T: O(log(size)), S: O(log(size))
+    void minHeapify(int i) {
+        //first, find the smallest among
+        //the i, its left and right.
+        int left = left(i), right = right(i);
+        int smallest = i;
+        if (left<size && arr[left]<arr[i])
+            smallest = left;
+        if (right<size && arr[right]<arr[smallest])
+            smallest = right;
+
+        //once we have smallest among the 3, if the root
+        //(i.e. i) of the subtree is not smallest,swap and recurse.
+        if (smallest!=i) {
+            //swap curr with smallest
+            int temp = arr[i];
+            arr[i] = arr[smallest];
+            arr[smallest] = temp;
+
+            minHeapify(smallest);
+        }
+    }
+
+    //Removes min element from a min heap
+    //and returns it.
+    //T:O(log(size)
+    int extractMin() {
+        if (size==0) return Integer.MAX_VALUE;
+        if (size==1) { size--; return arr[0]; }
+
+        //arr[0] is always the min in
+        //a min heap. But we need to take
+        //care of the min heap structure
+        //once we remove it.
+
+        //First, swap arr[0] with last el of
+        //the min heap, so that after the swap
+        //size-- will effectively remove the min el.
+        int min = arr[0];
+        arr[0] = arr[size-1];
+        arr[size-1] = min;
+        size--;
+
+        //once swapped, the min heap is disrupted
+        //at index 0. So, we simply min heapify it.
+        minHeapify(0);
+
+        return min;
     }
 
     @Override

@@ -55,6 +55,36 @@ public class KMostFrequentItems {
                     .poll().getKey() + " ");
     }
 
+    //Linear time soln, O(N)
+    void printFrequentElements3(int[] arr, int k) {
+        int n = arr.length;
+        Map<Integer, Integer> map
+                = new HashMap<>();
+        for (int j : arr)
+            map.put(j, map.
+                    getOrDefault(j,
+                            0) + 1);
+
+        List<List<Integer>> freq
+                = new ArrayList<>();
+        for (int i=0; i<=n; i++)
+            freq.add(new ArrayList<>());
+
+        for (Map.Entry<Integer, Integer> e: map.entrySet())
+            freq.get(e.getValue()).add(e.getKey());
+
+        int count=0;
+
+        for (int i=n; i>=0; i--) {
+            for (int x: freq.get(i)) {
+                System.out.print(x+" ");
+                count++;
+                if (count==k)
+                    return;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         KMostFrequentItems kMostFrequentItems
                 = new KMostFrequentItems();
@@ -65,6 +95,10 @@ public class KMostFrequentItems {
         System.out.println();
         kMostFrequentItems
                 .printFrequentElements2(arr, 2);
+
+        System.out.println();
+        kMostFrequentItems
+                .printFrequentElements3(arr, 2);
     }
 }
 

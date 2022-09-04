@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class PrintRepeatingElements {
 
+    //T: theta(N), S: O(N)
     void printRepeating(int[] arr) {
         Set<Integer> set =
                 new HashSet<>();

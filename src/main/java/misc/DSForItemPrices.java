@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+//Assume that prices are distinct
 public class DSForItemPrices {
 
     private final TreeMap<Integer, String> itemsMap;

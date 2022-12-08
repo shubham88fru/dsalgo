@@ -6,7 +6,7 @@ import java.util.Map;
 //@link - https://practice.geeksforgeeks.org/problems/rod-cutting0840/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
 public class RodCutting {
 
-    public int cutRod(int price[], int n) {
+    public int cutRod(int[] price, int n) {
         return cutRodForMaxPrice(price, n, 0, new HashMap<String, Integer>());
     }
 

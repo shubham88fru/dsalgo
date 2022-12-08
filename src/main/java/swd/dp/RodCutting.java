@@ -19,10 +19,10 @@ public class RodCutting {
 
         String key = currIndex + "-" + remainingLength;
         if (memo.containsKey(key)) return memo.get(key);
-
-        if ((currIndex+1) <= remainingLength) {
+        int currentPieceLength = currIndex+1;
+        if (currentPieceLength <= remainingLength) {
             includeCurr = price[currIndex] +
-                    cutRodForMaxPrice(price, remainingLength-(currIndex+1), currIndex, memo);
+                    cutRodForMaxPrice(price, remainingLength-currentPieceLength, currIndex, memo);
         }
 
         int dontIncludeCurr = cutRodForMaxPrice(price, remainingLength, currIndex+1, memo);

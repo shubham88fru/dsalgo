@@ -26,6 +26,7 @@ public class CoinChange {
         if (memo.containsKey(key)) return memo.get(key);
 
         if (targetAmount>=coins[currIndex]) {
+            //add 1 because it is a possible move.
             includeCurr = 1 + minCoinsForGivenAmount(coins, targetAmount-coins[currIndex], currIndex, memo);
 
         }

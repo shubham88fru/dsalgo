@@ -12,10 +12,10 @@ public class RodCutting {
 
     private int cutRodForMaxPrice(int[] price, int remainingLength, int currIndex, Map<String, Integer> memo) {
 
-        if (currIndex >= price.length) return -1000001;
+        if (currIndex >= price.length) return 0;
         if (remainingLength == 0) return 0;
 
-        int includeCurr = -1000001;
+        int includeCurr = 0;
 
         String key = currIndex + "-" + remainingLength;
         if (memo.containsKey(key)) return memo.get(key);

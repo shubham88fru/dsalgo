@@ -25,7 +25,7 @@ public class BuyAndSellStockWithCooldown {
             memo.put(key, Math.max(idle, buy));
         } else {
             int sell = prices[currentDay]
-                    + bestTimeToBuyAndSellForMaxProfit(prices, currentDay+2, 1, memo);
+                    + bestTimeToBuyAndSellForMaxProfit(prices, currentDay+2, 1, memo); //a sell has to be followed by a cooldown, so skip next day.
             memo.put(key, Math.max(idle, sell));
         }
         return memo.get(key);

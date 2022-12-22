@@ -20,7 +20,7 @@ public class NumOfDiceRollsWithTargetSum {
         int MOD = (int)Math.pow(10, 9) + 7; //10^9 + 7
         if (memo.containsKey(key)) return memo.get(key);
         for (int j=1; j<=k; j++) {
-            ways = (ways%MOD + numWaysToTarget(n, k, target-j, currIndex+1, memo)%MOD)%MOD;
+            ways = (ways%MOD + numWaysToTarget(n, k, target-j, currIndex+1, memo)%MOD)%MOD; ////ways += ways + <recursive_call>
         }
         memo.put(key, (ways));
         return memo.get(key);

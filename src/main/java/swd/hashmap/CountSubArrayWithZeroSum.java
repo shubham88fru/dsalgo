@@ -10,6 +10,8 @@ public class CountSubArrayWithZeroSum {
         Map<Integer, Integer> memo = new HashMap<>();
         int prefixSum = 0;
         int res = 0;
+        //For counting question, map has prefix sum and the no. of times
+        //a prefix sum appears instead of prefix sum and earliest index (for largest subarray)
         memo.put(prefixSum, 1); //0 has appeared once (at -1)
 
         for (int el: arr) {

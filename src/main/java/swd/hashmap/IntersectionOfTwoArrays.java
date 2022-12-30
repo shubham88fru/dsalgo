@@ -13,7 +13,6 @@ public class IntersectionOfTwoArrays {
         Map<Integer, Integer> map = new HashMap<>();
         int len1 = nums1.length;
         int len2 = nums2.length;
-        int smallerOfTwo = Math.min(len1, len2);
         List<Integer> res = new ArrayList<>();
 
         if (len1 >= len2) {

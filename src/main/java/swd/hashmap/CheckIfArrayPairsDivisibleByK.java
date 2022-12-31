@@ -25,7 +25,7 @@ public class CheckIfArrayPairsDivisibleByK {
         //When divinding by k, remainders can be from 0, k-1
         if ((elsRemainderMap.get(0)!=null)&& !(elsRemainderMap.get(0)%2==0)) return false;
 
-        for (int i=1; i<k; i++) {
+        for (int i=1; i<=k/2; i++) {
             if (!(Objects.equals(elsRemainderMap.get(i), elsRemainderMap.get(k - i)))) return false;
         }
         return true;

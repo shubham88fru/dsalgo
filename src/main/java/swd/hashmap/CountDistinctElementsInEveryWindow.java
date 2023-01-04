@@ -71,7 +71,7 @@ public class CountDistinctElementsInEveryWindow {
             }
         }
 
-        //first k elements (first window) are aquired. add answer for 1st window.
+        //first k elements (first window) are acquired. add answer for 1st window.
         answer.add(distinct);
         int release = 0;
 
@@ -82,7 +82,7 @@ public class CountDistinctElementsInEveryWindow {
             //decrease the frequency of the discarded element.
             memo.put(discardElement, memo.get(discardElement)-1);
 
-            //if zero frequency after discarding, delete from memo al
+            //if zero frequency after discarding, delete from memo altogether.
             if (Objects.equals(memo.get(discardElement), 0)) {
                 memo.remove(discardElement);
                 distinct -= 1;

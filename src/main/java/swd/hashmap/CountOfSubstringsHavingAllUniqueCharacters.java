@@ -16,7 +16,7 @@ public class CountOfSubstringsHavingAllUniqueCharacters {
 
         //Till acquire pointer doesn't reach to end of string.
         while (acquire < str.length()) {
-            //acquire.
+            //try to acquire.
             char c = str.charAt(acquire);
 
             //if already seen..

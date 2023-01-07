@@ -37,7 +37,7 @@ public class CountOfSubstringsHavingAllUniqueCharacters {
                 //seeing for the first time.
                 map.put(c, 1);
 
-                //num of substrings see is -
+                //num of substrings seen is -
                 ans += (acquire - release + 1);
 
                 //move acquire to next.

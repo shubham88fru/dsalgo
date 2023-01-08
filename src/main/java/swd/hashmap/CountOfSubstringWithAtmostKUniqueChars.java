@@ -14,17 +14,20 @@ public class CountOfSubstringWithAtmostKUniqueChars {
 
         while (acquire < str.length()) {
             char c = str.charAt(acquire);
-            if (map.size()<=k) {
-                map.put(c, map.getOrDefault(c, 0)+1);
-                ans += (acquire-release+1);
-                acquire++;
-            } else {
-                char deleteChar = str.charAt(release);
-                map.put(deleteChar, map.get(deleteChar)-1);
-                if (Objects.equals(map.get(deleteChar), 0)) {
-                    map.remove(deleteChar);
+            if (map.size() <= k) {
+                if (map.containsKey(c) || (map.size() < k)) {
+                    map.put(c, map.getOrDefault(c, 0)+1);
+                    ans += (acquire - release + 1);
+                    acquire++;
+                } else {
+                    map.size();
+                    char deleteChar = str.charAt(release);
+                    map.put(deleteChar, map.get(deleteChar)-1);
+                    if (Objects.equals(map.get(deleteChar), 0)) {
+                        map.remove(deleteChar);
+                    }
+                    release++;
                 }
-                release++;
             }
         }
 

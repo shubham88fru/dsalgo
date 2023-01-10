@@ -7,6 +7,6 @@ public class CountOfSubstringWithAtleastKUniqueChars {
         int totalSubstrings = n*(n+1)/2; //total no. of substrings.
 
         //total substrings minus substrings with atmost `k-1` distinct chars.
-        return totalSubstrings - LongestSubstringWithAtmostKDistinctChars.kDistinctChars(k-1, str);
+        return totalSubstrings - CountOfSubstringWithAtmostKUniqueChars.solution(str, k-1);
     }
 }

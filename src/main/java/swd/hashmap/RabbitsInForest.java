@@ -27,4 +27,21 @@ public class RabbitsInForest {
         }
         return minRabits;
     }
+
+    /** SWD Soln **/
+    public int numRabbits2(int[] answers) {
+        int minRabbits = 0;
+        Map<Integer, Integer> memo = new HashMap<>();
+        for (int ans: answers) {
+            memo.put(ans, memo.getOrDefault(ans, 0)+1);
+        }
+
+        for (int currentKey: memo.keySet()) {
+            int groupSize = currentKey + 1;
+            double numOfGroupsRequired = Math.ceil(memo.get(currentKey) / (double) groupSize);
+            minRabbits += (groupSize*numOfGroupsRequired);
+        }
+
+        return minRabbits;
+    }
 }

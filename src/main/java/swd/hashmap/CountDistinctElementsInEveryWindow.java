@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+//@link - https://practice.geeksforgeeks.org/problems/count-distinct-elements-in-every-window/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
 public class CountDistinctElementsInEveryWindow {
     /* My Soln (Brute force) - O(N^2) */
     /****************

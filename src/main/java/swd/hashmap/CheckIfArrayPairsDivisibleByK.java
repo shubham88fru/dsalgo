@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+//@link - https://leetcode.com/problems/check-if-array-pairs-are-divisible-by-k/
 public class CheckIfArrayPairsDivisibleByK {
     /**SWD Soln**/
     public boolean canArrange(int[] arr, int k) {

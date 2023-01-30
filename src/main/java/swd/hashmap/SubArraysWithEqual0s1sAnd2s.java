@@ -3,6 +3,7 @@ package swd.hashmap;
 import java.util.HashMap;
 import java.util.Map;
 
+//@link - https://practice.geeksforgeeks.org/problems/equal-0-1-and-23208/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
 public class SubArraysWithEqual0s1sAnd2s {
     long getSubstringWithEqual012(String s) {
         // code here

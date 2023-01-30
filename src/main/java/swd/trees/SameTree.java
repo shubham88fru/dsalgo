@@ -3,8 +3,25 @@ package swd.trees;
 import java.util.ArrayList;
 import java.util.List;
 
+//@link - https://leetcode.com/problems/same-tree/description/
 public class SameTree {
-    /*** My Soln - Works but poorer TC as compared to SWD ***/
+    /*** My Soln - Works but poorer TC as compared to SWD
+     * Also, my approach is wrong. It is not always true that
+     * if preorder traversal of trees are same then trees are similar.
+     * eg:
+     *Tree1:     1
+     *          /
+     *         2
+     *        /
+     *       3
+     *
+     *Tree2:      1
+     *           / \
+     *          2   3
+     *
+     * Above trees have same preorder traversal but aren't same.
+     *
+     * ***/
     public boolean isSameTree(TreeNode p, TreeNode q) {
         List<Integer> preorder1 = new ArrayList<>();
         List<Integer> preorder2 = new ArrayList<>();

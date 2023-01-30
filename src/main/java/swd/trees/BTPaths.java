@@ -3,6 +3,7 @@ package swd.trees;
 import java.util.ArrayList;
 import java.util.List;
 
+//@link - https://leetcode.com/problems/binary-tree-paths/description/
 public class BTPaths {
     /*** My Soln - Work like a charm ***/
     public List<String> binaryTreePaths(TreeNode root) {

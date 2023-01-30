@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+//@link - https://leetcode.com/problems/word-pattern/description/
 public class WordProblem {
     public boolean wordPattern(String pattern, String s) {
         Map<Character, Integer> patternmap = new HashMap<>();

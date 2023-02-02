@@ -7,7 +7,7 @@ public class UnivaluedBT {
     }
 
     private boolean isUnivalued(TreeNode root, int val) {
-        //If reached till leaf and we couldn't find a node which is unmatching, return true
+        //If reached till leaf and we couldn't find a node which is un-matching, return true
         if (root == null) return true;
 
         //traverse preorder and check if

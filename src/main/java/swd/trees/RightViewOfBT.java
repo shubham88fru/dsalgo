@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//@link - https://practice.geeksforgeeks.org/problems/right-view-of-binary-tree/1
 public class RightViewOfBT {
     ArrayList<Integer> rightView(GfgNode node) {
         ArrayList<Integer> ans = new ArrayList<>();

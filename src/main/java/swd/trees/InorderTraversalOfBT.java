@@ -38,7 +38,7 @@ public class InorderTraversalOfBT {
 
         //repeat till stack isn't empty.
         while (!stack.isEmpty()) {
-            //Pop the leaf node.
+            //Pop the top node.
             TreeNode currNode = stack.removeFirst();
 
             //Process it.

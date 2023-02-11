@@ -33,24 +33,16 @@ public class UnivaluedBT {
 
         //run bfs.
         while (!queue.isEmpty()) {
-            //At any level, no. of nodes in queue will
-            //be equal to nodes at that level.
-            int nodesToProcessAtCurrLevel = queue.size();
 
+            TreeNode currNode = queue.removeFirst();
 
-            //Process all nodes at the curr level.
-            while (nodesToProcessAtCurrLevel > 0) {
-                TreeNode currNode = queue.removeFirst();
+            //if any node's value is diff, break immediately
+            //and return false.
+            if (currNode.val != target) return false;
 
-                //if any node's value is diff, break immediately
-                //and return false.
-                if (currNode.val != target) return false;
+            if (currNode.left != null) queue.addLast(currNode.left);
+            if (currNode.right != null) queue.addLast(currNode.right);
 
-                if (currNode.left != null) queue.addLast(currNode.left);
-                if (currNode.right != null) queue.addLast(currNode.right);
-
-                nodesToProcessAtCurrLevel -= 1;
-            }
         }
 
         //If here, means all nodes value are same.

@@ -1,6 +1,8 @@
 package swd.trees;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 
 //@link - https://leetcode.com/problems/same-tree/description/
@@ -54,10 +56,11 @@ public class SameTree {
 
     /*** SWD Soln ***/
     public boolean isSameTree2(TreeNode p, TreeNode q) {
-        return dfsForSameTree(p, q);
+        return dfsForSameTreeDFS(p, q);
     }
 
-    private boolean dfsForSameTree(TreeNode p, TreeNode q) {
+    //1) DFS Algorithm to solve the problem.
+    private boolean dfsForSameTreeDFS(TreeNode p, TreeNode q) {
         if (p == null && q == null) return true;
 
         if (p == null) {
@@ -69,14 +72,88 @@ public class SameTree {
         }
 
         boolean valssame = (p.val == q.val);
-
-        //value of nodes same and left tree is same for both
-        boolean leftTree = valssame && dfsForSameTree(p.left, q.left);
-
-        //value of nodes same and right tree is same for both
-        boolean rightTree = valssame && dfsForSameTree(p.right, q.right);
+        boolean leftTree = valssame && dfsForSameTreeDFS(p.left, q.left);
+        boolean rightTree = valssame && dfsForSameTreeDFS(p.right, q.right);
 
         return (leftTree && rightTree);
     }
 
+    //2) BFS Algorithm to solve the problem (My algo)
+    private boolean dfsForSameTreeBFS(TreeNode p, TreeNode q) {
+        if (p == null && q == null) return true;
+
+        if (p == null) return false;
+        if (q == null) return false;
+
+        Deque<TreeNode> queueP = new ArrayDeque<>();
+        queueP.addLast(p);
+
+        Deque<TreeNode> queueQ = new ArrayDeque<>();
+        queueQ.addLast(q);
+
+        while(!queueP.isEmpty() && !queueQ.isEmpty()) {
+            TreeNode currNodeP = queueP.removeFirst();
+            TreeNode currNodeQ = queueQ.removeFirst();
+
+            if (currNodeP.val != currNodeQ.val) return false;
+
+            if (currNodeP.left == null && currNodeQ.left != null) return false;
+            if (currNodeQ.left == null && currNodeP.left != null) return false;
+
+            if (currNodeP.right == null && currNodeQ.right != null) return false;
+            if (currNodeQ.right == null && currNodeP.right != null) return false;
+
+
+            if (currNodeP.left != null) queueP.addLast(currNodeP.left);
+
+            if (currNodeP.right != null) queueP.addLast(currNodeP.right);
+
+            if (currNodeQ.left != null) queueQ.addLast(currNodeQ.left);
+
+            if (currNodeQ.right != null) queueQ.addLast(currNodeQ.right);
+
+        }
+
+        if (!queueP.isEmpty()) return false;
+        if (!queueQ.isEmpty()) return false;
+
+        return true;
+    }
+
+    //2) BFS Algorithm to solve the problem (SWD algo)
+    private boolean dfsForSameTreeBFSSWD(TreeNode proot, TreeNode qroot) {
+        if (proot == null && qroot == null) return true;
+
+        if (proot == null) return false;
+        if (qroot == null) return false;
+
+        Deque<NodePair> queue = new ArrayDeque<>();
+        queue.addLast(new NodePair(proot, qroot));
+
+        while (!queue.isEmpty()) {
+            NodePair pair = queue.removeFirst();
+            TreeNode p = pair.p;
+            TreeNode q = pair.q;
+
+            if (p == null && q != null) return false;
+            if (q == null && p != null) return false;
+            if (p == null && q == null) continue;
+            if (p.val != q.val) return false;
+
+            queue.addLast(new NodePair(p.left, q.left));
+            queue.addLast(new NodePair(p.right, q.right));
+        }
+
+        return true;
+    }
+}
+
+class NodePair {
+    public TreeNode p;
+    public TreeNode q;
+
+    public NodePair(TreeNode p, TreeNode q) {
+        this.p = p;
+        this.q = q;
+    }
 }

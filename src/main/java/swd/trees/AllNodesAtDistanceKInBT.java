@@ -1,9 +1,6 @@
 package swd.trees;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 //@link - https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/
 public class AllNodesAtDistanceKInBT {
@@ -60,6 +57,7 @@ public class AllNodesAtDistanceKInBT {
         traverseForParents(root.right, root, parentsmap);
     }
 
+    //1) DFS Algorithm.
     private void traverseForAllNodesAtDistK(TreeNode node, int k, List<Integer> ans, Map<TreeNode, TreeNode> parentsmap, Map<TreeNode, Integer> seenmap) {
         if (node == null) return;
 
@@ -77,5 +75,61 @@ public class AllNodesAtDistanceKInBT {
         traverseForAllNodesAtDistK(node.right, k-1, ans, parentsmap, seenmap);
         //visit parent
         traverseForAllNodesAtDistK(parentsmap.get(node), k-1, ans, parentsmap, seenmap);
+    }
+
+    //2) BFS Solution.
+    private void traverseForAllNodesAtDistKBFS(TreeNode node, int k, List<Integer> ans, Map<TreeNode, TreeNode> parentsmap) {
+
+        //a map to store to nodes that we have
+        //visited till now.
+        Map<TreeNode, Integer> seen = new HashMap<>();
+
+        //queue for bfs.
+        ArrayDeque<WrappedNode> queue = new ArrayDeque<>();
+        queue.addLast(new WrappedNode(node, k));
+        seen.put(node, node.val);
+
+        //run bfs.
+        while (!queue.isEmpty()) {
+            WrappedNode wrappedNode = queue.removeFirst();
+            TreeNode currNode = wrappedNode.node;
+            int targetDist = wrappedNode.dist;
+
+            //if reached a target node, add to list.
+            if (targetDist == 0) {
+                ans.add(currNode.val);
+                continue;
+            }
+
+            //If left node and not visited before, enqueue it.
+            if (currNode.left != null && !seen.containsKey(currNode.left)) {
+                seen.put(currNode.left, currNode.left.val);
+                queue.addLast(new WrappedNode(currNode.left, targetDist-1));
+            }
+
+            //If right node, and not visited before, enqueue it.
+            if (currNode.right != null && !seen.containsKey(currNode.right)) {
+                seen.put(currNode.right, currNode.right.val);
+                queue.addLast(new WrappedNode(currNode.right, targetDist-1));
+            }
+
+            //if parent node, and not visited before, enqueue it.
+            if (parentsmap.get(currNode) != null && !seen.containsKey(parentsmap.get(currNode))) {
+                seen.put(parentsmap.get(currNode), parentsmap.get(currNode).val);
+                queue.addLast(new WrappedNode(parentsmap.get(currNode), targetDist-1));
+            }
+        }
+    }
+}
+
+//A treenode wrapped that stores
+//extra info.
+class WrappedNode {
+    TreeNode node;
+    int dist;
+
+    public WrappedNode(TreeNode node, int dist) {
+        this.node = node;
+        this.dist = dist;
     }
 }

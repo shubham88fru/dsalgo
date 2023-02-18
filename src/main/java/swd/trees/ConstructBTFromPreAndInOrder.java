@@ -3,6 +3,7 @@ package swd.trees;
 import java.util.HashMap;
 import java.util.Map;
 
+//@link - https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/
 public class ConstructBTFromPreAndInOrder {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         //Map for looking up current preorder array's index
@@ -12,7 +13,7 @@ public class ConstructBTFromPreAndInOrder {
         //keep track of pre order array index.
         int[] preorderIndex = {0};
 
-        return treeFromPreAndIn(preorder, inorder, preorderIndex, 0, inorder.length-1, indexMap);
+        return treeFromPreAndIn(preorder, inorder, preorderIndex, 0, inorder.length - 1, indexMap);
     }
 
     private TreeNode treeFromPreAndIn(int[] preorder, int[] inorder, int[] preorderArrayCurrIndex,
@@ -42,7 +43,7 @@ public class ConstructBTFromPreAndInOrder {
         preorderArrayCurrIndex[0] += 1;
 
         //left tree.
-        TreeNode left = treeFromPreAndIn(preorder, inorder, preorderArrayCurrIndex, inorderArrayStartIndex, currNodeLeftEnd, indexMap);
+        TreeNode left = treeFromPreAndIn(preorder, inorder, preorderArrayCurrIndex, currNodeLeftStart, currNodeLeftEnd, indexMap);
 
         //right tree.
         TreeNode right = treeFromPreAndIn(preorder, inorder, preorderArrayCurrIndex, currNodeRightStart, currNodeRightEnd, indexMap);

@@ -78,7 +78,7 @@ public class LowestCommonAncestorInBT {
     }
 
     /*** SWD Soln ***/
-    public TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q) {
+    public TreeNode lowestCommonAncestorSWD(TreeNode root, TreeNode p, TreeNode q) {
         return searchInSubTree(root, p, q);
     }
 

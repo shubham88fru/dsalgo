@@ -93,6 +93,10 @@ public class LowestCommonAncestorInBT {
         TreeNode right = searchInSubTree(root.right, p, q);
 
         if (left != null && right != null) return root;
+
+        //Note this works for this question, because
+        //this variation of the question guarantees that
+        //p and q certainly exist in the bt.
         if (left != null) return left;
         if (right != null) return right;
 

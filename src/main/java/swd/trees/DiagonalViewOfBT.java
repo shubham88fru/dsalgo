@@ -7,6 +7,7 @@ import java.util.*;
 public class DiagonalViewOfBT {
 
     /*** Doesn't work for all cases ***/
+    /*** DFS works, check last video of bt **/
     public ArrayList<Integer> diagonal(GfgNode root) {
         //add your code here.
         Map<Integer, ArrayList<Integer>> slopeMap = new HashMap<>();

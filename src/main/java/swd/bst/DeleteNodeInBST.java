@@ -67,8 +67,7 @@ public class DeleteNodeInBST {
             //In this case, we simply delete the target node by
             //returning null to parent node.
             if (root.left == null && root.right == null) {
-                root = null;
-                return root;
+                return null; //setting target = null and returning to parent.
             }
 
             //CASE 2: target node has exactly one child (left or right)
@@ -76,12 +75,10 @@ public class DeleteNodeInBST {
             //to the parent. Hence parent's left or right child becomes left or right
             //child of the target.
             if (root.left != null && root.right == null) {
-                root = root.left;
-                return root;
+                return root.left; //skipping root and returning its left child to parent.
             }
             if (root.right != null && root.left == null) {
-                root = root.right;
-                return root;
+                return root.right; //skipping root and returning its right child to parent.
             }
 
             //CASE 3: target node has 2 children.

@@ -1,6 +1,8 @@
 package swd.bst;
 
 //@link - https://leetcode.com/problems/validate-binary-search-tree/description/
+
+//4 ways to solve. 2nd vide of bst.
 public class ValidateBST {
 
     /*** My Soln - First, it is nasty. Second, it doesn't even work for all test cases. ***/

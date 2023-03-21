@@ -35,4 +35,10 @@ class GfgNode {
         data = item;
         left = right = null;
     }
+
+    GfgNode(int item, GfgNode left, GfgNode right) {
+        data = item;
+        this.left = left;
+        this.right = right;
+    }
 }

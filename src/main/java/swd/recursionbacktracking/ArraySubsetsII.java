@@ -21,7 +21,7 @@ public class ArraySubsetsII {
             //map, so that if the same subset has already been added
             //previously in the answer, we don't add it again.
             //Note that, sorting the copy (and not the original) of list
-            //itself is neccessary, because sorting modifies the orginal
+            //itself is neccessary, because sorting modifies the original
             //list thereby changing the position of elements in the original
             //list, which will cause problems when we are backtracking and
             //removing the last added element.
@@ -49,9 +49,9 @@ public class ArraySubsetsII {
         List<List<Integer>> includeMe = subsets(nums, subset, currIdx+1, seenmap);
 
         //when returning from current recursive call - backtrack.
-        //so that we undo the the change we did to the list.
+        //so that we undo the change we did to the list.
         //if we don't backtrack, the addition that we did for the consider
-        //case will add the elemnt to the list and since list is passed by reference
+        //case will add the element to the list and since list is passed by reference
         //all subsequent calls will had that element added.
         //By backtracking, we are basically returning the list to the state it
         //was in the previous recursive call.

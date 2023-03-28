@@ -1,5 +1,6 @@
 package swd.recursionbacktracking;
 
+//@link - https://leetcode.com/problems/n-queens-ii/solutions/
 public class NQueensII {
     public int totalNQueens(int n) {
         return placeQueens(new int[n][n], 0, n);

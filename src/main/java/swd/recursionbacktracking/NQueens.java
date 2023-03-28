@@ -3,6 +3,7 @@ package swd.recursionbacktracking;
 import java.util.ArrayList;
 import java.util.List;
 
+//@link - https://leetcode.com/problems/n-queens/solutions/
 public class NQueens {
     public List<List<String>> solveNQueens(int n) {
         char[][] board = new char[n][n];

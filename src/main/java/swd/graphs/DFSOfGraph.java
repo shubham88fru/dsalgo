@@ -8,20 +8,20 @@ public class DFSOfGraph {
         return traverseDFS(0, adj, new ArrayList<Integer>());
     }
 
-    private ArrayList<Integer> traverseDFS(int currEl, ArrayList<ArrayList<Integer>> adj,
+    private ArrayList<Integer> traverseDFS(int currVertex, ArrayList<ArrayList<Integer>> adj,
                                            ArrayList<Integer> visited) {
         //If already visited, no need to visit again.
-        if (visited.contains(currEl)) {
+        if (visited.contains(currVertex)) {
             return null;
         }
 
         //else, visit and add to list.
         ArrayList<Integer> currList = new ArrayList<>();
-        visited.add(currEl);
-        currList.add(currEl);
+        visited.add(currVertex);
+        currList.add(currVertex);
 
         //then visit depth first visit the neighbours.
-        ArrayList<Integer> neighbours = adj.get(currEl);
+        ArrayList<Integer> neighbours = adj.get(currVertex);
         ArrayList<Integer> neighbourList = new ArrayList<>();
         for (int i=0; i<neighbours.size(); i++) {
             neighbourList = traverseDFS(neighbours.get(i), adj, visited);

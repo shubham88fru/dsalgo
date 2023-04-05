@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
+//@link - https://leetcode.com/problems/number-of-provinces/description/
 public class NumberOfProvinces {
     public int findCircleNum(int[][] isConnected) {
         List<Integer> visited = new ArrayList<>();

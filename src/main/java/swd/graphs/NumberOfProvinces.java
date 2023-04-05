@@ -1,6 +1,8 @@
 package swd.graphs;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 
 public class NumberOfProvinces {
@@ -19,7 +21,8 @@ public class NumberOfProvinces {
             //dfs, we should visit again, because this city would be
             //a part of a component that we have already accounted for.
             if (!visited.contains(city)) {
-                traverseDFSFromGivenVertex(isConnected, city, visited);
+                //traverseDFSFromGivenVertex(isConnected, city, visited);
+                traverseBFSFromGivenVertex(isConnected, city, visited);
 
                 //Everytime we do a new dfs, means we're a new components, therefore
                 //increment the count of disconnected component (provinces)
@@ -32,19 +35,38 @@ public class NumberOfProvinces {
         return disconnectedComponents;
     }
 
-    //DFS traversal of graph.
-    private void traverseDFSFromGivenVertex(int[][] connectionInfo, int currVertex, List<Integer> visited) {
+    //1) DFS traversal of graph.
+    private void traverseDFSFromGivenVertex(int[][] graph, int currVertex, List<Integer> visited) {
         if (visited.contains(currVertex)) return;
 
         visited.add(currVertex);
-        int[] connections = connectionInfo[currVertex];
-        for (int i = 0; i < connectionInfo.length; i += 1) {
+        int[] connections = graph[currVertex];
+        for (int i = 0; i < graph.length; i += 1) {
             //In the given adjacency matrix, a city is connected to
             //curr city, only if value at the corresponding index is 1.
             //So, from curr city we can visit another only if the value is 1.
             int connected = connections[i];
             if (connected == 1) {
-                traverseDFSFromGivenVertex(connectionInfo, i, visited);
+                traverseDFSFromGivenVertex(graph, i, visited);
+            }
+        }
+    }
+
+    //2) BFS traversal of graph.
+    private void traverseBFSFromGivenVertex(int[][] graph, int currVertex, List<Integer> visited) {
+        Deque<Integer> queue = new ArrayDeque<>();
+        queue.addLast(currVertex);
+        visited.add(currVertex);
+
+        while (!queue.isEmpty()) {
+            int curr = queue.removeFirst();
+            int[] connections = graph[curr];
+            for (int i = 0; i < graph.length; i += 1) {
+                int connected = connections[i];
+                if (connected == 1 && !visited.contains(i)) {
+                    queue.addLast(i);
+                    visited.add(i);
+                }
             }
         }
     }

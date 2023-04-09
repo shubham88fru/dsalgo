@@ -6,7 +6,7 @@ import java.util.*;
 //@link - https://practice.geeksforgeeks.org/problems/diagonal-traversal-of-binary-tree/1
 public class DiagonalViewOfBT {
 
-    /*** Doesn't work for all cases ***/
+    /*** Soln 1 - Doesn't work for all cases ***/
     /*** DFS works, check last video of bt **/
     public ArrayList<Integer> diagonal(GfgNode root) {
         //add your code here.
@@ -48,6 +48,44 @@ public class DiagonalViewOfBT {
         }
     }
 
+    /*** Soln 2 - Using queue, but not exactly a bfs a approach ***/
+    public ArrayList<Integer> diagonalViewUsingQueue(GfgNode root) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        Deque<GfgNode> queue = new ArrayDeque<>();
+
+        GfgNode currNode = root;
+        while (currNode != null) {
+            ans.add(currNode.data);
+
+            //keep queueing left nodes
+            if (currNode.left != null) {
+                queue.addLast(currNode.left);
+            }
+
+            //keep moving right (while queueing left leaves as above)
+            if (currNode.right != null) {
+                currNode = currNode.right;
+            } else if (queue.isEmpty()) {
+                //queue empty means we're done.
+                //All nodes processed.
+                currNode = null;
+            } else {
+                //if queue has elements, but curr node
+                //has no right child, pick the element
+                //from queue (a left child) and repeat.
+
+                //Basically, in a digonal view, we'll process
+                //all the right childs at one stage. Once all
+                //right childs are done, we'll have to move to next
+                // diagonal level. For that, pick the firstmost
+                //left child (because of queue behavior) and repeat the
+                //process of moving right..right..right.. and queueing
+                //left..left..left again.
+                currNode = queue.removeFirst();
+            }
+        }
+        return ans;
+    }
 }
 
 class GfgNodeSlopeWrapper {

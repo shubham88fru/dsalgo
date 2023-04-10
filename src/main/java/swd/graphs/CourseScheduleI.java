@@ -5,9 +5,22 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
-//@link - https://leetcode.com/problems/course-schedule-ii/description/
-public class CourseScheduleII {
-    public int[] findOrder(int numCourses, int[][] prerequisites) {
+/*
+ * ----------------
+ * Topological Sort
+ * ----------------
+ * Topological sort of a graph can be found using kahn's algorithm. Kahn's algo
+ * iterates in a topological sort manner.
+ * A topological sort of graph is a representation of vertices of the graph
+ * in an array, where the array contains all the vertices of the graph and for
+ * every edge (u,v) i.e. (u --> v) in the graph, `u` appears before `v` in the array.
+ *
+ * Note: Topological sort can't be determined for a graph that has cycles.
+ * */
+
+//@link - https://leetcode.com/problems/course-schedule/description/
+public class CourseScheduleI {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
         int m = prerequisites.length;
 
         //Construct graph (adjacency list representation) from the
@@ -35,20 +48,20 @@ public class CourseScheduleII {
         //If graph has cycles, means topological sort not possible.
         //i.e. wrt question, not possible to schedule courses.
         boolean[] visited = new boolean[numCourses];
-        List<Integer> topologicalSort = new ArrayList<>();
-
-        int totalVisitedVertices = bfsKahn(adj, queue, inDegrees, visited, topologicalSort);
+        int totalVisitedVertices = bfsKahn(adj, queue, inDegrees, visited);
         if (totalVisitedVertices != numCourses) {
-            return new int[0];
+            return false;
         }
 
-        //else, convert the toplogically sorted list to array and return.
-        return topologicalSort.stream().mapToInt(i -> i).toArray();
+        //else if cycle not detected in graph means,
+        //topological sort is certainly possible i.e.
+        //in context of this question, scheduling the
+        //course is possible.
+        return true;
     }
 
     //BFS for kahn's algorithm
-    private int bfsKahn(List<List<Integer>> adj, Deque<Integer> queue, int[] inDegrees, boolean[] visited,
-                        List<Integer> topologicalSort) {
+    private int bfsKahn(List<List<Integer>> adj, Deque<Integer> queue, int[] inDegrees, boolean[] visited) {
         int visitedVertices = 0;
 
         while (!queue.isEmpty()) {
@@ -56,7 +69,6 @@ public class CourseScheduleII {
             if (visited[curr]) continue;
 
             visited[curr] = true;
-            topologicalSort.add(curr);
             visitedVertices += 1;
 
             List<Integer> neighbours = adj.get(curr);

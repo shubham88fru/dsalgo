@@ -14,6 +14,8 @@ import java.util.Deque;
     operation.
  4) If at the end of bfs, we're not able to visit all vertices (i.e. some vertices remain un-visited) it means
     there is a cycle in the graph.
+
+  `kahn's` algorithm is also used to find topological sort in directed graph.
  */
 public class DetectCyclesInGraphBFS {
     /*** Kahn's algorithm ***/

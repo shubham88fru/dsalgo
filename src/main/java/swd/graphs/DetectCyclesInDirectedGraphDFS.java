@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.*;
 
 //@link - https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
-public class DetectCyclesInGraphDFS {
+public class DetectCyclesInDirectedGraphDFS {
     //This is some nasty code, which not even swd was confident about.
     //check day 4 video on graphs if need refresher.
     /*** 1) SWD 2nd soln - Works ***/

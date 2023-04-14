@@ -27,7 +27,7 @@ public class FloydWarshallAlgorithm {
             }
         }
 
-        //************Flyod Warshall algorithm**********
+        //************Floyd Warshall algorithm**********
         //intermediate - k
         //source - i
         //destination - j
@@ -43,7 +43,7 @@ public class FloydWarshallAlgorithm {
                 }
             }
         }
-        //************Flyod Warshall algorithm**********
+        //************Floyd Warshall algorithm**********
 
         //Switch back from Integer.MAX_VALUE
         //to -1.

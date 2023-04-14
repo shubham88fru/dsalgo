@@ -17,6 +17,8 @@ import java.util.Deque;
 
   `kahn's` algorithm is also used to find topological sort in directed graph.
  */
+
+//@link - https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
 public class DetectCyclesInDirectedGraphBFS {
     /*** Kahn's algorithm ***/
     public boolean isCyclic(int V, ArrayList<ArrayList<Integer>> adj) {

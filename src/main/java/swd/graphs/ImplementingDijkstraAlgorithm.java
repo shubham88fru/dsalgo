@@ -3,10 +3,13 @@ package swd.graphs;
 /*
     Dijkstra's algorithm (to find shortest paths in a graph)
     --------------------------------------------------------
-    --> Only for positively weighted graph.
+    --> Only for 'positively' weighted graph.
     --> Algorithm is simply a BFS over the graph but using a Priority queue instead
         of  usual queue.
         Dijkstra = BFS - Queue + Priority Queue.
+    --> For graphs that can have -ve weights, we can use:
+            a) Floyd Warshall algorithm.
+            b) Bellman ford algorithm.
 */
 
 import java.util.ArrayList;

@@ -1,9 +1,10 @@
 package swd.graphs;
 
 /*
-    Floyd Warshall algorithm (to find shortest path when weights can be -ve (works for +ve weights also))
+    Floyd Warshall algorithm (to find the shortest path when weights can be -ve (works for +ve weights also))
     -----------------------------------------------------------------------------------------------------
     --> Intermediary (k), source (i) and destination (j).
+    --> Works for undirected graphs as well.
     --> The algorithm finds the shortest distance from each vertex to each vertex
         considering each vertex as an intermediary vertex.
     --> Finds shortest distance between every pair of vertices in a graph.

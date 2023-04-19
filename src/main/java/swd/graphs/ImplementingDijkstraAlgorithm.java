@@ -49,6 +49,7 @@ public class ImplementingDijkstraAlgorithm {
             int currVertex = vertexAndCost.vertex;
             int currCost = vertexAndCost.cost;
 
+            //Means already visited, hence just skip it.
             if (costs[currVertex] != -1) continue;
 
             costs[currVertex] = currCost;
@@ -58,7 +59,8 @@ public class ImplementingDijkstraAlgorithm {
             for (ArrayList<Integer> neighbourWithCost: neighboursWithCost) {
                 int currentNeighbour = neighbourWithCost.get(0);
                 int currentEdgeCost = neighbourWithCost.get(1);
-                //add to queue with current cost.
+                //add to queue with current cost. The total cost (currcost + currEdgeCost)
+                //will actually be the total cost of reaching that vertex from the source vertex.
                 pq.add(new VertexCost(currentNeighbour, (currCost + currentEdgeCost)));
             }
         }

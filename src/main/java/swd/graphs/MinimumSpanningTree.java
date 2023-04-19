@@ -52,6 +52,9 @@ public class MinimumSpanningTree {
             int v = edge[1];
             int cost = edge[2];
 
+            //Since this is an undirected graph
+            //and edge [u, v, w] means an edge from u to v with w
+            //as well as an edge from v to u with w.
             ArrayList<Integer> neighbourWithCost1 = new ArrayList<>();
             neighbourWithCost1.add(v);
             neighbourWithCost1.add(cost);

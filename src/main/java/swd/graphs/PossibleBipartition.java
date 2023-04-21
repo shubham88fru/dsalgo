@@ -2,6 +2,7 @@ package swd.graphs;
 
 import java.util.*;
 
+//@link - https://leetcode.com/problems/possible-bipartition/description/
 public class PossibleBipartition {
     public boolean possibleBipartition(int n, int[][] dislikes) {
         //visited array will keep track of which bucket/color (0 or 1)

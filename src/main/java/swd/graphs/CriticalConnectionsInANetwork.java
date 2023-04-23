@@ -10,6 +10,7 @@ import java.util.List;
     --> A critical edge in a graph is an edge which if removed,
         will make the graph disconnected.
     --> Tarjan's algorithm can be used to detect critical edges in a graph.
+    --> No. of strongly components in a graph = (no. of critical edges in graph + 1)
 
     Tarjan's algorithm
     ------------------

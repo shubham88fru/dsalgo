@@ -13,8 +13,64 @@ import java.util.PriorityQueue;
     --> In a graph of n vertices, the spanning tree has n-1 edges.
     --> A minimum spanning tree is a spanning tree which has the least sum of edge weights.
     --> Two algorithms are used to find MST:
-        1) Prim's algorithm --> Very similar to Dijkstra, just with a slight modification.
+        1) Prim's algorithm
+            --> Very similar to Dijkstra, just with a slight modification.
         2) Kruskal's algorithm
+            --> Step 1 of kruskal algo is to sort the edges array in ascending order of weights.
+            --> Works with the help of Disjoint set data structure (aka union find data structure, aka disjoint set union)
+            --> A disjoint set is DS that stores a collection of non-overlapping sets. It supports two operations - union, and find.
+            --> union operation combines two subsets, while find operation returns the root node of subset in which the element belongs.
+            -------------------------------------------
+            ********Simple Find function (O(n))********
+            -------------------------------------------
+            private int find(int[] parents, int a) {
+                if (parents[a] == a)
+                    return a;
+                return find(parents, parents[a]);
+            }
+
+            -----------------------------------------------------------
+            ********Find by path compression function (O(logn))********
+            -----------------------------------------------------------
+            private int find(int[] parents, int a) {
+                if (parents[a] == a) return a;
+                else
+                    parents[a] = find(parents, parents[a]);
+                return parents[a];
+            }
+
+            --------------------------------------------
+            ********Simple Union function (O(n))********
+            **gives a degenerate tree, hence linear TC**
+            --------------------------------------------
+            private void union(int[] parents, int a, int b) {
+                int rootA = find(parents, a);
+                int rootB = find(parents, b);
+
+                parents[rootA] = rootB;
+            }
+
+            ------------------------------------------------
+            ********Union by rank function (O(logn))********
+            *****gives a balanced tree, hence better TC*****
+            ------------------------------------------------
+            private void union(int[] parents, int[] ranks, int a, int b) {
+                int rootA = find(parents, a);
+                int rootB = find(parents, b);
+
+                if (ranks[rootA] > ranks[rootB])
+                    parents[rootB] = rootA;
+                else if (ranks[rootB] > ranks[rootA])
+                    parents[rootA] = rootB;
+                else {//if equal, make anyone as parent and increase the parents rank by 1.
+                    parents[rootA] = rootB;
+                    ranks[rootB] += 1;
+                }
+
+                parents[rootA] = rootB;
+            }
+
+
  */
 //@link - https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1
 public class MinimumSpanningTree {

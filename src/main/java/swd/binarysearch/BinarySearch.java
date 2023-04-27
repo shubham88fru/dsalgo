@@ -1,5 +1,6 @@
 package swd.binarysearch;
 
+//@link - https://leetcode.com/problems/binary-search/description/
 public class BinarySearch {
     public int search(int[] nums, int target) {
         return binarySearch(nums, target);

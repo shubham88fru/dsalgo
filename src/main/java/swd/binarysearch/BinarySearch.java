@@ -16,7 +16,7 @@ public class BinarySearch {
             //if found, return.
             if (nums[mid] == target) return mid;
             //move to left half if target is smaller than mid
-            //else move right.
+            //else move right (because the array is sorted in desc order)
             if (target < nums[mid]) {
                 end = mid-1; //ignoring right half.
             } else {

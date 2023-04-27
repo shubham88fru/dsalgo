@@ -17,6 +17,8 @@ import java.util.PriorityQueue;
             --> Very similar to Dijkstra, just with a slight modification.
         2) Kruskal's algorithm
             --> Step 1 of kruskal algo is to sort the edges array in ascending order of weights.
+            --> Step 2, pick each edge one by one, if for an edge, parents of both vertices are same, means it is forming a cycle, ignore it.
+                otherwise, do union of the vertices.
             --> Works with the help of Disjoint set data structure (aka union find data structure, aka disjoint set union)
             --> A disjoint set is DS that stores a collection of non-overlapping sets. It supports two operations - union, and find.
             --> union operation combines two subsets, while find operation returns the root node of subset in which the element belongs.
@@ -126,6 +128,7 @@ public class MinimumSpanningTree {
         return neighboursWithCost;
     }
 
+    //1) Prim's algorithm to find min spanning tree.
     private int[] primsAlgoForMinSpanTree(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj) {
         //After completion of prims algo, costs array will
         //consist of min costs of reaching each vertex from its
@@ -170,4 +173,6 @@ public class MinimumSpanningTree {
 
         return costs;
     }
+
+    //2) Kruskal's algorithm to find minimum spanning tree.
 }

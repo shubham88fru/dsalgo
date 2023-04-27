@@ -12,7 +12,7 @@ public class BinarySearch {
         int end = nums.length-1;
 
         while (start <= end) {
-            int mid = (start+end)/2;
+            int mid = (start+end)/2; //or (start+(end-start))/2 --> will prevent overflow.
             //if found, return.
             if (nums[mid] == target) return mid;
             //move to left half if target is smaller than mid

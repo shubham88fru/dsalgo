@@ -2,6 +2,7 @@ package swd.segmenttrees;
 
 import java.util.Arrays;
 
+//@link - Not present anywhere
 public class RangeMaxQueryMutable {
     private final int[] nums;
     private final int[] segmentTree;

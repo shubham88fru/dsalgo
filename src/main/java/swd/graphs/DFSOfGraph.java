@@ -14,8 +14,8 @@ import java.util.ArrayList;
            and vertex 3 is connected to no other node.
         2) Adjacency matrix
             eg: [[0, 0, 1], [1, 1, 1], [0 , 1, 0]]
-            Here, vertex 0 is connected to 3
-            vertex 1 is connected to 1 ,2 , and 3
+            Here, vertex 0 is connected to 2
+            vertex 1 is connected to 0 ,1 , and 2
             vertex 2 is connected to 1
  */
 

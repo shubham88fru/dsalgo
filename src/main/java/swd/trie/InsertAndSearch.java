@@ -1,5 +1,10 @@
 package swd.trie;
 
+/*
+* With Tries we can do partial word matching.
+*
+* */
+
 //@link - https://practice.geeksforgeeks.org/problems/trie-insert-and-search0651/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
 public class InsertAndSearch {
     //Function to insert string into TRIE.

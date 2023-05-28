@@ -1,7 +1,13 @@
 package swd.graphs;
 
+import java.util.HashMap;
+import java.util.Map;
+
 //@link - https://leetcode.com/problems/word-search/description/
-public class WordSearch {public boolean exist(char[][] board, String word) {
+public class WordSearch {
+
+    //1) Using simple recursion/backtracking.
+    public boolean exist(char[][] board, String word) {
     int m = board.length;
     int n = board[0].length;
 
@@ -45,5 +51,77 @@ public class WordSearch {public boolean exist(char[][] board, String word) {
         visited[i][j] = false;
 
         return up || left || down || right;
+    }
+
+    //2) Using tries.
+    public boolean exist2(char[][] board, String word) {
+        TrieNode root = new TrieNode();
+        insertWord(word, root);
+
+        for (int i=0; i<board.length; i++) {
+            for (int j=0; j<board[0].length; j++) {
+                if (board[i][j] == word.charAt(0)) {
+                    boolean ans = search(board, i, j, root);
+                    if (ans) return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private boolean search(char[][] board, int row, int col, TrieNode root) {
+        if (root.isEndOfAWord) return true;
+
+        if (row < 0 || row >= board.length || col < 0 || col >= board[0].length) {
+            return false;
+        }
+
+        if (!root.children.containsKey(board[row][col])) return false;
+
+
+        TrieNode nextRoot = root.children.get(board[row][col]);
+        char temp = board[row][col];
+        board[row][col] = '.';
+
+        boolean up = search(board, row-1, col, nextRoot);
+
+        boolean down = search(board, row+1, col, nextRoot);
+
+        boolean left = search(board, row, col-1, nextRoot);
+
+        boolean right = search(board, row, col+1, nextRoot);
+
+        board[row][col] = temp;
+        return (up || down || left || right);
+    }
+
+    private void insertWord(String word, TrieNode root) {
+        TrieNode crawler = root;
+        //iterate through every charachter in the string
+        for (char ch: word.toCharArray()) {
+            //if curr char not child of curr node,
+            //add it as a child to curr node.
+            if (!crawler.children.containsKey(ch)) {
+                TrieNode trieNode = new TrieNode();
+                crawler.children.put(ch, trieNode);
+            }
+
+            //and eitherways, move to the next node in the trie.
+            crawler = crawler.children.get(ch);
+        }
+
+        //after all words done, mark the node as
+        //end of word node.
+        crawler.isEndOfAWord = true;
+    }
+}
+
+class TrieNode {
+    Map<Character, TrieNode> children;
+    boolean isEndOfAWord;
+
+    public TrieNode() {
+        children = new HashMap<>();
     }
 }

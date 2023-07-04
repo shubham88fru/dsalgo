@@ -1,7 +1,7 @@
 package interview;
 
 //@link - https://practice.geeksforgeeks.org/problems/find-the-smallest-and-second-smallest-element-in-an-array3226/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
-//company - fyndna techcorp
+//@company - fyndna techcorp
 public class TwoSmallestElementsInArray {
     public long[] minAnd2ndMin(long[] a, long n)  {
         return get2Smallest(a);

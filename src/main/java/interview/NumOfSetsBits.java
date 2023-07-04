@@ -1,7 +1,7 @@
 package interview;
 
 //@link - https://leetcode.com/problems/number-of-1-bits/
-//company - JSW one
+//@company - JSW one
 public class NumOfSetsBits {
     // you need to treat n as an unsigned value
     public int hammingWeight(int n) {

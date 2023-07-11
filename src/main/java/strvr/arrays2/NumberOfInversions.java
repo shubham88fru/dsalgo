@@ -8,7 +8,7 @@ public class NumberOfInversions {
         return numInvOptimal(a);
     }
 
-    //1) Optimal approach: T: O(nlogn), S: O(1)
+    //1) Optimal approach: T: O(nlogn), S: O(N)
     //Using merge sort.
     //If we have two sorted arrays, when merging
     //them to one array, if we encounter a larger element

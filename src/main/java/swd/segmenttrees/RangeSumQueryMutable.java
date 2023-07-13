@@ -6,7 +6,7 @@ package swd.segmenttrees;
    - Segment trees are used to solve problems that involve
      range queries. Eg: Sum in a range in array, Max in a given range in an array.
    - Such problems can also be solved using the concept of prefix sum, prefix product etc
-     but they O(N) algo, while with segments tree, such problems can be solved in O(log(N)).
+     but they are O(N) algos, while with segments tree, such problems can be solved in O(log(N)).
    - Segment tree is represented in form of an array and is constructed from the input array.
      Size of segment tree is input array size * 4.
      Each index in segment tree represents the range query (sum, product etc.) for a half of the
@@ -46,7 +46,7 @@ public class RangeSumQueryMutable {
         return getRangeSum(left, right, 0, this.numsLength-1, 0);
     }
 
-    //Updates the segement tree, since the underlying array has been updated.
+    //Updates the segment tree, since the underlying array has been updated.
     //Note that the `index` which is updated will always lie either in left half
     //or the right half and so, we don't need to traverse the entire segment tree whenever
     //an index in the array is updated. So, update will also be O(log(N)) operation.
@@ -65,7 +65,7 @@ public class RangeSumQueryMutable {
         //If index is less than mid, it will lie in the range [arrStart, mid]
         //and so, update at position index means, segment tree values in the
         //range [arrStart, mid] will only be updated. So, move to that half
-        //and ignore the rest. Similary, if index liest in the half [mid+1, arrEnd]
+        //and ignore the rest. Similarly, if index lies in the half [mid+1, arrEnd]
         int mid = arrStart + (arrEnd-arrStart)/2;
         int segTreeLeftChildIndex = (2 * segTreeIndex) + 1;
         int segTreeRightChildIndex = (2 * segTreeIndex) + 2;
@@ -102,7 +102,7 @@ public class RangeSumQueryMutable {
         //lies completely in the interested range i.e. [rangeLeft, rangeRight].
         //Therefore, the entire current range contributes to the final answer.
         //And since the answer for this range is stored at index `segTreeIndex`
-        //in the segement tree, we return it.
+        //in the segment tree, we return it.
         if (arrLeft >= rangeLeft && rangeRight >= arrRight) {
             return segmentTree[segTreeIndex];
         }
@@ -116,23 +116,23 @@ public class RangeSumQueryMutable {
         int segTreeLeftChildIndex = (2 * segTreeIndex) + 1;
         int segTreeRightChildIndex = (2 * segTreeIndex) + 2;
 
-        //left halve's answer.
+        //left halves' answer.
         int leftRangeSum = getRangeSum(rangeLeft, rangeRight, arrLeft, mid, segTreeLeftChildIndex);
 
-        //right halve's answer.
+        //right halves' answer.
         int rightRangeSum = getRangeSum(rangeLeft, rangeRight, mid+1, arrRight, segTreeRightChildIndex);
 
         //for partial overlap, return the contribution from left and right half.
         return (leftRangeSum + rightRangeSum);
     }
 
-    //Constructs the segement tree.
+    //Constructs the segment tree.
     private void constructSegmentTree(int arrStart, int arrEnd, int segTreeIndex) {
         if (arrStart > arrEnd) return;
 
         //No further half is possible,
         //so store the nums[index] as is at
-        //the segement tree index in segement tree.
+        //the segment tree index in segment tree.
         if (arrStart == arrEnd) { //means a leaf node.
             this.segmentTree[segTreeIndex] = this.nums[arrStart];
             return;
@@ -141,14 +141,14 @@ public class RangeSumQueryMutable {
         //Divide the array in two halves - left and right.
         int mid = arrStart + (arrEnd-arrStart)/2;
 
-        //The left halve's answer in the segement tree lies at `(2 * segTreeIndex) + 1`
-        //While the right halve's answer in the segment tree liest at `(2 * segTreeIndex) + 2`
+        //The left halves' answer in the segment tree lies at `(2 * segTreeIndex) + 1`
+        //While the right halves' answer in the segment tree lies at `(2 * segTreeIndex) + 2`
         int segTreeLeftChildIndex = (2 * segTreeIndex) + 1;
         int segTreeRightChildIndex = (2 * segTreeIndex) + 2;
 
         //left half.
         //The range query for the half [arrStart, mid] will be
-        //stored at index `segTreeLeftChildIndex` in the segement tree.
+        //stored at index `segTreeLeftChildIndex` in the segment tree.
         constructSegmentTree(arrStart, mid, segTreeLeftChildIndex);
 
         //right half.

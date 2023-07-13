@@ -22,7 +22,7 @@ class RangeFreqQuery {
         this.segmentTree = new ArrayList<>();
 
         //each index in segment tree is initialized
-        //with an emtpy map.
+        //with an empty map.
         for (int i=0; i<4*this.size; i++) {
             this.segmentTree.add(new HashMap<>());
         }
@@ -34,8 +34,8 @@ class RangeFreqQuery {
     private void constructSegmentTree(int arrStart, int arrEnd, int segTreeIndex) {
 
         //Each index of segment tree will
-        //be a map consisting of no. of frequencies
-        //of all the elements in the range [arrStart, arrEnd]
+        //be a map consisting of frequencies
+        //of all the elements in the range [arrStart, arrEnd].
         //on a leaf node, we're encountering a new element, so its freq is one.
         if (arrStart == arrEnd) {
             this.segmentTree.get(segTreeIndex).put(this.arr[arrStart], 1);

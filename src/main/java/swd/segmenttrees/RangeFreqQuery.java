@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//@link - https://leetcode.com/problems/range-frequency-queries/description/
 class RangeFreqQuery {
     //Segment tree is represented as a list
     //of map for this question unlike an array
@@ -35,7 +36,7 @@ class RangeFreqQuery {
         //Each index of segment tree will
         //be a map consisting of no. of frequencies
         //of all the elements in the range [arrStart, arrEnd]
-        //on a leaf node, we're encoutering a new element, so its freq is one.
+        //on a leaf node, we're encountering a new element, so its freq is one.
         if (arrStart == arrEnd) {
             this.segmentTree.get(segTreeIndex).put(this.arr[arrStart], 1);
             return;

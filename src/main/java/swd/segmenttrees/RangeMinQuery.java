@@ -23,7 +23,7 @@ public class RangeMinQuery {
     }
 
 
-    /* The functions returns the
+    /* The function returns the
       min element in the range
       from l and r */
     public static int RMQ(int[] st, int n, int l, int r) {

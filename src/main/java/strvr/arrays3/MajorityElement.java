@@ -6,13 +6,18 @@ import java.util.Map;
 //@link - https://leetcode.com/problems/majority-element/description/
 //@strvr - https://takeuforward.org/data-structure/find-the-majority-element-that-occurs-more-than-n-2-times/
 public class MajorityElement {
+    /*
+        Note: There can always be at most only
+        one element (in array of size n) which
+        has a frequency more than n/2
+     */
     public int majorityElement(int[] nums) {
         //return majorityElementBrute(nums);
         //return majorityElementBetter(nums);
         return majorityElementOptimal(nums);
     }
 
-    //1) Optimal appraoch: T: O(N), S: O(1)
+    //1) Optimal approach: T: O(N), S: O(1)
     //Using the `Moore's Voting algorithm`
     private int majorityElementOptimal(int[] nums) {
         int count = 0;
@@ -30,21 +35,21 @@ public class MajorityElement {
             //curr majority, increase count (vote for)
             else if (num == majorityEl) count += 1;
 
-                //otherise, decremnent count (cancel out, vote against)
+                //otherwise, decrement count (cancel out, vote against)
             else count -= 1;
         }
 
         //ultimately, `majorityEl` will be the majority element of
-        //the array (provided the array has majoirty element.)
+        //the array (provided the array has majority element.)
         //all others will cancel out.
 
-        //Note: Moore's voting algo doesn't gaurantee that
-        //`majoritEl` will be the majority el for all arrays.
-        //However, it does gaurantee that provided the array has
+        //Note: Moore's voting algo doesn't guarantee that
+        //`majorityEl` will be the majority el for all arrays.
+        //However, it does guarantee that provided the array has
         //majority element, `majorityEl` will always be that element.
         //In this question, since it is given, that the array will have
         //a majority element for sure, we don't need to check that from
-        //our side and can safely assume that `majoirtyEl` will be
+        //our side and can safely assume that `majorityEl` will be
         //the majority element only.
         return majorityEl;
     }

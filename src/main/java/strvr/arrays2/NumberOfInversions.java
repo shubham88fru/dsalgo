@@ -23,7 +23,7 @@ public class NumberOfInversions {
         return ans[0];
     }
 
-    //merge sort algorith.
+    //merge sort algorithm.
     private static void mergeSortAndFindTheCount(int[] a, int llow, int rhigh,
                                                  int[] ans) {
         if (llow >= rhigh) return;
@@ -77,7 +77,7 @@ public class NumberOfInversions {
             j += 1;
         }
 
-        //copy the sorted range back to the orginal
+        //copy the sorted range back to the original
         //array.
         for (int k=llow; k<=rhigh; k++) {
             a[k] = temp[k-llow];

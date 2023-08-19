@@ -1,6 +1,7 @@
-package swd.linkedlist;
+package strvr.linkedlist;
 
 //@link - https://leetcode.com/problems/reverse-linked-list/description/
+//@strvr - https://takeuforward.org/data-structure/reverse-a-linked-list/
 public class ReverseALinkedList {
     public ListNode reverseList(ListNode head) {
         return sol1(head);
@@ -15,7 +16,7 @@ public class ReverseALinkedList {
         //start with 3 pointers
         ListNode prev = null;
         ListNode curr = head;
-        ListNode next = curr.next;
+        ListNode next = curr.next; //next initialized with curr's next.
 
         //while next not null..
         while (next != null) {
@@ -30,6 +31,7 @@ public class ReverseALinkedList {
         curr.next = prev;
         prev = curr;
 
+        //prev is the new head.
         return prev;
     }
 
@@ -39,8 +41,9 @@ public class ReverseALinkedList {
 
         ListNode prev = null;
         ListNode curr = head;
-        ListNode next = null;
+        ListNode next = null; //next initialized to null.
 
+        //while curr not null..
         while (curr != null) {
             next = curr.next;
             curr.next = prev;
@@ -48,6 +51,24 @@ public class ReverseALinkedList {
             curr = next;
         }
 
+        //prev is the new head.
         return prev;
+    }
+}
+
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode() {
+    }
+
+    ListNode(int val) {
+        this.val = val;
+    }
+
+    ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
     }
 }

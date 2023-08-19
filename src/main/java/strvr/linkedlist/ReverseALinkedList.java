@@ -36,6 +36,7 @@ public class ReverseALinkedList {
     }
 
     //2) No extra code to handle rearring of last 2 nodes.
+    //T: O(N), S: O(1)
     private ListNode sol2(ListNode head) {
         if (head == null) return null;
 
@@ -45,9 +46,13 @@ public class ReverseALinkedList {
 
         //while curr not null..
         while (curr != null) {
+            //store next, so we can break cur-next link.
             next = curr.next;
+            //break curr-next link and reverse it.
             curr.next = prev;
+            //move prev to curr
             prev = curr;
+            //move curr to next.
             curr = next;
         }
 

@@ -1,11 +1,15 @@
-package swd.linkedlist;
+package strvr.linkedlist;
+
 
 //@link - https://leetcode.com/problems/middle-of-the-linked-list/description/
+//@strvr - https://takeuforward.org/data-structure/find-middle-element-in-a-linked-list/
 public class MiddleOfLinkedList {
     public ListNode middleNode(ListNode head) {
         return findViaFastAndSlowPointer(head);
     }
 
+    //1) Optimal approach
+    //T: O(N/2), S: (1)
     //Fast and slow pointer approach.
     private ListNode findViaFastAndSlowPointer(ListNode head) {
         if (head == null) return null;
@@ -35,4 +39,9 @@ public class MiddleOfLinkedList {
         if (fastPointer.next == null) return slowPointer;
         else return slowPointer.next;
     }
+
+    //2) Brute force approach
+    //count the num of nodes first and divide by to 2 and then iterate that
+    //many times to reach to middle node.
+    //T: O(N) + O(N/2), S: O(1)
 }

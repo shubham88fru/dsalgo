@@ -1,6 +1,7 @@
-package swd.linkedlist;
+package strvr.linkedlist;
 
 //@link - https://leetcode.com/problems/add-two-numbers/description/
+//@strvr - https://takeuforward.org/data-structure/add-two-numbers-represented-as-linked-lists/
 public class AddTwoNums {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         return sol1(l1, l2);
@@ -82,8 +83,35 @@ public class AddTwoNums {
         return dummy.next;
     }
 
-    //2) Solution 2: Without using dummy node.
+    //2) Solution 2: Striver's solution
     private ListNode sol2(ListNode l1, ListNode l2) {
+        ListNode dummyNode = new ListNode(-1);
+        ListNode temp = dummyNode;
+        int carry = 0;
+        while (l1 != null || l2 != null || carry == 1) {
+            int sum = 0;
+            if (l1 != null) {
+                sum += l1.val;
+                l1 = l1.next;
+            }
+
+            if (l2 != null) {
+                sum += l2.val;
+                l2 = l2.next;
+            }
+
+            sum += carry;
+            carry = sum/10;
+            ListNode newNode = new ListNode(sum%10);
+            temp.next = newNode;
+            temp = temp.next;
+        }
+
+        return dummyNode.next;
+    }
+
+    //3) Solution 3: Without using dummy node.
+    private ListNode sol3(ListNode l1, ListNode l2) {
         ListNode ans = new ListNode();
         ListNode currL1 = l1;
         ListNode currL2 = l2;

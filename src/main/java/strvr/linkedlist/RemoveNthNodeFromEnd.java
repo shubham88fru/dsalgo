@@ -1,7 +1,11 @@
-package swd.linkedlist;
+package strvr.linkedlist;
 
 //@link - https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/
+//@strvr - https://takeuforward.org/data-structure/remove-n-th-node-from-the-end-of-a-linked-list/
 public class RemoveNthNodeFromEnd {
+
+    //1) Optimal approach
+    //T: O(N), S: O(1)
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
@@ -35,4 +39,9 @@ public class RemoveNthNodeFromEnd {
         //dummy next points to head of the linked list.
         return dummy.next;
     }
+
+    //2) Brute force
+    //Find the length of the list, and then do another iteration
+    //to delete length-nth node from front.
+    //T: O(N), S: O(1)
 }

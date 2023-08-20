@@ -1,6 +1,7 @@
-package swd.linkedlist;
+package strvr.linkedlist;
 
 //@link - https://leetcode.com/problems/delete-node-in-a-linked-list/description/
+//@strvr - https://takeuforward.org/data-structure/delete-given-node-in-a-linked-list-o1-approach/
 public class DeleteNodeInALinkedList {
     public void deleteNode(ListNode node) {
         //deleteNode1(node);

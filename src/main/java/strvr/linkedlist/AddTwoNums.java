@@ -8,6 +8,7 @@ public class AddTwoNums {
     }
 
     //1) Solution 1: Using dummy node concept
+    //T: O(N), S: O(1)
     private ListNode sol1(ListNode l1, ListNode l2) {
         ListNode currL1 = l1;
         ListNode currL2 = l2;

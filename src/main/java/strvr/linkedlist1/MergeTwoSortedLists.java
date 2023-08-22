@@ -1,4 +1,4 @@
-package strvr.linkedlist;
+package strvr.linkedlist1;
 
 //@link - https://leetcode.com/problems/merge-two-sorted-lists/description/
 //@strvr - https://takeuforward.org/data-structure/merge-two-sorted-linked-lists/

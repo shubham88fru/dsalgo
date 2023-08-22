@@ -1,4 +1,4 @@
-package strvr.linkedlist;
+package strvr.linkedlist1;
 
 //@link - https://leetcode.com/problems/delete-node-in-a-linked-list/description/
 //@strvr - https://takeuforward.org/data-structure/delete-given-node-in-a-linked-list-o1-approach/

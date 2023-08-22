@@ -1,4 +1,4 @@
-package strvr.linkedlist;
+package strvr.linkedlist1;
 
 //@link - https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/
 //@strvr - https://takeuforward.org/data-structure/remove-n-th-node-from-the-end-of-a-linked-list/

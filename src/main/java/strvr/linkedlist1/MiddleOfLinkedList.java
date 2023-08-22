@@ -1,4 +1,4 @@
-package strvr.linkedlist;
+package strvr.linkedlist1;
 
 
 //@link - https://leetcode.com/problems/middle-of-the-linked-list/description/

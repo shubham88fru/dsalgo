@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/linked-list-cycle/description/
+//@strvr - https://takeuforward.org/data-structure/detect-a-cycle-in-a-linked-list/
 public class DetectCycleInALinkedList {
     public boolean hasCycle(ListNode head) {
         //return hasCycleBruteForce(head);

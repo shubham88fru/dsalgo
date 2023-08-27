@@ -1,6 +1,7 @@
-package swd.linkedlist;
+package strvr.linkedlist2;
 
 //@link - https://leetcode.com/problems/reverse-nodes-in-k-group/description/
+//@strvr - https://takeuforward.org/data-structure/reverse-linked-list-in-groups-of-size-k/
 public class ReverseNodesInKGroups {
     public ListNode reverseKGroup(ListNode head, int k) {
         if (head == null) return null;

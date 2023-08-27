@@ -1,7 +1,10 @@
-package swd.linkedlist;
+package strvr.linkedlist2;
+
 
 //@link - https://leetcode.com/problems/palindrome-linked-list/description/
+//@strvr - https://takeuforward.org/data-structure/check-if-given-linked-list-is-plaindrome/
 public class PalindromeLinkedList {
+    //T: O(N), S: O(1)
     public boolean isPalindrome(ListNode head) {
         //Find middle node, returning the first middle node
         //in case there are multiple middle nodes.

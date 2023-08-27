@@ -1,4 +1,4 @@
-package swd.linkedlist;
+package strvr.linkedlist2;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +10,7 @@ public class DetectCycleInALinkedList {
         return hasCycleOptimized(head);
     }
 
-    //1) Optimized approach - T: O(1), S: O(1)
+    //1) Optimized approach - T: O(N), S: O(1)
     //Using fast and slow pointer approach.
     private boolean hasCycleOptimized(ListNode head) {
         if (head == null) return false;
@@ -32,7 +32,7 @@ public class DetectCycleInALinkedList {
         return false;
     }
 
-    //2) Brute force approach - T: O(1), S: O(N)
+    //2) Brute force approach - T: O(N), S: O(N)
     private boolean hasCycleBruteForce(ListNode head) {
         if (head == null) return false;
 

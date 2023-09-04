@@ -10,6 +10,7 @@ public class NMeetingsInOneRoom {
         return maxMeetingsOptimal(start, end, n);
     }
 
+    //T: O(NlogN), S: O(N)
     private static int maxMeetingsOptimal(int[] start, int[] end, int n) {
         if (start.length == 0) return 0;
         //max meetings can be performed if we sort the ending times

@@ -7,11 +7,11 @@ import java.util.Comparator;
 //@strvr - https://takeuforward.org/data-structure/n-meetings-in-one-room/
 public class NMeetingsInOneRoom {
     public static int maxMeetings(int start[], int end[], int n) {
-        return maxMeetingsOptimal(start, end, n);
+        return maxMeetingsGreedy(start, end, n);
     }
 
     //T: O(NlogN), S: O(N)
-    private static int maxMeetingsOptimal(int[] start, int[] end, int n) {
+    private static int maxMeetingsGreedy(int[] start, int[] end, int n) {
         if (start.length == 0) return 0;
         //max meetings can be performed if we sort the ending times
         //and start with the earliest meetings.

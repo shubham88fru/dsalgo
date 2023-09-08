@@ -1,4 +1,4 @@
-package swd.recursionbacktracking;
+package strvr.recursion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 //@link - https://leetcode.com/problems/combination-sum/description/
+//@strvr - https://takeuforward.org/data-structure/combination-sum-1/
 public class CombinationSum {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         return possibleCombinations(candidates, target, 0, new ArrayList<>());

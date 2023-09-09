@@ -1,9 +1,10 @@
-package swd.recursionbacktracking;
+package strvr.recursion;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //@link - https://leetcode.com/problems/palindrome-partitioning/description/
+//@strvr - https://takeuforward.org/data-structure/palindrome-partitioning/
 public class PalindromePartitioning {
     public List<List<String>> partition(String s) {
         //will store all result here.

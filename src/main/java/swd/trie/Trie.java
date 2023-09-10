@@ -42,11 +42,8 @@ class Trie {
         TrieNode crawler = this.root;
         //iterate through every charachter in the string
         for (char ch: word.toCharArray()) {
-            //if curr char not child of curr node,
-            //add it as a child to curr node.
             if (!crawler.children.containsKey(ch)) return false;
 
-            //and eitherways, move to the next node in the trie.
             crawler = crawler.children.get(ch);
         }
 

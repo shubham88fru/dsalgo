@@ -1,4 +1,4 @@
-package strvr.recursion;
+package strvr.recursionandbacktracking;
 
 import java.util.ArrayList;
 import java.util.*;

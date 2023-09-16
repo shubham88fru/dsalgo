@@ -8,7 +8,7 @@ public class AggressiveCows {
 
     public static int aggressiveCows(int []stalls, int k) {
         //    Write your code here.
-        return maxMinDistance2(stalls, k);
+        return maxMinDistance1(stalls, k);
     }
 
     //1) Optimal. Using binary search.
@@ -58,8 +58,9 @@ public class AggressiveCows {
                 cntCows += 1;
                 lastCowPos = barnDist[i];
             }
+            if (cntCows >= totalCows) return true;
         }
 
-        return cntCows >= totalCows;
+        return false;
     }
 }

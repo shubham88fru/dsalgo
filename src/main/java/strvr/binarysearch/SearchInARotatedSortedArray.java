@@ -1,12 +1,13 @@
-package swd.binarysearch;
+package strvr.binarysearch;
 
-//@link - https://leetcode.com/problems/search-in-rotated-sorted-array-ii/description/
-public class SearchInARotatedSortedArrayII {
-    public boolean search(int[] nums, int target) {
+//@link - https://leetcode.com/problems/search-in-rotated-sorted-array/description/
+//@strvr - https://takeuforward.org/data-structure/search-element-in-a-rotated-sorted-array/
+public class SearchInARotatedSortedArray {
+    public int search(int[] nums, int target) {
         return binarySearch(nums, target);
     }
 
-    private boolean binarySearch(int[] nums, int target) {
+    private int binarySearch(int[] nums, int target) {
         int start = 0;
         int end = nums.length - 1;
 
@@ -17,28 +18,7 @@ public class SearchInARotatedSortedArrayII {
             int mid = (start + (end-start) / 2);
 
             //if found, return.
-            if (nums[mid] == target) return true;
-
-            /*
-                This block is the only diff between search in rotated
-                sorted array I and II.
-
-                If num at mid is same as that at start, we'll just ignore
-                and move the start pointer to next (continue to do so untill they're diff).
-                If in this process, the start pointer crosses the mid, we've entered the other half,
-                so need to update the mid again, and check if it is target.
-            */
-            /////////////////////////////////////
-            while (start < mid && nums[mid] == nums[start]) {
-                start += 1;
-            }
-
-            //optimization (will work even if don't t do this)
-            //remove duplicate from end as well.
-            while (end > mid && nums[mid] == nums[end]) {
-                end -= 1;
-            }
-            /////////////////////////////////////
+            if (nums[mid] == target) return mid;
 
             if (nums[mid] >= nums[start]) {//means left half sorted.
                 if (nums[start] <= target && nums[mid] > target) {//means the target lies in the left half.
@@ -63,6 +43,6 @@ public class SearchInARotatedSortedArrayII {
             }
         }
 
-        return false;
+        return -1;
     }
 }

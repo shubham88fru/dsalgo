@@ -1,4 +1,4 @@
-package swd.binarysearch;
+package strvr.binarysearch;
 
 //@link - https://practice.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
 public class AllocateMinNumOfPages {

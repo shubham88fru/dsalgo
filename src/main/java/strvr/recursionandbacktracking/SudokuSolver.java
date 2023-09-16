@@ -1,6 +1,7 @@
-package swd.recursionbacktracking;
+package strvr.recursionandbacktracking;
 
 //@link - https://leetcode.com/problems/sudoku-solver/description/
+//@strvr - https://takeuforward.org/data-structure/sudoku-solver/
 public class SudokuSolver {
     public void solveSudoku(char[][] board) {
         sudokuSolver(board, 0, 0, board.length);

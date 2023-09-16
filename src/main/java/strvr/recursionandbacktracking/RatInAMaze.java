@@ -1,10 +1,11 @@
-package swd.recursionbacktracking;
+package strvr.recursionandbacktracking;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://practice.geeksforgeeks.org/problems/rat-in-a-maze-problem/1
+//@strvr - https://takeuforward.org/data-structure/rat-in-a-maze/
 public class RatInAMaze {
     public ArrayList<String> findPath(int[][] m, int n) {
         Map<String, Integer> map = new HashMap<String, Integer>();

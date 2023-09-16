@@ -1,9 +1,10 @@
-package swd.recursionbacktracking;
+package strvr.recursionandbacktracking;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //@link - https://leetcode.com/problems/n-queens/solutions/
+//@strvr - https://takeuforward.org/data-structure/n-queen-problem-return-all-distinct-solutions-to-the-n-queens-puzzle/
 public class NQueens {
     public List<List<String>> solveNQueens(int n) {
         char[][] board = new char[n][n];

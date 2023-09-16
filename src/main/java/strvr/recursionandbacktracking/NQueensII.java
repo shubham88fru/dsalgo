@@ -1,6 +1,7 @@
-package swd.recursionbacktracking;
+package strvr.recursionandbacktracking;
 
 //@link - https://leetcode.com/problems/n-queens-ii/solutions/
+//@strvr - //@strvr - https://takeuforward.org/data-structure/n-queen-problem-return-all-distinct-solutions-to-the-n-queens-puzzle/
 public class NQueensII {
     public int totalNQueens(int n) {
         return placeQueens(new int[n][n], 0, n);

@@ -5,11 +5,11 @@ import java.util.Deque;
 
 //@link - https://leetcode.com/problems/implement-stack-using-queues/
 //@strvr - https://takeuforward.org/data-structure/implement-stack-using-single-queue/
-public class ImplementStackUsingQueue {
+public class ImplementStackUsingDeque {
     //Using java's Deque (ArrayDeque) as queue.
     private final Deque<Integer> q;
 
-    public ImplementStackUsingQueue() {
+    public ImplementStackUsingDeque() {
         q = new ArrayDeque<>();
     }
 

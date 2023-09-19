@@ -1,11 +1,11 @@
-package strvr.stacksandqueues;
+package strvr.linkedlist2;
 
 import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/lru-cache/description/
 //@strvr - https://takeuforward.org/data-structure/implement-lru-cache/
-public class LRUCacheUsingStack {
+public class LRUCacheUsingDLL {
     int capacity = 0;
     int size = 0;
 
@@ -16,7 +16,7 @@ public class LRUCacheUsingStack {
     DLL head = new DLL(-1, -1);
     DLL tail = new DLL(-1, -1);
 
-    public LRUCacheUsingStack(int capacity) {
+    public LRUCacheUsingDLL(int capacity) {
         this.capacity = capacity;
         this.size = 0;
 

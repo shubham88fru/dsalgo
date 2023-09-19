@@ -1,4 +1,4 @@
-package swd.stack;
+package strvr.stacksandqueues;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;

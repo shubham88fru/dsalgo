@@ -1,9 +1,10 @@
-package swd.linkedlist;
+package strvr.stacksandqueues;
 
 import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/lru-cache/description/
+//@strvr - https://takeuforward.org/data-structure/implement-lru-cache/
 public class LRUCache {
     int capacity = 0;
     int size = 0;

@@ -1,4 +1,4 @@
-package swd.trees;
+package strvr.binarytree;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -6,6 +6,7 @@ import java.util.Deque;
 import java.util.List;
 
 //@link - https://leetcode.com/problems/binary-tree-preorder-traversal/description/
+//@strvr - https://takeuforward.org/data-structure/preorder-traversal-of-binary-tree/
 public class PreorderTraversalOfBT {
     public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> ans = new ArrayList<>();

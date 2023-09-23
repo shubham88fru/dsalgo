@@ -1,8 +1,10 @@
-package swd.trees;
+package strvr.binarytree;
+
 
 import java.util.*;
 
 //@link - https://leetcode.com/problems/binary-tree-postorder-traversal/
+//@strvr - https://takeuforward.org/data-structure/post-order-traversal-of-binary-tree/
 public class PostorderTraversalOfBT {
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> ans = new ArrayList<>();

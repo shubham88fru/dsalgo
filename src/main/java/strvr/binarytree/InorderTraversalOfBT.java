@@ -1,4 +1,4 @@
-package swd.trees;
+package strvr.binarytree;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -6,6 +6,7 @@ import java.util.Deque;
 import java.util.List;
 
 //@link - https://leetcode.com/problems/binary-tree-inorder-traversal/
+//@strvr - https://takeuforward.org/data-structure/inorder-traversal-of-binary-tree/
 public class InorderTraversalOfBT {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
@@ -78,3 +79,23 @@ class Test2 {
         System.out.println(inorderTraversalOfBT.inorderTraversal(root));
     }
 }
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode() {
+    }
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+

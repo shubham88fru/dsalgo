@@ -1,11 +1,12 @@
-package swd.trees;
+package strvr.binarytree;
 
 import java.util.*;
 
 //@link - https://practice.geeksforgeeks.org/problems/top-view-of-binary-tree/1
+//@strvr - https://takeuforward.org/data-structure/top-view-of-a-binary-tree/
 public class TopViewOfBT {
 
-    static ArrayList<Integer> topViewDfs(BTPaths.GfgNode root) {
+    static ArrayList<Integer> topViewDfs(GfgNode root) {
         ArrayList<Integer> ans1 = new ArrayList<>();
         ArrayList<Integer> ans2 = new ArrayList<>();
         Map<Integer, ArrayList<Integer>> mp = new LinkedHashMap<>();
@@ -22,7 +23,7 @@ public class TopViewOfBT {
         return ans1;
     }
 
-    private static void traverseForTopViewLeft(BTPaths.GfgNode root, int index, int currLevel, Map<Integer, ArrayList<Integer>> breadthMap) {
+    private static void traverseForTopViewLeft(GfgNode root, int index, int currLevel, Map<Integer, ArrayList<Integer>> breadthMap) {
         if (root == null) return;
 
         if (!breadthMap.containsKey(index)) {
@@ -47,7 +48,7 @@ public class TopViewOfBT {
     }
 
 
-    static ArrayList<Integer> topViewBFS(BTPaths.GfgNode root) {
+    static ArrayList<Integer> topViewBFS(GfgNode root) {
         ArrayList<Integer> ans1 = new ArrayList<>();
         ArrayList<Integer> ans2 = new ArrayList<>();
         Map<Integer, Integer> mp = new LinkedHashMap<Integer, Integer>();
@@ -69,7 +70,7 @@ public class TopViewOfBT {
         return ans2;
     }
 
-    private static void traverseForTopViewLeftBFS(BTPaths.GfgNode root, Map<Integer, Integer> breadthMap) {
+    private static void traverseForTopViewLeftBFS(GfgNode root, Map<Integer, Integer> breadthMap) {
         if (root == null) return;
 
         Deque<GfgNodeWrapper> queue = new ArrayDeque<>();
@@ -82,7 +83,7 @@ public class TopViewOfBT {
 
             while (size > 0) {
                 GfgNodeWrapper currPair = queue.removeFirst();
-                BTPaths.GfgNode currNode = currPair._node;
+                GfgNode currNode = currPair._node;
                 int dist = currPair._dist;
 
                 if (!breadthMap.containsKey(dist)) {
@@ -98,15 +99,5 @@ public class TopViewOfBT {
                 size -= 1;
             }
         }
-    }
-}
-
-class GfgNodeWrapper {
-    BTPaths.GfgNode _node;
-    int _dist;
-
-    public GfgNodeWrapper(BTPaths.GfgNode _node, int _dist) {
-        this._node = _node;
-        this._dist = _dist;
     }
 }

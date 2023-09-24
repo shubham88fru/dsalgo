@@ -1,5 +1,7 @@
 package swd.trees;
 
+import strvr.binarytree.GfgNode;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;

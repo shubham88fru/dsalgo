@@ -1,4 +1,4 @@
-package swd.trees;
+package strvr.binarytree;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 //@link - https://practice.geeksforgeeks.org/problems/left-view-of-binary-tree/1
+//@strvr - https://takeuforward.org/data-structure/right-left-view-of-binary-tree/
 public class LeftViewOfBT {
 
     /**

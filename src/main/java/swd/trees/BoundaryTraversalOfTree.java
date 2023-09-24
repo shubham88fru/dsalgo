@@ -1,5 +1,7 @@
 package swd.trees;
 
+import strvr.binarytree.GfgNode;
+
 import java.util.ArrayList;
 import java.util.List;
 

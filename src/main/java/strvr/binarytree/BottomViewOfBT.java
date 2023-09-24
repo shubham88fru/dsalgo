@@ -1,10 +1,9 @@
-package swd.trees;
-
-import strvr.binarytree.GfgNode;
+package strvr.binarytree;
 
 import java.util.*;
 
 //@link - https://practice.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1
+//@strvr - https://takeuforward.org/data-structure/bottom-view-of-a-binary-tree/
 public class BottomViewOfBT {
     public ArrayList<Integer> bottomViewBFS(GfgNode root) {
         ArrayList<Integer> ans1 = new ArrayList<>();
@@ -57,5 +56,15 @@ public class BottomViewOfBT {
                 size -= 1;
             }
         }
+    }
+}
+
+class GfgNodeWrapper {
+    GfgNode _node;
+    int _dist;
+
+    public GfgNodeWrapper(GfgNode _node, int _dist) {
+        this._node = _node;
+        this._dist = _dist;
     }
 }

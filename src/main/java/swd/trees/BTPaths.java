@@ -55,4 +55,16 @@ public class BTPaths {
             rootToLeaf(root.right, currentPath + "->"+root.right.val, answer);
 
     }
+
+    static class GfgNode {
+        int data;
+        GfgNode left, right;
+
+        GfgNode(int item) {
+            data = item;
+            left = right = null;
+        }
+    }
 }
+
+

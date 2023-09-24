@@ -1,7 +1,5 @@
 package swd.trees;
 
-import strvr.binarytree.GfgNode;
-
 import java.util.*;
 
 
@@ -10,7 +8,7 @@ public class DiagonalViewOfBT {
 
     /*** Soln 1 - Doesn't work for all cases ***/
     /*** DFS works, check last video of bt **/
-    public ArrayList<Integer> diagonal(GfgNode root) {
+    public ArrayList<Integer> diagonal(BTPaths.GfgNode root) {
         //add your code here.
         Map<Integer, ArrayList<Integer>> slopeMap = new HashMap<>();
         traverseForHorizontalViewBFS(root, slopeMap);
@@ -20,7 +18,7 @@ public class DiagonalViewOfBT {
         }
         return ans;
     }
-    private static void traverseForHorizontalViewBFS(GfgNode root, Map<Integer, ArrayList<Integer>> slopeMap) {
+    private static void traverseForHorizontalViewBFS(BTPaths.GfgNode root, Map<Integer, ArrayList<Integer>> slopeMap) {
         if (root == null) return;
 
         Deque<GfgNodeSlopeWrapper> queue = new ArrayDeque<>();
@@ -29,7 +27,7 @@ public class DiagonalViewOfBT {
 
         while (!queue.isEmpty()) {
             GfgNodeSlopeWrapper currPair = queue.removeFirst();
-            GfgNode currNode = currPair._node;
+            BTPaths.GfgNode currNode = currPair._node;
             int slope = currPair._slope;
 
             if (!slopeMap.containsKey(slope)) {
@@ -51,11 +49,11 @@ public class DiagonalViewOfBT {
     }
 
     /*** Soln 2 - Using queue, but not exactly a bfs a approach ***/
-    public ArrayList<Integer> diagonalViewUsingQueue(GfgNode root) {
+    public ArrayList<Integer> diagonalViewUsingQueue(BTPaths.GfgNode root) {
         ArrayList<Integer> ans = new ArrayList<>();
-        Deque<GfgNode> queue = new ArrayDeque<>();
+        Deque<BTPaths.GfgNode> queue = new ArrayDeque<>();
 
-        GfgNode currNode = root;
+        BTPaths.GfgNode currNode = root;
         while (currNode != null) {
             ans.add(currNode.data);
 
@@ -91,10 +89,10 @@ public class DiagonalViewOfBT {
 }
 
 class GfgNodeSlopeWrapper {
-    GfgNode _node;
+    BTPaths.GfgNode _node;
     int _slope;
 
-    public GfgNodeSlopeWrapper(GfgNode _node, int _slope) {
+    public GfgNodeSlopeWrapper(BTPaths.GfgNode _node, int _slope) {
         this._node = _node;
         this._slope = _slope;
     }

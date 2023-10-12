@@ -1,5 +1,7 @@
 package swd.trees;
 
+import strvr.binarytree.TreeNode;
+
 //@link - https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-ii/
 //@Link - https://zhenchaogan.gitbook.io/leetcode-solution/leetcode-1644-lowest-common-ancestor-of-a-binary-tree-ii
 public class LowestCommonAncestorInBTII {

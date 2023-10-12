@@ -1,9 +1,10 @@
-package swd.trees;
+package strvr.binarytree;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 
 //@link - https://leetcode.com/problems/maximum-depth-of-binary-tree/description/
+//@strvr - https://takeuforward.org/data-structure/maximum-depth-of-a-binary-tree/
 public class HeightOfBT {
     public int maxDepth(TreeNode root) {
         //Max depth of BT is nothing but its height.
@@ -56,28 +57,5 @@ public class HeightOfBT {
         }
 
         return level;
-    }
-}
-
-
-/**
- * Definition for a binary tree node.
- **/
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
     }
 }

@@ -1,4 +1,4 @@
-package swd.trees;
+package strvr.binarytree;
 
 
 import java.util.ArrayDeque;
@@ -7,6 +7,7 @@ import java.util.Deque;
 import java.util.List;
 
 //@link - https://leetcode.com/problems/same-tree/description/
+//@swd - https://takeuforward.org/data-structure/check-if-two-trees-are-identical/
 public class SameTree {
     /*** My Soln - Works but poorer TC as compared to SWD
      * Also, my approach is wrong. It is not always true that
@@ -72,9 +73,9 @@ public class SameTree {
             return false;
         }
 
-        boolean valssame = (p.val == q.val);
-        boolean leftTree = valssame && dfsForSameTreeDFS(p.left, q.left);
-        boolean rightTree = valssame && dfsForSameTreeDFS(p.right, q.right);
+        if (p.val != q.val) return false;
+        boolean leftTree = dfsForSameTreeDFS(p.left, q.left);
+        boolean rightTree = dfsForSameTreeDFS(p.right, q.right);
 
         return (leftTree && rightTree);
     }

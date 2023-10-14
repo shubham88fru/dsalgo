@@ -1,4 +1,4 @@
-package swd.trees;
+package strvr.binarytree;
 
 
 import java.util.ArrayDeque;
@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/
+//@strvr - https://takeuforward.org/data-structure/lowest-common-ancestor-for-two-given-nodes/
 public class LowestCommonAncestorInBT {
     /*** My Soln - Works, but crappy ***/
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
@@ -62,17 +63,17 @@ public class LowestCommonAncestorInBT {
         if (root == null) return null;
 
         Map<TreeNode, TreeNode> map = new HashMap<>();
-        Deque<NodeWrapper> queue = new ArrayDeque<>();
-        queue.addLast(new NodeWrapper(root, null));
+        Deque<NodeWrapper22> queue = new ArrayDeque<>();
+        queue.addLast(new NodeWrapper22(root, null));
 
         while (!queue.isEmpty()) {
-            NodeWrapper wrappedNode = queue.removeFirst();
+            NodeWrapper22 wrappedNode = queue.removeFirst();
             TreeNode currNode = wrappedNode._node;
             TreeNode parent = wrappedNode._parent;
             map.put(currNode, parent);
 
-            if (currNode.left != null) queue.addLast(new NodeWrapper(currNode.left, currNode));
-            if (currNode.right != null) queue.addLast(new NodeWrapper(currNode.right, currNode));
+            if (currNode.left != null) queue.addLast(new NodeWrapper22(currNode.left, currNode));
+            if (currNode.right != null) queue.addLast(new NodeWrapper22(currNode.right, currNode));
         }
 
         return map;
@@ -106,11 +107,11 @@ public class LowestCommonAncestorInBT {
 }
 
 
-class NodeWrapper {
+class NodeWrapper22 {
     TreeNode _node;
     TreeNode _parent;
 
-    public NodeWrapper(TreeNode node, TreeNode parent) {
+    public NodeWrapper22(TreeNode node, TreeNode parent) {
         this._node = node;
         this._parent = parent;
     }

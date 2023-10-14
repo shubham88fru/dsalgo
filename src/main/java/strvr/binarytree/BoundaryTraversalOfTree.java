@@ -60,6 +60,8 @@ public class BoundaryTraversalOfTree {
     private void addLeafNodes(GfgNode node, List<Integer> ans) {
         if (node == null) return;
 
+        //inorder traversal of binary tree
+        //to find the leaf node.
         if (isLeafNode(node)) {
             ans.add(node.data);
         }

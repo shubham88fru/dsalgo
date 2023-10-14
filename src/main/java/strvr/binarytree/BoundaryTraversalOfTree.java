@@ -1,11 +1,12 @@
-package swd.trees;
+package strvr.binarytree;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //@link - https://practice.geeksforgeeks.org/problems/boundary-traversal-of-binary-tree/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
+//@strvr - https://takeuforward.org/data-structure/boundary-traversal-of-a-binary-tree/
 public class BoundaryTraversalOfTree {
-    ArrayList<Integer> boundary(BTPaths.GfgNode node) {
+    ArrayList<Integer> boundary(GfgNode node) {
         ArrayList<Integer> ans = new ArrayList<>();
 
         //if root node is a leaf, it will get added
@@ -25,7 +26,7 @@ public class BoundaryTraversalOfTree {
         return ans;
     }
 
-    private void addLeftBoundary(BTPaths.GfgNode node, List<Integer> ans) {
+    private void addLeftBoundary(GfgNode node, List<Integer> ans) {
         if (node == null) return;
 
         //add only if not a leaf node.
@@ -39,7 +40,7 @@ public class BoundaryTraversalOfTree {
             addLeftBoundary(node.right, ans);
     }
 
-    private void addRightBoundary(BTPaths.GfgNode node, List<Integer> ans) {
+    private void addRightBoundary(GfgNode node, List<Integer> ans) {
         if (node == null) return;
 
         if (node.right != null)
@@ -56,7 +57,7 @@ public class BoundaryTraversalOfTree {
 
     }
 
-    private void addLeafNodes(BTPaths.GfgNode node, List<Integer> ans) {
+    private void addLeafNodes(GfgNode node, List<Integer> ans) {
         if (node == null) return;
 
         if (isLeafNode(node)) {
@@ -67,7 +68,7 @@ public class BoundaryTraversalOfTree {
         addLeafNodes(node.right, ans);
     }
 
-    private boolean isLeafNode(BTPaths.GfgNode node) {
+    private boolean isLeafNode(GfgNode node) {
         return node.left == null && node.right == null;
     }
 }

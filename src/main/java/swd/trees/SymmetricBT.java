@@ -1,6 +1,7 @@
 package swd.trees;
 
 
+
 //@link - https://leetcode.com/problems/symmetric-tree/description/
 public class SymmetricBT {
     public boolean isSymmetric(TreeNode root) {

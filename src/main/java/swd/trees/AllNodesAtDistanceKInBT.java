@@ -1,6 +1,5 @@
 package swd.trees;
 
-
 import java.util.*;
 
 //@link - https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/
@@ -132,5 +131,27 @@ class WrappedNode {
     public WrappedNode(TreeNode node, int dist) {
         this.node = node;
         this.dist = dist;
+    }
+}
+
+/**
+ * Definition for a binary tree node.
+ **/
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode() {
+    }
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
     }
 }

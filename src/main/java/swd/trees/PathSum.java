@@ -1,6 +1,7 @@
 package swd.trees;
 
 
+
 //@link - https://leetcode.com/problems/path-sum/description/
 public class PathSum {
     public boolean hasPathSum(TreeNode root, int targetSum) {

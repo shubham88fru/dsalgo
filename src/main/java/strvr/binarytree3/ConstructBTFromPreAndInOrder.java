@@ -1,9 +1,10 @@
-package swd.trees;
+package strvr.binarytree3;
 
 import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/
+//@strvr - https://takeuforward.org/data-structure/construct-a-binary-tree-from-inorder-and-preorder-traversal/
 public class ConstructBTFromPreAndInOrder {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         //Map for looking up current preorder array's index
@@ -59,28 +60,6 @@ public class ConstructBTFromPreAndInOrder {
             indexMap.put(inorder[i], i);
         }
         return indexMap;
-    }
-}
-
-/**
- * Definition for a binary tree node.
- **/
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
     }
 }
 

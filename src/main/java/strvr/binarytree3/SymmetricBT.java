@@ -1,8 +1,7 @@
-package swd.trees;
-
-
+package strvr.binarytree3;
 
 //@link - https://leetcode.com/problems/symmetric-tree/description/
+//@strvr - https://takeuforward.org/data-structure/check-for-symmetrical-binary-tree/
 public class SymmetricBT {
     public boolean isSymmetric(TreeNode root) {
         if (root == null) return true;

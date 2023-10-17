@@ -1,11 +1,10 @@
-package swd.trees;
-
-
+package strvr.binarytree3;
 
 import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/description/
+//@strvr - @nolink
 public class ConstructBTFromPostAndInOrder {
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         //Map for looking up current postorder array's index
@@ -20,8 +19,8 @@ public class ConstructBTFromPostAndInOrder {
     }
 
     private TreeNode treeFromPostAndIn(int[] postorder, int[] inorder, int[] postorderArrayCurrIndex,
-                                       int inorderArrayStartIndex, int inorderArrayEndIndex,
-                                       Map<Integer, Integer> indexMap) {
+                                                 int inorderArrayStartIndex, int inorderArrayEndIndex,
+                                                 Map<Integer, Integer> indexMap) {
 
         //base case.
         if (postorderArrayCurrIndex[0] < 0) return null;

@@ -1,4 +1,4 @@
-package strvr.binarytree;
+package strvr.binarytree2;
 
 //@link - https://leetcode.com/problems/balanced-binary-tree/
 //@strvr - https://takeuforward.org/data-structure/check-if-the-binary-tree-is-balanced-binary-tree/
@@ -47,5 +47,25 @@ public class BalancedBinaryTree {
 
         //find the max.
         return Math.max(left, right);
+    }
+}
+
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode() {
+    }
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
     }
 }

@@ -1,4 +1,6 @@
-package strvr.binarytree;
+package strvr.binarytree2;
+
+import strvr.binarytree.TreeNode;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

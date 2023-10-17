@@ -1,4 +1,5 @@
-package strvr.binarytree;
+package strvr.binarytree2;
+
 
 //@link - https://leetcode.com/problems/diameter-of-binary-tree/
 //@strvr - https://takeuforward.org/data-structure/calculate-the-diameter-of-a-binary-tree/

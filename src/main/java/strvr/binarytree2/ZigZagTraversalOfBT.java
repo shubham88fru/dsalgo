@@ -1,4 +1,4 @@
-package strvr.binarytree;
+package strvr.binarytree2;
 
 import java.util.*;
 

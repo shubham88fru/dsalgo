@@ -1,4 +1,5 @@
-package strvr.binarytree;
+package strvr.binarytree2;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,5 +73,15 @@ public class BoundaryTraversalOfTree {
 
     private boolean isLeafNode(GfgNode node) {
         return node.left == null && node.right == null;
+    }
+}
+
+class GfgNode {
+    int data;
+    GfgNode left, right;
+
+    GfgNode(int item) {
+        data = item;
+        left = right = null;
     }
 }

@@ -1,6 +1,8 @@
-package swd.bst;
+package strvr.bst;
+
 
 //@link - https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/description/
+//@strvr - https://www.youtube.com/watch?v=UmJT3j26t1I&ab_channel=takeUforward
 public class ConstructBSTFromPreorder {
     public TreeNode bstFromPreorder(int[] preorder) {
         int[] currIndex = {0};
@@ -31,5 +33,24 @@ public class ConstructBSTFromPreorder {
         root.right = constructBSTFromPreorder(preorder, currIndex, maxPossibleValue);
 
         return root;
+    }
+}
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode() {
+    }
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
     }
 }

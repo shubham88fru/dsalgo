@@ -1,5 +1,6 @@
 package swd.bst;
 
+
 //@link - https://leetcode.com/problems/insert-into-a-binary-search-tree/description/
 public class InsertInBST {
     public TreeNode insertIntoBST(TreeNode root, int val) {

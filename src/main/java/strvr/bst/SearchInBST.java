@@ -1,6 +1,7 @@
-package swd.bst;
+package strvr.bst;
 
 //@link - https://leetcode.com/problems/search-in-a-binary-search-tree/description/
+//@strvr - https://www.youtube.com/watch?v=KcNt6v_56cc&ab_channel=takeUforward
 public class SearchInBST {
     public TreeNode searchBST(TreeNode root, int val) {
         //return searchBinaryDFS(root, val);
@@ -34,24 +35,4 @@ public class SearchInBST {
     }
 }
 
-/**
- * Definition for a binary tree node.
- **/
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
 
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}

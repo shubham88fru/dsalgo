@@ -1,4 +1,4 @@
-package strvr.binarytree3;
+package strvr.bst;
 
 //@link - https://leetcode.com/problems/validate-binary-search-tree/
 //@strvr - https://www.youtube.com/watch?v=f-sj7I5oXEI&ab_channel=takeUforward

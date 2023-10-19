@@ -1,6 +1,7 @@
-package swd.bst;
+package strvr.bst;
 
 //@link - https://practice.geeksforgeeks.org/problems/inorder-successor-in-bst/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
+//@strvr - @nolink
 public class InorderSuccessor {
     public GfgNode inorderSuccessor(GfgNode root, GfgNode x) {
         boolean[] found = {false};

@@ -1,10 +1,10 @@
-package swd.bst;
-
+package strvr.bst2;
 
 import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/two-sum-iv-input-is-a-bst/description/
+//@strvr - https://www.youtube.com/watch?v=ssL3sHwPeb4&ab_channel=takeUforward
 public class TwoSumIVBST {
     public boolean findTarget(TreeNode root, int k) {
         Map<Integer, Integer> seenmap = new HashMap<>();

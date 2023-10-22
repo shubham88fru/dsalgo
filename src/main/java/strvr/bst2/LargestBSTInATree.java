@@ -1,7 +1,7 @@
-package swd.bst;
-
+package strvr.bst2;
 
 //@link - https://practice.geeksforgeeks.org/problems/largest-bst/1
+//@strvr - https://www.youtube.com/watch?v=X0oXMdtUDwo&ab_channel=takeUforward
 public class LargestBSTInATree {
     // Return the size of the largest sub-tree which is also a BST
     int largestBst(GfgNode root) {
@@ -90,21 +90,5 @@ class GfgNodeData {
         this.min = min;
         this.max = max;
         this.isBST = isBST;
-    }
-}
-
-class GfgNode {
-    int data;
-    GfgNode left, right;
-
-    GfgNode(int item) {
-        data = item;
-        left = right = null;
-    }
-
-    GfgNode(int item, GfgNode left, GfgNode right) {
-        data = item;
-        this.left = left;
-        this.right = right;
     }
 }

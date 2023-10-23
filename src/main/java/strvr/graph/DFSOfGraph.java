@@ -35,6 +35,7 @@ public class DFSOfGraph {
     }
 
     //2) Maybe a little simpler to comprehend?
+    //T:
     private void simpleDfs(int curr, ArrayList<ArrayList<Integer>> adj,
                            ArrayList<Integer> visited, ArrayList<Integer> ans) {
         visited.add(curr);

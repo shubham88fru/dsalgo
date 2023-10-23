@@ -1,4 +1,4 @@
-package swd.graphs;
+package strvr.graph;
 
 import java.util.ArrayList;
 
@@ -17,14 +17,36 @@ import java.util.ArrayList;
             Here, vertex 0 is connected to 2
             vertex 1 is connected to 0 ,1 , and 2
             vertex 2 is connected to 1
- */
+*/
 
+/*
+Note how there's no concept of preorder,postorder or inorder in graphs.
+Graphs just have DFS and BFS.
+Also, be it DFS or BFS, both have the concept of visited array.
+* */
 //@link - https://practice.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
+//@strvr - https://takeuforward.org/data-structure/depth-first-search-dfs/
 public class DFSOfGraph {
     public ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
-        return traverseDFS(0, adj, new ArrayList<Integer>());
+        ArrayList<Integer> ans = new ArrayList<>();
+        //return traverseDFS(0, adj, new ArrayList<Integer>());
+        simpleDfs(0, adj, new ArrayList<>(), ans);
+        return ans;
     }
 
+    //2) Maybe a little simpler to comprehend?
+    private void simpleDfs(int curr, ArrayList<ArrayList<Integer>> adj,
+                           ArrayList<Integer> visited, ArrayList<Integer> ans) {
+        visited.add(curr);
+        ans.add(curr);
+
+        ArrayList<Integer> neighbours = adj.get(curr);
+        for (int neighbour: neighbours) {
+            if (!visited.contains(neighbour)) simpleDfs(neighbour, adj, visited, ans);
+        }
+    }
+
+    //1) If want a recursive dfs that returns the list instead of storing in global list.
     private ArrayList<Integer> traverseDFS(int currVertex, ArrayList<ArrayList<Integer>> adj,
                                            ArrayList<Integer> visited) {
         //If already visited, no need to visit again.

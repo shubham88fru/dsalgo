@@ -12,6 +12,7 @@ public class BFSOfGraph {
         return traverseBFS(V, adj);
     }
 
+    //S: O(N), T: O(V+E)
     private ArrayList<Integer> traverseBFS(int V, ArrayList<ArrayList<Integer>> adj) {
         if (adj == null) return null;
         List<Integer> visited = new ArrayList<>();

@@ -6,6 +6,7 @@ import java.util.Deque;
 import java.util.List;
 
 //@link - https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
+//@strvr - https://takeuforward.org/graph/breadth-first-search-bfs-level-order-traversal/
 public class BFSOfGraph {
     public ArrayList<Integer> bfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
         return traverseBFS(V, adj);

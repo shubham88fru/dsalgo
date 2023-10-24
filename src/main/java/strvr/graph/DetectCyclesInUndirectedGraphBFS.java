@@ -10,6 +10,11 @@ public class DetectCyclesInUndirectedGraphBFS {
         while performing dfs if we encounter a node that is already visited during
         bfs from a parent node other than current node, it means that there are two different paths
         to reach the same node, therefore there is a cycle in the graph.
+
+        Note that we can't directly say a graph has a cycle if we encounter a node that has been visited.
+        The visited node could very well be curr node's parent
+        (since the graph is undirected, we can go to parent from child). Hence, we need to be sure that
+        the visited node is not curr node's parent.
     * */
     public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
         return swd(V, adj);

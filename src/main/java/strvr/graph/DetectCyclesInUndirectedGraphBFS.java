@@ -15,7 +15,6 @@ public class DetectCyclesInUndirectedGraphBFS {
         return swd(V, adj);
     }
 
-    /*** SWD Soln - Video was missing so don't understand the code completely. ***/
     private boolean swd(int V, ArrayList<ArrayList<Integer>> adj) {
         boolean[] visited = new boolean[V];
         int[] parents = new int[V];

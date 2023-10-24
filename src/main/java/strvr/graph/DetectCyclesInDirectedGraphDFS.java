@@ -1,4 +1,4 @@
-package swd.graphs;
+package strvr.graph;
 
 import java.util.ArrayList;
 import java.util.*;

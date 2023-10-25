@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.Deque;
 
 /*
- `Kahn's algorithm` is used to detect cycles in graph using a BFS approach.
+ `Kahn's algorithm` is used to detect cycles in a directed graph using a BFS approach.
  The algorithm is as follows -
- 1) Find the indegree of all the vertices present in the graph (in a arrays ds)
+ 1) Find the indegree of all the vertices present in the graph (in an arrays ds)
  2) Store the vertices with indegree 0 into a queue.
  3) Run BFS on the above queue. For each element in the queue, decrement the indegree of the neighbours
     of current element and add the neighbours to queue if their indegree becomes zero as part of the decrement
@@ -16,9 +16,15 @@ import java.util.Deque;
     there is a cycle in the graph.
 
   `kahn's` algorithm is also used to find topological sort in directed graph.
+  Topological sort is only applicable on directed-acyclic-graphs. If we apply toposort on
+  a cyclic graphs, it won't give correct result. Infact, in Kahn's algo, we apply toposort regardles
+  if the graph is cyclic or not. If the graph is not cyclic, after topsort also, we'll be able to visit all nodes.
+  but if the graph is cyclic, the application of topsort cuts a node from the rest of the graph and we are not able to
+  visit the entire graph - (intuition in strvr)
  */
 
 //@link - https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
+//@strvr - https://www.youtube.com/watch?v=iTBaI90lpDQ&ab_channel=takeUforward
 public class DetectCyclesInDirectedGraphBFS {
     /*** Kahn's algorithm ***/
     public boolean isCyclic(int V, ArrayList<ArrayList<Integer>> adj) {
@@ -27,7 +33,7 @@ public class DetectCyclesInDirectedGraphBFS {
         for (int vertex=0; vertex<V; vertex++) {
             ArrayList<Integer> neighbours = adj.get(vertex);
             for (int neighbour: neighbours) {
-                inDegrees[neighbour] += 1;
+                inDegrees[neighbour] += 1; //coz the current vertex is pointing all these neighbours.
             }
         }
 

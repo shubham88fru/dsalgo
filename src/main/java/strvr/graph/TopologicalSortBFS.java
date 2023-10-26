@@ -23,11 +23,16 @@ import java.util.Deque;
 //@strvr -https://takeuforward.org/data-structure/topological-sort-bfs/
 public class TopologicalSortBFS {
     int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) {
-        // add your code here
-        return topologicalSort(V, adj);
+        /*
+        Note that for topo sort using bfs, we don't
+        loop over visited array to account for disjoint
+        graph - Maybe because the question states that the graph is
+        not disjoint? not sure. We do it however for the DFS approach.
+        * */
+        return topologicalSortBFS(V, adj);
     }
 
-    private int[] topologicalSort(int V, ArrayList<ArrayList<Integer>> adj) {
+    private int[] topologicalSortBFS(int V, ArrayList<ArrayList<Integer>> adj) {
         int[] indegrees = new int[V];
         //find indegrees.
         for (int i=0; i<V; i++) {
@@ -37,6 +42,7 @@ public class TopologicalSortBFS {
             }
         }
 
+        //typical bfs using queue.
         int[] ans = new int[V];
         Deque<Integer> q = new ArrayDeque<>();
         //add initial vertices with 0 indegree to queue.

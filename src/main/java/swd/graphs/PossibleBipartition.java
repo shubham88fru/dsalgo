@@ -95,3 +95,13 @@ public class PossibleBipartition {
         return graph;
     }
 }
+
+class VertexInfo {
+    int vertex;
+    int color;
+
+    public VertexInfo(int vertex, int color) {
+        this.vertex = vertex;
+        this.color = color;
+    }
+}

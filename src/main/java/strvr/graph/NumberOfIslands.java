@@ -1,6 +1,7 @@
-package swd.graphs;
+package strvr.graph;
 
 //@link - https://leetcode.com/problems/number-of-islands/description/
+//@strvr - https://takeuforward.org/data-structure/number-of-distinct-islands/
 public class NumberOfIslands {
     public int numIslands(char[][] grid) {
         int m = grid.length;

@@ -1,4 +1,4 @@
-package swd.graphs;
+package strvr.graph;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
@@ -15,6 +15,7 @@ import java.util.Deque;
     or if it is cyclic then the no. of vertices in the cycle should be even.
  */
 //@link - https://leetcode.com/problems/is-graph-bipartite/
+//@strvr - https://www.youtube.com/watch?v=-vu34sct1g8&t=1s&ab_channel=takeUforward
 public class IsGraphBipartite {
     public boolean isBipartite(int[][] graph) {
         int n = graph.length;

@@ -1,4 +1,4 @@
-package swd.graphs;
+package strvr.graph2;
 
 /*
     Dijkstra's algorithm (to find shortest paths in a graph)
@@ -28,6 +28,8 @@ public class ImplementingDijkstraAlgorithm {
         return dijsktraFromGivenNode(V, adj, S);
     }
 
+    //Note that this algorithm will give the sum of the shortest path (sum of weights/costs of shortest path)
+    //It wont be directly clear from this algorithm as to which path exactly was the shortest.
     private int[] dijsktraFromGivenNode(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj, int S) {
         //After completion of dijkstra, costs array will
         //consist of shortest path of each node from the node `S`.
@@ -47,9 +49,13 @@ public class ImplementingDijkstraAlgorithm {
         while (!pq.isEmpty()) {
             VertexCost vertexAndCost = pq.remove();
             int currVertex = vertexAndCost.vertex;
+
+            //curr cost stores our current min cost of reaching the currnode from S.
             int currCost = vertexAndCost.cost;
 
             //Means already visited, hence just skip it.
+            //this costs array kind of also acts like the
+            //visited array of a normal graph traversal.
             if (costs[currVertex] != -1) continue;
 
             costs[currVertex] = currCost;
@@ -62,6 +68,60 @@ public class ImplementingDijkstraAlgorithm {
                 //add to queue with current cost. The total cost (currcost + currEdgeCost)
                 //will actually be the total cost of reaching that vertex from the source vertex.
                 pq.add(new VertexCost(currentNeighbour, (currCost + currentEdgeCost)));
+            }
+        }
+
+        return costs;
+    }
+
+    /**
+     * Note: Below is a slightly different flavor of the same code which strvr showed.
+     * It initializes the costs with max value and in the for loop there's a check to
+     * see if cost of a reach a node till now plus the next edge cost is lesser than
+     * whats' stored int the cost.
+     *
+     * TODO: think why both work and whats the diff.
+     */
+    private int[] dijsktraFromGivenNodeStrvr(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj, int S) {
+        //After completion of dijkstra, costs array will
+        //consist of shortest path of each node from the node `S`.
+        int[] costs = new int[V];
+
+        //Initially cost of visiting all vertices from
+        //vertex S is -1.
+        Arrays.fill(costs, Integer.MAX_VALUE);
+
+        //Priority queue (instead of a usual queue) is used in implementing
+        //dijsktra. Here, the priority queue will sort the added values in
+        //natural order of the cost.
+        PriorityQueue<VertexCost> pq
+                = new PriorityQueue<>((o1, o2) -> o1.cost - o2.cost);
+        costs[S] = 0;
+        pq.add(new VertexCost(S, 0)); //cost of start index to itself is zero.
+
+        while (!pq.isEmpty()) {
+            VertexCost vertexAndCost = pq.remove();
+            int currVertex = vertexAndCost.vertex;
+            int currCost = vertexAndCost.cost;
+
+            //Means already visited, hence just skip it.
+            //this costs array kind of also acts like the
+            //visited array of a normal graph traversal.
+            //if (costs[currVertex] != -1) continue;
+
+            //costs[currVertex] = currCost;
+            ArrayList<ArrayList<Integer>> neighboursWithCost
+                    = adj.get(currVertex);
+
+            for (ArrayList<Integer> neighbourWithCost: neighboursWithCost) {
+                int currentNeighbour = neighbourWithCost.get(0);
+                int currentEdgeCost = neighbourWithCost.get(1);
+                //add to queue with current cost. The total cost (currcost + currEdgeCost)
+                //will actually be the total cost of reaching that vertex from the source vertex.
+                if (currCost + currentEdgeCost < costs[currentNeighbour]) {
+                    costs[currentNeighbour] = currCost + currentEdgeCost;
+                    pq.add(new VertexCost(currentNeighbour, (currCost + currentEdgeCost)));
+                }
             }
         }
 

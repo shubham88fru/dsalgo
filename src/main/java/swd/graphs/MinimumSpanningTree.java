@@ -176,3 +176,13 @@ public class MinimumSpanningTree {
 
     //2) Kruskal's algorithm to find minimum spanning tree.
 }
+
+class VertexCost {
+    int vertex;
+    int cost;
+
+    public VertexCost(int vertex, int cost) {
+        this.vertex = vertex;
+        this.cost = cost;
+    }
+}

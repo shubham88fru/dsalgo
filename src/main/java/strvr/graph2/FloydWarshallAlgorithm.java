@@ -1,17 +1,32 @@
-package swd.graphs;
+package strvr.graph2;
 
 /*
     Floyd Warshall algorithm (to find the shortest path when weights can be -ve (works for +ve weights also))
     -----------------------------------------------------------------------------------------------------
     --> Intermediary (k), source (i) and destination (j).
-    --> Works for undirected graphs as well.
+    --> Can be used to detect negative cycles as well.
+            We can achieve this by running the floyd warshall on the graph.
+            Note that when initializing the costs, we say that the cost of reaching
+            a node from itself is 0. So, if there is a -ve cycle in the graph, after running
+            the floyd warshall algorithm, the cost of reaching a vertex (in the -ve cycle) from itself
+            will be -ve (because it is lesser than 0 it will be updated during floyd warshall algo). When
+            that happens we can detect the cycle. Therefore, at end of floyd warhsall, we'll simply iterate
+            over the costs matrix once more and see if for any node cost of i to i is -ve, if so, then we would
+            have detected a -ve cycle.
+    --> Works for undirected graphs as well. If we have to apply
+        Floyd Warshall on a undirected graph, all we need to do is sort of convert
+        the undirected graph to a directed graph where edge a<--->b with weight W will
+        become two edges a-->b and a<--b each with weight W.
     --> The algorithm finds the shortest distance from each vertex to each vertex
-        considering each vertex as an intermediary vertex.
+        considering each vertex as an intermediary vertex. --> hence this algo is also called a multi source shortest path algorithm.
     --> Finds shortest distance between every pair of vertices in a graph.
     --> Input to the algorithm must be a graph represented by adjacency matrix
         where each cell represents the weight/cost of an edge.
+    --> Floyd warshall algo is a dynamic programming algo.
+    --> Time completxity of floyd warshall is N^3 which is even worse than dijkstra.
  */
 //@link - https://practice.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1
+//@strvr - https://takeuforward.org/data-structure/floyd-warshall-algorithm-g-42/
 public class FloydWarshallAlgorithm {
     public void shortest_distance(int[][] matrix) {
 

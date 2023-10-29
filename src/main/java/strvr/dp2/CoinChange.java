@@ -1,9 +1,10 @@
-package swd.dp;
+package strvr.dp2;
 
 import java.util.HashMap;
 import java.util.Map;
 
 //@link -  https://leetcode.com/problems/coin-change/description/
+//@strvr - https://takeuforward.org/data-structure/coin-change-2-dp-22/
 public class CoinChange {
 
     public int coinChange(int[] coins, int amount) {

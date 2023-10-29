@@ -1,6 +1,7 @@
-package swd.dp;
+package strvr.dp2;
 
 //@link - https://leetcode.com/problems/minimum-path-sum/description/
+//@strvr - https://takeuforward.org/data-structure/minimum-path-sum-in-a-grid-dp-10/
 public class MinPathSum {
     public int minPathSum(int[][] grid) {
         int[][] memo = new int[201][201];

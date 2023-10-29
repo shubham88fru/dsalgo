@@ -1,9 +1,10 @@
-package swd.dp;
+package strvr.dp2;
 
 import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/partition-equal-subset-sum/
+//@strvr - https://takeuforward.org/data-structure/subset-sum-equal-to-target-dp-14/
 public class PartitionEqualSubsetSum {
 
     public boolean canPartition(int[] nums) {

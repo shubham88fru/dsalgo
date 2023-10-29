@@ -1,4 +1,4 @@
-package swd.graphs;
+package strvr.graph2;
 
 /*
     Bellman Ford algorithm (find shortest path and detect -ve cycles in graph)
@@ -20,6 +20,7 @@ package swd.graphs;
  */
 
 //@link - https://practice.geeksforgeeks.org/problems/negative-weight-cycle3504/1
+//@strvr - https://takeuforward.org/data-structure/bellman-ford-algorithm-g-41/
 public class NegativeWeightCycle {
     public int isNegativeWeightCycle(int n, int[][] edges) {
         //costs array that will store the min cost
@@ -55,6 +56,9 @@ public class NegativeWeightCycle {
             int dest = currentEdge[1];
             int weight = currentEdge[2];
 
+            //i.e. even in V'th iteration the distance is reducing,
+            //which can only happen if we are in a loop with -ve sum
+            //so that each iteration keeps on decreasing the weight.
             if (costs[dest] > costs[src]+weight) {
                 return 1;
             }

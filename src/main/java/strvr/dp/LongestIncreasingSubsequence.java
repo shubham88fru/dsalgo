@@ -1,8 +1,9 @@
-package swd.dp;
+package strvr.dp;
 
 import java.util.Arrays;
 
 //@link - https://leetcode.com/problems/longest-increasing-subsequence/description/
+//@strvr - https://takeuforward.org/data-structure/longest-increasing-subsequence-dp-41/
 public class LongestIncreasingSubsequence {
 
     /*

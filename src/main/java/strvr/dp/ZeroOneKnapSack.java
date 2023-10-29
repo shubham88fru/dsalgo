@@ -1,10 +1,10 @@
-package swd.dp;
+package strvr.dp;
 
 import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://practice.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
-
+//@strvr - https://takeuforward.org/data-structure/0-1-knapsack-dp-19/
 public class ZeroOneKnapSack {
 
     static int knapSack(int W, int wt[], int val[], int n)

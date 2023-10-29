@@ -1,9 +1,10 @@
-package swd.dp;
+package strvr.dp;
 
 import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/longest-common-subsequence/
+//@strvr - https://takeuforward.org/data-structure/longest-common-subsequence-dp-25/
 public class LongestCommonSubsequence {
     //1) Bottom-up approach.
     public int longestCommonSubsequence(String s1, String s2) {

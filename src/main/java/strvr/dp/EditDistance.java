@@ -1,9 +1,10 @@
-package swd.dp;
+package strvr.dp;
 
 import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/edit-distance/description/
+//@strvr - https://takeuforward.org/data-structure/edit-distance-dp-33/
 public class EditDistance {
     public int minDistance(String word1, String word2) {
         return minOpsToConvert(word1, word2, 0, word1.length(), 0, word2.length(), new HashMap<String, Integer>());

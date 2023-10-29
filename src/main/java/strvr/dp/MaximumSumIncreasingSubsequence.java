@@ -1,6 +1,7 @@
-package swd.dp;
+package strvr.dp;
 
 //@link - https://practice.geeksforgeeks.org/problems/maximum-sum-increasing-subsequence4749/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
+//@strvr - @nolink @novid
 public class MaximumSumIncreasingSubsequence {
     public int maxSumIS(int nums[], int n) {
         int answer = nums[0];

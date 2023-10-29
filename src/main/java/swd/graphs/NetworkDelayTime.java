@@ -83,3 +83,15 @@ public class NetworkDelayTime {
         return costs;
     }
 }
+
+
+
+class VertexCost {
+    int vertex;
+    int cost;
+
+    public VertexCost(int vertex, int cost) {
+        this.vertex = vertex;
+        this.cost = cost;
+    }
+}

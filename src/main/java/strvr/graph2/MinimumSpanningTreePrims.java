@@ -1,4 +1,4 @@
-package swd.graphs;
+package strvr.graph2;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -75,7 +75,8 @@ import java.util.PriorityQueue;
 
  */
 //@link - https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1
-public class MinimumSpanningTree {
+//@strvr - https://takeuforward.org/data-structure/prims-algorithm-minimum-spanning-tree-c-and-java-g-45/
+public class MinimumSpanningTreePrims {
     int spanningTree(int V, int E, int[][] edges){
 
         //get adjacency list rep of the graph
@@ -129,6 +130,9 @@ public class MinimumSpanningTree {
     }
 
     //1) Prim's algorithm to find min spanning tree.
+    //Note, even thought this algorithm is simpler to understand (for it being similar to dijkstra),
+    //it's shortcoming is that it only gives the costs array of the minimum spanning tree, it doesn't
+    //give the spanning tree edges. Strvr's algo gives the tree also.
     private int[] primsAlgoForMinSpanTree(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj) {
         //After completion of prims algo, costs array will
         //consist of min costs of reaching each vertex from its
@@ -175,14 +179,4 @@ public class MinimumSpanningTree {
     }
 
     //2) Kruskal's algorithm to find minimum spanning tree.
-}
-
-class VertexCost {
-    int vertex;
-    int cost;
-
-    public VertexCost(int vertex, int cost) {
-        this.vertex = vertex;
-        this.cost = cost;
-    }
 }

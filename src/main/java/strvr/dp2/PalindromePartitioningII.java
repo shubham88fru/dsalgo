@@ -1,9 +1,10 @@
-package swd.dp;
+package strvr.dp2;
 
 import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/palindrome-partitioning-ii/description/
+//@strvr - https://takeuforward.org/dynamic-programming/matrix-chain-multiplication-dp-48/
 public class PalindromePartitioningII {
     /**MY SOL - Gives TLE (Perhaps because I'm using substring, which is a costly affair)**/
     // public int minCut(String s) {

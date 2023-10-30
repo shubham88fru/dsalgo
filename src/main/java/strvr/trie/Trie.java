@@ -1,7 +1,13 @@
-package swd.trie;
+package strvr.trie;
 
+import java.util.HashMap;
+import java.util.Map;
 
+/**
+ * Tries are also known as Prefix trees.
+ */
 //@link - https://leetcode.com/problems/implement-trie-prefix-tree/description/
+//@strvr - https://takeuforward.org/data-structure/implement-trie-1/
 class Trie {
 
     TrieNode root;
@@ -51,6 +57,16 @@ class Trie {
         //be the end of word otherwise, if searching just for
         //the prefix and here means answer is already true.
         return isPrefixSearch || crawler.isEndOfAWord;
+    }
+}
+
+class TrieNode {
+    public char ch;
+    public Map<Character, TrieNode> children = new HashMap<>();
+    public boolean isEndOfAWord;
+
+    public TrieNode() {
+
     }
 }
 

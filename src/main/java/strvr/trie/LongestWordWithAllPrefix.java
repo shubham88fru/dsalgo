@@ -1,4 +1,4 @@
-package swd.trie;
+package strvr.trie;
 
 /**
  * Code looks okay, but pain to run on CN b/c of some static keyword non-sense.

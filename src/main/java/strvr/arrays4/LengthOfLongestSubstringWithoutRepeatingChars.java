@@ -74,6 +74,9 @@ public class LengthOfLongestSubstringWithoutRepeatingChars {
                 release = map.get(deleteChar) + 1;
                 map.remove(deleteChar);
             } else { //else if char not seen, put in map and update answer length.
+                //Note here, in this quest, we store char and its index in the map
+                //and not its frequency. In this question, all we are interested in is
+                //whether the char was seen before or not.
                 map.put(c, acquire);
                 answer = Math.max(answer, acquire - release + 1);
                 acquire++; //widen the window.

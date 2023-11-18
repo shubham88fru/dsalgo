@@ -1,4 +1,4 @@
-package strvr.arrays4;
+package ptrn.slidingwindow;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,6 +6,7 @@ import java.util.Objects;
 
 //@link - https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
 //@strvr - https://takeuforward.org/data-structure/length-of-longest-substring-without-any-repeating-character/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5868097493008384
 public class LengthOfLongestSubstringWithoutRepeatingChars {
     public int lengthOfLongestSubstring(String s) {
         //return lengthOfLongestSubstringSlidingWindow1(s);

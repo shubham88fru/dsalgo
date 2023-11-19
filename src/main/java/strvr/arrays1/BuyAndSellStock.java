@@ -1,7 +1,5 @@
 package strvr.arrays1;
 
-import java.util.Map;
-
 //@link - https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
 //@strvr - https://takeuforward.org/data-structure/stock-buy-and-sell/
 public class BuyAndSellStock {

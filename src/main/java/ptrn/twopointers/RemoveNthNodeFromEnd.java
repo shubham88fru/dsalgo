@@ -1,7 +1,8 @@
-package strvr.linkedlist1;
+package ptrn.twopointers;
 
 //@link - https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/
 //@strvr - https://takeuforward.org/data-structure/remove-n-th-node-from-the-end-of-a-linked-list/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5146995137970176
 public class RemoveNthNodeFromEnd {
 
     //1) Optimal approach
@@ -44,4 +45,21 @@ public class RemoveNthNodeFromEnd {
     //Find the length of the list, and then do another iteration
     //to delete length-nth node from front.
     //T: O(N), S: O(1)
+}
+
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode() {
+    }
+
+    ListNode(int val) {
+        this.val = val;
+    }
+
+    ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
+    }
 }

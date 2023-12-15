@@ -1,13 +1,18 @@
-package strvr.arrays1;
+package ptrn.twopointers;
 
 //@link - https://leetcode.com/problems/sort-colors/description/
 //@strvr - https://takeuforward.org/data-structure/sort-an-array-of-0s-1s-and-2s/
+//@check -
 public class SortColors {
 
     public void sortColors(int[] nums) {
+
+        /***STRVR's solutions***/
         //arrangeColorsBetter(nums);
         arrangeColorsOptimal(nums);
     }
+
+    /****************STRVR's solutions***********************/
 
     //1) Optimal Soln (Using the Dutch National Flag algorithm)
     /*
@@ -45,11 +50,15 @@ public class SortColors {
         while (mid <= high) {
             if (nums[mid] == 0) {
                 swap(mid, low, nums);
+                //Per dutch national flag algo's assumption
+                //nums[low] is 1, therefore after the above
+                //swap, nums[mid] will be 1. And so, we can increment
+                //mid as well.
                 mid += 1;
                 low += 1;
             } else if (nums[mid] == 1) {
                 mid += 1;
-            } else {
+            } else { //nums[mid] will be 2.
                 swap(mid, high, nums);
                 high -= 1;
             }

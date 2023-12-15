@@ -2,7 +2,7 @@ package ptrn.twopointers;
 
 //@link - https://leetcode.com/problems/sort-colors/description/
 //@strvr - https://takeuforward.org/data-structure/sort-an-array-of-0s-1s-and-2s/
-//@check -
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4599593117155328
 public class SortColors {
 
     public void sortColors(int[] nums) {

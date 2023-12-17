@@ -1,10 +1,11 @@
-package strvr.linkedlist2;
+package ptrn.fastnslowpointers;
 
 import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/linked-list-cycle/description/
 //@strvr - https://takeuforward.org/data-structure/detect-a-cycle-in-a-linked-list/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4943527382614016
 public class DetectCycleInALinkedList {
     public boolean hasCycle(ListNode head) {
         //return hasCycleBruteForce(head);
@@ -52,5 +53,22 @@ public class DetectCycleInALinkedList {
         }
 
         return false;
+    }
+}
+
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode() {
+    }
+
+    ListNode(int val) {
+        this.val = val;
+    }
+
+    ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
     }
 }

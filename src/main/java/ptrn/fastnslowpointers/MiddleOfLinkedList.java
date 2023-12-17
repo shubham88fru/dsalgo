@@ -1,8 +1,8 @@
-package strvr.linkedlist1;
-
+package ptrn.fastnslowpointers;
 
 //@link - https://leetcode.com/problems/middle-of-the-linked-list/description/
 //@strvr - https://takeuforward.org/data-structure/find-middle-element-in-a-linked-list/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5688723200278528
 public class MiddleOfLinkedList {
     public ListNode middleNode(ListNode head) {
         return findViaFastAndSlowPointer(head);

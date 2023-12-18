@@ -1,7 +1,8 @@
-package strvr.arrays2;
+package ptrn.fastnslowpointers;
 
 //@link - https://leetcode.com/problems/find-the-duplicate-number/description/
 //@strvr - https://takeuforward.org/data-structure/find-the-duplicate-in-an-array-of-n1-integers/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6745247192973312
 public class FindTheDuplicateNum {public int findDuplicate(int[] nums) {
     //Note that an approach similar to
     //that of finding the missing num can not be used here.

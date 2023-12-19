@@ -1,4 +1,4 @@
-package strvr.arrays2;
+package ptrn.mergeintervals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,6 +7,7 @@ import java.util.List;
 
 //@link - https://leetcode.com/problems/merge-intervals/solutions/
 //@strvr - https://takeuforward.org/data-structure/merge-overlapping-sub-intervals/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6354788758585344
 public class MergeIntervals {
     public int[][] merge(int[][] intervals) {
         //return mergeIntervalsBrute(intervals);

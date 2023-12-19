@@ -1,8 +1,8 @@
-package strvr.linkedlist2;
-
+package ptrn.fastnslowpointers;
 
 //@link - https://leetcode.com/problems/palindrome-linked-list/description/
 //@strvr - https://takeuforward.org/data-structure/check-if-given-linked-list-is-plaindrome/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4806672477585408
 public class PalindromeLinkedList {
     //T: O(N), S: O(1)
     public boolean isPalindrome(ListNode head) {

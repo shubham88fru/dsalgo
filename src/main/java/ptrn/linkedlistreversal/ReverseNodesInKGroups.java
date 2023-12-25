@@ -1,7 +1,14 @@
-package strvr.linkedlist2;
+package ptrn.linkedlistreversal;
 
 //@link - https://leetcode.com/problems/reverse-nodes-in-k-group/description/
 //@strvr - https://takeuforward.org/data-structure/reverse-linked-list-in-groups-of-size-k/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6394318211514368
+
+/**
+ * Edctv has an efficient solution than the below (perhaps SWD's)
+ * but is very confusing in terms of pointer manip.
+ * Maybe check the explanation by strvr also, once.
+ */
 public class ReverseNodesInKGroups {
     public ListNode reverseKGroup(ListNode head, int k) {
         if (head == null) return null;

@@ -1,7 +1,8 @@
-package strvr.linkedlist1;
+package ptrn.linkedlistreversal;
 
 //@link - https://leetcode.com/problems/reverse-linked-list/description/
 //@strvr - https://takeuforward.org/data-structure/reverse-a-linked-list/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4776723687407616
 public class ReverseALinkedList {
     public ListNode reverseList(ListNode head) {
         return sol1(head);

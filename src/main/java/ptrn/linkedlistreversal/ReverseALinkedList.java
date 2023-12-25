@@ -36,7 +36,7 @@ public class ReverseALinkedList {
         return prev;
     }
 
-    //2) No extra code to handle rearring of last 2 nodes.
+    //2) No extra code to handle rearranging of last 2 nodes.
     //T: O(N), S: O(1)
     private ListNode sol2(ListNode head) {
         if (head == null) return null;

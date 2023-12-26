@@ -1,6 +1,11 @@
-package swd.linkedlist;
+package ptrn.linkedlistreversal;
 
 //@link - https://leetcode.com/problems/reverse-linked-list-ii/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4918812664397824
+
+/**
+ * Edctv method is confusing than the below (SWD's)
+ */
 public class ReverseALinkedListII {
     public ListNode reverseBetween(ListNode head, int left, int right) {
         //if left and right same, dont need to do anything.

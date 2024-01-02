@@ -17,6 +17,9 @@ public class BuyAndSellStock {
 
         while (end < prices.length) {
             int acq = prices[end];
+            //keep acquiring and calculating the best
+            //profit till the end is larger than start.
+            //If end is smaller, we slide the window from the end.
             if (acq >= prices[start]) {
                 maxP = Math.max(maxP, acq-prices[start]);
                 end += 1;

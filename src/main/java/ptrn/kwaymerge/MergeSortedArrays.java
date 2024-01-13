@@ -1,7 +1,8 @@
-package strvr.arrays2;
+package ptrn.kwaymerge;
 
 //@link - https://leetcode.com/problems/merge-sorted-array/description/
 //@strvr - https://takeuforward.org/data-structure/merge-two-sorted-arrays-without-extra-space/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4938339196338176
 public class MergeSortedArrays {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         //mergeBrute(nums1, m, nums2, n);

@@ -1,4 +1,4 @@
-package ptrn.twoheaps;
+package ptrn.kwaymerge;
 
 import java.util.ArrayList;
 import java.util.List;

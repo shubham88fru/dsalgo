@@ -4,6 +4,22 @@ import java.util.PriorityQueue;
 
 //@link - https://leetcode.com/problems/ipo/description/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5562193396629504
+/**
+ * Heap summary:
+ *
+ * 1) A heap is a complete binary tree, meaning that a heap containing n
+ * elements will have a maximum height of log(n)
+ * A heap is most commonly implemented using an array.
+ *
+ * 2) The smallest element in a min-heap (and the largest element in a max-heap)
+ * is always present at the root of the tree, and can thus be accessed in O(1)
+ *
+ * 3) Removing the smallest element from a min-heap,
+ * or the largest element from a max-heap, takes O(log(n))
+ * , as does adding an element to a heap.
+ *
+ * 4) While performing insertions and removals, a heap must always maintain the second property.
+ */
 public class MaximizeCapital {
     public int findMaximizedCapital(int k, int w, int[] profits, int[] capital) {
         return optimal(k, w, profits, capital);

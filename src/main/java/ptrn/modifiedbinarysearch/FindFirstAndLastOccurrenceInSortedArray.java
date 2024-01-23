@@ -1,6 +1,7 @@
-package swd.binarysearch;
+package ptrn.modifiedbinarysearch;
 
 //@link - https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6359810766536704
 public class FindFirstAndLastOccurrenceInSortedArray {
     public int[] searchRange(int[] nums, int target) {
         int firstIndex = binarySearch(nums, target, true);

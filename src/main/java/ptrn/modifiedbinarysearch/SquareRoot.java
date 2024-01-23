@@ -1,6 +1,7 @@
-package swd.binarysearch;
+package ptrn.modifiedbinarysearch;
 
 //@link - https://leetcode.com/problems/sqrtx/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6359810766536704
 public class SquareRoot {
     public int mySqrt(int x) {
         return binarySearch(x);

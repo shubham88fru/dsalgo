@@ -1,6 +1,7 @@
-package swd.binarysearch;
+package ptrn.modifiedbinarysearch;
 
 //@link - https://leetcode.com/problems/binary-search/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6748849764564992
 public class BinarySearch {
     public int search(int[] nums, int target) {
         return binarySearch(nums, target);

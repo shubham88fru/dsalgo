@@ -1,6 +1,7 @@
-package swd.binarysearch;
+package ptrn.modifiedbinarysearch;
 
 //@link - https://leetcode.com/problems/first-bad-version/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5246990712832000
 public class FirstBadVersion extends VersionControl {
     public int firstBadVersion(int n) {
         return binarySearch(n);

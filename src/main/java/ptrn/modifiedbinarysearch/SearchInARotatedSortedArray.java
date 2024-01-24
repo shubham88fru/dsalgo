@@ -1,12 +1,23 @@
-package strvr.binarysearch;
+package ptrn.modifiedbinarysearch;
 
 //@link - https://leetcode.com/problems/search-in-rotated-sorted-array/description/
 //@strvr - https://takeuforward.org/data-structure/search-element-in-a-rotated-sorted-array/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6397071906308096
 public class SearchInARotatedSortedArray {
     public int search(int[] nums, int target) {
         return binarySearch(nums, target);
     }
 
+    /**
+     * If the array is rotated by less than half the length of the array,
+     * at least the second half of the array will still be sorted. Contrarily,
+     * if the array is rotated by more than half the length of the array,
+     * then at least the first half of the array will be sorted.
+     *
+     * We can use this property to our advantage and modify the binarySearch function as follows:
+     *  - If the target value lies within the sorted half of the array, our problem is a basic binary search.
+     *  - Otherwise, discard the sorted half and keep examining the unsorted half.
+     */
     private int binarySearch(int[] nums, int target) {
         int start = 0;
         int end = nums.length - 1;

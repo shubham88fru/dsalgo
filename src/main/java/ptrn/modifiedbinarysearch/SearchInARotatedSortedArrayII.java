@@ -1,7 +1,8 @@
-package strvr.binarysearch;
+package ptrn.modifiedbinarysearch;
 
 //@link - https://leetcode.com/problems/search-in-rotated-sorted-array-ii/description/
 //@strvr - https://takeuforward.org/data-structure/search-element-in-a-rotated-sorted-array/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5374361071779840
 public class SearchInARotatedSortedArrayII {
     public boolean search(int[] nums, int target) {
         return binarySearch(nums, target);

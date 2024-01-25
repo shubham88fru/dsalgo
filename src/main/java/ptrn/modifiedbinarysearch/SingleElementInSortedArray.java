@@ -1,7 +1,8 @@
-package strvr.binarysearch;
+package ptrn.modifiedbinarysearch;
 
 //@link - https://leetcode.com/problems/single-element-in-a-sorted-array/
 //@strvr - https://takeuforward.org/data-structure/search-single-element-in-a-sorted-array/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6116778045603840
 public class SingleElementInSortedArray {
     public int singleNonDuplicate(int[] nums) {
         /*NOTE: There is a standard XOR method, to find the odd one out.

@@ -7,6 +7,23 @@ import java.util.List;
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5939927448813568
 public class FindKClosestElementsInASortedArray {
     //1) optimal approach - using binary search.
+    /**
+     This solution can be further optimised by adding the following
+     checks before starting the binary search :-
+     1) If the length of nums is the same as the value of k, return all the elements.
+
+     2) If target is less than or equal to the first element in nums,
+     the first k elements in nums are the closest integers to target.
+     For example, if nums= [1, 2, 3], target= 0, and k = 2,
+     then the two closest integers to target are [1, 2].
+
+     3) If target is greater than or equal to the last element in nums,
+     the last k elements in nums are the closest integers to target.
+     For example, if nums= [1, 2, 3], target= 4, and k = 2,
+     then the two closest integers to target are [2, 3].
+
+     Otherwise, we search for the k closest elements in the whole array.
+    */
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
         int n = arr.length;
 
@@ -51,7 +68,6 @@ public class FindKClosestElementsInASortedArray {
     //in a new array. sort this new array w.r.t distance and if
     //distances are same, sort them based on value of the element.
     //Finally, select the first k elements from this array.
-
     private int binarySearch(int[] arr, int x) {
         int start = 0;
         int end = arr.length - 1;

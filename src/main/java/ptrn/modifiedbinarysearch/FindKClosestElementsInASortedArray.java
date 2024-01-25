@@ -1,14 +1,17 @@
-package swd.binarysearch;
+package ptrn.modifiedbinarysearch;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //@link - https://leetcode.com/problems/find-k-closest-elements/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5939927448813568
 public class FindKClosestElementsInASortedArray {
+    //1) optimal approach - using binary search.
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
         int n = arr.length;
 
-        //Step 1: Find the floor of x. i.e closest element to x in the array.
+        //Step 1: Find the floor of x. i.e the closest element to x in the array.
+        //in other words, the largest value smaller than or equal to x.
         int floorIndex = binarySearch(arr, x);
 
         //Step 2: use 2 pointer approach.
@@ -17,7 +20,7 @@ public class FindKClosestElementsInASortedArray {
         int left = ((floorIndex - k) < 0) ? 0 : (floorIndex - k);
         int right = ((floorIndex + k) >= n) ? (n - 1) : (floorIndex + k);
 
-        //keep shrinking the size of window untill the window has exactly k elements.
+        //keep shrinking the size of window until the window has exactly k elements.
         //if distance of value at left is lower than distance of
         //value at right, shrink from right side because we need the closer value.
         //and vice versa.
@@ -42,6 +45,12 @@ public class FindKClosestElementsInASortedArray {
         return ans;
 
     }
+
+    //2) suboptimal/binary search approach.
+    //store each element and its distance from target as a pair
+    //in a new array. sort this new array w.r.t distance and if
+    //distances are same, sort them based on value of the element.
+    //Finally, select the first k elements from this array.
 
     private int binarySearch(int[] arr, int x) {
         int start = 0;

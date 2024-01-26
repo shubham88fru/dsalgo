@@ -8,6 +8,12 @@ public class SearchInARotatedSortedArrayII {
         return binarySearch(nums, target);
     }
 
+    /**
+     NOTE: This type II of the problem **doesn't** gurantee
+     that the elements of the array will be distinct. And that's
+     why even though the problem statement of type I and type II looks
+     very same, there is a slight difference in the algorithm.
+     */
     private boolean binarySearch(int[] nums, int target) {
         int start = 0;
         int end = nums.length - 1;
@@ -35,7 +41,7 @@ public class SearchInARotatedSortedArrayII {
                 start += 1;
             }
 
-            //optimization (will work even if don't t do this)
+            //optimization (will work even if don't do this)
             //remove duplicate from end as well.
             while (end > mid && nums[mid] == nums[end]) {
                 end -= 1;

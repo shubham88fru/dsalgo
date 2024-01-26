@@ -17,6 +17,8 @@ public class SearchInARotatedSortedArray {
      * We can use this property to our advantage and modify the binarySearch function as follows:
      *  - If the target value lies within the sorted half of the array, our problem is a basic binary search.
      *  - Otherwise, discard the sorted half and keep examining the unsorted half.
+     *
+     * NOTE: This type I of the problem guarantees distinct elements in the array.
      */
     private int binarySearch(int[] nums, int target) {
         int start = 0;

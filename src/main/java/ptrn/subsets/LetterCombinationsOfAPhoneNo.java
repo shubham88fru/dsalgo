@@ -1,8 +1,9 @@
-package swd.recursionbacktracking;
+package ptrn.subsets;
 
 import java.util.*;
 
 //@link - https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5264554243391488
 public class LetterCombinationsOfAPhoneNo {
     public List<String> letterCombinations(String digits) {
         //store all keypad maping in a java map.

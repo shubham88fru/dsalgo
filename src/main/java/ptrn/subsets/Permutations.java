@@ -1,4 +1,4 @@
-package strvr.recursionandbacktracking;
+package ptrn.subsets;
 
 import java.util.ArrayList;
 import java.util.*;
@@ -12,13 +12,13 @@ public class Permutations {
         //getPerms(nums, combs, new ArrayList<>(), new HashSet<>(), 0);
         //return combs;
 
-        /* Striver's soln */
+        /* Strvr's soln */
         getPermsOptimal(0, nums, combs);
         return combs;
     }
 
     //1) Optimal solution. Recursion but no extra space.
-    //Striver's soln
+    //Strvr's soln
     private void getPermsOptimal(int index, int[] nums, List<List<Integer>> ans) {
         if (index == nums.length) {
             List<Integer> ds = new ArrayList<>();

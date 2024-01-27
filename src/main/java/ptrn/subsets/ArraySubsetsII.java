@@ -1,4 +1,4 @@
-package strvr.recursion;
+package ptrn.subsets;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 
 //@link - https://leetcode.com/problems/subsets-ii/description/
 //@strvr - https://takeuforward.org/data-structure/subset-ii-print-all-the-unique-subsets/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5488774571360256
 public class ArraySubsetsII {
     public List<List<Integer>> subsetsWithDup(int[] nums) {
         /*solution on lines of SWD's approach*/
@@ -42,18 +43,20 @@ public class ArraySubsetsII {
             //map, so that if the same subset has already been added
             //previously in the answer, we don't add it again.
             //Note that, sorting the copy (and not the original) of list
-            //itself is neccessary, because sorting modifies the orginal
+            //itself is necessary, because sorting modifies the original
             //list thereby changing the position of elements in the original
             //list, which will cause problems when we are backtracking and
             //removing the last added element.
             //Note: In this question, aim is not to avoid adding duplicate elements
-            //in a subset. Rather the aim is to avoid adding duplicate subsets (subset with same elements as some other subset) in the list of subsets. This problem of duplicate subsets arises
+            //in a subset. Rather the aim is to avoid adding duplicate subsets
+            // (subset with same elements as some other subset) in the list of subsets.
+            // This problem of duplicate subsets arises
             //because we have duplicate elements in the array.
             List<Integer> subsetCopy = new ArrayList<>(subset);
             Collections.sort(subsetCopy);
             String subsetCopyStr = subsetCopy.toString();
             if (!seenmap.containsKey(subsetCopyStr)) {
-                //Here we store a new copy (seperate from original subset)
+                //Here we store a new copy (separate from original subset)
                 //in the final answer, so that our backtracking (deleting)
                 //doesn't effect the final answer.
                 subsets.add(subsetCopy);
@@ -73,10 +76,10 @@ public class ArraySubsetsII {
         List<List<Integer>> includeMe = subsetsSWD(nums, subset, currIdx+1, seenmap);
 
         //when returning from current recursive call - backtrack.
-        //so that we undo the the change we did to the list.
-        //if we don't backtrack, the addition that we did for the consider
-        //case will add the elemnt to the list and since list is passed by reference
-        //all subsequent calls will had that element added.
+        //so that we undo the change we did to the list.
+        //if we don't backtrack, the addition that we did for the `consider`
+        //case will add the element to the list and since list is passed by reference
+        //all subsequent calls will have that element added.
         //By backtracking, we are basically returning the list to the state it
         //was in the previous recursive call.
         subset.remove(subset.size()-1);

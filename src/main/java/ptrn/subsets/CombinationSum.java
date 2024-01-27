@@ -1,4 +1,4 @@
-package strvr.recursion;
+package ptrn.subsets;
 
 import java.util.ArrayList;
 import java.util.List;

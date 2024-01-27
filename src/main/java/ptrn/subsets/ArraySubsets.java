@@ -16,6 +16,10 @@ public class ArraySubsets {
         return subsetsIterative(nums);
     }
 
+    /**
+     * Note that this solution, like other solutions below
+     * won't directly work when subset could have duplicates.
+     */
     private List<List<Integer>> subsetsIterative(int[] nums) {
         /**
          An array of size n, consisting of distinct elements will have

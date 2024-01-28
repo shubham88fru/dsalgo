@@ -1,9 +1,10 @@
-package swd.recursionbacktracking;
+package ptrn.subsets;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //@link - https://leetcode.com/problems/generate-parentheses/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5264554243391488
 public class GenerateParentheses {
     public List<String> generateParenthesis(int n) {
         return generateAllBalancedParenthesis(n, "", 0, 0);

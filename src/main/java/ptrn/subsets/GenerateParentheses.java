@@ -7,7 +7,33 @@ import java.util.List;
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5264554243391488
 public class GenerateParentheses {
     public List<String> generateParenthesis(int n) {
-        return generateAllBalancedParenthesis(n, "", 0, 0);
+        /* SWD Soln */
+        // return generateAllBalancedParenthesis(n, "", 0, 0);
+
+        /* Edctv Soln */
+        List<String> ans = new ArrayList<>();
+        generateEdctv(n, new ArrayList<>(), 0, 0, ans);
+        return ans;
+    }
+
+    //edctv soln
+    private void generateEdctv(int n, ArrayList<Character> seq, int openCnt, int closeCnt, List<String> ans) {
+        if (openCnt == closeCnt && openCnt == n) {
+            String outputstr = seq.toString();
+            ans.add(outputstr.substring(1, outputstr.length()-1).replace(", ", ""));
+        }
+
+        if (openCnt < n) {
+            seq.add('(');
+            generateEdctv(n, seq, openCnt+1, closeCnt, ans);
+            seq.remove(seq.size()-1);
+        }
+
+        if (closeCnt < openCnt) {
+            seq.add(')');
+            generateEdctv(n, seq, openCnt, closeCnt+1, ans);
+            seq.remove(seq.size()-1);
+        }
     }
 
     private List<String> generateAllBalancedParenthesis(int n, String expression, int openCount, int closeCount) {
@@ -29,13 +55,13 @@ public class GenerateParentheses {
         //these `if` checks ensure that we only add `(` or `)`
         //if they are legal.
 
-        //can add `(` only if we've not exhausted them alredy.
+        //can add `(` only if we've not exhausted them already.
         if (openCount < n)
             open = generateAllBalancedParenthesis(n, expression+"(", openCount+1, closeCount);
 
-        //in a balanced expression, at at index in the expression,
+        //in a balanced expression, at index in the expression,
         //no. of closed parens will be less or equal to open parens.
-        //therefore, we can add a close paren only if we have atleast one
+        //therefore, we can add a close paren only if we have at least one
         //open paren to balance it.
         if (closeCount < openCount)
             close = generateAllBalancedParenthesis(n, expression+")", openCount, closeCount+1);

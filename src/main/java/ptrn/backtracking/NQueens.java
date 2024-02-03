@@ -1,12 +1,14 @@
-package strvr.recursionandbacktracking;
+package ptrn.backtracking;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //@link - https://leetcode.com/problems/n-queens/solutions/
 //@strvr - https://takeuforward.org/data-structure/n-queen-problem-return-all-distinct-solutions-to-the-n-queens-puzzle/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5452005473779712
 public class NQueens {
     public List<List<String>> solveNQueens(int n) {
+        //initialize a board with dots.
         char[][] board = new char[n][n];
         for (int i = 0; i<n; i++) {
             for (int j=0; j<n; j++) {
@@ -18,6 +20,7 @@ public class NQueens {
 
     private List<List<String>> placeQueens(char[][] board, int i, int size) {
 
+        //we have passed the last row. Means we have a valid arrangement.
         if (i == size) {
             List<String> allLevelsAsStr = new ArrayList<>();
             List<List<String>> ans = new ArrayList<List<String>>();
@@ -32,15 +35,18 @@ public class NQueens {
 
         List<List<String>> allMoves = new ArrayList<>();
         for (int col = 0; col < size; col++) {
+            //if position is valid..
             if (isValidMove(board, i, col, size)) {
+                //place the queen.
                 board[i][col] = 'Q';
+                //and check further from this state.
                 List<List<String>> listOfMoves = placeQueens(board, i+1, size);
 
                 if (listOfMoves.size() != 0) {
-                    //allMoves = new ArrayList<>();
                     allMoves.addAll(listOfMoves);
                 }
 
+                //the backtrack.
                 board[i][col] = '.';
             }
         }

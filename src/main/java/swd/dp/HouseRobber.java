@@ -13,7 +13,6 @@ public class HouseRobber {
     private int maxRob(int currIndex, int[] nums, Map<Integer, Integer> memo) {
 
         if (currIndex>=nums.length) return 0;
-        if (currIndex == nums.length) return nums[currIndex];
 
         int key = currIndex;
         if (memo.containsKey(key)) return memo.get(key);

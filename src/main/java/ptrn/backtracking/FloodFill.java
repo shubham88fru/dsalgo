@@ -1,4 +1,4 @@
-package swd.graphs;
+package ptrn.backtracking;
 
 //@link - https://leetcode.com/problems/flood-fill/description/
 public class FloodFill {
@@ -18,6 +18,8 @@ public class FloodFill {
         //1) Out of bounds
         //2) if target cell already of new color.
         //3) if target cell not of the same of color as that of the starting index.
+        //Since we are changing the og matrix directly, there's no need to keep a separate
+        //visited matrix.
         if (i < 0 || i >= m || j < 0 || j >= n || image[i][j] == color || image[i][j] != origcolor) return;
 
         image[i][j] = color;
@@ -25,24 +27,17 @@ public class FloodFill {
         int row, col;
 
         //Each vertex is connected to up, down, left and right.
+
         //up
-        row = i-1;
-        col = j;
-        dfs(image, m, n, row, col, origcolor, color);
+        dfs(image, m, n, i-1, j, origcolor, color);
 
         //down
-        row = i+1;
-        col = j;
-        dfs(image, m, n, row, col, origcolor, color);
+        dfs(image, m, n, i+1, j, origcolor, color);
 
         //right
-        row = i;
-        col = j+1;
-        dfs(image, m, n, row, col, origcolor, color);
+        dfs(image, m, n, i, j+1, origcolor, color);
 
         //left
-        row = i;
-        col = j-1;
-        dfs(image, m, n, row, col, origcolor, color);
+        dfs(image, m, n, i, j-1, origcolor, color);
     }
 }

@@ -1,16 +1,19 @@
-package strvr.recursionandbacktracking;
+package ptrn.backtracking;
 
 //@link - https://leetcode.com/problems/sudoku-solver/description/
 //@strvr - https://takeuforward.org/data-structure/sudoku-solver/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5073145066422272
 public class SudokuSolver {
     public void solveSudoku(char[][] board) {
-        sudokuSolver(board, 0, 0, board.length);
+        // sudokuSolver1(board, 0, 0, board.length);
+        sudokuSolver2(board);
     }
 
-    private boolean sudokuSolver(char[][] board, int i, int j, int size) {
+    //1) SWD solution.
+    private boolean sudokuSolver1(char[][] board, int i, int j, int size) {
         //If row index is `size`, means we have
         //traversed the entire grid, hence we must
-        //alredy be have filled the grid by this time.
+        //already have filled the grid by this time.
         if (i == size) return true;
 
         //update the row and col index for recursive call.
@@ -28,7 +31,7 @@ public class SudokuSolver {
 
         //if element are curr grid location is not a '.', means it already
         //has a value and so, we simply move to next position and continue solving.
-        if (board[i][j] != '.') return sudokuSolver(board, nextI, nextJ, size);
+        if (board[i][j] != '.') return sudokuSolver1(board, nextI, nextJ, size);
 
         //else if curr grid element isn't '.', means we need to tryout the possible
         //values.
@@ -38,19 +41,44 @@ public class SudokuSolver {
             if (isValidMove(board, i, j, size, val)) {
                 board[i][j] = Character.forDigit(val, 10);
                 //if solved, we need not do anything futher, so return.
-                boolean solved = sudokuSolver(board, nextI, nextJ, size);
+                boolean solved = sudokuSolver1(board, nextI, nextJ, size);
                 if (solved) return true;
-                else {
-                    //otherwise, if not solved with current value, backtrack
-                    //and try next value.
-                    board[i][j] = '.';
-                }
+                //otherwise, if not solved with current value, backtrack
+                //and try next value.
+                board[i][j] = '.';
             }
         }
 
         //if we've exhausted all valued (1-9) for curren't grid position
         //and still couldn't solve, return false to caller.
         return false;
+    }
+
+    //2) Edctv soln.
+    private boolean sudokuSolver2(char[][] board) {
+        int m = board.length;
+        int n = board[0].length;
+        for (int i=0; i<m; i++) {
+            for (int j=0; j<n; j++) {
+                if (board[i][j] == '.') {
+                    for (int val = 1; val <= 9; val++) {
+                        if (isValidMove(board, i, j, board.length, val)) {
+                            board[i][j] = Character.forDigit(val, 10);
+
+                            if (sudokuSolver2(board)) return true;
+
+                            board[i][j] = '.';
+                        }
+                    }
+
+                    return false;
+                }
+            }
+        }
+
+        //if here means we reached the last cell.
+        //ans so we were able to solve the sudoku.
+        return true;
     }
 
 

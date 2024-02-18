@@ -5,7 +5,7 @@ import java.util.Map;
 
 //@link - https://leetcode.com/problems/partition-equal-subset-sum/
 //@strvr - https://takeuforward.org/data-structure/subset-sum-equal-to-target-dp-14/
-//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6621826336948224
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5035587288694784
 public class PartitionEqualSubsetSum {
 
     public boolean canPartition(int[] nums) {

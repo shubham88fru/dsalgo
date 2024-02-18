@@ -1,10 +1,11 @@
-package strvr.dp2;
+package ptrn.dp;
 
 import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/partition-equal-subset-sum/
 //@strvr - https://takeuforward.org/data-structure/subset-sum-equal-to-target-dp-14/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6621826336948224
 public class PartitionEqualSubsetSum {
 
     public boolean canPartition(int[] nums) {
@@ -13,8 +14,10 @@ public class PartitionEqualSubsetSum {
         if (totalSum%2!=0) return false;
 
         return hasASubsetForWhichSumIsHalfTheSumOfEntireArray(nums, 0, totalSum/2, new HashMap<String, Boolean>());
+        //return partition(nums, 0, 0, total, new HashMap<>());
     }
 
+    //1) SWD solution
     private boolean hasASubsetForWhichSumIsHalfTheSumOfEntireArray(int[] nums, int currIndex, int targetSum, Map<String, Boolean> memo) {
 
         if (targetSum == 0) return true;
@@ -39,10 +42,35 @@ public class PartitionEqualSubsetSum {
 
         if (skipCurrentItem) return true;
 
-        memo.put(key, putCurrentItemInSubset || skipCurrentItem);
-
+        memo.put(key, false);
         return memo.get(key);
     }
+
+    //2) My Soln
+    private boolean partition(int[] nums, int curr, int subsum, int total, Map<String, Boolean> cache) {
+        if (subsum == total/2) return true;
+        if (subsum > total/2) return false;
+        if (curr >= nums.length) return false;
+
+        String key = curr + "-" + subsum;
+        if (cache.containsKey(key)) return cache.get(key);
+
+        boolean pick = partition(nums, curr+1, subsum+nums[curr], total, cache);
+        if (pick) {
+            cache.put(key, true);
+            return true;
+        }
+        boolean notPick = partition(nums, curr+1, subsum, total, cache);
+        if (notPick) {
+            cache.put(key, true);
+            return true;
+        }
+
+        cache.put(key, false);
+        return false;
+    }
+
+    //3) Check edctv/strvr for tabulation/bottom-up approach
 }
 
 

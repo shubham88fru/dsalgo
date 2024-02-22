@@ -32,7 +32,7 @@ public class HouseRobberII {
         int key = currIndex ;
         if (memo.containsKey(key)) return memo.get(key);
 
-        int robCurr = robCurr = nums[currIndex] + houserobber2(nums, (currIndex+2),last, memo);
+        int robCurr = nums[currIndex] + houserobber2(nums, (currIndex+2),last, memo);
 
         int dontRobCurr = houserobber2(nums, (currIndex+1), last, memo);
 

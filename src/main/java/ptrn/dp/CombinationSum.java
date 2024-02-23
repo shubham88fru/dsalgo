@@ -1,4 +1,4 @@
-package ptrn.subsets;
+package ptrn.dp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 //@link - https://leetcode.com/problems/combination-sum/description/
 //@strvr - https://takeuforward.org/data-structure/combination-sum-1/
-//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5686413732610048
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5297091410395136
 public class CombinationSum {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
 //        return possibleCombinations(candidates, target, 0, new ArrayList<>());

@@ -22,6 +22,7 @@ public class CombinationSum {
     }
 
     private void combsum(int[] candidates, int target, int curr, List<Integer> currList, List<List<Integer>> ans) {
+        //Note: carefull - the order of these base cases matters.
         if (target < 0) return;
         if (target == 0) {
             List<Integer> sub = new ArrayList<>(currList);

@@ -10,9 +10,34 @@ import java.util.stream.Stream;
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5686413732610048
 public class CombinationSum {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        return possibleCombinations(candidates, target, 0, new ArrayList<>());
+//        return possibleCombinations(candidates, target, 0, new ArrayList<>());
+        return sol1(candidates, target);
     }
 
+    //1) My soln.
+    private List<List<Integer>> sol1(int[] candidates, int target) {
+        List<List<Integer>> ans = new ArrayList<>();
+        combsum(candidates, target, 0, new ArrayList<>(), ans);
+        return ans;
+    }
+
+    private void combsum(int[] candidates, int target, int curr, List<Integer> currList, List<List<Integer>> ans) {
+        if (target < 0) return;
+        if (target == 0) {
+            List<Integer> sub = new ArrayList<>(currList);
+            ans.add(sub);
+            return;
+        }
+
+        if (curr >= candidates.length) return;
+
+        currList.add(candidates[curr]);
+        combsum(candidates, target-candidates[curr], curr, currList, ans);
+        currList.remove(currList.size()-1);
+        combsum(candidates, target, curr+1, currList, ans);
+    }
+
+    //2) SWD soln.
     private List<List<Integer>> possibleCombinations(int[] candidates, int target, int currIndex, List<Integer> comb) {
 
         //If a valid combination found, return it.

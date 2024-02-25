@@ -1,10 +1,11 @@
-package strvr.dp;
+package ptrn.dp;
 
 import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/longest-common-subsequence/
 //@strvr - https://takeuforward.org/data-structure/longest-common-subsequence-dp-25/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5474901982707712
 public class LongestCommonSubsequence {
     //1) Bottom-up approach.
     public int longestCommonSubsequence(String s1, String s2) {
@@ -33,7 +34,7 @@ public class LongestCommonSubsequence {
 
 
 
-    //2) Top-down approach.
+    //2) Top-down approach. (SWD and Edctv soln)
     public int longestCommonSubsequence2(String s1, String s2) {
         // For a string of length `n`:
         // No. of substrings = n*(n+1)/2 (substrings don't include empty string). Neither deletion/nor order change allowed.
@@ -50,9 +51,13 @@ public class LongestCommonSubsequence {
         String key = firstStringIndex + "-" + secondStringIndex;
         if (memo.containsKey(key)) return memo.get(key);
 
+        //Not matter what, the positions where firstString and secondString
+        //are same, will certainly be part of the longest common subsequence.
         if (s1.charAt(firstStringIndex) == s2.charAt(secondStringIndex)) {
             ans = 1 + lengthOfLCS2(s1, s2, firstStringIndex+1, secondStringIndex+1, s1Length, s2Length, memo);
         } else {
+            //When the characters in the strings are diff, try exploring the possibilities by moving
+            //to next character in each string and chose the max.
             int a = lengthOfLCS2(s1, s2, firstStringIndex, secondStringIndex+1, s1Length, s2Length, memo);
             int b = lengthOfLCS2(s1, s2, firstStringIndex+1, secondStringIndex, s1Length, s2Length, memo);
             ans = Math.max(a, b);

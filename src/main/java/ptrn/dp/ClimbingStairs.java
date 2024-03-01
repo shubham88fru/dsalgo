@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/climbing-stairs/description/
-
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5240641291550720
 /*
 Dynamic programming is nothing but storing the results of a subproblem so that next time
 we encounter the same sub problem which we have solved already, we return the result of the
@@ -73,4 +73,6 @@ public class ClimbingStairs {
 
         return res;
     }
+
+    //Sol 3: check ectv for bottom-up approach.
 }

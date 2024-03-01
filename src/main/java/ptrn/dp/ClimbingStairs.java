@@ -1,4 +1,4 @@
-package swd.dp;
+package ptrn.dp;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -46,7 +46,7 @@ public class ClimbingStairs {
     }
 
 
-    //Sol 2: DP T: O(2^N), S: O(N)
+    //Sol 2: DP T: O(N), S: O(N)
     private int totalWaysDP(int currStair, int targetStair, Map<Integer, Integer> memo) {
 
         if (currStair>targetStair) return 0;
@@ -55,7 +55,7 @@ public class ClimbingStairs {
 
 
         /* STEPS FOR MEMOIZATION (DP) */
-        //STEP 1: Identity the chaning param of recursive call
+        //STEP 1: Identity the changing param of recursive call
         //        and make a key out of it.
         int currentKey = currStair;
 

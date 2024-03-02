@@ -1,0 +1,6 @@
+- Cyclic sort pattern is applicable for questions which have an array of
+size n with elements ranging from 1 to n.
+- An array of size n containing number ranging from 1 to n can be sorted using the cyclic sort approach
+int O(n).
+- Works by trying to put each element to its correct position (as per index)
+- In place and unstable sort.

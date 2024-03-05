@@ -1,5 +1,8 @@
 package ptrn.fastnslowpointers;
 
+import java.util.HashSet;
+import java.util.Set;
+
 //@link - https://leetcode.com/problems/find-the-duplicate-number/description/
 //@strvr - https://takeuforward.org/data-structure/find-the-duplicate-in-an-array-of-n1-integers/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6745247192973312
@@ -65,5 +68,24 @@ public class FindTheDuplicateNum {public int findDuplicate(int[] nums) {
     //Sort the array and then traverse the
     //array to search for val[i] that is same as val[i+1]
     //But this will distort the array.
+
+    //4) Edctv soln 2. Using cyclic sort (slightly modified).
+    //T: O(N), S: O(N)
+    private int sol4(int[] nums) {
+        Set<Integer> swapped = new HashSet<>();
+        /*********Cyclic Sort******************/
+        int i=0;
+        while (i<nums.length) {
+            //Ignore -ves, large nums, nums that arent' already correctly positioned and duplicates.
+            if (!(nums[i] >= nums.length || nums[i] == i+1 || swapped.contains(nums[i]))) {
+                swapped.add(nums[i]);
+                int temp = nums[i];
+                nums[i] = nums[temp-1];
+                nums[temp-1] = temp;
+            } else i += 1;
+        }
+        /*********Cyclic Sort******************/
+        return nums[nums.length-1];
+    }
 
 }

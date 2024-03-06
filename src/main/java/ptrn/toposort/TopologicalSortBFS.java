@@ -1,4 +1,4 @@
-package strvr.graph;
+package ptrn.toposort;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.Deque;
  concept of directional edges makes sense in directed graph only.
 
  topo sort algo:
-    step 1: Insert all nodes with indegree 0 to the bfs queue.
+    step 1: Insert all nodes with indegree 0 to the bfs queue (i.e. all the sources)
     step 2: keep removing elements from queues (add them to ans array)
             and decrease the indegrees of the removed element's neighbours.
     step 3: If in step 2 indegree of any neighbour becomes 0 then insert it also

@@ -1,0 +1,12 @@
+- The topological sort pattern is used to find valid orderings of elements that have dependencies on,
+  or priority over each other. Scheduling and grouping problems that have prerequisites or dependencies
+  generally fall under this pattern.
+
+- Topological sort is used to find a linear ordering of elements that have dependencies on or priority over each other.
+
+ - With the topological sort pattern, converting a problem to a directed graph is the first step to finding a solution.
+   The elements to consider correspond to graph vertices and the dependency relationships form the edges.
+
+ - A valid topological order exists if the graph is acyclic
+
+ - scheduling a perfect example of the topological sort pattern.

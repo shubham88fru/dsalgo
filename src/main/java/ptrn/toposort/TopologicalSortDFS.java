@@ -1,4 +1,4 @@
-package strvr.graph;
+package ptrn.toposort;
 
 import java.util.ArrayList;
 import java.util.Stack;

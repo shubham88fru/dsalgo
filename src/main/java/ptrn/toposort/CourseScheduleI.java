@@ -1,4 +1,4 @@
-package swd.graphs;
+package ptrn.toposort;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -19,12 +19,16 @@ import java.util.List;
  * */
 
 //@link - https://leetcode.com/problems/course-schedule/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6335917595033600
 public class CourseScheduleI {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         int m = prerequisites.length;
 
         //Construct graph (adjacency list representation) from the
         //prerequisites array.
+        //NOTE: That usually for the problems to be solved using
+        //the topo sort, an array of edges is given from which
+        //we have to create the adjacency list.
         List<List<Integer>> adj = getGraph(numCourses, prerequisites);
 
         /*** Kahn's algorithm ***/

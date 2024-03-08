@@ -53,6 +53,14 @@ public class CourseScheduleI {
         //i.e. wrt question, not possible to schedule courses.
         boolean[] visited = new boolean[numCourses];
         int totalVisitedVertices = bfsKahn(adj, queue, inDegrees, visited);
+        /**
+         * Note that, if topo sort is applied on a graph that has
+         * cycles, what will end up happening is there will be nodes,
+         * that will never have an indegree of 0 and so they will never
+         * get added to the queue and so, the BFS traversal will end without
+         * visiting those nodes, and so the visited count will be lesser than
+         * the total nodes in the graph.
+         */
         if (totalVisitedVertices != numCourses) {
             return false;
         }

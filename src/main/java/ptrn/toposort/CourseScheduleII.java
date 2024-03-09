@@ -1,4 +1,4 @@
-package swd.graphs;
+package ptrn.toposort;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -6,6 +6,7 @@ import java.util.Deque;
 import java.util.List;
 
 //@link - https://leetcode.com/problems/course-schedule-ii/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6696672903299072
 public class CourseScheduleII {
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         int m = prerequisites.length;

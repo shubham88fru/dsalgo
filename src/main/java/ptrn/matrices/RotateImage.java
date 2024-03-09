@@ -2,7 +2,7 @@ package ptrn.matrices;
 
 //@link - https://leetcode.com/problems/rotate-image/description/
 //@strvr - https://takeuforward.org/data-structure/rotate-image-by-90-degree/
-//@check - https://leetcode.com/problems/rotate-image/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5199127820107776
 public class RotateImage {
     public void rotate(int[][] matrix) {
         rotate90(matrix);

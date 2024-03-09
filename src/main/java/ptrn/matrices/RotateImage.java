@@ -1,7 +1,8 @@
-package strvr.arrays2;
+package ptrn.matrices;
 
 //@link - https://leetcode.com/problems/rotate-image/description/
 //@strvr - https://takeuforward.org/data-structure/rotate-image-by-90-degree/
+//@check - https://leetcode.com/problems/rotate-image/description/
 public class RotateImage {
     public void rotate(int[][] matrix) {
         rotate90(matrix);
@@ -9,6 +10,14 @@ public class RotateImage {
 
     //1) Optimal approach: T: O(N^2), S: O(1)
     private void rotate90(int[][] matrix) {
+        /**
+         * Note, as a general rule, remember that
+         * transposing a matrix and then reversing
+         * each row, effectively rotates the matrix
+         * by 90 decree in clockwise direction.
+         * How would you then rotate 90 decree in
+         * anticlockwise direction - ponder.
+         */
         //transpose the matrix
         transpose(matrix);
 
@@ -49,7 +58,9 @@ public class RotateImage {
         }
     }
 
-    //2) Brute force: T: O(N^2), S: O(N^2)
+    //2) Check edctv illustrations for a different O(N^2) approach.
+
+    //3) Brute force: T: O(N^2), S: O(N^2)
     //Take one more matrix of same dimension.
     //copy 1st row of orig matrix to last column of new matrix,
     //copy 2nd row of orig matrix to second last column of new matrix,

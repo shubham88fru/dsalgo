@@ -136,6 +136,16 @@ public class SetMatrixZeroes {
         }
     }
 
+    //4) Brute force 2.
+    //One more brute force approach which has a workaround (of -1 issue) for the
+    //above brute force approach is to use a second matrix. First, copy all the
+    //elements of first matrix to the second matrix. Then iterate the first (og)
+    //matrix and if we encounter a zero, set entire corresponding row and column in
+    //the copied matrix to zero. Once done iterating the first matrix, copy all
+    //elements of second matrix to first matrix, which will be our answer.
+    //However, ATQ, this question needs to be solved in O(1) space, so this isn't
+    //the desired approach.
+
     private void mark(int i, int j, int[][] matrix) {
         int m = matrix.length;
         int n = matrix[0].length;

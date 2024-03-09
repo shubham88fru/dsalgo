@@ -1,7 +1,8 @@
-package strvr.arrays1;
+package ptrn.matrices;
 
 //@link - https://leetcode.com/problems/set-matrix-zeroes/
 //@strvr - https://takeuforward.org/data-structure/set-matrix-zero/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5199127820107776
 public class SetMatrixZeroes {
     public void setZeroes(int[][] matrix) {
         //setZeroesBrute(matrix);
@@ -31,6 +32,18 @@ public class SetMatrixZeroes {
                 }
             }
         }
+
+        /**
+         * Note that, even though at this point, we know
+         * the values of matrix[0][0] and col0HasAZero, we
+         * still won't update the first row and first col
+         * with zeros (if repective vals are zeros). That is
+         * so because, the values in first row and col are used
+         * for lookup whilst updating the rest of matrix. If
+         * we set zeros in first row and col right away, entire
+         * matrix will end up being zero. So, we wait to update
+         * the first row and col with zeros (if needed) till the end.
+         */
 
         //start iterating from row 1 and col 1
         //NOTE: row 0 and col 0 are now special.

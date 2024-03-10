@@ -6,6 +6,7 @@ import java.util.List;
 //@link - https://leetcode.com/problems/spiral-matrix/description/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6292043317641216
 public class SpiralMatrix {
+    //1) My soln. Edctv soln is diff.
     public List<Integer> spiralOrder(int[][] matrix) {
         int m = matrix.length;
         int n = matrix[0].length;

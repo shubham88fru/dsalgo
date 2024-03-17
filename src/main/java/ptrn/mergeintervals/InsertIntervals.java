@@ -13,6 +13,15 @@ public class InsertIntervals {
 
     //1) Optimal solution
     private int[][] insertInterval(int[][] intervals, int[] newInterval) {
+        /**
+         * Note that, in general, for merge interval pattern to work,
+         * we need to ensure two things -
+         * 1) The og intervals array must be sorted (if not, then sort yourself.)
+         * 2) The og intervals array must be non overlapping itself.
+         *
+         * Only when these conditions are met, can we proceed with the rest of
+         * merge intervals algorithm.
+         */
         //For this question, no need to sort, since it is ensured
         //that the intervals arrays is sorted in ascending order.
 

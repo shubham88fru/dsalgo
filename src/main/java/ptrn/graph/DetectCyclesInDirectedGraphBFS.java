@@ -1,4 +1,4 @@
-package strvr.graph;
+package ptrn.graph;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -25,6 +25,7 @@ import java.util.Deque;
 
 //@link - https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
 //@strvr - https://www.youtube.com/watch?v=iTBaI90lpDQ&ab_channel=takeUforward
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5758360890376192
 public class DetectCyclesInDirectedGraphBFS {
     /*** Kahn's algorithm ***/
     public boolean isCyclic(int V, ArrayList<ArrayList<Integer>> adj) {

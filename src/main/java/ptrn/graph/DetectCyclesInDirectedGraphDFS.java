@@ -1,4 +1,4 @@
-package strvr.graph;
+package ptrn.graph;
 
 import java.util.ArrayList;
 import java.util.*;
@@ -21,6 +21,8 @@ import java.util.*;
 
 //@link - https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
 //@strvr - https://www.youtube.com/watch?v=uzVUw90ZFIg&ab_channel=takeUforward
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5758360890376192
+
 public class DetectCyclesInDirectedGraphDFS {
     //This is some nasty code, which not even swd was confident about.
     //check day 4 video on graphs if need refresher.

@@ -1,9 +1,11 @@
-package strvr.graph;
+package ptrn.graph;
 
 import java.util.*;
 
 //@link - https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1
 //@strvr - https://www.youtube.com/watch?v=BPlrALf1LDU&ab_channel=takeUforward
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5758360890376192
+
 public class DetectCyclesInUndirectedGraphBFS {
     /*
         Intuition behind detecting a cycle using bfs in a graph is that

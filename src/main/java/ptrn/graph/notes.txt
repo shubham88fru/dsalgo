@@ -1,0 +1,26 @@
+Shortest path in graph, think -
+1) Dijkstra
+2) Bellman-Ford
+3) Floyd-Warshall
+4) BFS
+
+Minimum spanning tree in graph, think -
+1) Prim's
+2) Kruskal's
+
+BFS is a good choice for finding the shortest path in an unweighted graph because
+it brings up the best possible solution at a particular vertex before moving forward.
+It visits all vertices at a given distance from the source vertex before visiting vertices farther away.
+
+DFS, on the other hand, is a good choice to find a path in a maze when you want to explore vertices
+that are far away from the source vertex before visiting vertices that are closer.
+This makes DFS a good choice for problems that require the traversal of deep branches of the graph.
+
+Prim’s algorithm finds the minimum spanning tree of a weighted graph by starting from any vertex
+and then iteratively adding the minimum-weight edge that connects a vertex in the current tree to a
+vertex outside the tree until all vertices are included in the tree.
+
+Dijkstra’s algorithm finds the shortest path between a source vertex and all other vertices in a
+weighted graph by visiting vertices in order of increasing distance from the source vertex.
+It also updates the distances to neighboring vertices and chooses the next vertex with the smallest
+distance until all vertices are visited.

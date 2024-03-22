@@ -54,6 +54,25 @@ public class ArraySubsets {
         return ((num & (1 << idx)) != 0);
     }
 
+    /**
+     *NOTE: There are 3 terms that appear frequently in array questions
+     * and are often confusing - subarray, subset and subsequence.
+     * Based on my understanding -
+     * For "subarrays", you can only
+     * have contiguous chunks of the og array i.e. can't use
+     * the pick/notpick pattern.
+     *
+     * For "subsets", you don't need to pick contiguous chunks.
+     * And order of elements doesn't matter i.e. two subsets
+     * with same elements in different order are basically the
+     * same. For subsets we can use the pick/notpick pattern.
+     *
+     * For "subsequence" also we don't need to pick contiguous
+     * chunks but relative ordering of elements matters. i.e.
+     * an element `b` appearing after the element `a` in some
+     * array, must also be after it in the subsequence.
+     * For subsequences also, we can use the pick/notpick pattern.
+     */
     private List<List<Integer>> subsets(int[] nums, List<Integer> subset, int currIdx) {
 
         //When at end of array, means we've made all choices,

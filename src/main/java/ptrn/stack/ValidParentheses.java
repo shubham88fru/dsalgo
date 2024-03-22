@@ -1,4 +1,4 @@
-package strvr.stacksandqueues;
+package ptrn.stack;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -7,6 +7,7 @@ import java.util.Map;
 
 //@link - https://leetcode.com/problems/valid-parentheses/description/
 //@strvr - https://takeuforward.org/data-structure/check-for-balanced-parentheses/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5869219871981568
 public class ValidParentheses {
     private static final Map<Character, Character> pairs;
 

@@ -1,11 +1,21 @@
-package swd.graphs;
+package ptrn.graph;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
 //@link - https://leetcode.com/problems/network-delay-time/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5166651391344640
 public class NetworkDelayTime {
+    /**
+     * Note that Dijkstra's algo gives us the min cost/distance
+     * to each node of a graph from a given source node.
+     * And so, the most straightforward thing to do in this question
+     * will be to calculate the distances of each node of graph from
+     * the source node and then find the max distance amongst that,
+     * coz the minimum time will be the time taken to reach
+     * the farthest node.
+     */
     public int networkDelayTime(int[][] times, int n, int k) {
         //Get graph from times array.
         ArrayList<ArrayList<ArrayList<Integer>>> weightedGraph
@@ -17,6 +27,10 @@ public class NetworkDelayTime {
         //If any vertex not visited from vertex k, return -1
         //else minimum time will be the max time needed to visit
         //any node.
+        //NOTE: This is an extra loop that we have to do
+        //to find the max cost. Check edctv soln,
+        //this extra loop can be removed with a slight
+        //modification during the BFS.
         int max = 0;
         for (int i=1; i<costs.length; i++) {
             if (costs[i] < 0) return -1;

@@ -23,7 +23,7 @@ public class ImplementingDijkstraAlgorithm {
     int[] dijkstra(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj, int S) {
         //Representation of a weighted graph
         //eg adj = [[[1, 1], [2, 6]], [[2, 3], [0, 1]], [[1, 3], [0, 6]]]
-        //Means - Vertex 0 is connected to vertex 1 with weight of 1 and to Veterx 2 with weight of 6.
+        //Means - Vertex 0 is connected to vertex 1 with weight of 1 and to Vertex 2 with weight of 6.
         //and so on so forth for other vertices.
         return dijsktraFromGivenNode(V, adj, S);
     }

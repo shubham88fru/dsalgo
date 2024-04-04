@@ -34,7 +34,7 @@ public class GraphValidTree {
         List<List<Integer>> graph = getGraph(n, edges);
         Set<Integer> visited = new HashSet<>();
         dfs(graph, 0, visited);
-        return (visited.size() == n);
+        return (visited.size() == n); // if not able to visit all the nodes, means graph is diconnected.
     }
 
     private void dfs(List<List<Integer>> graph, int curr, Set<Integer> visited){

@@ -1,8 +1,7 @@
-package swd.trees;
-
-
+package ptrn.trees.dfs;
 
 //@link - https://leetcode.com/problems/path-sum/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6589436294070272
 public class PathSum {
     public boolean hasPathSum(TreeNode root, int targetSum) {
         return dfsForSum(root, targetSum);
@@ -24,5 +23,24 @@ public class PathSum {
         boolean rightAns = dfsForSum(root.right, targetSum);
 
         return (leftAns || rightAns);
+    }
+}
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode() {
+    }
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
     }
 }

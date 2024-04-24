@@ -1,7 +1,8 @@
-package strvr.bst;
+package ptrn.trees.dfs;
 
 //@link - https://leetcode.com/problems/validate-binary-search-tree/
 //@strvr - https://www.youtube.com/watch?v=f-sj7I5oXEI&ab_channel=takeUforward
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6589436294070272
 public class ValidateBST {
     public boolean isValidBST(TreeNode root) {
         //using long min and max instead of int min and max.

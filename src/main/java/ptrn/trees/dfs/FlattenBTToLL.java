@@ -5,6 +5,7 @@ import java.util.Deque;
 
 //@link - https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
 //@strvr - https://takeuforward.org/data-structure/flatten-binary-tree-to-linked-list/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6070771161235456
 public class FlattenBTToLL {
     TreeNode prev = null;
     public void flatten(TreeNode root) {

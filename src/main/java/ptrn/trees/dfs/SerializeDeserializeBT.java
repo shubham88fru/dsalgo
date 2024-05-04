@@ -1,11 +1,12 @@
-package strvr.binarytree3;
+package ptrn.trees.dfs;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Optional;
+import java.util.*;
 
 //@link - https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
 //@strvr - https://takeuforward.org/data-structure/serialize-and-deserialize-a-binary-tree/
+//@link - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4656843298439168
+
+//1) Strvr soln - using BFS
 public class SerializeDeserializeBT {
     // Encodes a tree to a single string.
     /*
@@ -80,5 +81,68 @@ public class SerializeDeserializeBT {
         }
 
         return root;
+    }
+}
+
+//2) Edctv soln - using Preorder DFS soln.
+class SerializeDeserialize {
+    // Initializing our marker as the max possible int value
+    private static final String MARKER = "M";
+    private static int m = 1;
+
+    private static void serializeRec(EdctvTreeNode<Integer> node, List<String> stream) {
+        if (node == null) {
+            String s = Integer.toString(m);
+            stream.add(MARKER + s);
+            m = m + 1;
+            return;
+        }
+
+        stream.add(String.valueOf(node.data));
+
+        serializeRec(node.left, stream);
+        serializeRec(node.right, stream);
+    }
+
+    // Function to serialize tree into a list.
+    public static List<String> serialize(EdctvTreeNode<Integer> root) {
+        List<String> stream = new ArrayList<>();
+        serializeRec(root, stream);
+        return stream;
+    }
+
+    public static EdctvTreeNode<Integer> deserializeHelper(List<String> stream) {
+        String val = stream.remove(stream.size() - 1);
+
+        if (val.charAt(0) == MARKER.charAt(0)) {
+            return null;
+        }
+
+        EdctvTreeNode<Integer> node = new EdctvTreeNode<Integer>(Integer.parseInt(val));
+
+        node.left = deserializeHelper(stream);
+        node.right = deserializeHelper(stream);
+
+        return node;
+    }
+
+    // Function to deserialize list into a binary tree.
+    public static EdctvTreeNode<Integer> deserialize(List<String> stream) {
+        Collections.reverse(stream);
+        EdctvTreeNode<Integer> node = deserializeHelper(stream);
+        return node;
+    }
+}
+
+
+class EdctvTreeNode<T> {
+    T data;
+    EdctvTreeNode<T> left;
+    EdctvTreeNode<T> right;
+
+    EdctvTreeNode(T data) {
+        this.data = data;
+        this.left = null;
+        this.right = null;
     }
 }

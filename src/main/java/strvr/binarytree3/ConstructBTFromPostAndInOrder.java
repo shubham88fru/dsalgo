@@ -1,7 +1,5 @@
 package strvr.binarytree3;
 
-import ptrn.trees.dfs.TreeNode;
-
 import java.util.HashMap;
 import java.util.Map;
 

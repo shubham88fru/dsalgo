@@ -1,24 +1,29 @@
-package strvr.binarytree3;
-
-import ptrn.trees.dfs.TreeNode;
+package ptrn.trees.dfs;
 
 import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/
 //@strvr - https://takeuforward.org/data-structure/construct-a-binary-tree-from-inorder-and-preorder-traversal/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5736235307630592
 public class ConstructBTFromPreAndInOrder {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         //Map for looking up current preorder array's index
         //in inorder array.
+        //Idea is to use preorder traversal to determine the root,
+        //and inorder traversal to determine the left and right subtrees
+        //of that node.
         Map<Integer, Integer> indexMap = populateIndexMap(inorder);
 
         //keep track of pre order array index.
         int[] preorderIndex = {0};
 
-        return treeFromPreAndIn(preorder, inorder, preorderIndex, 0, inorder.length - 1, indexMap);
+        // return treeFromPreAndIn(preorder, inorder, preorderIndex, 0, inorder.length-1, indexMap);
+        return treeFromPreAndIn2(preorder, preorderIndex, 0, inorder.length-1, indexMap);
     }
 
+
+    //1) SWD solution.
     private TreeNode treeFromPreAndIn(int[] preorder, int[] inorder, int[] preorderArrayCurrIndex,
                                       int inorderArrayStartIndex, int inorderArrayEndIndex,
                                       Map<Integer, Integer> indexMap) {
@@ -53,6 +58,20 @@ public class ConstructBTFromPreAndInOrder {
 
         //TreeNode = currNode, left and right.
         return new TreeNode(currNode, left, right);
+    }
+
+    //2) My/Edctv soln
+    private TreeNode treeFromPreAndIn2(int[] preorder, int[] currIdx,
+                                       int start, int end, Map<Integer, Integer> indexMap) {
+        if (currIdx[0] >= preorder.length) return null;
+        if (start > end) return null;
+
+        TreeNode node = new TreeNode(preorder[currIdx[0]]);
+        currIdx[0] += 1;
+        node.left = treeFromPreAndIn2(preorder, currIdx, start, indexMap.get(node.val)-1, indexMap);
+        node.right = treeFromPreAndIn2(preorder, currIdx, indexMap.get(node.val)+1, end, indexMap);
+        return node;
+
     }
 
 

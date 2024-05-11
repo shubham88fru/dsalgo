@@ -1,14 +1,13 @@
 package strvr.binarytree2;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 //@link - https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/
 //@strvr - https://takeuforward.org/data-structure/lowest-common-ancestor-for-two-given-nodes/
 public class LowestCommonAncestorInBT {
-    /*** My Soln - Works, but crappy ***/
+
+    //1) My sol1 (works but crappy)
+    /*****************************************************************************/
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         Map<TreeNode, TreeNode> parentMap = getParentsMap(root);
         Map<TreeNode, Integer> pmap = getDistanceFromAncestors(p, parentMap);
@@ -77,8 +76,55 @@ public class LowestCommonAncestorInBT {
 
         return map;
     }
+    /*****************************************************************************/
 
-    /*** SWD Soln ***/
+    //2) My sol 2 (kinda brute forceish)
+    /*****************************************************************************/
+    public TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q) {
+        List<TreeNode> ppath = new ArrayList<>();
+        List<TreeNode> qpath = new ArrayList<>();
+
+        //run two dfs for each nodes and get paths to each
+        //node in a list.
+        dfs(root, p, new ArrayList<>(), ppath);
+        dfs(root, q, new ArrayList<>(), qpath);
+
+        //take the paths and find the lowest common value.
+        return lowestCommon(ppath, qpath);
+    }
+
+    private void dfs(TreeNode root, TreeNode node, List<TreeNode> curr, List<TreeNode> path) {
+        if (root == null) return ;
+        curr.add(root);
+        if (root.val == node.val) {
+            for (TreeNode n: curr) {
+                path.add(n);
+            }
+        }
+
+
+        dfs(root.left, node, curr, path);
+        dfs(root.right, node, curr, path);
+        curr.remove(curr.size()-1);
+    }
+
+    private TreeNode lowestCommon(List<TreeNode> ppath, List<TreeNode> qpath) {
+        List<TreeNode> smaller = ppath.size() < qpath.size() ? ppath: qpath;
+        List<TreeNode> larger = ppath.size() >= qpath.size() ? ppath: qpath;
+
+        int s = smaller.size()-1;
+        while (s >= 0) {
+            if (larger.contains(smaller.get(s))) return smaller.get(s);
+            s -= 1;
+        }
+
+        return null;
+
+    }
+    /*****************************************************************************/
+
+    //3) SWD's soln
+    /*****************************************************************************/
     public TreeNode lowestCommonAncestorSWD(TreeNode root, TreeNode p, TreeNode q) {
         return searchInSubTree(root, p, q);
     }
@@ -103,6 +149,7 @@ public class LowestCommonAncestorInBT {
 
         return null;
     }
+    /*****************************************************************************/
 }
 
 

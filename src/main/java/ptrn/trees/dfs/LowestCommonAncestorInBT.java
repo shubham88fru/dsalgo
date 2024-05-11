@@ -4,6 +4,7 @@ import java.util.*;
 
 //@link - https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/
 //@strvr - https://takeuforward.org/data-structure/lowest-common-ancestor-for-two-given-nodes/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6256098820227072
 public class LowestCommonAncestorInBT {
 
     //3) SWD's soln

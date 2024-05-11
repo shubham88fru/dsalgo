@@ -1,4 +1,4 @@
-package strvr.binarytree2;
+package ptrn.trees.dfs;
 
 import java.util.*;
 

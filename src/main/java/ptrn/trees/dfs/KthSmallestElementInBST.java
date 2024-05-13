@@ -1,9 +1,12 @@
-package strvr.bst2;
+package ptrn.trees.dfs;
 
 //@link - https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/
 //@strvr - https://takeuforward.org/data-structure/kth-largest-smallest-element-in-binary-search-tree/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5283102567694336
 //TODO: modify the code to be similar to inorder successor.
 public class KthSmallestElementInBST {
+
+    //1. SWD soln.
     public int kthSmallest(TreeNode root, int k) {
         int[] karr = {k};
         return findKthSmallest(root, karr);
@@ -34,23 +37,22 @@ public class KthSmallestElementInBST {
         int right = findKthSmallest(root.right, karr);
         return right;
     }
-}
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
+    //2. My soln (and edctv soln)
+    //Using the fact that inorder traversal of a bst is sorted.
+    public int kthSmallest2(TreeNode root, int k) {
+        int[] smallest = {0};
+        int[] kay = {k};
+        dfs(root, kay, smallest);
+        return smallest[0];
     }
 
-    TreeNode(int val) {
-        this.val = val;
-    }
+    private void dfs(TreeNode root, int[] k, int[] smallest) {
+        if (root == null) return ;
 
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
+        dfs(root.left, k, smallest);
+        k[0] -= 1;
+        if (k[0] == 0) smallest[0] = root.val;
+        dfs(root.right,k, smallest);
     }
 }

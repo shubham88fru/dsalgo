@@ -1,10 +1,11 @@
-package strvr.binarytree2;
+package ptrn.trees.dfs;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 
 //@link - https://leetcode.com/problems/maximum-depth-of-binary-tree/description/
 //@strvr - https://takeuforward.org/data-structure/maximum-depth-of-a-binary-tree/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5552999633256448
 public class HeightOfBT {
     public int maxDepth(TreeNode root) {
         //Max depth of BT is nothing but its height.

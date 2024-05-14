@@ -1,4 +1,4 @@
-package swd.trees;
+package ptrn.trees.bfs;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -6,7 +6,8 @@ import java.util.Deque;
 import java.util.List;
 
 //@link - https://leetcode.com/problems/binary-tree-level-order-traversal/description/
-public class BreadthFirstTraversalOfBTII {
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4874740880900096
+public class BinaryTreeLevelOrderTraversal {
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> bfsTraversal = new ArrayList<>();
 

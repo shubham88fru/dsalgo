@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.*;
 
+//@check - https://leetcode.com/problems/minimum-cost-to-hire-k-workers/description/
 public class MinimumCostToHireKWorkers {
     //Couldn't understand completely.
     //refer -

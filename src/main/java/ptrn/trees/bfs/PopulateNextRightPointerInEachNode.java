@@ -1,15 +1,35 @@
-package swd.trees;
+package ptrn.trees.bfs;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 
 //@link - https://leetcode.com/problems/populating-next-right-pointers-in-each-node/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5299879560871936
 public class PopulateNextRightPointerInEachNode {
     public LCNode connect(LCNode root) {
-        bfs(root);
+        //bfs(root);
+        optimal(root);
         return root;
     }
 
+    //1) Optimal soln (Edctv soln)
+    //T: O(N), S: O(1)
+    private void optimal(LCNode root) {
+        if (root == null) return;
+        LCNode leftMost = root;
+        while (leftMost.left != null) {
+            LCNode curr = leftMost;
+            while (curr != null) {
+                curr.left.next = curr.right;
+                if (curr.next != null)
+                    curr.right.next = curr.next.left;
+                curr = curr.next;
+            }
+            leftMost = leftMost.left;
+        }
+    }
+
+    //2) Better soln (not optimal) - Using standard BFS.
     private void bfs(LCNode root) {
         if (root == null) return;
 

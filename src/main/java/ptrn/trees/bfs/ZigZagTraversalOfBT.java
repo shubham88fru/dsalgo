@@ -11,7 +11,7 @@ public class ZigZagTraversalOfBT {
         return traverseZigZagOptimal(root);
     }
 
-    //1) Optimal - using a deque (not just as a simple queue).
+    //1) Optimal (Edctv soln) - using a deque (not just as a simple queue).
     //Alternate between the FIFO and LIFO behaviors at each level.
     private List<List<Integer>> traverseZigZagOptimal(TreeNode root) {
         List<List<Integer>> ans = new ArrayList<>();

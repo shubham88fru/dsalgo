@@ -3,29 +3,29 @@ package lc_challenges;
 //@link - https://leetcode.com/problems/delete-leaves-with-a-given-value/
 public class DeleteLeavesWithGivenValue {
     public TreeNode removeLeafNodes(TreeNode root, int target) {
-        PairData p =  dfs(root, target);
+        Pair p =  dfs(root, target);
         if (p.delete) return null;
         return p.node;
     }
 
-    private PairData dfs(TreeNode root, int target) {
-        if (root == null) return new PairData(null, true);
-        if (root.left == null && root.right == null && root.val == target) return new PairData(root, true);
-        PairData left = dfs(root.left, target);
-        PairData right = dfs(root.right, target);
+    private Pair dfs(TreeNode root, int target) {
+        if (root == null) return new Pair(null, true);
+        if (root.left == null && root.right == null && root.val == target) return new Pair(root, true);
+        Pair left = dfs(root.left, target);
+        Pair right = dfs(root.right, target);
 
         if (left.delete) root.left = null;
         if (right.delete) root.right = null;
 
-        return new PairData(root, left.delete && right.delete && root.val == target);
+        return new Pair(root, left.delete && right.delete && root.val == target);
     }
 }
 
 
-class PairData {
+class Pair {
     TreeNode node;
     boolean delete;
-    public PairData(TreeNode node, boolean delete) {
+    public Pair(TreeNode node, boolean delete) {
         this.node = node;
         this.delete = delete;
     }

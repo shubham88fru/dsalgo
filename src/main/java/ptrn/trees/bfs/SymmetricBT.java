@@ -47,8 +47,8 @@ public class SymmetricBT {
         while (!q.isEmpty()) {
             Optional<TreeNode> leftO = q.removeFirst();
             Optional<TreeNode> rightO = q.removeFirst();
-            TreeNode left = leftO.isPresent() ? leftO.get() : null;
-            TreeNode right = rightO.isPresent() ? rightO.get(): null;
+            TreeNode left = leftO.orElse(null);
+            TreeNode right = rightO.orElse(null);
 
             if (left == null && right == null) continue;
             if (left == null || right == null) return false; //asymmetric.

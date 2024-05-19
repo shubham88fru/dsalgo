@@ -1,4 +1,4 @@
-package lc_challenges;
+package lc_potd;
 
 //@link - https://leetcode.com/problems/delete-leaves-with-a-given-value/
 public class DeleteLeavesWithGivenValue {

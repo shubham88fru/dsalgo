@@ -1,4 +1,4 @@
-package lc_challenges;
+package lc_potd;
 
 //@link - https://leetcode.com/problems/path-with-maximum-gold/
 public class PathWithMaximumGold {

@@ -1,4 +1,4 @@
-package lc_challenges;
+package lc_potd;
 
 //@link - https://leetcode.com/problems/score-after-flipping-matrix/
 //@check - https://www.youtube.com/watch?v=1c5HnSKNABA&ab_channel=AryanMittal

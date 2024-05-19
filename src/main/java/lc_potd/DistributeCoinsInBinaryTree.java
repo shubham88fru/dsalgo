@@ -1,4 +1,4 @@
-package lc_challenges;
+package lc_potd;
 
 //@link - https://leetcode.com/problems/distribute-coins-in-binary-tree/
 //@check - https://www.youtube.com/watch?v=RkVF5PdZJ1w&ab_channel=AryanMittal

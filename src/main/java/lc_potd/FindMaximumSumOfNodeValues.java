@@ -1,4 +1,4 @@
-package lc_challenges;
+package lc_potd;
 
 //@link - https://leetcode.com/problems/find-the-maximum-sum-of-node-values/
 //@check - https://www.youtube.com/watch?v=3t7y4mBJDoM&t=0s&ab_channel=AryanMittal

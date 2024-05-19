@@ -1,4 +1,4 @@
-package lc_challenges;
+package lc_potd;
 
 import java.util.ArrayList;
 import java.util.Collections;

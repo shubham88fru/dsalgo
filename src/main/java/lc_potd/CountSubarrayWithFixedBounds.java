@@ -1,4 +1,4 @@
-package lc_challenges;
+package lc_potd;
 
 //@link - https://leetcode.com/problems/count-subarrays-with-fixed-bounds/
 //@check - https://www.youtube.com/watch?v=bBrzHYu58YI&t=1771s&ab_channel=ProgrammingLivewithLarry

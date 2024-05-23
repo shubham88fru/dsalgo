@@ -1,4 +1,4 @@
-package strvr.trie;
+package ptrn.trie;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,6 +8,7 @@ import java.util.Map;
  */
 //@link - https://leetcode.com/problems/implement-trie-prefix-tree/description/
 //@strvr - https://takeuforward.org/data-structure/implement-trie-1/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6733522330189824
 class Trie {
 
     TrieNode root;
@@ -18,7 +19,7 @@ class Trie {
 
     public void insert(String word) {
         TrieNode crawler = this.root;
-        //iterate through every charachter in the string
+        //iterate through every character in the string
         for (char ch: word.toCharArray()) {
             //if curr char not child of curr node,
             //add it as a child to curr node.
@@ -27,11 +28,11 @@ class Trie {
                 crawler.children.put(ch, trieNode);
             }
 
-            //and eitherways, move to the next node in the trie.
+            //and either ways, move to the next node in the trie.
             crawler = crawler.children.get(ch);
         }
 
-        //after all words done, mark the node as
+        //after the word is done inserting, mark the node as
         //end of word node.
         crawler.isEndOfAWord = true;
     }
@@ -46,7 +47,7 @@ class Trie {
 
     private boolean searchInTrie(String word, boolean isPrefixSearch) {
         TrieNode crawler = this.root;
-        //iterate through every charachter in the string
+        //iterate through every character in the string
         for (char ch: word.toCharArray()) {
             if (!crawler.children.containsKey(ch)) return false;
 

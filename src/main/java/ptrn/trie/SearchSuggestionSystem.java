@@ -4,7 +4,7 @@ import java.util.*;
 
 public class SearchSuggestionSystem {
     private SSSTrieNode root = new SSSTrieNode();
-    private Trie trie = new Trie(root);
+    private SSSTrie trie = new SSSTrie(root);
 
     public List<List<String>> suggestedProducts(String[] products, String searchWord) {
 
@@ -27,10 +27,10 @@ public class SearchSuggestionSystem {
     }
 }
 
-class Trie {
+class SSSTrie {
     private SSSTrieNode root;
 
-    public Trie(SSSTrieNode root) {
+    public SSSTrie(SSSTrieNode root) {
         this.root = root;
     }
 

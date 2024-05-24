@@ -1,8 +1,9 @@
-package swd.trie;
+package ptrn.trie;
 
 import java.util.List;
 
 //@link - https://leetcode.com/problems/replace-words/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4900697196986368
 public class ReplaceWords {
     public String replaceWords(List<String> dictionary, String sentence) {
         TrieNodeOfAlphabets root = new TrieNodeOfAlphabets();

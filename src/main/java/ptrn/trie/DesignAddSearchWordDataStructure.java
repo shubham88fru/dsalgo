@@ -1,9 +1,10 @@
-package swd.trie;
+package ptrn.trie;
 
 import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/design-add-and-search-words-data-structure/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5002870945742848
 class DesignAddSearchWordDataStructure {
     TrieNode root;
 
@@ -70,16 +71,6 @@ class DesignAddSearchWordDataStructure {
         //otherwise, curr char is curr node's child, so simply move to next
         //char of the string and keep searching.
         return searchRecursive(word, index+1, root.children.get(currChar));
-    }
-}
-
-class TrieNode {
-    public char ch;
-    public Map<Character, TrieNode> children = new HashMap<>();
-    public boolean isEndOfAWord;
-
-    public TrieNode() {
-
     }
 }
 

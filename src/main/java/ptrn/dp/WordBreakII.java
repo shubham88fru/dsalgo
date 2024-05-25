@@ -10,23 +10,22 @@ import java.util.Set;
 public class WordBreakII {
     public List<String> wordBreak(String s, List<String> wordDict) {
         List<String> all = new ArrayList<>();
-        wb(s, new HashSet<>(wordDict), 0, all, new ArrayList<>());
+        wb(s, new HashSet<>(wordDict), all, new ArrayList<>());
         return all;
     }
 
     //1) My recursive backtracking solution.
-    private void wb(String s, Set<String> dict, int curr, List<String> all, List<String> currList) {
+    private void wb(String s, Set<String> dict, List<String> all, List<String> currList) {
         if ("".equals(s)) {
             all.add(String.join(" ", currList));
             return;
         }
 
-        //standard backtracking.
         for (int i=0; i<s.length(); i++) {
             String sub = s.substring(0, i+1);
             if (dict.contains(sub)) {
                 currList.add(sub);
-                wb(s.substring(i+1), dict, i+1, all, currList);
+                wb(s.substring(i+1), dict, all, currList);
                 currList.remove(currList.size()-1);
             }
         }

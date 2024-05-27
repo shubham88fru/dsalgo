@@ -99,7 +99,7 @@ public class WordSearchII {
 
         //Create a trie from the given words
         //and while searching for those in the board,
-        //proceed with seach only if the characters are aliging
+        //proceed with search only if the characters are aligning
         //with what we have in the trie.
         for (String word: words) {
             insertWord(root, word);
@@ -144,7 +144,7 @@ public class WordSearchII {
         //Simply return.
         if (root.children[currentChar - 'a'] == null) return;
 
-        //otherwise, move to next node in the tie and match with
+        //otherwise, move to next node in the trie and match with
         //characters at up, down, left and right of current word.
         char temp = currentChar;
         board[row][col] = '.'; //mark the current word visited so we don't visit it again.

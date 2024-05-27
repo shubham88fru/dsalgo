@@ -1,9 +1,10 @@
-package swd.graphs;
+package ptrn.trie;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //@link - https://leetcode.com/problems/word-search-ii/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5695772332130304
 public class WordSearchII {
 
     //-------------------------------------
@@ -172,14 +173,5 @@ public class WordSearchII {
         }
 
         crawler.word = word;
-    }
-}
-
-class TrieNodeOfAlphabets {
-    TrieNodeOfAlphabets[] children;
-    String word;
-
-    public TrieNodeOfAlphabets() {
-        children = new TrieNodeOfAlphabets[26];
     }
 }

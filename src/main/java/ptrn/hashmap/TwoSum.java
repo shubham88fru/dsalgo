@@ -1,9 +1,10 @@
-package strvr.arrays1;
+package ptrn.hashmap;
 
 import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/two-sum/
+//@check - https://leetcode.com/problems/two-sum/description/
 public class TwoSum {
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();

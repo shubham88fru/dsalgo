@@ -3,6 +3,8 @@ package ptrn.hashmap;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+//@link - https://leetcode.com/problems/design-hashmap/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4932634892566528
 public class DesignHashMap { }
 
 /*********************************************************************/

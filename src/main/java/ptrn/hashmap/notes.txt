@@ -1,0 +1,7 @@
+- Because different keys may hash to the same index (collision), hashmaps typically
+include a collision resolution strategy. Common methods include:
+    1. Chaining: Collision resolution strategy where each slot in the hash table
+       contains a linked list of entries that hash to the same index.
+    2. Open addressing: Collision resolution strategy where collisions are resolved
+       by probing through the hash table to find an empty slot, typically using methods
+       like linear probing or quadratic probing.

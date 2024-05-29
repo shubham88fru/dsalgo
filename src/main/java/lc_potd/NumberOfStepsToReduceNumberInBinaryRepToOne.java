@@ -4,7 +4,10 @@ package lc_potd;
 public class NumberOfStepsToReduceNumberInBinaryRepToOne {
 
     //1) My soln. Kind of basic, TC wise not very good.
-    public int numSteps(String s) {
+    //also check https://www.youtube.com/watch?v=dGXlfGI9DvQ&ab_channel=AryanMittal
+    //for a better approach.
+    //*******************************************************
+    public int numSteps1(String s) {
 
         int steps = 0;
         while (!isOne(s)) {

@@ -1,4 +1,4 @@
-package strvr.stacksandqueues;
+package ptrn.hashmap;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -7,6 +7,7 @@ import java.util.Map;
 
 //@link - https://leetcode.com/problems/next-greater-element-i/description/
 //@strvr - https://takeuforward.org/data-structure/next-greater-element-using-stack/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5054135541170176
 public class NextGreaterElementLC {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
         //get next greater for all elements in num2

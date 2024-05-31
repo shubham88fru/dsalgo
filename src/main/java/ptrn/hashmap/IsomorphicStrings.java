@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/isomorphic-strings/
-//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4910548744667136
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6036448651509760
 public class IsomorphicStrings {
     public boolean isIsomorphic(String s, String t) {
         if (s.length() != t.length()) return false;

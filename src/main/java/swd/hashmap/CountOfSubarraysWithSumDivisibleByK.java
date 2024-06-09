@@ -6,10 +6,13 @@ import java.util.Map;
 //@link - https://leetcode.com/problems/subarray-sums-divisible-by-k/description/
 public class CountOfSubarraysWithSumDivisibleByK {
     public int subarraysDivByK(int[] nums, int k) {
+        //store the ps v/s no. of times the ps has been seen so far.
         Map<Integer, Integer> map = new HashMap<>();
         int ps = 0; //To hold the prefix sum at any given index.
         int ans = 0;
-        map.put(0, 1); //sum 0 appears once at index -1. Handles few edge cases.
+        //sum 0 appears once at index -1. Handles few edge cases.
+        //Hence, 0 appears 1 times at the start.
+        map.put(0, 1);
         for (int el: nums) {
             ps += el;
             //For +ve ps, this formula is same as ps%k.

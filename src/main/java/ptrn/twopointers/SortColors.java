@@ -19,21 +19,26 @@ public class SortColors {
         -----------------------------
         Dutch National Flag algorithm
         -----------------------------
-        [0.. low-1] --> all 0s
-        [low, mid-1] --> all 1s
-        [mid, high] --> unsorted portion (mix of random 0, 1 and 2)
-        [high+1, n-1] --> all 2s
+        - [0.. low-1] --> all 0s
+        - [low, mid-1] --> all 1s
+        - [mid, high] --> unsorted portion (mix of random 0, 1 and 2)
+        - [high+1, n-1] --> all 2s
+        Based on above rules, note that, the array is sorted
+        in the range [0, mid-1] and [high+1, n-1]. All that we'd
+        need to do is sort the unsorted portion i.e. [mid, high].
+        Since array elements can only be one of 0, 1 and 2, we know
+        that a[mid] will only have 3 possible values -
 
         if (a[mid] == 0)
             //swap(a[mid], a[low])
-            //mid++, low++
+            //mid++, low++; //must have swapped 0 and 1
 
         if (a[mid] == 1)
             //mid++
 
         if (a[mid] == 2)
             //swap(a[mid], a[high])
-            //high--
+            //high-- //could have swapped 0, 2 or 1, 2. So, we can only concretely move high.
      */
     private void arrangeColorsOptimal(int[] nums) {
         int n = nums.length;
@@ -96,5 +101,11 @@ public class SortColors {
         nums[_atThat] = temp;
     }
 
-    //3) Brute force - Use a sorting algorithm (T: O(NlogN), S: O(N) in some sorting algo)
+    //3) Better soln. T: O(2N)
+    //Since it is guaranteed that the array only consists of 0, 1 and 2,
+    //we can have 3 variables to track each of 0, 1 and 2s frequency by
+    //making a pass. Once we have the frequencies, we can simply replace
+    //the indexes one by one (for 0s 1s and 2s) with the num of 0s 1s and 2s we have.
+
+    //4) Brute force - Use a sorting algorithm (T: O(NlogN), S: O(N) in some sorting algo)
 }

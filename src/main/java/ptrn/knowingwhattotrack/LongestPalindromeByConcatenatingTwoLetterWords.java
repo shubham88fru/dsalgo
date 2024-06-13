@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/longest-palindrome-by-concatenating-two-letter-words/description/
-//@check -
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4996689485889536
 public class LongestPalindromeByConcatenatingTwoLetterWords {
     //1) My soln.
     public int longestPalindrome(String[] words) {

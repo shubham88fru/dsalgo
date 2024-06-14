@@ -1,0 +1,21 @@
+- The union find pattern is used to group elements into sets based on a specified property.
+Each set is non-overlapping, that is, it contains unique elements that are not present in any other set.
+The pattern uses a disjoint data structure, such as an array, to keep track of which set each element belongs to.
+
+- Each set forms a tree data structure and has a representative element that resides at the root of the tree.
+Every element in this tree maintains a pointer to its parent. The representative's parent pointer points to itself.
+If we pick any element in a set and follow its parent pointers, we'll always reach the set representative.
+
+- The pattern is composed of two operations performed on the disjoint data structure:
+    1. find(v): Finds the representative of the set that contains v.
+    2. union(v1, v2): Merges the sets containing v1 and v2 into one.
+
+- We can improve the union find pattern through an optimization called union by rank. We maintain a rank for each
+tree. The larger the size of the tree, the greater the rank. The idea is that when merging two trees with the union
+method, we always attach a tree of a lower rank to one with a higher rank. This ensures that when two trees are
+merged, each element in this merged tree has the shortest possible path to the root. Doing this optimization brings
+down the search time complexity to O(log(n)) from O(n).
+
+- Another optimization to the union find pattern is path compression, where on each find operation on a node of a tree,
+we update the parent of that node to point directly to the root. This reduces the length of the path of that node to root,
+ensuring we don't have to travel all the intermediate nodes on future find operations.

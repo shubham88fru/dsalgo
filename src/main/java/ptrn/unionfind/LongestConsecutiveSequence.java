@@ -1,4 +1,4 @@
-package strvr.arrays4;
+package ptrn.unionfind;
 
 import java.util.*;
 import java.util.Set;
@@ -6,12 +6,15 @@ import java.util.stream.Collectors;
 
 //@link - https://leetcode.com/problems/longest-consecutive-sequence/description/
 //@strvr - https://takeuforward.org/data-structure/longest-consecutive-sequence-in-an-array/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6180939001757696
 public class LongestConsecutiveSequence {
     public int longestConsecutive(int[] nums) {
         //return longestConsecutiveBrute(nums);
         //return longestConsecutiveBetter(nums);
         return longestConsecutiveOptimal(nums);
     }
+
+    //0)Edctv has some soln using union find @check.
 
     //1) Optimal approach: T: O(3N), S: O(N)
     //using hashset

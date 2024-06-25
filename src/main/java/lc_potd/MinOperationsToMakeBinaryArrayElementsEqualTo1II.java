@@ -1,7 +1,7 @@
 package lc_potd;
 
 //@link - https://leetcode.com/problems/minimum-operations-to-make-binary-array-elements-equal-to-one-ii/description/
-//@check - //@check - https://www.youtube.com/watch?v=oe9HR-cLAHo&t=1456s&ab_channel=AryanMittal
+//@check - https://www.youtube.com/watch?v=oe9HR-cLAHo&t=1456s&ab_channel=AryanMittal
 public class MinOperationsToMakeBinaryArrayElementsEqualTo1II {
 
     //My soln.

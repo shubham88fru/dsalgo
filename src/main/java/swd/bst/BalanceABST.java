@@ -14,7 +14,7 @@ public class BalanceABST {
         traverseInorder(root, inorder);
 
         //Once we have the sorted array, use algorithm to
-        //converst sorted array to a balanced bst.
+        //convert sorted array to a balanced bst.
         return sortedListToBalancedBST(inorder, 0, inorder.size()-1);
     }
 
@@ -27,7 +27,7 @@ public class BalanceABST {
         traverseInorder(root.right, ans);
     }
 
-    //algorithm to converst a sorted array(list) to a balanced bst.
+    //algorithm to convert a sorted array(list) to a balanced bst.
     private TreeNode sortedListToBalancedBST(List<TreeNode> inorder, int startIdx, int endIdx) {
         if (startIdx > endIdx) return null;
 

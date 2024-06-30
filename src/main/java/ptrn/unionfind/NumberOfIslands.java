@@ -11,6 +11,20 @@ public class NumberOfIslands {
 
     //2. Using union find.
     //Edctv's soln is based on union find, which, as always, is hell confusing.
+    //Approach -
+
+    /**
+     To recap, the solution to this problem can be divided into the following three parts:
+
+         1. Count all occurrences of cell 1s in the grid.
+
+         2. Traverse the grid and if a cell 1 is encountered,
+         perform the union operation between the neighboring cell
+         1s to connect them into a single component.
+
+         3. Decrement count by 1 only if the current element and its
+         neighboring cell 1s aren’t already part of a connected component.
+     */
 
     //1. Using simple dfs
     private int sol1(char[][] grid) {

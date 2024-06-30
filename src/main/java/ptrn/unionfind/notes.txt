@@ -19,3 +19,5 @@ down the search time complexity to O(log(n)) from O(n).
 - Another optimization to the union find pattern is path compression, where on each find operation on a node of a tree,
 we update the parent of that node to point directly to the root. This reduces the length of the path of that node to root,
 ensuring we don't have to travel all the intermediate nodes on future find operations.
+
+- Union find is a.k.a Disjoint Set Union (DSU).

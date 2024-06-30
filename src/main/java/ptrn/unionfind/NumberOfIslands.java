@@ -1,9 +1,19 @@
-package strvr.graph;
+package ptrn.unionfind;
 
 //@link - https://leetcode.com/problems/number-of-islands/description/
 //@strvr - https://takeuforward.org/data-structure/number-of-distinct-islands/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5996925221601280
 public class NumberOfIslands {
     public int numIslands(char[][] grid) {
+         return sol1(grid); //using dfs.
+
+    }
+
+    //2. Using union find.
+    //Edctv's soln is based on union find, which, as always, is hell confusing.
+
+    //1. Using simple dfs
+    private int sol1(char[][] grid) {
         int m = grid.length;
         int n = grid[0].length;
 
@@ -19,7 +29,7 @@ public class NumberOfIslands {
                 //in the graph, run a dfs from each vertex if that vertex
                 //is not already part of an already accounted component.
                 //No. of islands will be equal to no. of disconnected components
-                if (!visited[i][j] && grid[i][j] != '0') {
+                if (visited[i][j] != true && grid[i][j] != '0') {
                     dfs(grid, m, n, i, j, visited);
                     islands += 1;
                 }

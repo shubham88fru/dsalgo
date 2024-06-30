@@ -37,6 +37,8 @@ public class RedundantConnections {
     }
 }
 
+//Template for Union find algorithm class.
+//With path compression and union by rank.
 class UnionFind {
 
     public int[] parent;
@@ -77,13 +79,9 @@ class UnionFind {
 
         // Updates the parent and rank lists otherwise
         else if (rank[p1] > rank[p2]) {
-
             parent[p2] = p1;
             rank[p1] += rank[p2];
-        }
-
-        else {
-
+        } else {
             parent[p1] = p2;
             rank[p2] += rank[p1];
         }

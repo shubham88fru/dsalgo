@@ -21,3 +21,54 @@ we update the parent of that node to point directly to the root. This reduces th
 ensuring we don't have to travel all the intermediate nodes on future find operations.
 
 - Union find is a.k.a Disjoint Set Union (DSU).
+
+- Why is DSU used?
+  Basically this Datastructure is used with graphs. This datastructure is
+  useful when we have questions like does a set of given nodes lie in the same
+  component of a graph, i.e. are they connected? When our problem is heavy with such
+  question, we can do some precalculations and form the DSU datastructure to answer such
+  connection related queries in constant time (O(1)).
+  Note that, we can always a DFS on the graph and see if all the nodes that we were looking
+  for were part of a DFS run to determine if the nodes belong to the same component. But the
+  DFS will take a O(V+E) complexity and if we have many such queries (say m), we'll have to
+  run the DFS for each query separately and thus the time complexity will become O(m*(V+E))
+  which will be of the order of n^2.
+
+- The DSU datastructure provides two main APIs:
+    1. find parent: an API to find parent of a given node in the DSU datastructure. Basically if
+        in a DSU, two nodes have the same root, means these two nodes are part of the same component
+        in a graph.
+    2. Union: this API is used to merge nodes and plug them in the right place (i.e. in the right tree)
+        in the DSU. There are two ways to do union - Union by rank and Union by size.
+
+- DSU union by rank:
+    - This algorithm has two arrays - rank and parent. both of size equal to num of nodes.
+    - Each index of rank array (assuming no optimization) gives the height of the tree below the node.
+         While each index of the parent array gives the parent of that node.
+      The rank array is initialized to all 0, indicating that to start with, each node is disjoint
+      and no node is beneath any other node.
+      The parent array is initialized to its value, indicating that each node is disjoint and they themselves
+      are their parent.
+
+      -----------
+      union(u, v) //union nodes u and v
+      -----------
+      1. Find the ultimate parent of u and v. i.e. both u and v will be part of a tree (parents array)
+         at a given time. We first find the root of the three to which u and v belong. Lets say they are pu and pv.
+      2. Find the rank of pu and pv (from the ranks array)
+      3. merge the tree whose root has a smaller rank into to other node's tree. If the ranks of both node's roots
+         are the same, we can merge any node's tree into the other - doesn't matter.
+         By merging, we mean that lets say if we have to union node u and v and u's root has a smaller rank than v's,
+         then we'll merge u's tree to v's tree. Also, if pu's rank >= pv's rank then increase the rank of pv with right value.
+
+      Note that we're not actually creating any tree here. But its just helpful to visualize things
+      (especially when it comes to the parents array) to think of a hierarchy.
+
+
+      ----------------
+      path compression
+      ----------------
+      Note that during union of two nodes, we are almost always only interested in getting the root (ultimate) parent
+      of a node. Therefore, we don't actually have to waste time and space maintaining intermediate links (which we'll only
+      use to traverse up the tree to get the root). So, in path compression, we strive to directly connect each node to the root
+      i.e. the in the parents array, instead of keeping immediate parent, we'll populate it with the root.

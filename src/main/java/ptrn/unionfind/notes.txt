@@ -23,8 +23,8 @@ ensuring we don't have to travel all the intermediate nodes on future find opera
 - Union find is a.k.a Disjoint Set Union (DSU).
 
 - Why is DSU used?
-  Basically this Datastructure is used with graphs. This datastructure is
-  useful when we have questions like does a set of given nodes lie in the same
+  Basically this Datastructure is used with graphs (or similar problems). This datastructure is
+  useful when we have questions like - does a set of given nodes lie in the same
   component of a graph, i.e. are they connected? When our problem is heavy with such
   question, we can do some precalculations and form the DSU datastructure to answer such
   connection related queries in constant time (O(1)).
@@ -54,7 +54,7 @@ ensuring we don't have to travel all the intermediate nodes on future find opera
       union(u, v) //union nodes u and v
       -----------
       1. Find the ultimate parent of u and v. i.e. both u and v will be part of a tree (parents array)
-         at a given time. We first find the root of the three to which u and v belong. Lets say they are pu and pv.
+         at a given time. We first find the root of the tree to which u and v belong. Lets say they are pu and pv.
       2. Find the rank of pu and pv (from the ranks array)
       3. merge the tree whose root has a smaller rank into to other node's tree. If the ranks of both node's roots
          are the same, we can merge any node's tree into the other - doesn't matter.

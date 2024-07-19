@@ -5,6 +5,8 @@ import java.util.List;
 
 //@link - https://leetcode.com/problems/lucky-numbers-in-a-matrix/description/
 public class LuckyNumbersInAMatrix {
+
+    //My soln. Not sure if this is optimal. Check mittal's soln on next encounter.
     public List<Integer> luckyNumbers (int[][] matrix) {
         List<Integer> ans = new ArrayList<>();
         int[] row_mins = new int[matrix.length];

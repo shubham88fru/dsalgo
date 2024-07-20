@@ -15,6 +15,16 @@ public class LongestConsecutiveSequence {
     }
 
     //0)Edctv has some soln using union find @check.
+
+    /**
+     * We initialize the Union Find data structure
+     * with each element in the array as a separate component using dictionaries.
+     * Then, we iterate through the array, evaluating for each element if
+     * its neighbor with a value of one greater is present in the Union Find data structure.
+     * If found, the two components are combined. Once all the elements have been processed,
+     * the size of the largest connected component is returned as the
+     * length of the longest consecutive sequence.
+     */
     private int longestConsecutiveDSU(int[] nums) {
         if(nums.length == 0){
             return 0;

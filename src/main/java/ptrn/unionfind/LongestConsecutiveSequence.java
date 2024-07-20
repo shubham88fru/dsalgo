@@ -15,7 +15,6 @@ public class LongestConsecutiveSequence {
     }
 
     //0)Edctv has some soln using union find @check.
-
     /**
      * We initialize the Union Find data structure
      * with each element in the array as a separate component using dictionaries.

@@ -6,8 +6,8 @@ import java.util.Deque;
 
 /*
  Topological sort is nothing but Kahn's algorithm.
- Definition: Linear order of vertices such that if there is an edge between
- u & v, u appears before v in the ordering.
+ Definition: Linear order of vertices such that if there is an edge from
+ u to v, u appears before v in the ordering.
  Topological sort is only valid in Directed acyclic graphs, because
  concept of directional edges makes sense in directed graph only.
 

@@ -1,12 +1,16 @@
 package strvr.graph2;
 
 /*
-    Dijkstra's algorithm (to find shortest paths in a graph)
+    Dijkstra's algorithm (to find the shortest paths in a graph)
     --------------------------------------------------------
     --> Only for 'positively' weighted graph.
     --> Algorithm is simply a BFS over the graph but using a Priority queue instead
         of  usual queue.
         Dijkstra = BFS - Queue + Priority Queue.
+    --> Dijkstra gives shortest path to each node from a fixes/given source node.
+        While Floyd Warshall gives, shorted path to each node from each node.
+        Hence, imagine the output of Dijkstra as being a list while the output
+        of Floyd Warshall being a List of List.
     --> For graphs that can have -ve weights, we can use:
             a) Floyd Warshall algorithm.
             b) Bellman ford algorithm.
@@ -40,7 +44,7 @@ public class ImplementingDijkstraAlgorithm {
         Arrays.fill(costs, -1);
 
         //Priority queue (instead of a usual queue) is used in implementing
-        //dijsktra. Here, the priority queue will sort the added values in
+        //dijkstra. Here, the priority queue will sort the added values in
         //natural order of the cost.
         PriorityQueue<VertexCost> pq
                 = new PriorityQueue<>((o1, o2) -> o1.cost - o2.cost);
@@ -80,6 +84,8 @@ public class ImplementingDijkstraAlgorithm {
      * see if cost of a reach a node till now plus the next edge cost is lesser than
      * whats' stored int the cost.
      *
+     * Note that with this approach we don't need the visited array.
+     *
      * TODO: think why both work and whats the diff.
      */
     private int[] dijsktraFromGivenNodeStrvr(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj, int S) {
@@ -104,12 +110,6 @@ public class ImplementingDijkstraAlgorithm {
             int currVertex = vertexAndCost.vertex;
             int currCost = vertexAndCost.cost;
 
-            //Means already visited, hence just skip it.
-            //this costs array kind of also acts like the
-            //visited array of a normal graph traversal.
-            //if (costs[currVertex] != -1) continue;
-
-            //costs[currVertex] = currCost;
             ArrayList<ArrayList<Integer>> neighboursWithCost
                     = adj.get(currVertex);
 

@@ -20,6 +20,20 @@ down the search time complexity to O(log(n)) from O(n).
 we update the parent of that node to point directly to the root. This reduces the length of the path of that node to root,
 ensuring we don't have to travel all the intermediate nodes on future find operations.
 
+- The union find pattern is designed to group elements into sets based on a specified property. The pattern uses
+a disjoint set data structure, such as an array, to keep track of which set each element belongs to.
+
+- To use the union find pattern, we create and use the UnionFind class that has two primary method:
+    1. `union(node1, node2)`: This merges the sets `node1` and `node2` into one by changing the
+    representative of `node1` to the representative of `node2`.
+    2. `find(node)`: This finds and returns the representative of the set that contains the given node. It uses
+    path compression, which speeds up the subsequent find operations by changing the parent of the visited node
+    to the representative of the subset. This reduces the length of the path of that node to the representative,
+    ensuring that we don't have to traverse all the intermediate nodes on future find operations.
+
+    Note: In terms of the tree representation of disjoint set union (DSU) data structure, a representative is
+    an element in each set that resides at the root of the tree and represents that specific set.
+
 - Union find is a.k.a Disjoint Set Union (DSU).
 
 - Why is DSU used?

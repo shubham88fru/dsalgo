@@ -1,10 +1,11 @@
-package strvr.linkedlist2;
+package ptrn.customds;
 
 import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/lru-cache/description/
 //@strvr - https://takeuforward.org/data-structure/implement-lru-cache/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4515753337552896
 public class LRUCacheUsingDLL {
     int capacity = 0;
     int size = 0;
@@ -13,14 +14,14 @@ public class LRUCacheUsingDLL {
     //in the linked list.
     Map<Integer, DLL> memo = new HashMap<>();
 
-    DLL head = new DLL(-1, -1);
-    DLL tail = new DLL(-1, -1);
+    DLL head = new DLL(-1, -1); //dummy node.
+    DLL tail = new DLL(-1, -1); //dummy node.
 
     public LRUCacheUsingDLL(int capacity) {
         this.capacity = capacity;
         this.size = 0;
 
-        //Using adoubly linked list to implement LRU cache.
+        //Using a doubly linked list to implement LRU cache.
         //Having 2 dummy nodes. Everything between
         //head and tail will be our actual list.
         //The more a node is towards head, the less
@@ -93,7 +94,7 @@ public class LRUCacheUsingDLL {
     }
 
     //Deletes a given node from DLL.
-    //When delete from list, also
+    //When deleting from list, also
     //remember to delete from map.
     private void deleteNode(DLL node) {
         if (memo.containsKey(node.key)) {

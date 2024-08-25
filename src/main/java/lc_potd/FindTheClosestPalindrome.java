@@ -9,6 +9,7 @@ public class FindTheClosestPalindrome {
     /**
      * Almost a copypasta. Didn't get most of it.
      * Mik had not uploaded a soln, so shamelessly copied from a different channel.
+     * Mik's soln - https://www.youtube.com/watch?v=TOqxzXrSAPY
      *
      */
     public String nearestPalindromic(String n) {

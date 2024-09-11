@@ -1,5 +1,7 @@
-package strvr.stacksandqueues;
+package ptrn.customds;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Stack;
 
 /*
@@ -8,6 +10,40 @@ NOTE: For an optimal approach checkout strvr
 
 //@link - https://leetcode.com/problems/min-stack/
 //@strvr - https://takeuforward.org/data-structure/implement-min-stack-o2n-and-on-space-complexity/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6445991365705728
+
+//my soln
+class MinStack2 {
+
+    Deque<Integer> stack = new ArrayDeque<>();
+    Deque<Integer> minStack = new ArrayDeque<>();
+
+    public MinStack2() {
+
+    }
+
+    public void push(int val) {
+        stack.addFirst(val);
+        if (minStack.isEmpty() || val <= minStack.peekFirst()) {
+            minStack.addFirst(val);
+        }
+    }
+
+    public void pop() {
+        int tp = stack.removeFirst();
+        if (!minStack.isEmpty() && tp == minStack.peekFirst()) minStack.removeFirst();
+    }
+
+    public int top() {
+        return stack.peekFirst();
+    }
+
+    public int getMin() {
+        return minStack.peekFirst();
+    }
+}
+
+//strvr soln.
 class MinStack {
     private final Stack<Pair> _stack;
 

@@ -46,8 +46,8 @@ public class LFUCacheUsingDLL {
 
     /**
      Add a new node into the LFU cache, as well as the doubly linked list.
-     condition 1: if LFU cache has input key, update the node value and node position in the list.
-     condition 1: if LFU cache doesn't have input key -
+     Condition 1: if LFU cache has input key, update the node value and node position in the list.
+     Condition 2: if LFU cache doesn't have input key -
      --> if LFU cache does not have enough space, remove LRU
      node  from the min frequency and add the new node.
      --> if LFU has enough space, add the new node.

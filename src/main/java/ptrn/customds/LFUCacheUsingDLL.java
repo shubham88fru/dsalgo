@@ -1,4 +1,4 @@
-package strvr.linkedlist2;
+package ptrn.customds;
 
 import java.util.HashMap;
 import java.util.Map;

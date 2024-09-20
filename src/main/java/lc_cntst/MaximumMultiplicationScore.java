@@ -11,12 +11,10 @@ public class MaximumMultiplicationScore {
         );
     }
 
+    //my soln.
     private long dp(int[] a, int[] b, int picked, int curr, Long[][] memo) {
         if (curr >= b.length) {
-            // returning  Integer.MIN_VALUE would edges cases like -
-            //a = [100000,100000,100000,100000], b=[-100000,-100000,-100000,-100000]
-            //where expected answer would be - -40000000000
-            if (picked < 4) return (long)-99999999999L;
+            if (picked < 4) return Integer.MIN_VALUE;
             return 0;
         }
 
@@ -24,7 +22,7 @@ public class MaximumMultiplicationScore {
 
         long pick = Long.MIN_VALUE;
         if (picked < 4) {
-            pick = ((long)a[picked]*(long)b[curr]) + dp(
+            pick = (long)((long)a[picked]*(long)b[curr]) + dp(
                     a, b,
                     picked+1,
                     curr+1,

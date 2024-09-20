@@ -31,7 +31,7 @@ public class FlippingAnImage {
         }
 
         //handle the middle element
-        //seperately or else it will
+        //separately or else it will
         //get flipped twice in the loop.
         if (l==r) {
             row[l] ^= 1;

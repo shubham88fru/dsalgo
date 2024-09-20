@@ -1,10 +1,9 @@
-package ptrn.bitmanipulation;
+package lc_potd;
 
 import java.util.Arrays;
 
 //@link - https://leetcode.com/problems/single-number-iii/description/
 //@check - https://www.youtube.com/watch?v=XAmaiztzDiQ&t=0s&ab_channel=AryanMittal
-//       - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4722915179495424
 public class SingleNumberIII {
     public int[] singleNumber(int[] nums) {
         // return usingSort(nums);

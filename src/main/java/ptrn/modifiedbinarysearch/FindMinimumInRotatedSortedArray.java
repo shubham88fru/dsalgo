@@ -1,6 +1,7 @@
-package swd.binarysearch;
+package ptrn.modifiedbinarysearch;
 
 //@link - https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5311116722044928
 public class FindMinimumInRotatedSortedArray {
     public int findMin(int[] nums) {
         return binarySearch(nums);

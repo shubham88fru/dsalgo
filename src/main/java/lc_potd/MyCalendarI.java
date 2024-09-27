@@ -21,6 +21,13 @@ public class MyCalendarI {
         //find an index where this interval fits.
         int i = binarySearch(start, end);
 
+        /**
+         * Below comparisons for overlap can be simplified
+         * by noting that fact that given to valid intervals -
+         * (a1, b1) and (a2, b2), they'll overlap iff and only iff
+         * ````Math.max(a1, a2) < Math.min(b1, b2)````
+         */
+
         if (i==0) {
             if ((end <= intervals.get(i)[0])) {
                 insert(i, start, end);

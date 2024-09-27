@@ -23,9 +23,13 @@ public class MyCalendarI {
 
         /**
          * Below comparisons for overlap can be simplified
-         * by noting that fact that given to valid intervals -
+         * by noting that fact that given to **valid** intervals -
          * (a1, b1) and (a2, b2), they'll overlap iff and only iff
          * ````Math.max(a1, a2) < Math.min(b1, b2)````
+         *
+         * Moreover, if we are also interested in finding the
+         * overlapped region (x, y), that can be given by
+         * `````(Math.max(a1, a2), Math.min(b1, b2)``````
          */
 
         if (i==0) {

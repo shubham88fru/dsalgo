@@ -1,10 +1,11 @@
-package strvr.stacksandqueues;
+package ptrn.stack;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 
 //@link - https://leetcode.com/problems/largest-rectangle-in-histogram/
 //@strvr - https://takeuforward.org/data-structure/area-of-largest-rectangle-in-histogram/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6479108851892224
 public class LargestRectangleInHistogram {
     public int largestRectangleArea(int[] heights) {
         //return largestRectangleAreaBrute(heights);

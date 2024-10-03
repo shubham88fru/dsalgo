@@ -22,7 +22,7 @@ public class CountOfSubarraysWithSumK {
                 ans += map.get(key);
             }
 
-            //Put current prefix sum and increase frequence.
+            //Put current prefix sum and increase frequency.
             map.put(ps, map.getOrDefault(ps, 0) + 1);
         }
         return ans;

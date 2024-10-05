@@ -1,8 +1,9 @@
-package swd.linkedlist;
+package ptrn.linkedlistreversal;
 
 import java.util.PriorityQueue;
 
 //@link - https://leetcode.com/problems/sort-list/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5565611402067968
 public class SortList {
     public ListNode sortList(ListNode head) {
         return revise(head);

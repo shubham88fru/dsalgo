@@ -1,4 +1,4 @@
-package strvr.arrays4;
+package ptrn.hashmap;
 
 import java.util.*;
 

@@ -10,6 +10,10 @@ public class FourSum {
         return fourSumOptimal(nums, target);
     }
 
+    //0) I think this problem can be done using
+    //recursion/backtracking also. But not sure
+    //if that'll give TLE. Maybe try on next encounter.
+
     //1) Optimal solution: T: O(N^3), S: O(1)
     //using 4 pointers
     private List<List<Integer>> fourSumOptimal(int[] nums, int target) {

@@ -1,7 +1,7 @@
 package ptrn.bitmanipulation;
 
 //@link - https://leetcode.com/problems/sum-of-two-integers/
-//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6263849939632128
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6491145648734208
 public class SumOfTwoIntegers {
     public int getSum(int a, int b) {
         // return lol(a, b);

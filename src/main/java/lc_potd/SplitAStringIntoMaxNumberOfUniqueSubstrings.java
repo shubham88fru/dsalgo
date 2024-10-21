@@ -9,6 +9,12 @@ public class SplitAStringIntoMaxNumberOfUniqueSubstrings {
         return mysol(s, new HashSet<>());
     }
 
+    /*
+        Following in my soln.
+        Mik had similar soln, but talked about a slight optimization
+        so if this question is a recurring question for some company,
+        see the optimization.
+     */
     private int mysol(String s, Set<String> memo) {
 
         int maxScore = 0;

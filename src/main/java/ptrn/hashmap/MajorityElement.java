@@ -1,10 +1,11 @@
-package strvr.arrays3;
+package ptrn.hashmap;
 
 import java.util.HashMap;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/majority-element/description/
 //@strvr - https://takeuforward.org/data-structure/find-the-majority-element-that-occurs-more-than-n-2-times/
+//       - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6607128019337216
 public class MajorityElement {
     /*
         Note: There can always be at most only

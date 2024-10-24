@@ -7,6 +7,7 @@ import java.util.List;
 
 //@link - https://leetcode.com/problems/same-tree/description/
 //@swd - https://takeuforward.org/data-structure/check-if-two-trees-are-identical/
+//     - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4996069764366336
 public class SameTree {
     /*** My Soln - Works but poorer TC as compared to SWD
      * Also, my approach is wrong. It is not always true that

@@ -1,4 +1,4 @@
-package strvr.binarytree2;
+package ptrn.trees.dfs;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -53,6 +53,18 @@ public class SameTree {
 
         //then recursively right subtree
         preOrder(root.right, lst);
+    }
+
+    private boolean revise(TreeNode p, TreeNode q) {
+        if (p == null && q == null) return true;
+        if (p == null || q == null) return false;
+
+        if (p.val != q.val) return false;
+
+        boolean left = revise(p.left, q.left);
+        boolean right = revise(p.right, q.right);
+
+        return (left && right);
     }
 
     /*** SWD Soln ***/

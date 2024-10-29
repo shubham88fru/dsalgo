@@ -1,4 +1,4 @@
-package strvr.recursion;
+package ptrn.graph;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

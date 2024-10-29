@@ -7,8 +7,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-//@link -
-//@strvr - https://leetcode.com/problems/combination-sum-ii/description/
+//@link - https://leetcode.com/problems/combination-sum-ii/description/
+//@strvr - https://takeuforward.org/data-structure/combination-sum-ii-find-all-unique-combinations/
 public class CombinationSumII {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         /* kinda 0-1 knapsack. */

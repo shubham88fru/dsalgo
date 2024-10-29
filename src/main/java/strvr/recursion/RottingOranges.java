@@ -5,11 +5,14 @@ import java.util.Deque;
 
 //@link - https://leetcode.com/problems/rotting-oranges/description/
 //@strvr - https://takeuforward.org/data-structure/rotten-oranges-min-time-to-rot-all-oranges-bfs/
+//       - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5556416682393600
 public class RottingOranges {
     public int orangesRotting(int[][] grid) {
+        //return revise(grid);
         return bfs(grid, new boolean[grid.length][grid[0].length]);
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////
     //Note that, if at any momement the grid has rotten
     //oranges, it will start rottening the nearby oranges (if any)
     //simoultaneouly. Hence, its like going to children simoultneously (BFS)
@@ -109,6 +112,89 @@ public class RottingOranges {
     private boolean validPos(int m, int n, int i, int j) {
         return (i>=0 && i<m && j>=0 && j<n);
     }
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    private int revise(int[][] grid) {
+        int m = grid.length;
+        int n = grid[0].length;
+
+        Integer[][] visited = new Integer[m][n];
+        Deque<int[]> q = new ArrayDeque<>();
+
+        boolean hasOne = false;
+        for (int i=0; i<m; i++) {
+            for (int j=0; j<n; j++) {
+                if (grid[i][j] == 2) {
+                    q.addLast(new int[]{i, j});
+                } else if (grid[i][j] == 1) {
+                    hasOne = true;
+                }
+            }
+        }
+
+        if (q.isEmpty() && !hasOne) return 0;
+
+        int minTime = bfs(q, grid, visited);
+
+        for (int i=0; i<m; i++) {
+            for (int j=0; j<n; j++) {
+                if (grid[i][j] == 1 && visited[i][j] == null) {
+                    return -1;
+                }
+            }
+        }
+
+        return minTime;
+    }
+
+    private int bfs(Deque<int[]> q, int[][] grid, Integer[][] visited) {
+        int m = grid.length;
+        int n = grid[0].length;
+
+        int time = -1;
+        while (!q.isEmpty()) {
+            int sz = q.size();
+
+            time += 1;
+
+            while (sz > 0) {
+                int[] pair = q.removeFirst();
+
+                int i = pair[0];
+                int j = pair[1];
+
+                if (i-1 >= 0 && grid[i-1][j] == 1 && visited[i-1][j] == null) {
+                    q.addLast(new int[]{i-1, j}); //up
+                    visited[i-1][j] = -1;
+                }
+
+                if (j-1 >= 0 && grid[i][j-1] == 1 && visited[i][j-1] == null) {
+                    q.addLast(new int[]{ i, j-1}); //left
+                    visited[i][j-1] = -1;
+                }
+
+                if (i+1 < m  && grid[i+1][j] == 1 && visited[i+1][j] == null) {
+                    q.addLast(new int[]{i+1, j}); //down
+                    visited[i+1][j] = -1;
+                }
+
+                if (j+1 < n && grid[i][j+1] == 1 && visited[i][j+1] == null) {
+                    q.addLast(new int[]{i, j+1}); //right
+                    visited[i][j+1] = -1;
+                }
+
+                sz -= 1;
+            }
+
+
+        }
+
+        return time;
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////
 }
 
 class Orange {

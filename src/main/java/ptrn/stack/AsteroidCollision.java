@@ -1,12 +1,14 @@
-package swd.stack;
+package ptrn.stack;
 
 import java.util.*;
 
 //@link - https://leetcode.com/problems/asteroid-collision/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5883171821584384
 public class AsteroidCollision {
     /********* SWD SOLN ********/
     public int[] asteroidCollision(int[] asteroids) {
-        return collideAsteroids(asteroids);
+//        return collideAsteroids(asteroids);
+        return revise(asteroids);
     }
 
     private int[] collideAsteroids(int[] asteroids) {
@@ -96,5 +98,32 @@ public class AsteroidCollision {
         //eg: if prev element is -ve (it will move left) and next element is +ve (it will move right)
         //here even though signs of the elements are different, they won't collide, as they are moving away.
         return ((val1 < 0 && val2 > 0));
+    }
+
+
+    //////////////////////
+    private int[] revise(int[] asteroids) {
+        Deque<Integer> stack = new ArrayDeque<>();
+        for (int asteroid: asteroids) {
+            if (stack.isEmpty()) stack.addFirst(asteroid);
+            else if (asteroid < 0) {
+                int collide = asteroid;
+                while (!stack.isEmpty() && stack.peekFirst() > 0 && collide < 0) {
+                    int top = stack.removeFirst();
+                    if (Math.abs(collide) == top) collide = 0;
+                    else if (Math.abs(collide) < top) collide = top;
+                }
+                if (collide != 0) stack.addFirst(collide);
+            } else stack.addFirst(asteroid);
+        }
+
+        int[] ans = new int[stack.size()];
+        int i = ans.length-1;
+        while (!stack.isEmpty()) {
+            ans[i] = stack.removeFirst();
+            i -= 1;
+        }
+
+        return ans;
     }
 }

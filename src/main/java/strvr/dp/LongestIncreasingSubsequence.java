@@ -1,6 +1,7 @@
 package strvr.dp;
 
 import java.util.Arrays;
+import java.util.Map;
 
 //@link - https://leetcode.com/problems/longest-increasing-subsequence/description/
 //@strvr - https://takeuforward.org/data-structure/longest-increasing-subsequence-dp-41/
@@ -31,5 +32,26 @@ public class LongestIncreasingSubsequence {
         }
 
         return answer;
+    }
+
+    /*
+        Top-down DP. Gives TLE.
+     */
+    private int revise(int[] nums, int curr, int prev, Map<String, Integer> memo) {
+        if (curr >= nums.length) return 0;
+
+        String key = curr + "_" + prev;
+        if (memo.containsKey(key)) return memo.get(key);
+
+        int pick = 0;
+        if (nums[curr] > prev || prev == Integer.MIN_VALUE) {
+            pick = 1 + revise(nums, curr+1, nums[curr], memo);
+        }
+
+        int noPick = revise(nums, curr+1, prev, memo);
+
+        memo.put(key, Math.max(pick, noPick));
+
+        return memo.get(key);
     }
 }

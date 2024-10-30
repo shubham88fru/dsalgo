@@ -6,16 +6,11 @@ import java.util.Map;
 //@link - https://leetcode.com/problems/longest-increasing-subsequence/description/
 //@strvr - https://takeuforward.org/data-structure/longest-increasing-subsequence-dp-41/
 public class LongestIncreasingSubsequence {
-
-    /*
-        The top-down approach (recursion) gives TLE for this problem.
-        And so, this needs to be solved using the bottom-up (tabulation)
-        approach only.
-
-        Kind of nasty to understand, so rewatch videos of swd or on
-        youtube for explanation.
-     */
     public int lengthOfLIS(int[] nums) {
+        return bottomUp(nums);
+    }
+
+    private int bottomUp(int[] nums) {
         int answer = 1;
         int n = nums.length;
 
@@ -35,7 +30,13 @@ public class LongestIncreasingSubsequence {
     }
 
     /*
-        Top-down DP. Gives TLE.
+        Had to do few improvisations to have the top-down
+        approach work.
+        Imp:
+            - Use 2d array for DP/memo instead of Map.
+            - Use prevIdx in recursion instead of the prev element itself.
+              constrains for prevIdx are far smaller than the constraints
+              for prev num, so it can easily fit the dp/memo array.
      */
     private int revise(int[] nums, int curr, int prev, Map<String, Integer> memo) {
         if (curr >= nums.length) return 0;

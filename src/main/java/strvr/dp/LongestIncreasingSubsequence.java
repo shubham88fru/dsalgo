@@ -48,10 +48,10 @@ public class LongestIncreasingSubsequence {
 
         int pick = 0;
         if (prevIdx == -1 || nums[curr] > nums[prevIdx]) {
-            pick = 1 + revise(nums, curr+1, curr, memo);
+            pick = 1 + topdown(nums, curr+1, curr, memo);
         }
 
-        int noPick = revise(nums, curr+1, prevIdx, memo);
+        int noPick = topdown(nums, curr+1, prevIdx, memo);
 
         if (prevIdx != -1) memo[curr][prevIdx] = Math.max(pick, noPick);
 

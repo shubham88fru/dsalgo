@@ -7,9 +7,12 @@ import java.util.Map;
 //@strvr - https://takeuforward.org/data-structure/longest-increasing-subsequence-dp-41/
 public class LongestIncreasingSubsequence {
     public int lengthOfLIS(int[] nums) {
-        return bottomUp(nums);
+        Integer[][] memo = new Integer[2501][2501];
+        return topdown(nums, 0, -1, memo);
+//        return bottomUp(nums);
     }
 
+    //1) bottom up approach.
     private int bottomUp(int[] nums) {
         int answer = 1;
         int n = nums.length;
@@ -38,21 +41,20 @@ public class LongestIncreasingSubsequence {
               constrains for prevIdx are far smaller than the constraints
               for prev num, so it can easily fit the dp/memo array.
      */
-    private int revise(int[] nums, int curr, int prev, Map<String, Integer> memo) {
+    private int topdown(int[] nums, int curr, int prevIdx, Integer[][] memo) {
         if (curr >= nums.length) return 0;
 
-        String key = curr + "_" + prev;
-        if (memo.containsKey(key)) return memo.get(key);
+        if (prevIdx != -1 && memo[curr][prevIdx] != null) return memo[curr][prevIdx];
 
         int pick = 0;
-        if (nums[curr] > prev || prev == Integer.MIN_VALUE) {
-            pick = 1 + revise(nums, curr+1, nums[curr], memo);
+        if (prevIdx == -1 || nums[curr] > nums[prevIdx]) {
+            pick = 1 + revise(nums, curr+1, curr, memo);
         }
 
-        int noPick = revise(nums, curr+1, prev, memo);
+        int noPick = revise(nums, curr+1, prevIdx, memo);
 
-        memo.put(key, Math.max(pick, noPick));
+        if (prevIdx != -1) memo[curr][prevIdx] = Math.max(pick, noPick);
 
-        return memo.get(key);
+        return Math.max(pick, noPick);
     }
 }

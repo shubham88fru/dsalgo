@@ -1,10 +1,10 @@
-package strvr.dp;
+package ptrn.dp;
 
 import java.util.Arrays;
-import java.util.Map;
 
 //@link - https://leetcode.com/problems/longest-increasing-subsequence/description/
 //@strvr - https://takeuforward.org/data-structure/longest-increasing-subsequence-dp-41/
+//       - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6263849939632128
 public class LongestIncreasingSubsequence {
     public int lengthOfLIS(int[] nums) {
         Integer[][] memo = new Integer[2501][2501];

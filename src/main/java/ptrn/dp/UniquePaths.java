@@ -1,9 +1,10 @@
-package strvr.arrays3;
+package ptrn.dp;
 
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/unique-paths/description/
 //@strvr - https://takeuforward.org/data-structure/grid-unique-paths-count-paths-from-left-top-to-the-right-bottom-of-a-matrix/
+//       - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6508644687675392
 public class UniquePaths {
     public int uniquePaths(int row, int col) {
         //return numWaysDP(row, col, 0, 0, new HashMap<String, Integer>());
@@ -52,5 +53,45 @@ public class UniquePaths {
 
         memo.put(key, moveDown + moveRight);
         return memo.get(key);
+    }
+
+    /*
+        Revise dp soln. Top-down dp, though.
+     */
+    private int revise(int m, int n, int i, int j, Integer[][] memo) {
+        if (i < 0 || i >= m || j < 0 || j >= n) return 0;
+
+        if (i==m-1 && j==n-1) return 1;
+
+        if (memo[i][j] != null) return memo[i][j];
+
+        int down = 0;
+        down += revise(m, n, i+1, j, memo);
+
+        int right = 0;
+        right += revise(m, n, i, j+1, memo);
+
+        memo[i][j] = (down+right);
+        return (down+right);
+    }
+
+    /*
+        Seeing the constraints on the question, my og intuition
+        was to use backtracking. However, that gives TLE.
+     */
+    private void backtracking(int m, int n, int i, int j, int[] count, int[][] visited) {
+        if (i < 0 || i >= m || j < 0 || j >= n) return ;
+        if (visited[i][j] == -1) return;
+
+        if (i==m-1 && j==n-1) {
+            count[0] +=1 ;
+            return;
+        }
+
+        visited[i][j] = -1;
+        backtracking(m, n, i+1, j, count, visited);
+        backtracking(m, n, i, j+1, count, visited);
+
+        visited[i][j] = 0;
     }
 }

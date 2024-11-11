@@ -1,4 +1,4 @@
-package swd.graphs;
+package ptrn.graph;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -6,6 +6,7 @@ import java.util.Deque;
 import java.util.List;
 
 //@link - https://leetcode.com/problems/number-of-provinces/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5574562935996416
 public class NumberOfProvinces {
     public int findCircleNum(int[][] isConnected) {
 //        return swdSol(isConnected);

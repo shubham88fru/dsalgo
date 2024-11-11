@@ -8,6 +8,11 @@ import java.util.List;
 //@link - https://leetcode.com/problems/number-of-provinces/description/
 public class NumberOfProvinces {
     public int findCircleNum(int[][] isConnected) {
+//        return swdSol(isConnected);
+        return revise(isConnected);
+    }
+
+    private int swdSol(int[][] isConnected) {
         List<Integer> visited = new ArrayList<>();
 
         int n = isConnected.length;
@@ -46,6 +51,8 @@ public class NumberOfProvinces {
             //In the given adjacency matrix, a city is connected to
             //curr city, only if value at the corresponding index is 1.
             //So, from curr city we can visit another only if the value is 1.
+
+            //NOTE: DFS over adjacency matrix graph.
             int connected = connections[i];
             if (connected == 1) {
                 traverseDFSFromGivenVertex(graph, i, visited);
@@ -70,6 +77,57 @@ public class NumberOfProvinces {
                 }
             }
         }
+    }
+
+    //3 revise
+    //Problem - unnecessarily creating a adjacency list graph.
+    //No need to do that. Could do a dfs directly over provided
+    //adjacency matrix graph - check sol 1 above.
+    private int revise(int[][] isConnected) {
+        List<List<Integer>> graph = getGraph(isConnected);
+        int n = isConnected.length;
+
+        int province = 0;
+        int[] visited = new int[n];
+        for (int i=0; i<n; i++) {
+            if (visited[i] != -1) {
+                province += 1;
+                dfs(graph, i, visited);
+            }
+        }
+
+        return province;
+    }
+
+    private void dfs(List<List<Integer>> graph, int node, int[] visited) {
+        if (visited[node] == -1) return;
+
+        visited[node] = -1;
+        List<Integer> children = graph.get(node);
+        for (int child: children) {
+            dfs(graph, child, visited);
+        }
+    }
+
+    private List<List<Integer>> getGraph(int[][] isConnected) {
+        List<List<Integer>> graph = new ArrayList<>();
+        int n = isConnected.length;
+
+        for (int i=0; i<n; i++) {
+            graph.add(new ArrayList<>());
+        }
+
+        for (int i=0; i<n; i++) {
+            for (int j=0; j<n; j++) {
+                if (i==j) continue;
+                if (isConnected[i][j] == 1) {
+                    graph.get(i).add(j);
+                }
+            }
+
+        }
+
+        return graph;
     }
 
     public static void main(String[] args) {

@@ -1,7 +1,8 @@
-package lc_potd;
+package ptrn.dp;
 
 //@link - https://leetcode.com/problems/longest-palindromic-substring/
 //@check - https://www.youtube.com/watch?v=n_kL8BkURVA&t=1009s&ab_channel=codestorywithMIK
+//       - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5590882570207232
 public class LongestPalindromicSubstring {
     public String longestPalindrome(String s) {
         // return brute(s);

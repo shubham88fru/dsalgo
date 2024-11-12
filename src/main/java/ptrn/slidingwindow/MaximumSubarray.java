@@ -1,7 +1,8 @@
-package strvr.arrays1;
+package ptrn.slidingwindow;
 
 //@link - https://leetcode.com/problems/maximum-subarray/description/
 //@strvr - https://takeuforward.org/data-structure/kadanes-algorithm-maximum-subarray-sum-in-an-array/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5734363859517440
 public class MaximumSubarray {
     public int maxSubArray(int[] nums) {
         //return maxSumSubArrayBrute(nums);

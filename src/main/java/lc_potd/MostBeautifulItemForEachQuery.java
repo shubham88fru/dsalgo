@@ -58,7 +58,7 @@ public class MostBeautifulItemForEachQuery {
         while (l <= r) {
             int mid = l + (r-l)/2;
             if (items[mid][0] == query) {
-                return mid;
+                return items[mid][0];
             } else if (items[mid][0] < query) {
                 item = items[mid][0];
                 l = mid + 1;

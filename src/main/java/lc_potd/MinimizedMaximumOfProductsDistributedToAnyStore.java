@@ -9,7 +9,7 @@ public class MinimizedMaximumOfProductsDistributedToAnyStore {
 
     /*
         My first intuition was to solve this problem
-        using heap (see submission history), but that didn't work.
+        using heap (see submission history.), but that didn't work.
 
         Based on Mik's explanation, this problem falls in the topic
         of - "Binary search on answer". As you'll see in the solution

@@ -33,7 +33,7 @@ public class SlidingPuzzle {
 
     private int bfs(int[][] board) {
         /*
-            Its easy to find the 4 directionally adjancent nodes from a matrix,
+            Its easy to find the 4 directionally adjacent nodes from a matrix,
             but here, since we are storing the state as String, we need a way
             to get adjacent indexes of current position of zero. Since the matrix
             is a fixed sized matrix and there can be max six position where zero

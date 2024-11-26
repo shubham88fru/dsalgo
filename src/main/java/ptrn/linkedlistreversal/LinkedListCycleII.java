@@ -1,11 +1,12 @@
-package strvr.linkedlist2;
+package ptrn.linkedlistreversal;
 
 import java.util.HashSet;
 import java.util.Set;
 
 //@link - https://leetcode.com/problems/linked-list-cycle-ii/description/
 //@strvr - https://takeuforward.org/data-structure/starting-point-of-loop-in-a-linked-list/
-public class DetectNodeWhereCycleStartsInALinkedList {
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5542886042238976
+public class LinkedListCycleII {
 
     public class Solution {
         public ListNode detectCycle(ListNode head) {

@@ -16,6 +16,8 @@ public class MinimizedMaximumOfProductsDistributedToAnyStore {
         below, what we do is pick an answer (logically and educated) and
         see if that answer satisfies the need, if so, we try to look if a smaller
         answer is possible. We use binary search to pick an educated answer.
+        Basically, in the binary search on answers pattern, we keep picking
+        an answer using binary search and checking if a better answer is possible.
 
         Following is the solution coded by me, but completely inspired by
         mik's explanation.

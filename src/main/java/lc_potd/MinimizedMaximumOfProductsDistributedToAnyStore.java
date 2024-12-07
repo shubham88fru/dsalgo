@@ -19,6 +19,9 @@ public class MinimizedMaximumOfProductsDistributedToAnyStore {
         Basically, in the binary search on answers pattern, we keep picking
         an answer using binary search and checking if a better answer is possible.
 
+        The biggest hint to this pattern is if question somehow is asking
+        to "minimize the maximum"/"maximize the minimum" or something similar.
+
         Following is the solution coded by me, but completely inspired by
         mik's explanation.
     */

@@ -3,9 +3,9 @@ package lc_potd;
 import java.util.PriorityQueue;
 import java.util.TreeMap;
 
-//@link -
-//@check -
-public class ContinousSubarrays {
+//@link - https://leetcode.com/problems/continuous-subarrays/
+//@check - https://www.youtube.com/watch?v=SWyGD8w_85E&t=1393s&ab_channel=codestorywithMIK
+public class ContinuousSubarrays {
     public long continuousSubarrays(int[] nums) {
         return mysol2(nums);
     }

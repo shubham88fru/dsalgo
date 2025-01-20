@@ -4,6 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
+/**
+ * NOTE: Apparently there's a bucket sort solution as well
+ * or some solution with simple hashmap, which has a better TC
+ * than the heap solution. If this problem is a
+ * recurring problem for some company, check that approach
+ * as well.
+ */
 //@link - https://leetcode.com/problems/top-k-frequent-elements/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5418214499811328
 public class TopKFrequentElements {

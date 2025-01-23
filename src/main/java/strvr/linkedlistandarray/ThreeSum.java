@@ -3,11 +3,47 @@ package strvr.linkedlistandarray;
 import java.util.*;
 
 //@link - https://leetcode.com/problems/3sum/submissions/
+//@check - https://www.youtube.com/watch?v=_cBWWebTVpI&ab_channel=codestorywithMIK
 //@strvr - https://takeuforward.org/data-structure/3-sum-find-triplets-that-add-up-to-a-zero/
 public class ThreeSum {
     public List<List<Integer>> threeSum(int[] nums) {
         //return threeSumBetter(nums);
         return threeSumOptimal(nums);
+    }
+
+    //Based on mik's approach (watch mik instead of strvr to revise this problem).
+    //Very similar to strvr's approach below.
+    private List<List<Integer>> revise(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> ans = new ArrayList<>();
+
+        int n = nums.length;
+        for (int i=0; i<n-2; i++) {
+            if (i > 0 && nums[i] == nums[i-1]) continue;
+
+            int j = i+1;
+            int k = n-1;
+            int target = -nums[i]; // nums[i]+nums[j]+nums[k]=0 --> nums[i]+nums[j]=-nums[k]
+
+            while (j < k) {
+
+
+                if (nums[j]+nums[k] < target) {
+                    j += 1;
+                } else if (nums[j]+nums[k] > target) {
+                    k -= 1;
+                } else {
+                    ans.add(Arrays.asList(nums[i], nums[j], nums[k]));
+                    while (j < k && nums[j] == nums[j+1]) j += 1;
+                    while (k > j && nums[k] == nums[k-1]) k -= 1;
+
+                    j += 1;
+                    k -= 1;
+                }
+            }
+        }
+
+        return ans;
     }
 
     //1) Optimal soln - T: O(NlogN+N^2), S: O(1)

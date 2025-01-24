@@ -5,7 +5,6 @@ import java.util.ArrayList;
 //@link - https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1
 //@strvr - https://www.youtube.com/watch?v=zQ3zgFypzX4&ab_channel=takeUforward
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5758360890376192
-
 public class DetectCyclesInUndirectedGraphDFS {
     /*
         idea is exactly the same as detecting cycle in undirected graph using BFS

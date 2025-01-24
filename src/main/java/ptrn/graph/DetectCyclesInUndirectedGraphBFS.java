@@ -5,11 +5,10 @@ import java.util.*;
 //@link - https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1
 //@strvr - https://www.youtube.com/watch?v=BPlrALf1LDU&ab_channel=takeUforward
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5758360890376192
-
 public class DetectCyclesInUndirectedGraphBFS {
     /*
         Intuition behind detecting a cycle using bfs in a graph is that
-        while performing dfs if we encounter a node that is already visited during
+        while performing bfs if we encounter a node that is already visited during
         bfs from a parent node other than current node, it means that there are two different paths
         to reach the same node, therefore there is a cycle in the graph.
 
@@ -63,7 +62,7 @@ public class DetectCyclesInUndirectedGraphBFS {
                 //1) its a strict neighbour (not parent)
                 //2) the neighbour was visited by someone else before.
                 //i.e. if the neighbour was already visited and the
-                //neighbour was not the parent of current node - we have a cyle.
+                //neighbour was not the parent of current node - we have a cycle.
                 else if (parents[currentNode] != neighbour) return true;
             }
         }

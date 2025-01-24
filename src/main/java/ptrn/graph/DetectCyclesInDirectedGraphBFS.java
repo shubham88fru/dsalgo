@@ -17,7 +17,7 @@ import java.util.Deque;
 
   `kahn's` algorithm is also used to find topological sort in directed graph.
   Topological sort is only applicable on directed-acyclic-graphs. If we apply toposort on
-  a cyclic graphs, it won't give correct result. Infact, in Kahn's algo, we apply toposort regardles
+  a cyclic graphs, it won't give correct result. Infact, in Kahn's algo, we apply toposort regardless
   if the graph is cyclic or not. If the graph is not cyclic, after topsort also, we'll be able to visit all nodes.
   but if the graph is cyclic, the application of topsort cuts a node from the rest of the graph and we are not able to
   visit the entire graph - (intuition in strvr)

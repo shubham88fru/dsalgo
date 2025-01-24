@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.*;
 
 /*
-*  Although it might seem that the same algorithm used for detecting cycles in
-*   undirected might work for directed graphs as well, but there are some cases
-*  where it would fail. E.g. if a graph has a component like below, the algo for
-* detecting cycle in undirected graph would say it has a cycle, while in reality,
+* Although it might seem that the same algorithm used for detecting cycles in
+* 'undirected' might work for 'directed' graphs as well, but there are some cases
+* where it would fail. E.g. if a graph has a component like below, the algo for
+* detecting cycle in undirected graph would say it has a cycle, when in reality,
 * it doesn't.
 *           >4
 *         /     \
@@ -22,7 +22,6 @@ import java.util.*;
 //@link - https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
 //@strvr - https://www.youtube.com/watch?v=uzVUw90ZFIg&ab_channel=takeUforward
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5758360890376192
-
 public class DetectCyclesInDirectedGraphDFS {
     //This is some nasty code, which not even swd was confident about.
     //check day 4 video on graphs if need refresher.

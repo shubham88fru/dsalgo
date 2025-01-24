@@ -28,8 +28,22 @@ public class ContainerWithMostWater {
             int area = h * (j-i); //area = height * width;
             maxArea = Math.max(area, maxArea);
             if (height[i] < height[j]) {//move the smaller height.
+                /*
+                    # Vice-versa of the below
+                    # explanation.
+                 */
                 i += 1;
-            } else j -= 1;
+            } else {
+                /*
+                    # If the left end is smaller (or equal)
+                    # than the right end, then there's no
+                    # way the left end will form
+                    # a larger area with any pillar
+                    # earlier than the current right
+                    # end.
+                 */
+                j -= 1;
+            }
         }
 
         return maxArea;
@@ -37,7 +51,7 @@ public class ContainerWithMostWater {
 
     //2. Brute force.
     //take each rod as the left side of the container
-    //and the find the right side of the contianer that
+    //and the find the right side of the container that
     //gives max area.
     //T: O(N^2), will give TLE.
     private int brute(int[] height) {

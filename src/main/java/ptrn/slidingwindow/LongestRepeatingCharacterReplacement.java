@@ -24,6 +24,24 @@ public class LongestRepeatingCharacterReplacement {
             //This will help us (below) to decide if the current window
             //has become invalid coz even if we do most replacements, we
             //won't be able to have a string with all same chars.
+            /*
+                Update - 01/25/25:
+                This mostFreqCharFreq is actually a tricky part
+                because if you see we arent' actually updating
+                the mostFreqCharFreq within the if-clause below
+                when moving the left pointer. Edctv doesn't
+                explain this. This stood out to be during a revision
+                and even nc says that its a tricky thing
+                @here - https://www.youtube.com/watch?v=gqXU1UyA8pk&ab_channel=NeetCode
+                Therefore, it could become a problem during an
+                actual interview to defend it.
+
+                Did the python solution by calculating the max
+                frequency everytime. Which is still a linear O(26*n)
+                solution as opposed to this solution which is perfect
+                O(n). But I'd say still prefer doing that, coz I'll be
+                able to defend the solution.
+             */
             mostFreqCharFreq = Math.max(mostFreqCharFreq, freq);
 
             //standard size of window in sliding window.
@@ -35,7 +53,7 @@ public class LongestRepeatingCharacterReplacement {
                 //If yes, means till we added the curr char, our
                 //window was just perfect i.e. just with the right set
                 //of chars which could be replaced to give us a valid string
-                //with all same chars. But, now, we'll have to slid our window, since
+                //with all same chars. But, now, we'll have to slide our window, since
                 //this window is no longer valid.
                 char toRemove = s.charAt(start);
                 mp.put(toRemove, mp.get(toRemove)-1);

@@ -32,3 +32,9 @@ belong to the same set.
     - We start with two arrays - elements and parents. Each of size n.
     - The elements array represents each element of the collection and the corresponding
     position in the parents array represents the parent of the group that the element belongs to.
+
+- Path compression:
+    - In path compression, we improve the performance of the `find()` operation by compression long graphs.
+    Basically, instead of forming a chain where each node has a child node and so on.. for a group, we make
+    all the child nodes point directly to the root/leader/parent of that group instead of pointing to their
+    respective parents.

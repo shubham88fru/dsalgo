@@ -1,13 +1,10 @@
 package ptrn.unionfind;
 
-//Implementation of most basic UnionFind, without
-//and sugar coating. Raw Union and Find. No Rank or
-//path compression.
-public class UnionFindWithoutRankAndPathCompression {
+public class UnionFindWithPathCompression {
     public int[] parent;
 
     // Constructor
-    public UnionFindWithoutRankAndPathCompression(int n) {
+    public UnionFindWithPathCompression(int n) {
 
         //not sure why edctv took a size of n+1.
         parent = new int[n + 1];
@@ -22,7 +19,7 @@ public class UnionFindWithoutRankAndPathCompression {
     // Returns TRUE if no cycle exits in the graph
     public int find(int v) {
         if (parent[v] != v) {
-            find(parent[v]);
+            parent[v] = find(parent[v]); //this is the path compression step and the only diff from vanilla impl.
         }
         return parent[v];
     }

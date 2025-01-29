@@ -89,3 +89,13 @@ class UnionFind {
         return true;
     }
 }
+
+//2) Sol2: Still brute force, but slightly better.
+//Iterate the given edges array from the start and keep forming the graph, for each
+//edge, keep checking if the src and dest nodes are already present in the graph. If yes, then run a bfs/dfs from either and check if we can already reach from src to dest or vice-versa. If we can, then it means that adding this new edge is redundant and going to form a cycle in the graph.
+
+//3) Sol3: Brute force.
+//Form the graph. Then iterate the given edges from back
+//and for each edge and for edge, remove the edge (temporarily) from
+//the graph and see if the resultant graph has a cycle. If yes, then
+//current edge is the redundant edge.

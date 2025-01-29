@@ -9,6 +9,7 @@ package ptrn.unionfind;
  */
 //@link - https://leetcode.com/problems/redundant-connection/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5106281544417280
+//       - https://www.youtube.com/watch?v=EawxDEOxeIk&t=1165s&ab_channel=codestorywithMIK
 
 /**
  * To recap, the solution to this problem can be divided into the following two main parts:

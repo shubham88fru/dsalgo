@@ -1,0 +1,34 @@
+------------------------------
+DSU Notes from mik's lectures.
+
+- Raw DSU: https://www.youtube.com/watch?v=AsAdKHkITBQ&ab_channel=codestorywithMIK
+------------------------------
+
+- What are Disjoint sets?
+    A group of N sets whose intersection in null. i.e. each element exclusively belongs
+    to only one set.
+    e.g. a collection containing oranges, mangoes and apples when grouped will form 3 disjoint
+    sets of Oranges, Mangoes and Apples.
+
+- DSU is all about two operations: Union and Find.
+
+- We initially assume each element of the collection form a separate group. Therefore, each
+group has one element and that element itself is the leader of the group. The idea with DSU's `union()`
+function is to take two groups and see if they can be merged to one, thereby decreasing the num of
+groups and also updating the parent/leader of such merged group.
+Note that the `union()` function is called on two elements, and for each element we find their current
+group leader/parent (the root nodes) and perform merge on the graphs represented by each roots. Note by
+merging we simply mean moving one root node as the child of another, so that one of the root's parent now
+becomes the other root node.
+A root node/leader node/parent node is that node which is parent of itself. Note that by this definition,
+each element at the start is a root/parent/leader node.
+
+- As for the `find()` function, the idea is that given an element of the collection, return the group or
+the parent/leader of the group that the element belongs to. If after performing the find operation on say two
+nodes, we realize that find returns the same node as the parent of both, then we can claim that the two nodes
+belong to the same set.
+
+- Methodology:
+    - We start with two arrays - elements and parents. Each of size n.
+    - The elements array represents each element of the collection and the corresponding
+    position in the parents array represents the parent of the group that the element belongs to.

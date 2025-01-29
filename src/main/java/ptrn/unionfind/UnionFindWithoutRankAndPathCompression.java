@@ -5,17 +5,14 @@ package ptrn.unionfind;
 //path compression.
 public class UnionFindWithoutRankAndPathCompression {
     public int[] parent;
-    public int[] rank;
 
     // Constructor
     public UnionFindWithoutRankAndPathCompression(int n) {
 
         //not sure why edctv took a size of n+1.
         parent = new int[n + 1];
-        rank = new int[n + 1];
         for (int i = 0; i <= n; i++) {
             parent[i] = i;
-            rank[i] = 1;
         }
     }
 

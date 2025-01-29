@@ -2,6 +2,7 @@
 DSU Notes from mik's lectures.
 
 - Raw DSU: https://www.youtube.com/watch?v=AsAdKHkITBQ&ab_channel=codestorywithMIK
+- DSU with Rank and path compression: https://www.youtube.com/watch?v=iH3XVIVzl7M&list=PLpIkg8OmuX-LZB9jYzbbZchk277H5CbdY&index=19&ab_channel=codestorywithMIK
 ------------------------------
 
 - What are Disjoint sets?
@@ -33,8 +34,14 @@ belong to the same set.
     - The elements array represents each element of the collection and the corresponding
     position in the parents array represents the parent of the group that the element belongs to.
 
-- Path compression:
-    - In path compression, we improve the performance of the `find()` operation by compression long graphs.
+- Path compression and Rank:
+    - Basically, the goal of Path compression and Rank is to shorten the graph in each group. Rank and path compression
+    work together to compress the graph as much as possible.
+    - In path compression, we improve the performance of the `find()` operation by compressing the long graphs.
     Basically, instead of forming a chain where each node has a child node and so on.. for a group, we make
     all the child nodes point directly to the root/leader/parent of that group instead of pointing to their
     respective parents.
+    - The goal of ranking is similar too. Here we assign an initial rank of zero to all nodes. During union
+    of two nodes, if the rank of the leader nodes of two nodes being merged is same, then choose any leader node
+    as a parent and merge the other one as a child, while increasing the rank of the node that was chosen as parent by one.
+    Otherwise, choose the parent node whose rank is higher as the the parent and merge the other node as a child.

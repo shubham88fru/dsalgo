@@ -11,11 +11,16 @@ import java.util.Deque;
     subsets such that no two vertices sharing an edge belong to the same
     subset.
 
+    In layman terms, if we can color each node of the graph, only in two colors,
+    such that no two adjacent nodes (nodes having an edge in between) have the
+    same color, then we can say that the graph is bipartite.
+
     By observation, a graph is bipartite when it is either acyclic (i.e. no cycle)
     or if it is cyclic then the no. of vertices in the cycle should be even.
  */
 //@link - https://leetcode.com/problems/is-graph-bipartite/
 //@strvr - https://www.youtube.com/watch?v=-vu34sct1g8&t=1s&ab_channel=takeUforward
+//@check - https://www.youtube.com/watch?v=NeU-C1PTWB8&t=1583s&ab_channel=codestorywithMIK
 public class IsGraphBipartite {
     public boolean isBipartite(int[][] graph) {
         int n = graph.length;
@@ -29,6 +34,40 @@ public class IsGraphBipartite {
             if (visited[i] == -1) {
                 //if (!isBipartiteDfs(graph, visited, i, 0)) return false;
                 if (!isBipartiteBfs(graph, visited, i)) return false;
+            }
+        }
+
+        return true;
+    }
+
+    /*
+    * Below is Mik's DFS approach, feels more intuitive.
+    * */
+    private boolean mikDFS(int[][] graph) {
+        int n = graph.length;
+
+        int[] colors = new int[n];
+        Arrays.fill(colors, -1);
+
+        for (int i=0; i<n; i++) {
+            if (colors[i] == -1) {
+                if (!isBipartiteMikDFS(graph, colors, i, 0)) return false;
+            }
+        }
+
+        return true;
+    }
+
+    private boolean isBipartiteMikDFS(int[][] graph, int[] colors, int curr, int color) {
+        colors[curr] = color;
+
+        for (int ngbr: graph[curr]) {
+            if (colors[ngbr] == color) {
+                return false;
+            }
+
+            if (colors[ngbr] == -1) {
+                if (!isBipartiteMikDFS(graph, colors, ngbr, 1-color)) return false;
             }
         }
 
@@ -52,7 +91,7 @@ public class IsGraphBipartite {
         boolean ans = true;
         //visit all neighbours of the vertex and color them with the
         //opposite color of the vertex (cause in bipartite graph, all
-        //neihbours must lie in other bucket)
+        //neighbors must lie in other bucket)
         for (int neighbour: graph[vertex]) {
             ans = ans && isBipartiteDfs(graph, visited, neighbour, (color == 1) ? 0 : 1);
         }

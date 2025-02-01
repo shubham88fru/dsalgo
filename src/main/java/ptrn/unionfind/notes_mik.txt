@@ -3,6 +3,7 @@ DSU Notes from mik's lectures.
 
 - Raw DSU: https://www.youtube.com/watch?v=AsAdKHkITBQ&ab_channel=codestorywithMIK
 - DSU with Rank and path compression: https://www.youtube.com/watch?v=iH3XVIVzl7M&list=PLpIkg8OmuX-LZB9jYzbbZchk277H5CbdY&index=19&ab_channel=codestorywithMIK
+- DSU with Size and path compression: https://www.youtube.com/watch?v=kGv33AiGhdc&t=910s&ab_channel=codestorywithMIK
 ------------------------------
 
 - What are Disjoint sets?
@@ -45,3 +46,18 @@ belong to the same set.
     of two nodes, if the rank of the leader nodes of two nodes being merged is same, then choose any leader node
     as a parent and merge the other one as a child, while increasing the rank of the node that was chosen as parent by one.
     Otherwise, choose the parent node whose rank is higher as the the parent and merge the other node as a child.
+
+ - Path Compression and Size:
+    - Idea is very similar to Path compression and rank.
+    - Differences are:-
+        - Instead of maintaining a rank array, we maintain a size array.
+        - While all ranks were initialized to zero, all sizes are initialized to 1.
+        - During merge, we still check if sizes of the two parties are same, if same, then we make the
+          one with larger size as the parent or if the sizes are different, then we choose the one with
+          larger size as the parent. However, the difference is that when incrementing the size of
+          the parent after merge, unlike path compression and rank, we don't just increment the size by 1,
+          rather we increment the size by the size of the child that is being merged. Moreover, we increment the
+          size in all scenarios after merge (recall that in path compression and rank, we only increment the rank by
+          1 that too when the ranks were same).
+        - In a way, the rank represented the height of the graph, while size kind of represents the number of nodes
+          in the graph.

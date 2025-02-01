@@ -12,7 +12,7 @@ public class UnionFindWithRankAndPathCompression {
         rank = new int[n + 1];
         for (int i = 0; i <= n; i++) {
             parent[i] = i;
-            rank[i] = 1;
+            rank[i] = 0; //ranks are initialized to 0.
         }
     }
 

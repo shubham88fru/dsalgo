@@ -74,6 +74,52 @@ public class IsGraphBipartite {
         return true;
     }
 
+    /*
+    * Based on mik's intuition.
+    * */
+    private boolean mikBFS(int[][] graph) {
+        int n = graph.length;
+        int[] colors = new int[n];
+        Arrays.fill(colors, -1);
+
+        for (int i=0; i<n; i++) {
+            if (colors[i] == -1) {
+                if (!isBipartiteMikBFS(graph, colors, i, 0)) return false;
+            }
+        }
+
+        return true;
+    }
+
+    private boolean isBipartiteMikBFS(int[][] graph, int[] colors, int n, int color) {
+
+        Deque<int[]> q = new ArrayDeque<>();
+
+        q.addLast(new int[] { n, color });
+        colors[n] = color;
+
+        while (!q.isEmpty()) {
+            int[] node = q.removeFirst();
+            int currNode = node[0];
+            int currColor = node[1];
+
+
+            for (int ngbr: graph[currNode]) {
+                if (colors[ngbr] == currColor) {
+                    return false;
+                }
+
+
+                if (colors[ngbr] == -1) {
+                    colors[ngbr] = 1 - currColor;
+                    q.addLast(new int[] { ngbr, colors[ngbr] });
+                }
+            }
+        }
+
+        return true;
+    }
+
     //1) DFS Solution
     //checks if there's a cycle of even length in a
     //undirected graph - i.e. cycles of length 0, 2, 4...

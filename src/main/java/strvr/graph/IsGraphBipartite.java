@@ -21,6 +21,7 @@ import java.util.Deque;
 //@link - https://leetcode.com/problems/is-graph-bipartite/
 //@strvr - https://www.youtube.com/watch?v=-vu34sct1g8&t=1s&ab_channel=takeUforward
 //@check - https://www.youtube.com/watch?v=NeU-C1PTWB8&t=1583s&ab_channel=codestorywithMIK
+//       - https://www.youtube.com/watch?v=cvhXZt66VhA&t=319s&ab_channel=codestorywithMIK
 public class IsGraphBipartite {
     public boolean isBipartite(int[][] graph) {
         int n = graph.length;

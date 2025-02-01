@@ -8,6 +8,11 @@ public class DesignInMemoryFileSystem {
 
     /*
     * My Soln.
+    * This problem is premium on lc, and direct soln wasn't present on
+    * edctv in the course that I took. However, i think other similar courses
+    * on edctv (like decoding the coding interview: Real world example) have
+    * official soln. If this question is a popular question for some
+    * company, then check other approaches as well.
     * */
     TrieNodeFileSystem223 root;
     public DesignInMemoryFileSystem() {

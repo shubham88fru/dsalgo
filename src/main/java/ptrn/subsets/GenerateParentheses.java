@@ -1,7 +1,9 @@
 package ptrn.subsets;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 //@link - https://leetcode.com/problems/generate-parentheses/description/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5264554243391488
@@ -16,7 +18,7 @@ public class GenerateParentheses {
         return ans;
     }
 
-    //edctv soln
+    //3) edctv soln
     private void generateEdctv(int n, ArrayList<Character> seq, int openCnt, int closeCnt, List<String> ans) {
         if (openCnt == closeCnt && openCnt == n) {
             String outputstr = seq.toString();
@@ -36,6 +38,7 @@ public class GenerateParentheses {
         }
     }
 
+    //2) swd soln.
     private List<String> generateAllBalancedParenthesis(int n, String expression, int openCount, int closeCount) {
         //Since we have same no. of open and closed parens
         //where each is equal to n. Given that input only has
@@ -69,5 +72,49 @@ public class GenerateParentheses {
         //combine all result and return.
         open.addAll(close);
         return open;
+    }
+
+
+    /* 1)
+        Tried the approach used in generate permutations.
+        But TLE. So this approach wont' work.
+    */
+    private List<String> revise(int n) {
+
+        List<Character> parens = new ArrayList<>();
+        for (int i=0; i<n; i++) {
+            parens.add('(');
+            parens.add(')');
+        }
+
+        List<String> perms = new ArrayList<>();
+        generatePerms(parens, 2*n, perms, new HashSet<>(), new StringBuffer(), 0, 0);
+
+        System.out.println(perms.size() + " " + (new HashSet<>(perms)).size());
+        return null;
+    }
+
+    private void generatePerms(List<Character> parens, int size, List<String> perm,
+                               Set<Integer> st, StringBuffer curr, int oc, int cc) {
+
+        if (cc > oc) return;
+
+        if (curr.length() == size) {
+            perm.add(curr.toString());
+        }
+
+
+        for (int i=0; i<size; i++) {
+            char ch = parens.get(i);
+
+            if (!st.contains(i)) {
+                st.add(i);
+                curr.append(ch);
+                generatePerms(parens, size, perm, st,
+                        curr, (ch=='(' ? oc+1: oc), (ch==')' ? cc+1: cc));
+                curr.setLength(curr.length()-1);
+                st.remove(i);
+            }
+        }
     }
 }

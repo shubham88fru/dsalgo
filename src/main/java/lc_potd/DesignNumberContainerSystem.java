@@ -12,7 +12,9 @@ public class DesignNumberContainerSystem {
        Mik showed this approach and an approach
        using heap, which is also straight forward
        and came to my mind too, but I didn't
-       do it.
+       do it. The heap solution uses a technique
+       called "Lazy Update" which could be an
+       important concept for many other problems.
 
        If this problem is a popular problem
        for some company, @check for second approach.

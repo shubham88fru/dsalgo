@@ -3,6 +3,7 @@ package lc_potd;
 import java.util.HashMap;
 import java.util.Map;
 
+//@link - https://leetcode.com/problems/count-number-of-bad-pairs/
 public class CountNumberOfBadPairs {
     public long countBadPairs(int[] nums) {
         // return brute(nums);

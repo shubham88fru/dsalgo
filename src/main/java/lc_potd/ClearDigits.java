@@ -14,7 +14,7 @@ public class ClearDigits {
     //1) Using stack.
     //My Soln. Mik showed a inplace soln as well.
     //If frequently occurring problem for some
-    //company, @check.
+    //company; @check.
     private String pass1(String s) {
         int n = s.length();
         Deque<Character> stack = new ArrayDeque<>();

@@ -10,6 +10,9 @@ public class FindThePunishmentNumberOfAnInteger {
     }
 
     //My soln.
+    //In addition to recursion/memo approach, mik also
+    //showed a third approach. Check if this problem is
+    //faq for some company.
     private int pass1(int n) {
 
         int sm = 0;

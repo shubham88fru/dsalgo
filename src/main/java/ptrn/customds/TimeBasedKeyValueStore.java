@@ -5,11 +5,78 @@ import java.util.*;
 //@link - https://leetcode.com/problems/time-based-key-value-store/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6646301929504768
 public class TimeBasedKeyValueStore {
-    //My Soln - using treemap.
-    static class TimeMap {
+
+    //1) Optimal solution using binary search.
+    static class TimeMap0 {
+
+        /*
+            Using a single map -> Map<String, Map<Integer, String>>
+            will cause issues in binary search over the timestamp.
+            Coz the Map<Integer, String> won't store the timestamps
+            in order.
+        */
+        Map<String, List<String>> tmMap;
+        Map<String, List<Integer>> tmList;
+
+        public TimeMap0() {
+            tmMap = new HashMap<>();
+            tmList = new HashMap<>();
+        }
+
+        /*
+            Directly trying to implicate a bs solution
+            for this problem is straight red flag to the
+            interviewer. Binary search is applicable to
+            this problem only because of this line given
+            in the constraints -
+            "All the timestamps timestamp of set are strictly increasing."
+        */
+        public void set(String key, String value, int timestamp) {
+            if (!tmMap.containsKey(key)) {
+                tmMap.put(key, new ArrayList<>());
+                tmList.put(key, new ArrayList<>());
+            }
+            tmMap.get(key).add(value);
+            tmList.get(key).add(timestamp);
+        }
+
+        public String get(String key, int timestamp) {
+            if (!tmMap.containsKey(key)) return "";
+
+            int res = bs(key, tmList.get(key).size(), timestamp);
+
+            if (res == -1) return "";
+            return tmMap.get(key).get(res);
+        }
+
+        private int bs(String key, int n, int timestamp) {
+            int l = 0;
+            int r = n-1;
+
+            int best = -1;
+            while (l <= r) {
+                int mid = l + (r-l)/2;
+
+                if (tmList.get(key).get(mid) > timestamp) {
+                    r = mid - 1;
+                } else {
+                    best = mid;
+                    l = mid + 1;
+                }
+
+            }
+
+            return best;
+        }
+    }
+
+
+
+    //My Soln - using treemap - suboptimal
+    static class TimeMap1 {
 
         private TreeMap<Integer, Map<String, String>> tmmap;
-        public TimeMap() {
+        public TimeMap1() {
             tmmap = new TreeMap<>();
         }
 
@@ -30,7 +97,7 @@ public class TimeBasedKeyValueStore {
         }
     }
 
-    //Edctv soln. Using binary tree.
+    //Edctv soln. Using binary search.
     /**
      * Set Value(): This first checks if the key already exists in the dictionary.
      * If the key exists and the provided value is different from the last stored value for that key,

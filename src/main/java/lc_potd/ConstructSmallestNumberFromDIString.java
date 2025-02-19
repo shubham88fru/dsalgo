@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 //@link - https://leetcode.com/problems/construct-smallest-number-from-di-string/
+//@check - https://www.youtube.com/watch?v=rCjwDls-HPk&ab_channel=codestorywithMIK
 public class ConstructSmallestNumberFromDIString {
     public String smallestNumber(String pattern) {
         StringBuffer sb = new StringBuffer();

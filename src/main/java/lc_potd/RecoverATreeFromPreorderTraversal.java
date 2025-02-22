@@ -1,10 +1,17 @@
 package lc_potd;
 
+//@link - https://leetcode.com/problems/recover-a-tree-from-preorder-traversal/description/
+//@check - https://www.youtube.com/watch?v=WN0quIK89F0&ab_channel=codestorywithMIK
 public class RecoverATreeFromPreorderTraversal {
     public TreeNode recoverFromPreorder(String traversal) {
         return mikssol(traversal);
     }
 
+    /*
+    * Soln based on mik's explanation.
+    * There is a stack implementation also,
+    * if this problem is a recurring problem, see that as well.
+    *  */
     private TreeNode mikssol(String traversal) {
         int[] idx = {0}; //painpoint.
         int[] dashes = {0};//painpoint.

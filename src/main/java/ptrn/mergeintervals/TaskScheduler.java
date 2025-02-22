@@ -19,13 +19,13 @@ public class TaskScheduler {
     private int usingHeap(char[] tasks, int n) {
         PriorityQueue<Pair> pq = new PriorityQueue<>((p1, p2) -> p1.t - p2.t);
 
-        int[] minTime = new int[26];
+        int[] minTime = new int[26]; //minimum time after which the character can be picked.
         for (int i=0; i<tasks.length; i++) {
             char ch = tasks[i];
             if (minTime[ch-'A'] == 0) {
-                minTime[ch-'A'] += 1;
+                minTime[ch-'A'] += 1; //if first occurrence, can be picked right away.
             } else {
-                minTime[ch-'A'] += 1 + n;
+                minTime[ch-'A'] += 1 + n; //gap.
             }
             pq.add(new Pair(tasks[i], minTime[ch-'A']));
 

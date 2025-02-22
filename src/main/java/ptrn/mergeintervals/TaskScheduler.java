@@ -4,9 +4,50 @@ import java.util.*;
 
 //@link - https://leetcode.com/problems/task-scheduler/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4580085862236160
+//       - https://www.youtube.com/watch?v=s8p8ukTyA2I&t=688s&ab_channel=NeetCode
 public class TaskScheduler {
     //T: O(N), S: O(1)
     public int leastInterval(char[] tasks, int n) {
+        return usingHeap(tasks, n);
+        //return edctvSoln(tasks, n);
+    }
+
+    //0) nc soln using max heap. optimal.
+
+
+    //1) My soln using minHeap.
+    private int usingHeap(char[] tasks, int n) {
+        PriorityQueue<Pair> pq = new PriorityQueue<>((p1, p2) -> p1.t - p2.t);
+
+        int[] minTime = new int[26];
+        for (int i=0; i<tasks.length; i++) {
+            char ch = tasks[i];
+            if (minTime[ch-'A'] == 0) {
+                minTime[ch-'A'] += 1;
+            } else {
+                minTime[ch-'A'] += 1 + n;
+            }
+            pq.add(new Pair(tasks[i], minTime[ch-'A']));
+
+        }
+
+        int t = 0;
+        while (!pq.isEmpty()) {
+            if (t < pq.peek().t) {
+                t += (pq.peek().t - t);
+            } else {
+                t += 1;
+            }
+
+            pq.remove();
+        }
+
+        return t;
+    }
+
+
+    //2) edctv soln using interval
+    private int edctvSoln(char[] tasks, int n) {
         /**
          The optimal strategy to solve this problem is to
          schedule the most frequent task first, then the second most
@@ -61,5 +102,15 @@ public class TaskScheduler {
 
         //min time will be atleast the time to execute each task plus the gaps (idleTimes) used, if any.
         return tasks.length + idleTime;
+    }
+}
+
+class Pair {
+    char ch;
+    int t;
+
+    Pair(char ch, int t) {
+        this.ch = ch;
+        this.t = t;
     }
 }

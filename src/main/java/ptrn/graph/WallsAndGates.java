@@ -1,4 +1,4 @@
-package lc_potd;
+package ptrn.graph;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

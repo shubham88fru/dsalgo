@@ -7,6 +7,13 @@ import java.util.List;
 //@link - https://leetcode.com/problems/pacific-atlantic-water-flow/description/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5304723076022272
 public class PacificAtlanticWaterFlow {
+
+    /*
+    * Following is based on my initial intuition to
+    * solve the problem. I don't think this is the
+    * optimal soln though. This q is part of
+    * nc150 so check optimal solution.
+    * */
     public List<List<Integer>> pacificAtlantic(int[][] heights) {
         List<List<Integer>> ans  = new ArrayList<>();
         int m = heights.length;

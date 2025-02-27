@@ -13,6 +13,10 @@ public class LengthOfLongestFibonacciSubsequence {
 
     /*
        1) Mik's dp approach.
+       Way clever than my simple approach below.
+       This passes the TC as is but mik also
+       showed memoization and bottom-up
+       approach for this. check if necessary.
     */
     private int mikssol(int[] arr) {
         int n = arr.length;

@@ -66,6 +66,34 @@ public class SpiralMatrix {
         return ans;
     }
 
+    //2) Edctv soln.
+    public static List<Integer> spiralOrderEdctv(int[][] matrix) {
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+        int row = 0;
+        int col = -1;
+        int direction = 1;
+        List<Integer> result = new ArrayList<>();
+
+        while (rows > 0 && cols > 0) {
+            for (int i = 0; i < cols; i++) {
+                col += direction;
+                result.add(matrix[row][col]);
+            }
+            rows--;
+
+            for (int i = 0; i < rows; i++) {
+                row += direction;
+                result.add(matrix[row][col]);
+            }
+            cols--;
+
+            direction *= -1;
+        }
+
+        return result;
+    }
+
     //checks if can move to suplied position.
     //The position should be in bouds and not have been visited already.
     private boolean canMove(int i, int j, int m, int n, int[][] visited) {

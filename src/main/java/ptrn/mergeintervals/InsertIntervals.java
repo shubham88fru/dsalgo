@@ -11,6 +11,36 @@ public class InsertIntervals {
         //return insertIntervalBrute(intervals, newInterval);
     }
 
+    //0) Similar to optimal but has better stats on LC. My soln.
+    private int[][] revise(int[][] intervals, int[] newInterval) {
+        List<int[]> invls = new ArrayList<>();
+        boolean inserted = false;
+        for (int[] invl: intervals) {
+            if (newInterval[0] <= invl[0] && !inserted) {
+                invls.add(newInterval);
+                inserted = true;
+            }
+            invls.add(invl);
+        }
+
+
+        if (!inserted) invls.add(newInterval);
+
+        List<int[]> merged = new ArrayList<>();
+        for (int i=0; i<invls.size(); i++) {
+            int n = merged.size();
+            if (merged.size() > 0 && invls.get(i)[0] <= merged.get(n-1)[1]) {
+                merged.get(n-1)[1] = Math.max(merged.get(n-1)[1], invls.get(i)[1]);
+            } else {
+                merged.add(invls.get(i));
+            }
+        }
+
+        // return merged.stream().toArray(int[][]::new);
+        return merged.toArray(new int[0][0]);
+
+    }
+
     //1) Optimal solution
     private int[][] insertInterval(int[][] intervals, int[] newInterval) {
         /**

@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.Map;
 
 //@link - https://leetcode.com/problems/non-overlapping-intervals/description/
+//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4716730040713216
 public class NonOverlappingIntervals {
     public int eraseOverlapIntervals(int[][] intervals) {
         int n = intervals.length;

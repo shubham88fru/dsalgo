@@ -35,34 +35,40 @@ public class MeetingRoomsII {
         Neetcode's approach. Didn't understand completely. Need to
         revisit.
      */
-    public int minMeetingRooms(List<Interval> intervals) {
+
+    /*
+       This problems basically boils down
+       to finding the maximum number of
+       overlapping intervals. Coz,
+       the max number number of overlapping
+       intervals will be the meeting rooms required.
+   */
+    private int revise(List<Interval> intervals) {
         int n = intervals.size();
-        int[] startTimes = new int[n];
-        int[] endTimes = new int[n];
+        int[] start = new int[n];
+        int[] end = new int[n];
 
         for (int i=0; i<n; i++) {
-            startTimes[i] = intervals.get(i).start;
-            endTimes[i] = intervals.get(i).end;
-
+            start[i] = intervals.get(i).start;
+            end[i] = intervals.get(i).end;
         }
 
-        Arrays.sort(startTimes);
-        Arrays.sort(endTimes);
+        Arrays.sort(start);
+        Arrays.sort(end);
 
         int max = 0;
-        int i = 0;
-        int j = 0;
-        int count = 0;
-        while (i < n && j < n) {
-            if (startTimes[i] >= endTimes[j]) {
-                count -= 1;
-                j += 1;
-            } else {
-                count += 1;
-                i += 1;
+        int p1 = 0;
+        int p2 = 0;
+        int rooms = 0;
+        while (p1 < n && p2 < n) {
+            if (start[p1] < end[p2]) { //new meeting started.
+                p1 += 1;
+                rooms += 1; //new meeting started.
+                max = Math.max(max, rooms);
+            } else { //a meeting ended.
+                p2 += 1;
+                rooms -= 1;
             }
-            max = Math.max(count, max);
-
         }
 
         return max;

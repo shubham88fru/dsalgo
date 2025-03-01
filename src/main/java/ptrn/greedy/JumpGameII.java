@@ -4,6 +4,7 @@ import java.util.Map;
 
 //@link - https://leetcode.com/problems/jump-game-ii/description/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5751571070844928
+//       - https://www.youtube.com/watch?v=7SBVnw7GSTk&ab_channel=takeUforward
 public class JumpGameII {
     /**
      Note that the difference between jump game I and II is that
@@ -14,7 +15,28 @@ public class JumpGameII {
      */
     public int jump(int[] nums) {
         //return minJumpsDP(nums, 0, new HashMap<Integer, Integer>());
-        return minJumpsGreedy(nums);
+//        return minJumpsGreedy(nums);
+        return strvr(nums);
+    }
+
+    private int strvr(int[] nums) {
+        int n = nums.length;
+
+        int l = 0;
+        int r = 0;
+        int jumps = 0;
+        while (r < n-1) {
+            int maxDist = 0;
+            //max dist for each range.
+            while (l <= r) {
+                maxDist = Math.max(maxDist, l + nums[l]);
+                l += 1;
+            }
+            r = maxDist;
+            jumps += 1;
+        }
+
+        return jumps;
     }
 
     //@sol - https://leetcode.com/problems/jump-game-ii/solutions/3158169/clean-codes-full-explanation-implicit-bfs-c-java-python3/

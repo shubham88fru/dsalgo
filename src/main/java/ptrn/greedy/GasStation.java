@@ -2,6 +2,8 @@ package ptrn.greedy;
 
 //@link - https://leetcode.com/problems/gas-station/description/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5687429291048960
+//       - https://www.youtube.com/watch?v=lJwbPZGo05A&t=606s&ab_channel=NeetCode
+//       - https://www.youtube.com/watch?v=tcOcmNHFTTM&t=2421s&ab_channel=codestorywithMIK
 public class GasStation {
     public int canCompleteCircuit(int[] gas, int[] cost) {
         //return canCompleteCircuitSuboptimal(gas, cost);

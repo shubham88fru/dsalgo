@@ -18,6 +18,10 @@ public class SumOfTwoIntegers {
         UPDATE: checked nc's explanation. Attached link.
     */
     private int optimal(int a, int b) {
+        //one question that you must ask interviewer is
+        //that can the numbers be -ve.
+        //However, it doesn't matter, this approach somehow
+        //takes care of that as well.
         while (b != 0) {
             int carry = a & b; //this will give the carry
             a = a ^ b; //gives the right bit as we should get when performing binary addition.

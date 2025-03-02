@@ -5,7 +5,7 @@ import java.util.Map;
 
 //@link - https://leetcode.com/problems/valid-parenthesis-string/description/
 //@check - https://www.youtube.com/watch?v=QhPdNS143Qg&t=618s
-public class ValidParenthesisString {
+public class ValidParenthesesString {
     public boolean checkValidString(String s) {
         return pass2(s);
     }

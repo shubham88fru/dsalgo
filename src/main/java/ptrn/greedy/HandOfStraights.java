@@ -1,4 +1,4 @@
-package lc_potd;
+package ptrn.greedy;
 
 import java.util.TreeMap;
 

@@ -1,4 +1,4 @@
-package lc_potd;
+package ptrn.greedy;
 
 //@link - https://leetcode.com/problems/merge-triplets-to-form-target-triplet/description/
 //@check - https://www.youtube.com/watch?v=kShkQLQZ9K4&t=195s&ab_channel=NeetCode

@@ -18,6 +18,9 @@ public class LongestPalindromicSubstring {
      we don't have choices, all we have is repeating
      subproblem when checking whether a substring is
      a palindrome or not.
+
+     The caching/memoization is actually done
+     in the recursive palindrome check call.
      */
     private String recursionWithMemoization(String s) {
         Boolean[][] cache = new Boolean[s.length()][s.length()];

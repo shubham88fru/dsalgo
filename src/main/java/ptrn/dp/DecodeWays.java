@@ -1,7 +1,9 @@
 package ptrn.dp;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 //@link - https://leetcode.com/problems/decode-ways/description/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5941105247649792
@@ -39,6 +41,38 @@ public class DecodeWays {
     }
     public int numDecodings(String s) {
         return decode(s, "", 0, new HashMap<>());
+    }
+
+    //0) My better (i guess) top-down soln.
+    private int revise(String s) {
+        Set<String> st = getValidEntries();
+        return dp(s, st, new HashMap<>());
+    }
+
+    private int dp(String s, Set<String> st, Map<String, Integer> memo) {
+        if (s.length() == 0) return 1;
+        if (memo.containsKey(s)) return memo.get(s);
+
+        int count = 0;
+        for (int i=0; i<s.length(); i++) {
+            String sub = s.substring(0, i+1);
+            if (st.contains(sub)) {
+                count += dp(s.substring(i+1), st, memo);
+            } else break;
+        }
+
+        memo.put(s, count);
+        return memo.get(s);
+
+    }
+
+    private Set<String> getValidEntries() {
+        Set<String> st = new HashSet<>();
+        for (int i=1; i<=26; i++) {
+            st.add(String.valueOf(i));
+        }
+
+        return st;
     }
 
     //1) My top-down dp soln.

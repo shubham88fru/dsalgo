@@ -9,7 +9,8 @@ public class CountTotalNumberOfColoredCells {
 
     /*
         Had to take a slight hint from mik. But mik showed a
-        different math soln.
+        different math soln which was O(1). So check if this is
+        a recurring problem for some company.
         My first intuition was to solve it using
         BFS, I think BFS can be done for this problem.
 

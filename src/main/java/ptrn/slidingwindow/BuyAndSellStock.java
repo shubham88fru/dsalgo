@@ -9,6 +9,22 @@ public class BuyAndSellStock {
         return bestTimeToBuyAndSellForMaxProfitSlidingWindow(prices);
     }
 
+    //I guess this one is more cleaner than
+    //the so called sliding window approach below.
+    private int revise(int[] prices) {
+        int n = prices.length;
+
+        int min = prices[0];
+        int maxProfit = 0;
+
+        for (int i=1; i<prices.length; i++) {
+            min = Math.min(min, prices[i]);
+            maxProfit = Math.max(maxProfit, prices[i]-min);
+        }
+
+        return maxProfit;
+    }
+
     //0) Sliding Window solution
     private int bestTimeToBuyAndSellForMaxProfitSlidingWindow(int[] prices) {
         int start = 0;
@@ -23,7 +39,7 @@ public class BuyAndSellStock {
             if (acq >= prices[start]) {
                 maxP = Math.max(maxP, acq-prices[start]);
                 end += 1;
-            } else start += 1;
+            } else start = end;
 
 
         }

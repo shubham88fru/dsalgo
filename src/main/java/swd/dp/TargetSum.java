@@ -30,8 +30,8 @@ public class TargetSum {
     //2) Without memoization
     private int waysForTargetSum(int[] nums, int target, int currIndex) {
 
-        //target sum should be acheived only after considering the last element.
-        //Becuase it is possible that the target sum becomes zero midway -> but that isn't a valid soln.
+        //target sum should be achieved only after considering the last element.
+        //Because it is possible that the target sum becomes zero midway -> but that isn't a valid soln.
         if (target == 0 && (currIndex==nums.length)) return 1;
         if (currIndex >= nums.length) return 0;
 

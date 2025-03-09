@@ -2,12 +2,13 @@ package ptrn.graph;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.PriorityQueue;
 
 //@link - https://leetcode.com/problems/network-delay-time/description/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5166651391344640
 public class NetworkDelayTime {
-    /**
+    /** 1)
      * Note that Dijkstra's algo gives us the min cost/distance
      * to each node of a graph from a given source node.
      * And so, the most straightforward thing to do in this question
@@ -95,6 +96,69 @@ public class NetworkDelayTime {
         }
 
         return costs;
+    }
+
+    //2) Revise.
+    private int revise(int[][] times, int n, int k) {
+        List<List<int[]>> graph = getGraph(times, n);
+
+        int[] minDist = new int[n+1];
+        Arrays.fill(minDist, Integer.MAX_VALUE);
+        minDist[k] = 0;
+
+        dijkstra(graph, n, k, minDist);
+
+        /*
+            Todo: Check if this min value can be found during dijkstra itself.
+        */
+        int max = Integer.MIN_VALUE;
+        for (int i=1; i<minDist.length; i++) {
+            if (minDist[i] == Integer.MAX_VALUE) return -1;
+            max = Math.max(max, minDist[i]);
+        }
+
+        return max;
+    }
+
+    private void dijkstra(List<List<int[]>> graph, int n, int k, int[] minDist) {
+        PriorityQueue<int[]> pq = new PriorityQueue<>((n1, n2) -> n1[1] - n2[1]);
+
+        pq.add(new int[] {k, 0});
+
+        while (!pq.isEmpty()) {
+            int[] node = pq.remove();
+            List<int[]> ngs = graph.get(node[0]);
+
+
+            for (int[] ng: ngs) {
+                int nextNode = ng[0];
+                int edgeWeight = ng[1];
+
+                if (minDist[node[0]]+edgeWeight < minDist[nextNode]) {
+                    minDist[nextNode] = minDist[node[0]] + edgeWeight;
+                    pq.add(ng);
+                }
+
+            }
+        }
+    }
+
+    private List<List<int[]>> getGraph(int[][] times, int n) {
+        List<List<int[]>> graph = new ArrayList<>();
+
+        for (int i=0; i<=n; i++) {
+            graph.add(new ArrayList<>());
+        }
+
+        for (int[] time: times) {
+            int u = time[0];
+            int v = time[1];
+            int w = time[2];
+
+            graph.get(u).add(new int[] {v, w});
+        }
+
+        return graph;
     }
 }
 

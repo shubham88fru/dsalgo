@@ -5,7 +5,8 @@ import java.util.List;
 
 //@link - https://leetcode.com/problems/encode-and-decode-strings/
 //      - https://neetcode.io/problems/string-encode-and-decode
-//@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5246877035134976
+//@check - https://www.youtube.com/watch?v=B1k_sxOSgv8&t=5s&ab_channel=NeetCode
+//         https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5246877035134976
 public class EncodeAndDecodeStrings {
 
     //////////OSI///////////////////////

@@ -7,6 +7,44 @@ import java.util.List;
 //      - https://neetcode.io/problems/string-encode-and-decode
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5246877035134976
 public class EncodeAndDecodeStrings {
+
+    //////////OSI///////////////////////
+    /*
+        Intuition by nc.
+     */
+    static class Solution0 {
+        //T: O(N), S: O(1)
+        public String encode(List<String> strs) {
+            StringBuffer sb = new StringBuffer();
+            for (String st: strs) {
+                sb.append(String.valueOf(st.length())+"#"+st);
+            }
+
+            return sb.toString();
+        }
+
+        //T: O(N), S: O(1)
+        public List<String> decode(String str) {
+            int n = str.length();
+
+            List<String> ans = new ArrayList<>();
+            int i = 0;
+            while (i < n) {
+                int j = i;
+                while (j < n && str.charAt(j) != '#') {
+                    j += 1;
+                }
+                int len = Integer.parseInt(str.substring(i, j));
+                ans.add(str.substring(j+1, j+1+len));
+                i=j+1+len;
+            }
+
+            return ans;
+        }
+    }
+    ///////////////////////////////////
+
+
     //Edctv soln.
     //straightforward and cleaner but confusing on the byte shift for length.
     //redo @check.

@@ -42,7 +42,7 @@ a disjoint set data structure, such as an array, to keep track of which set each
   component of a graph, i.e. are they connected? When our problem is heavy with such
   question, we can do some precalculations and form the DSU datastructure to answer such
   connection related queries in constant time (O(1)).
-  Note that, we can always a DFS on the graph and see if all the nodes that we were looking
+  Note that, we can always run a DFS on the graph and see if all the nodes that we were looking
   for were part of a DFS run to determine if the nodes belong to the same component. But the
   DFS will take a O(V+E) complexity and if we have many such queries (say m), we'll have to
   run the DFS for each query separately and thus the time complexity will become O(m*(V+E))

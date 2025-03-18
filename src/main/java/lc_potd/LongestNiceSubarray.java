@@ -1,6 +1,7 @@
 package lc_potd;
 
 //@link - https://leetcode.com/problems/longest-nice-subarray/description/
+//@check - https://www.youtube.com/watch?v=t2p4Sn0Qepo&ab_channel=codestorywithMIK
 public class LongestNiceSubarray {
     public int longestNiceSubarray(int[] nums) {
         // return brute(nums);

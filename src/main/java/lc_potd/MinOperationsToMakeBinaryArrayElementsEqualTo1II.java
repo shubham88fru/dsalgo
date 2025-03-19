@@ -1,7 +1,8 @@
 package lc_potd;
 
 //@link - https://leetcode.com/problems/minimum-operations-to-make-binary-array-elements-equal-to-one-ii/description/
-//@check - https://www.youtube.com/watch?v=oe9HR-cLAHo&t=1456s&ab_channel=AryanMittal
+//@check - https://www.youtube.com/watch?v=NtCLzpLmxNU&ab_channel=codestorywithMIK
+// https://www.youtube.com/watch?v=oe9HR-cLAHo&t=1456s&ab_channel=AryanMittal
 public class MinOperationsToMakeBinaryArrayElementsEqualTo1II {
 
     //My soln.
@@ -23,7 +24,7 @@ public class MinOperationsToMakeBinaryArrayElementsEqualTo1II {
         //rest of array elements, we just increment a toFlips variable. When
         //we reach a particular element, we check the effective value of the
         //current element i.e. after apply toFlips flip on the element, and if
-        //that turns out to be a zero, means we need to flip the elment and rest
+        //that turns out to be a zero, means we need to flip the element and rest
         //of array..
         while (i < n ) {
             if (

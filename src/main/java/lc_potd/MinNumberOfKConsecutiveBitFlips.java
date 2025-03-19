@@ -4,7 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 //@link - https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips/
-//@check - https://www.youtube.com/watch?v=oe9HR-cLAHo&t=1456s&ab_channel=AryanMittal
+//@check - https://www.youtube.com/watch?v=NtCLzpLmxNU&ab_channel=codestorywithMIK
+// https://www.youtube.com/watch?v=oe9HR-cLAHo&t=1456s&ab_channel=AryanMittal
 public class MinNumberOfKConsecutiveBitFlips {
     public int minKBitFlips(int[] nums, int k) {
         int n = nums.length;
@@ -39,6 +40,12 @@ public class MinNumberOfKConsecutiveBitFlips {
             }
             i += 1;
         }
+
+        /*
+            We don't need to do this extra loop.
+            this can be checked in the first loop itself.
+            Check latest submission on 19th march for that.
+         */
 
         //At this points, we should have made
         //all the elemnts in [0..i-k] equal to 1.

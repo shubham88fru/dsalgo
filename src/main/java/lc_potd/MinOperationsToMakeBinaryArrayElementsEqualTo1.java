@@ -1,10 +1,15 @@
 package lc_potd;
 
 //@link - https://leetcode.com/problems/minimum-operations-to-make-binary-array-elements-equal-to-one-i/
-//@check - https://www.youtube.com/watch?v=oe9HR-cLAHo&t=1456s&ab_channel=AryanMittal
+//@check - https://www.youtube.com/watch?v=NtCLzpLmxNU&ab_channel=codestorywithMIK
+// https://www.youtube.com/watch?v=oe9HR-cLAHo&t=1456s&ab_channel=AryanMittal
 public class MinOperationsToMakeBinaryArrayElementsEqualTo1 {
 
-    //My soln.
+    /**
+        This isn't optimal soln.
+        @see lc_potd.MinNumberOfKConsecutiveBitFlips
+        for optimal approach to solve this problem.
+     */
     public int minOperations(int[] nums) {
         int i = 0;
         int n = nums.length;

@@ -4,9 +4,60 @@ import java.util.*;
 
 //@link - https://leetcode.com/problems/find-all-possible-recipes-from-given-supplies/description/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4699729134092288
-         //https://leetcode.com/problems/find-all-possible-recipes-from-given-supplies/solutions/1736422/java-topological-sort-with-comments/
+         //https://www.youtube.com/watch?v=4Tixc5mU-Pk&t=2107s&ab_channel=codestorywithMIK
 public class FindAllPossibleRecipesFromGivenSupplies {
     public List<String> findAllRecipes(String[] recipes, List<List<String>> ingredients, String[] supplies) {
+        return optimal(recipes, ingredients, supplies);
+    }
+
+    //1) Toposort, hashmap, hashset
+    //TC: TC of kahns' + liner:  O(n+V+E)
+    private List<String> optimal(String[] recipes, List<List<String>> ingredients, String[] supplies) {
+        Map<String, List<Integer>> graph = new HashMap<>();
+        Set<String> suppset = new HashSet<>(Arrays.asList(supplies));
+        int[] indegrees = new int[recipes.length];
+
+        for (int i=0; i<recipes.length; i++) {
+            for (int j=0; j<ingredients.get(i).size(); j++) {
+                String ing = ingredients.get(i).get(j);
+                //This is smart. How we form the graph,
+                //is important for this question.
+                if (!suppset.contains(ing)) {
+                    if (!graph.containsKey(ing)) {
+                        graph.put(ing, new ArrayList<>());
+                    }
+
+                    graph.get(ing).add(i);
+                    indegrees[i] += 1;
+                }
+            }
+        }
+
+        Deque<String> q = new ArrayDeque<>();
+        for (int i=0; i<indegrees.length; i++) {
+            if (indegrees[i] == 0) q.addLast(recipes[i]);
+        }
+
+        List<String> ans = new ArrayList<>();
+        while (!q.isEmpty()) {
+            String  curr = q.removeFirst();
+
+            ans.add(curr);
+            List<Integer> ngs = graph.get(curr);
+            if (ngs == null) continue;
+            for (int ng: ngs) {
+                indegrees[ng] -= 1;
+                if (indegrees[ng] == 0) {
+                    q.addLast(recipes[ng]);
+                }
+            }
+        }
+
+        return ans;
+    }
+
+    //2) edctv optimal soln.
+    private List<String> edctv(String[] recipes, List<List<String>> ingredients, String[] supplies) {
         //For easier lookup of supplies.
         Set<String> suppl = new HashSet<>();
         for (String supply: supplies) suppl.add(supply);
@@ -66,5 +117,44 @@ public class FindAllPossibleRecipesFromGivenSupplies {
         }
 
         return ans;
+    }
+
+
+    //brute force: T: O(n*n*m) where m is size of ingredients.
+    //Hashset, list.
+    private List<String> brute(String[] recipes, List<List<String>> ingredients, String[] supplies) {
+
+        Set<String> suppset = new HashSet<>(Arrays.asList(supplies));
+
+        int n = recipes.length;
+        Set<String> ans = new HashSet<>();
+
+        while (n > 0) {
+            boolean allMade = true;
+            for (int i=0; i<recipes.length; i++) {
+                if (ans.contains(recipes[i])) continue;
+                boolean canBeMade = true;
+                List<String> ings = ingredients.get(i);
+                for (String ing: ings) {
+                    if (!suppset.contains(ing)) {
+                        canBeMade = false;
+                        allMade = false;
+                        break;
+                    }
+                }
+
+                if (canBeMade) {
+                    ans.add(recipes[i]);
+                    suppset.add(recipes[i]);
+                }
+            }
+
+
+            if (allMade) break;
+
+            n -= 1;
+        }
+
+        return new ArrayList<>(ans);
     }
 }

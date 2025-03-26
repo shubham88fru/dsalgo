@@ -2,18 +2,75 @@ package ptrn.slidingwindow;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
- * For optimal solution @see strvr.stacksandqueues#SlidingWindowMaximum
+ * For optimal solution @see {@link strvr.stacksandqueues.SlidingWindowMaximum}
  */
+//@link - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6355320395005952
 public class SlidingWindowMaximum {
     public int[] maxSlidingWindow(int[] nums, int k) {
         //return getMaxInEachWindow(nums, k);
-        return slidingWindow(nums, k);
+        return slidingWindow1(nums, k);
+    }
+
+    //1) My revision soln using treemap.
+    private int[] slidingWindow1(int[] nums, int k) {
+        int n = nums.length;
+
+        int[] ans = new int[n-k+1];
+        int l = 0;
+        int r = 0;
+        TreeMap<Integer, Integer> window = new TreeMap<>();
+        int i = 0;
+        while (r < n) {
+            while (r-l+1<=k) {
+                window.put(nums[r], window.getOrDefault(nums[r], 0)+1);
+                r += 1;
+            }
+
+            ans[i] = window.lastKey();
+            i += 1;
+            int rem = nums[l];
+            window.put(rem, window.get(rem)-1);
+            if (window.get(rem) == 0) window.remove(rem);
+            l += 1;
+        }
+
+        return ans;
+    }
+
+    private int[] slidingWindow2(int[] nums, int k) {
+        int n = nums.length;
+
+        int[] ans = new int[n-k+1];
+        int l = 0;
+        int r = 0;
+        TreeMap<Integer, Integer> window = new TreeMap<>();
+        int i = 0;
+        while (r < n) {
+            int num = nums[r];
+            if (r - l + 1 <= k) {
+                window.put(num, window.getOrDefault(num, 0)+1);
+                r += 1;
+            } else {
+                ans[i] = window.lastKey();
+                i += 1;
+                int rem = nums[l];
+                window.put(rem, window.get(rem)-1);
+                if (window.get(rem) == 0) window.remove(rem);
+                l += 1;
+            }
+        }
+
+        ans[i] = window.lastKey();
+        i += 1;
+
+        return ans;
     }
 
     //2) Better soln using sliding window.
-    private int[] slidingWindow(int[] nums, int k) {
+    private int[] slidingWindow3(int[] nums, int k) {
         //start of window pointers.
         int left = 0;
         int right = 0;

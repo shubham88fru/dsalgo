@@ -16,23 +16,22 @@ public class PartitionLabels {
     * Nc soln was exact same.
     * */
     private List<Integer> pass1(String s) {
-        int n = s.length();
-        Map<Character, Integer> mp = new HashMap<>();
-        for (int i=0; i<n; i++) {
-            char ch = s.charAt(i);
-            mp.put(ch, i);
+        //optimization - use array instead of map.
+        int[] li = new int[26];
+        for (int i=0; i<s.length(); i++) {
+            li[s.charAt(i)-'a'] = i;
         }
 
-        int si = 0; //start of current partition.
-        int ei = 0; //end of current partition.
+        int j = 0;
+        int max = -1;
         List<Integer> ans = new ArrayList<>();
-        for (int i=0; i<n; i++) {
+        for (int i=0; i<s.length(); i++) {
             char ch = s.charAt(i);
-            ei = Math.max(ei, mp.get(ch)); //keep track of the farthest occurence.
-            if (i == ei) {
-                ans.add(ei-si+1);
-                si = i + 1;
-                ei = 0;
+            max = Math.max(max, li[ch-'a']);
+            if (max == i) {
+                ans.add(i-j+1);
+                max = -1;
+                j = i + 1;
             }
         }
 

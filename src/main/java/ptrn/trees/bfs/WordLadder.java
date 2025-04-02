@@ -10,6 +10,69 @@ public class WordLadder {
         return bfs(beginWord, endWord, wordList);
     }
 
+    //-1) Edctv's soln is a bit tricky but much better. Better for interviews.
+
+    //0) My intuitive soln.
+    //For a graph where each node has an edge with a node that has a diff of 1 with the word.
+    //And then run BFS.
+    private int revise(String beginWord, String endWord, List<String> wordList) {
+        wordList.add(beginWord);
+        int n = wordList.size();
+        Map<String, List<String>> graph = new HashMap<>();
+        for (int i=0; i<n; i++) {
+            for (int j=i+1; j<n; j++) {
+                if (diff2(wordList.get(i), wordList.get(j)) == 1) {
+                    graph.putIfAbsent(wordList.get(i), new ArrayList<>());
+                    graph.putIfAbsent(wordList.get(j), new ArrayList<>());
+
+                    graph.get(wordList.get(i)).add(wordList.get(j));
+                    graph.get(wordList.get(j)).add(wordList.get(i));
+                }
+
+            }
+        }
+
+        if (!graph.containsKey(endWord)) return 0;
+
+        Deque<Pair> q = new ArrayDeque<>();
+        q.addLast(new Pair(beginWord, 0));
+        Set<String> visited = new HashSet<>();
+        visited.add(beginWord);
+
+        int count = 0;
+        while (!q.isEmpty()) {
+            Pair pair = q.removeFirst();
+
+            if (pair.word.equals(endWord)) return pair.level + 1;
+            visited.add(pair.word);
+
+            List<String> ngs = graph.get(pair.word);
+            for (String ng: ngs) {
+                if (!visited.contains(ng)) {
+                    q.addLast(new Pair(ng, pair.level + 1));
+                }
+            }
+
+
+        }
+
+        return 0;
+    }
+
+    private int diff2(String word1, String word2) {
+        int n1 = word1.length();
+
+        int diffCount = 0;
+        int j = 0;
+        while (j < n1) {
+            if (word1.charAt(j) != word2.charAt(j)) diffCount += 1;
+            if (diffCount > 1) return -1;
+            j += 1;
+        }
+
+        return diffCount;
+    }
+
     //1) Works but is still slow.
     //This is mostly my soln, with a slight hint from edctv to keep removing
     //words that have been used from the wordList. Without doing that, BFS also

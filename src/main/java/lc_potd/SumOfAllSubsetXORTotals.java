@@ -1,7 +1,13 @@
 package lc_potd;
 
 //@link - https://leetcode.com/problems/sum-of-all-subset-xor-totals/description/
+//@check - https://www.youtube.com/watch?v=3tzP38WPAoA&ab_channel=codestorywithMIK
 public class SumOfAllSubsetXORTotals {
+    //Note, that the question is asking for subsets and not
+    //subarrays. Two for loops will generate subarrays - not subsets.
+
+    //The pick-notpick/recursion/backtracking should be the way to go
+    //when question is about subsets or else.
     public int subsetXORSum(int[] nums) {
         int[] sum = new int[1];
         // subsetsXORSum(nums, sum, 0, 0);
@@ -9,6 +15,12 @@ public class SumOfAllSubsetXORTotals {
         return sum[0];
     }
 
+    //0) Using bit manipulation observation.
+    //There's a very simple observation based solution
+    //given in lc editorial. Mik also showed that soln but
+    //didn't give an explanation on why that works.
+    //If this problem is a HF problem for some company,
+    //take a look at it.
 
     //1) Simple recursion.
     private void subsetsXORSum1(int[] nums, int[] sum, int curr, int xor) {
@@ -25,6 +37,16 @@ public class SumOfAllSubsetXORTotals {
         //pick - xor with current subset's xor.
         subsetsXORSum1(nums, sum, curr+1, xor^nums[curr]);
     }
+
+    /**
+     * EDIT: The soln below is non-sense. Looking
+     * back at it today, I can only laugh on what i wrote :P
+     *
+     *
+     * The actual backtracking soln for this problem is to
+     * use backtracking to generate all subsets and then
+     * iterate over each subset to calc xor and sum them.
+     */
 
     //2) Recursion (also using backtracking)
     //Generate subsets - Note that as per the questions, duplicate elements

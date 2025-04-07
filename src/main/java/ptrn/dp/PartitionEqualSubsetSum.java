@@ -17,6 +17,30 @@ public class PartitionEqualSubsetSum {
         //return partition(nums, 0, 0, total, new HashMap<>());
     }
 
+    //0) My top-down soln.
+    private boolean revise(int[] nums) {
+        int n = nums.length;
+        int total = 0;
+
+        for (int num: nums) total += num;
+        if (total%2 != 0) return false;
+        Boolean[][] memo = new Boolean[201][20001];
+        return revise(nums, total/2, 0, memo);
+    }
+
+    private boolean revise(int[] nums, int target, int i, Boolean[][] memo) {
+        if (target == 0) return true;
+        if (i >= nums.length || target < 0) return false;
+
+        if (memo[i][target] != null) return memo[i][target];
+
+        boolean pick = revise(nums, target-nums[i], i+1, memo);
+        boolean notPick = revise(nums, target, i+1, memo);
+
+        memo[i][target] = pick || notPick;
+        return memo[i][target];
+    }
+
     //1) SWD solution
     private boolean hasASubsetForWhichSumIsHalfTheSumOfEntireArray(int[] nums, int currIndex, int targetSum, Map<String, Boolean> memo) {
 

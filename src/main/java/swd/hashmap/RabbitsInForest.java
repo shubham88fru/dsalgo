@@ -6,7 +6,11 @@ import java.util.Objects;
 
 //@link - https://leetcode.com/problems/rabbits-in-forest/description/
 public class RabbitsInForest {
-    /** My Soln - Works fine **/
+    /**
+     *  1) My Soln - Works fine
+     * This seems to be the best, coz its a
+     * single pass soln and much more intuitive.
+     * **/
     public int numRabbits(int[] answers) {
         Map<Integer, Integer> groups = new HashMap<>();
         int minRabits = 0;
@@ -28,7 +32,7 @@ public class RabbitsInForest {
         return minRabits;
     }
 
-    /** SWD Soln **/
+    /** 2) SWD Soln **/
     public int numRabbits2(int[] answers) {
         int minRabbits = 0;
         Map<Integer, Integer> memo = new HashMap<>();
@@ -43,5 +47,33 @@ public class RabbitsInForest {
         }
 
         return minRabbits;
+    }
+
+    /** 3) My mathy soln **/
+    private int revise(int[] answers) {
+        int n = answers.length;
+        Map<Integer, Integer> mp = new HashMap<>();
+
+        for (int ans: answers) {
+            mp.put(ans, mp.getOrDefault(ans, 0)+1);
+        }
+
+        int min = 0;
+        for (Map.Entry<Integer, Integer> entry: mp.entrySet()) {
+            int key = entry.getKey();
+            int freq = entry.getValue();
+
+            int div = key + 1;
+            if (freq <= div) {
+                min += (1 + key);
+            } else {
+                min += (freq/div)*(1 + key);
+
+                if (freq%div > 0) min += (1+key);
+            }
+
+        }
+
+        return min;
     }
 }

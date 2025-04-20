@@ -32,7 +32,9 @@ public class RabbitsInForest {
         return minRabits;
     }
 
-    /** 2) SWD Soln **/
+    /** 2) SWD Soln
+     * Mik also had similar approach.
+     * **/
     public int numRabbits2(int[] answers) {
         int minRabbits = 0;
         Map<Integer, Integer> memo = new HashMap<>();

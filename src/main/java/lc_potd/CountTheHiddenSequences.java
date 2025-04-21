@@ -6,7 +6,8 @@ public class CountTheHiddenSequences {
         return pass1(differences, lower, upper);
     }
 
-    //My soln. Mik had a soln on similar lines.
+    //My soln.
+    // (Mik had a soln on similar lines but not exactly same. Mik's soln was one pass)
     //T: O(2N)
     private int pass1(int[] differences, int lower, int upper) {
         int n = differences.length;

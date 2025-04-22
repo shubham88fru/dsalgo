@@ -19,7 +19,7 @@ package algorithms;
 public class BinaryExponentiation {
 
     //1) Recursive approach.
-    private long beRecursive(long a, long b) {
+    public static long beRecursive(long a, long b) {
         if (b == 0) {
             return 1;
         }
@@ -34,7 +34,7 @@ public class BinaryExponentiation {
     }
 
     //2) Iterative.
-    private long beIterative(long base, long expo) {
+    public static long beIterative(long base, long expo) {
         long ans = 1;
         while(expo>0) {
             if (expo%2 == 0) {

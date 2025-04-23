@@ -9,6 +9,11 @@ public class CountLargestGroup {
         return revise(n);
     }
 
+    /*
+        Single pass soln.
+        LC has the naive two pass soln in editorial for some
+        reason.
+    * */
     private int revise(int n) {
         Map<Integer, Integer> frq = new HashMap<>();
         int maxGroupSz = 1;

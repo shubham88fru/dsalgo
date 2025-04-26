@@ -2,8 +2,49 @@ package lc_potd;
 
 //@link - https://leetcode.com/problems/count-subarrays-with-fixed-bounds/
 //@check - https://www.youtube.com/watch?v=bBrzHYu58YI&t=1771s&ab_channel=ProgrammingLivewithLarry
-public class CountSubarrayWithFixedBounds {
+public class CountSubarraysWithFixedBounds {
     public long countSubarrays(int[] nums, int minK, int maxK) {
+        return slidingWindow(nums, minK, maxK);
+    }
+
+    /*
+    * Ported larry's sol to match my template for sliding window.
+    * */
+    private long slidingWindow(int[] nums, int minK, int maxK) {
+        int n = nums.length;
+        int l = 0;
+        int r = 0;
+
+        int mini = -1;
+        int maxi = -1;
+        long count = 0;
+
+        while (r < n) {
+            while (r < n && nums[r] <= maxK && nums[r] >= minK) {
+                if (nums[r] == minK) mini = r;
+                if (nums[r] == maxK) maxi = r;
+
+                if (mini != -1 && maxi != -1) {
+                    count += (long)(Math.min(mini, maxi) - l + 1);
+                }
+                r += 1;
+            }
+
+            //reset
+            mini = -1;
+            maxi = -1;
+            r += 1;
+            l = r;
+
+        }
+
+        return count;
+    }
+
+    /*
+        larry's soln.
+     */
+    private long larrySol(int[] nums, int minK, int maxK) {
         long count = 0;
         int n = nums.length;
 

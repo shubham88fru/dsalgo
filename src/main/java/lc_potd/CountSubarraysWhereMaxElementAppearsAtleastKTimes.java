@@ -8,6 +8,9 @@ public class CountSubarraysWhereMaxElementAppearsAtleastKTimes {
 
     /*
     * Sliding window template 1: Always prefer this one.
+    * My soln.
+    *
+    * Mik showed a second approach without using sliding window.
     * */
     private long revise(int[] nums, int k) {
         int n = nums.length;

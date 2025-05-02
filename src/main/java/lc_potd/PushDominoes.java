@@ -8,6 +8,7 @@ public class PushDominoes {
     }
 
     /**
+     Coded by me but
      Following is a soln completely based on
      mik's explanation.
 
@@ -27,6 +28,12 @@ public class PushDominoes {
         int[] leftClosestEffectiveR = new int[n];
         int[] rightClosestEffectiveL = new int[n];
 
+        //There can be optimization around this
+        //calculation -
+        // 1. we can populate the arrays in one loop.
+        // 2. we can use just on array or a resultant array.
+        // Mik said that he has multiple solutions for this
+        // problem on his github.
         for (int i=0; i<n; i++) {
             char ch = dominoes.charAt(i);
             if (ch == 'R') leftClosestEffectiveR[i] = i;

@@ -15,6 +15,7 @@ public class NumberOfEquivalentDominoPairs {
         soln (because i and j are limited) but mik was like
         since we're using maps this ain't a constant space
         soln.
+
         Mik showed another approach using a fixed sized
         array.
      */

@@ -9,7 +9,6 @@ public class NumberOfEquivalentDominoPairs {
         return revise(dominoes);
     }
 
-
     /* *
         My soln. I think this is also a constant space
         soln (because i and j are limited) but mik was like

@@ -12,6 +12,9 @@ public class FindMinimumTimeToReachLastRoomI {
 
     /*
     * My soln.
+    * Mik also had similar soln just with a slight
+    * variation around dijkstra, watch if my soln is
+    * confusing.
     * */
     private int pass1(int[][] moveTime) {
 
@@ -45,7 +48,7 @@ public class FindMinimumTimeToReachLastRoomI {
                 if (nextI < 0 || nextI >= n || nextJ < 0 || nextJ >= m) continue;
 
                 if (minTime[nextI][nextJ] > (data[0] + 1)) {
-                    minTime[nextI][nextJ] = Math.max(moveTime[nextI][nextJ]+1, data[0] + 1);
+                    minTime[nextI][nextJ] = Math.max(moveTime[nextI][nextJ]+1, data[0] + 1); //tricky - will need atleast moveTime[i][j]+1 (ATQ)
                     pq.add(new int[]{minTime[nextI][nextJ], nextI, nextJ});
                 }
             }

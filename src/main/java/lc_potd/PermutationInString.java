@@ -9,6 +9,10 @@ public class PermutationInString {
 
     /*
         My soln. Mik's soln was on the same lines but looked cleaner.
+
+        Update: 05/10/25
+        Check my python sol in `nc150`. Wrote a cleaner soln using
+        the newer sliding window template.
      */
     public boolean checkInclusion(String s1, String s2) {
         if (s1.length() > s2.length()) return false;

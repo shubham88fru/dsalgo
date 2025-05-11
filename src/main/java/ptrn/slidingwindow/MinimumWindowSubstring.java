@@ -35,7 +35,7 @@ public class MinimumWindowSubstring {
         int minSubLen = Integer.MAX_VALUE;
         int[] subStartAndEnd = {-1, -1};
 
-        //untill the end of the window.
+        //until the end of the window.
         //NOTE: The window map doesn't simply have all chars of the window.
         //Instead, for this question, we only store the chars of t in the window map.
         while (end < s.length()) {

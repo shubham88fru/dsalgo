@@ -49,6 +49,8 @@ public class Finding3DigitEvenNumbers {
             freq[i] += 1;
         }
 
+        //NOTE: Interesting that no sorting is needed in this approach,
+        //the result will already be sorted.
         return nums.stream().mapToInt(el -> el).toArray();
     }
 

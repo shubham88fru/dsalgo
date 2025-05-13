@@ -43,6 +43,32 @@ class MinStack2 {
     }
 }
 
+//my optimal soln.
+class MinStack3 {
+    Deque<long[]> stack = new ArrayDeque<>();
+
+    public MinStack3() {
+
+    }
+
+    public void push(int val) {
+        if (stack.isEmpty()) stack.addFirst(new long[]{val, val});
+        else stack.addFirst(new long[]{val, Math.min(val, stack.peekFirst()[1])});
+    }
+
+    public void pop() {
+        stack.removeFirst();
+    }
+
+    public int top() {
+        return (int) stack.peekFirst()[0];
+    }
+
+    public int getMin() {
+        return (int) stack.peekFirst()[1];
+    }
+}
+
 //strvr soln.
 class MinStack {
     private final Stack<Pair> _stack;

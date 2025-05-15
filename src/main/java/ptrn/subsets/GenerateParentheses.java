@@ -18,6 +18,23 @@ public class GenerateParentheses {
         return ans;
     }
 
+    //0) My soln.
+    private void revise(int n, int oc, int cc, List<String> ans, String str) {
+        if (oc == n && cc == n) {
+            ans.add(str);
+            return;
+        }
+
+        if (oc > n) return;
+        if (cc > n) return;
+
+        if (oc > cc) {
+            revise(n, oc, cc+1, ans, str+")");
+        }
+
+        revise(n, oc+1, cc, ans, str+"(");
+    }
+
     //3) edctv soln
     private void generateEdctv(int n, ArrayList<Character> seq, int openCnt, int closeCnt, List<String> ans) {
         if (openCnt == closeCnt && openCnt == n) {

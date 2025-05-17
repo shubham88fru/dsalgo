@@ -3,7 +3,8 @@ package ptrn.dp;
 import java.util.Arrays;
 
 //@link - https://leetcode.com/problems/longest-increasing-subsequence/description/
-//@strvr - https://takeuforward.org/data-structure/longest-increasing-subsequence-dp-41/
+//@strvr - https://www.youtube.com/watch?v=h9rm4N8XbL0&t=1720s&ab_channel=codestorywithMIK
+//       - https://takeuforward.org/data-structure/longest-increasing-subsequence-dp-41/
 //       - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6263849939632128
 public class LongestIncreasingSubsequence {
     public int lengthOfLIS(int[] nums) {
@@ -17,8 +18,8 @@ public class LongestIncreasingSubsequence {
         int answer = 1;
         int n = nums.length;
 
-        int[] dp = new int[n];
-        Arrays.fill(dp, 1);
+        int[] dp = new int[n]; //dp[i] denotes the length of LIS at index i.
+        Arrays.fill(dp, 1); //initially LIS at each index is 1 (the curr number itself)
 
         for (int i = 1; i < n; i++) {
             for (int j = 0; j < i; j++) {

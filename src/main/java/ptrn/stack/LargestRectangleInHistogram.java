@@ -1,6 +1,7 @@
 package ptrn.stack;
 
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Deque;
 
 //@link - https://leetcode.com/problems/largest-rectangle-in-histogram/
@@ -32,6 +33,50 @@ public class LargestRectangleInHistogram {
             _stack.addFirst(i);
         }
         return maxArea;
+    }
+
+    //2) Better approach - revision.
+    private int revise(int[] heights) {
+        int n = heights.length;
+
+        int[] rb = new int[n];
+        Arrays.fill(rb, n-1);
+
+        int[] lb = new int[n];
+
+        fillRb(heights, rb);
+        fillLb(heights, lb);
+
+        int maxArea = Integer.MIN_VALUE;
+        for (int i=0; i<n; i++) {
+            maxArea = Math.max(maxArea, (rb[i]-lb[i]+1)*heights[i]);
+        }
+
+        return maxArea;
+    }
+
+    private void fillRb(int[] heights, int[] rb) {
+        int n = rb.length;
+        Deque<int[]> stack = new ArrayDeque<>();
+        for (int i=0; i<n; i++) {
+            while (!stack.isEmpty() && heights[i] < stack.peekFirst()[0]) {
+                int idx = stack.removeFirst()[1];
+                rb[idx] = i - 1;
+            }
+            stack.addFirst(new int[] { heights[i], i});
+        }
+    }
+
+    private void fillLb(int[] heights, int[] lb) {
+        int n = lb.length;
+        Deque<int[]> stack = new ArrayDeque<>();
+        for (int i=n-1; i>=0; i--) {
+            while (!stack.isEmpty() && heights[i] < stack.peekFirst()[0]) {
+                int idx = stack.removeFirst()[1];
+                lb[idx] = i + 1;
+            }
+            stack.addFirst(new int[] { heights[i], i});
+        }
     }
 
     //2) Better approach.

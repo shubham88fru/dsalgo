@@ -22,6 +22,10 @@ public class CarFleet {
         had a hunch for), iterates the sorted list from the end to start
         and uses a different (smarter) trick to decide whether two
         cars will fleet up.
+
+        UPDATE 05/17/25: We don't really need a stack for this soln.
+        A 2D array is more than enough.
+        @see - https://www.youtube.com/watch?v=PemeYPadst4&ab_channel=Pepcoding
     */
     private int pass2(int target, int[] position, int[] speed) {
         int n = position.length;

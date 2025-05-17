@@ -7,6 +7,7 @@ import java.util.List;
 
 //@link - https://leetcode.com/problems/longest-unequal-adjacent-groups-subsequence-ii/description/
 //@check - https://www.youtube.com/watch?v=geXrFFZXQTc&ab_channel=codestorywithMIK
+//       - (printing LIS) https://www.youtube.com/watch?v=rYuLUjRSTeo&t=1855s&ab_channel=codestorywithMIK
 public class LongestUnequalAdjacentGroupsSubsequenceII {
     public List<String> getWordsInLongestSubsequence(String[] words, int[] groups) {
         // return pass1(words, groups);

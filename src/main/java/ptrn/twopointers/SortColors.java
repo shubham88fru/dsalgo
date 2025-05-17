@@ -6,8 +6,6 @@ package ptrn.twopointers;
 public class SortColors {
 
     public void sortColors(int[] nums) {
-
-        /***STRVR's solutions***/
         //arrangeColorsBetter(nums);
         arrangeColorsOptimal(nums);
     }
@@ -66,6 +64,43 @@ public class SortColors {
             } else { //nums[mid] will be 2.
                 swap(mid, high, nums);
                 high -= 1;
+            }
+        }
+    }
+
+    //2) Better soln: 3 pass
+    private void revise(int[] nums) {
+        int n = nums.length;
+
+        int i = 0;
+
+        //sort 0
+        for (int j = i; j<n; j++) {
+            if (nums[j] == 0) {
+                int numi = nums[i];
+                nums[i] = 0;
+                nums[j] = numi;
+                i += 1;
+            }
+        }
+
+        //sort 1
+        for (int j = i; j<n; j++) {
+            if (nums[j] == 1) {
+                int numi = nums[i];
+                nums[i] = 1;
+                nums[j] = numi;
+                i += 1;
+            }
+        }
+
+        //sort 2
+        for (int j = i; j<n; j++) {
+            if (nums[j] == 2) {
+                int numi = nums[i];
+                nums[i] = 2;
+                nums[j] = numi;
+                i += 1;
             }
         }
     }

@@ -9,11 +9,12 @@ import java.util.Arrays;
 public class LongestIncreasingSubsequence {
     public int lengthOfLIS(int[] nums) {
         Integer[][] memo = new Integer[2501][2501];
-        return topdown(nums, 0, -1, memo);
-//        return bottomUp(nums);
+//        return topdown(nums, 0, -1, memo);
+        return bottomUp(nums);
     }
 
     //1) bottom up approach.
+    //T: O(n^2)
     private int bottomUp(int[] nums) {
         int answer = 1;
         int n = nums.length;

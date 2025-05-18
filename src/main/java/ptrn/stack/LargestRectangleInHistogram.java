@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Deque;
 
 //@link - https://leetcode.com/problems/largest-rectangle-in-histogram/
-//@strvr - https://takeuforward.org/data-structure/area-of-largest-rectangle-in-histogram/
+//@strvr - https://www.youtube.com/watch?v=Bzat9vgD0fs&ab_channel=takeUforward
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6479108851892224
 public class LargestRectangleInHistogram {
     public int largestRectangleArea(int[] heights) {
@@ -14,24 +14,46 @@ public class LargestRectangleInHistogram {
         //return largestRectangleAreaOptimal(heights);
     }
 
-    //1) Optimal approach. This is kinda crazy. Didn't get it completely (or maybe even partially :D)
-    //stick with the approach 2 if it comes in an interview and giveup if the interviewer asks to
-    //optimize approach 2 further.
-    private int largestRectangleAreaOptimal(int[] heights){
-        Deque<Integer> _stack = new ArrayDeque<>();
-        int maxArea = Integer.MIN_VALUE;
+    //1) Optimal approach.
+    /*
+        Idea is to find nse and pse
+        (next smaller element and prev smaller element).
+        We push elements to stack only
+        if its larger than the top of the stack.
+        Note that this way, for each element pushed
+        on to stack, we have that element's pse.
+        If the element is smaller than the top of
+        stack, means we have stack's top's nse
+        as well. This way we can have nse and pse
+        for each element on the fly.
+    */
+    private int reviseOptimal(int[] heights) {
         int n = heights.length;
 
-        for (int i=0; i<=n; i++) { //notice `<= n` and not just `< n`
-            while (!_stack.isEmpty() && (i==n || heights[_stack.peekFirst()] >= heights[i])) {
-                int height = heights[_stack.peekFirst()];
-                _stack.removeFirst();
-                int width = i;
-                if (!_stack.isEmpty()) width = i - _stack.peekFirst() - 1;
-                maxArea = Math.max(maxArea, width*height);
+        Deque<Integer> stack = new ArrayDeque<>();
+        int maxArea = Integer.MIN_VALUE;
+
+        for (int i=0; i<n; i++) {
+            while (!stack.isEmpty() && heights[i] < heights[stack.peekFirst()]) {
+                int nse = i; //nse for element to be popped.
+                int height = heights[stack.removeFirst()]; //height of element being popped.
+                int pse = stack.isEmpty() ? -1: stack.peekFirst(); //pse for popped element.
+                maxArea = Math.max((nse - pse - 1)*height, maxArea);
             }
-            _stack.addFirst(i);
+            stack.addFirst(i);
         }
+
+        //At this point, the elements remaining
+        //in stack are guaranteed to have no nse.
+        //pse for each element will be the element
+        //below it in the stack.
+        while (!stack.isEmpty()) {
+            int nse = n;
+            int height = heights[stack.removeFirst()];
+            int pse = stack.isEmpty() ? -1: stack.peekFirst();
+            maxArea = Math.max((nse - pse - 1)*height, maxArea);
+        }
+
         return maxArea;
     }
 

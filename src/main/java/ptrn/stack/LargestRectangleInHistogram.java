@@ -48,7 +48,7 @@ public class LargestRectangleInHistogram {
         //pse for each element will be the element
         //below it in the stack.
         while (!stack.isEmpty()) {
-            int nse = n;
+            int nse = n; //the elements in stack at this point, dont have any nse, therefore nse is n.
             int height = heights[stack.removeFirst()];
             int pse = stack.isEmpty() ? -1: stack.peekFirst();
             maxArea = Math.max((nse - pse - 1)*height, maxArea);

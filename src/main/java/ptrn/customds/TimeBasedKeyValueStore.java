@@ -7,6 +7,12 @@ import java.util.*;
 public class TimeBasedKeyValueStore {
 
     //1) Optimal solution using binary search.
+    /*
+    * UPDATE 05/20: If using python, we don't really need
+    * two map. We can take a single Map of string v/s type.
+    * In Java however, since we can't have tuple or list
+    * with two different types in it, we need to use two maps.
+    * */
     static class TimeMap0 {
 
         /*

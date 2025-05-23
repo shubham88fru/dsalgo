@@ -2,6 +2,7 @@ package lc_potd;
 
 //@link - https://leetcode.com/problems/find-the-maximum-sum-of-node-values/
 //@check - https://www.youtube.com/watch?v=3t7y4mBJDoM&t=0s&ab_channel=AryanMittal
+//       - https://www.youtube.com/watch?v=QIiQdsVvjNw&ab_channel=codestorywithMIK
 public class FindMaximumSumOfNodeValues {
     //Only got like 70%, rewatch his and other's approach maybe.
     public long maximumValueSum(int[] nums, int k, int[][] edges) {

@@ -9,7 +9,60 @@ public class MedianOfTwoSortedArrays {
     public double findMedianSortedArrays(int[] a, int[] b) {
         // return binarySearchForMedian(a, b);
         // return brute(a, b);
-        return better(a, b);
+        // return better(a, b);
+        return reviseOptimal(a, b);
+    }
+
+    /**
+     * UPDATE 05/25: Wrote code based on mik's explanation below.
+     */
+    //1) Optimal soln using bs.
+    //Idea is to partition the elements into two groups
+    //such that the group on the left consists of
+    //elements lesser than the elements in the group on the right.
+    //The partition is such that we have
+    //(n1+n2+1)/2 on the left side of partition and rest on right.
+    private double reviseOptimal(int[] a, int[] b) {
+        int n1 = a.length;
+        int n2 = b.length;
+
+        if (n1 >= n2) return binarySearchSol(b, a);
+        return binarySearchSol(a, b);
+    }
+
+    private double binarySearchSol(int[] a, int[] b) {
+        int n = a.length;
+        int leftTotal = (a.length+b.length+1)/2;
+        int l = 0; //take no elements of first array on the left.
+        int r = n; //take all elements of first array on the left.
+
+        while (l <= r) {
+            int aLeftCount = l + (r-l)/2;
+            int bLeftCount = leftTotal - aLeftCount;
+
+            int al = Integer.MIN_VALUE;
+            int bl = Integer.MIN_VALUE;
+            int ar = Integer.MAX_VALUE;
+            int br = Integer.MAX_VALUE;
+
+            if (aLeftCount > 0) al = a[aLeftCount-1];
+            if (aLeftCount < a.length) ar = a[aLeftCount];
+            if (bLeftCount > 0) bl = b[bLeftCount-1];
+            if (bLeftCount < b.length) br = b[bLeftCount];
+
+            if (al <= br && bl <= ar) {
+                if ((a.length + b.length)%2 != 0) return Math.max(al, bl);
+                return (Math.max(al, bl) + Math.min(ar, br))/2.0;
+            }
+
+            if (al > br) {
+                r = aLeftCount - 1;
+            } else {
+                l = aLeftCount + 1;
+            }
+        }
+
+        return -1.0;
     }
 
     /**

@@ -7,6 +7,20 @@ public class ReverseALinkedList {
     public ListNode reverseList(ListNode head) {
         return sol1(head);
         //return sol2(head);
+        //return recursive(head);
+    }
+
+    //Based on strvr's explanation.
+    private ListNode recursive(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode newHead = recursive(head.next);
+        ListNode nxt = head.next;
+        nxt.next = head;
+        head.next = null;
+        return newHead;
     }
 
     //1) With prev, curr and next pointer.

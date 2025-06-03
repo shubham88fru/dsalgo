@@ -9,7 +9,8 @@ import java.util.Set;
 //@check - https://www.youtube.com/watch?v=fGa9jczRS2o&ab_channel=codestorywithMIK
 public class MaximumCandiesYouCanGetFromBoxes {
     public int maxCandies(int[] status, int[] candies, int[][] keys, int[][] containedBoxes, int[] initialBoxes) {
-        return bfs(status, candies, keys, containedBoxes, initialBoxes);
+        // return bfs(status, candies, keys, containedBoxes, initialBoxes);
+        return dfsSol(status, candies, keys, containedBoxes, initialBoxes);
     }
 
     /*
@@ -63,5 +64,49 @@ public class MaximumCandiesYouCanGetFromBoxes {
         }
 
         return maxCandies;
+    }
+
+    private int dfsSol(int[] status, int[] candies, int[][] keys, int[][] containedBoxes, int[] initialBoxes) {
+        int n = status.length;
+
+        //note that per constraints, a box will atmost be contained
+        //in one box, and therefore visited array might not be needed
+        //however, this can be asked as a followup in an interview, so
+        //writing this generic code.
+        int[] visited = new int[n];
+
+        int[] maxCandies = {0};
+        Set<Integer> seenBoxes = new HashSet<>();
+        for (int initial: initialBoxes) {
+            seenBoxes.add(initial);
+            if (status[initial] == 1) {
+                maxCandies[0] += candies[initial];
+                dfs(initial, status, candies, keys, containedBoxes, seenBoxes, maxCandies, visited);
+            }
+        }
+
+        return maxCandies[0];
+    }
+
+    private void dfs(int box, int[] status, int[] candies, int[][] keys, int[][] containedBoxes, Set<Integer> seenBoxes, int[] maxCandies, int[] visited) {
+        if (visited[box] == -1) return;
+        if (status[box] != 1) return;
+
+        visited[box] = -1;
+        for (int cb: containedBoxes[box]) {
+            seenBoxes.add(cb);
+            if (status[cb] == 1 && visited[cb] != -1) {
+                maxCandies[0] += candies[cb];
+                dfs(cb, status, candies, keys, containedBoxes, seenBoxes, maxCandies, visited);
+            }
+        }
+
+        for (int key: keys[box]) {
+            status[key] = 1;
+            if (seenBoxes.contains(key) && visited[key] != -1) {
+                maxCandies[0] += candies[key];
+                dfs(key, status, candies, keys, containedBoxes, seenBoxes, maxCandies, visited);
+            }
+        }
     }
 }

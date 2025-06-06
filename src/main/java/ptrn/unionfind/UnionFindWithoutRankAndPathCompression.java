@@ -1,7 +1,7 @@
 package ptrn.unionfind;
 
 //Implementation of most basic UnionFind, without
-//and sugar coating. Raw Union and Find. No Rank or
+//any sugar coating. Raw Union and Find. No Rank or
 //path compression.
 public class UnionFindWithoutRankAndPathCompression {
     public int[] parent;
@@ -16,10 +16,7 @@ public class UnionFindWithoutRankAndPathCompression {
         }
     }
 
-    // Function to find which subset a particular element belongs to
-    // Returns FALSE if both vertices have the same parent, otherwise,
-    //updates the parent and rank lists by making a connection based on the passed edge
-    // Returns TRUE if no cycle exits in the graph
+    // Function to find which subset a particular element belongs to.
     public int find(int v) {
         if (parent[v] != v) {
             find(parent[v]);

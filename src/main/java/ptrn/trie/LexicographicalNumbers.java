@@ -28,6 +28,18 @@ public class LexicographicalNumbers {
         }
     }
 
+    private void revise(int n, int curr, List<Integer> ans) {
+
+        for (int i=0; i<=9; i++) {
+            int num = curr*10 + i;
+            if (num == 0) continue;
+
+            if (num > n) return;
+            ans.add(num);
+            revise(n, num, ans);
+        }
+    }
+
     //2) my soln using comparators.
     private List<Integer> revise(int n) {
         List<Integer> ans = IntStream.rangeClosed(1, n).boxed().collect(Collectors.toList());

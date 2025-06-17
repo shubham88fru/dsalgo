@@ -24,7 +24,7 @@ public class MaximumDifferenceBetweenIncreasingElements {
     //My approach 2
     private int revise(int[] nums) {
         int min = Integer.MAX_VALUE;
-        int max = 0;
+        int max;
         int diff = -1;
 
         for (int i=0; i < nums.length; i++) {

@@ -15,9 +15,9 @@ public class MinimumDeletionsToMakeStringKSpecial {
         that the remaining chars are valid as per
         curr char. And then, we'll select the
         one that leads to min deletions.
-        While this gurantees that wrt to curr char
-        all the remaining chars will be in the premissible
-        limits, however, I don't understand how this gurantees
+        While this guarantees that wrt to curr char
+        all the remaining chars will be in the permissible
+        limits, however, I don't understand how this guarantees
         that the remaining chars are within permissible limits
         of each other.
     */

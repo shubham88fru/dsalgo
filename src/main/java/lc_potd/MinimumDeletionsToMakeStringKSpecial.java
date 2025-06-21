@@ -1,6 +1,7 @@
 package lc_potd;
 
 //@link - https://leetcode.com/problems/minimum-deletions-to-make-string-k-special/
+//@check - https://www.youtube.com/watch?v=u-DEw481l04
 public class MinimumDeletionsToMakeStringKSpecial {
     public int minimumDeletions(String word, int k) {
         return brute(word, k);
@@ -20,6 +21,9 @@ public class MinimumDeletionsToMakeStringKSpecial {
         limits, however, I don't understand how this guarantees
         that the remaining chars are within permissible limits
         of each other.
+
+        Mik also showed an optimal soln. @check if
+        this is a recurring problem.
     */
     private int brute(String word, int k) {
         int n = word.length();

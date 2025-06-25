@@ -15,7 +15,6 @@ public class FindAllKDistantIndicesInAnArray {
                 }
             }
         }
-
         List<Integer> ans = new ArrayList<>(st);
         Collections.sort(ans);
         return ans;

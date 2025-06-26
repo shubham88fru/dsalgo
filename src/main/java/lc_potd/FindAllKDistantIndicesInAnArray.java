@@ -2,6 +2,7 @@ package lc_potd;
 
 import java.util.*;
 
+
 //@link - https://leetcode.com/problems/find-all-k-distant-indices-in-an-array/
 public class FindAllKDistantIndicesInAnArray {
     public List<Integer> findKDistantIndices(int[] nums, int key, int k) {

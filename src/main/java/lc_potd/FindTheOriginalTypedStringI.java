@@ -23,7 +23,7 @@ public class FindTheOriginalTypedStringI {
             i += 1;
         }
 
-        return cnt + 1; //+1 coz of the case none of the chars are mistyped.
+        return cnt + 1; //+1 coz of the case none of the chars are mistyped
     }
 
     /*

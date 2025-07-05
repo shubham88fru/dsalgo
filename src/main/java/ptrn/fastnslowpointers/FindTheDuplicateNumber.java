@@ -6,18 +6,19 @@ import java.util.Set;
 //@link - https://leetcode.com/problems/find-the-duplicate-number/description/
 //@strvr - https://takeuforward.org/data-structure/find-the-duplicate-in-an-array-of-n1-integers/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6745247192973312
-public class FindTheDuplicateNum {public int findDuplicate(int[] nums) {
-    //Note that an approach similar to
-    //that of finding the missing num can not be used here.
-    //In this question, although the nums in array are in [1, n]
-    //but this doesn't mean that every num from 1 to n appears atleast
-    //once. The only thing guaranteed in this question is that each element
-    //of the array will be in 1 to n and not that each of 1 to n appears in the array.
+public class FindTheDuplicateNumber {
+    public int findDuplicate(int[] nums) {
+        //Note that an approach similar to
+        //that of finding the missing num can not be used here.
+        //In this question, although the nums in array are in [1, n]
+        //but this doesn't mean that every num from 1 to n appears atleast
+        //once. The only thing guaranteed in this question is that each element
+        //of the array will be in 1 to n and not that each of 1 to n appears in the array.
 
 
-    //return findDuplicateBetter(nums);
-    return findDuplicateOptimal(nums);
-}
+        //return findDuplicateBetter(nums);
+        return findDuplicateOptimal(nums);
+    }
 
     //1) Optimal Soln: T: O(N), S: O(1)
     //Using linked list cycle method and Tortoise and Hare (slow and fast pointer)
@@ -52,7 +53,7 @@ public class FindTheDuplicateNum {public int findDuplicate(int[] nums) {
     private int findDuplicateBetter(int[] nums) {
         int[] freq = new int[nums.length];
 
-        for (int num: nums) {
+        for (int num : nums) {
             if (freq[num] == 0) freq[num] += 1;
             else return num;
         }
@@ -74,18 +75,18 @@ public class FindTheDuplicateNum {public int findDuplicate(int[] nums) {
     private int sol4(int[] nums) {
         Set<Integer> swapped = new HashSet<>();
         /*********Cyclic Sort******************/
-        int i=0;
-        while (i<nums.length) {
+        int i = 0;
+        while (i < nums.length) {
             //Ignore -ves, large nums, nums that arent' already correctly positioned and duplicates.
-            if (!(nums[i] >= nums.length || nums[i] == i+1 || swapped.contains(nums[i]))) {
+            if (!(nums[i] >= nums.length || nums[i] == i + 1 || swapped.contains(nums[i]))) {
                 swapped.add(nums[i]);
                 int temp = nums[i];
-                nums[i] = nums[temp-1];
-                nums[temp-1] = temp;
+                nums[i] = nums[temp - 1];
+                nums[temp - 1] = temp;
             } else i += 1;
         }
         /*********Cyclic Sort******************/
-        return nums[nums.length-1];
+        return nums[nums.length - 1];
     }
 
 }

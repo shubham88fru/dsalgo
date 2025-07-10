@@ -16,7 +16,7 @@ public class RescheduleMeetingsForMaximumFreeTimeI {
         orders of the events can't be changed. Therefore,
         an event can only be 'shifted' left and right but it can
         'jump' across an event before or after it.
-     */
+    */
     private int mikssol(int eventTime, int k, int[] startTime, int[] endTime) {
         List<Integer> gaps = new ArrayList<>();
 

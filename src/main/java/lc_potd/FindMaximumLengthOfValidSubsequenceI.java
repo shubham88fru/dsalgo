@@ -2,7 +2,7 @@ package lc_potd;
 
 //@link - https://leetcode.com/problems/find-the-maximum-length-of-valid-subsequence-i/description/
 //@check - https://www.youtube.com/watch?v=u-NffNeqNqk&ab_channel=codestorywithMIK
-public class FindValidLengthOfValidSubsequenceI {
+public class FindMaximumLengthOfValidSubsequenceI {
     public int maximumLength(int[] nums) {
         //return pass1(nums);
         return pass2(nums);

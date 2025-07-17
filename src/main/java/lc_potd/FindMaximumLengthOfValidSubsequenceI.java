@@ -100,7 +100,7 @@ public class FindMaximumLengthOfValidSubsequenceI {
         to my 3d dp approach with a clever trick.
         Fix the result of mod (int this 0 or 1) and
         runt the dp twice. This removes the need to track
-        past 2 variables.
+        past 2 variables. Still gives MLE, though.
         Took this hint from mik.
     */
     private int pass3(int[] nums) {

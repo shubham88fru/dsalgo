@@ -1,5 +1,7 @@
 package lc_potd;
 
+import java.util.Arrays;
+
 //@link - https://leetcode.com/problems/find-the-maximum-length-of-valid-subsequence-i/description/
 //@check - https://www.youtube.com/watch?v=u-NffNeqNqk&ab_channel=codestorywithMIK
 public class FindMaximumLengthOfValidSubsequenceI {
@@ -132,5 +134,32 @@ public class FindMaximumLengthOfValidSubsequenceI {
             memo[i][pi] = Math.max(pick, npick);
         }
         return Math.max(pick, npick);
+    }
+
+    /*
+        Using bottom-up appraoch.
+        LIS variant. Still TLE.
+    */
+    private int pass4(int[] nums) {
+        int n = nums.length;
+        return Math.max(dp3(nums, 0), dp3(nums, 1));
+    }
+
+    private int dp3(int[] nums, int target) {
+        int n = nums.length;
+        int[] dp = new int[n];
+        Arrays.fill(dp, 1);
+
+        int ans = 1;
+        for (int i=1; i<n; i++) {
+            for (int j=0; j<i; j++) {
+                if ((nums[i]+nums[j])%2 == target) {
+                    dp[i] = Math.max(dp[i], dp[j]+1);
+                    ans = Math.max(ans, dp[i]);
+                }
+            }
+        }
+
+        return ans;
     }
 }

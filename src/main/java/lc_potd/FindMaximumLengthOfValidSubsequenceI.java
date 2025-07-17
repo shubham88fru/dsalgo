@@ -6,6 +6,7 @@ public class FindMaximumLengthOfValidSubsequenceI {
     public int maximumLength(int[] nums) {
         //return pass1(nums);
         return pass2(nums);
+        // return pass3(nums);
     }
 
     /*
@@ -90,6 +91,45 @@ public class FindMaximumLengthOfValidSubsequenceI {
 
         if (pi != -1 && ppi != -1) {
             memo[i][pi][ppi] = Math.max(pick, npick);
+        }
+        return Math.max(pick, npick);
+    }
+
+    /*
+        Interesting 2d dp appraoch, very similar
+        to my 3d dp approach with a clever trick.
+        Fix the result of mod (int this 0 or 1) and
+        runt the dp twice. This removes the need to track
+        past 2 variables.
+        Took this hint from mik.
+    */
+    private int pass3(int[] nums) {
+        int n = nums.length;
+        return Math.max(dp2(nums, -1, 0, 0, new Integer[n+1][n+1]),
+                dp2(nums, -1, 0, 1, new Integer[n+1][n+1]));
+    }
+
+
+    private int dp2(int[] nums, int pi, int i, int target, Integer[][] memo) {
+
+        if (i >= nums.length) return 0;
+
+        if (pi != -1 && memo[i][pi] != null) return memo[i][pi];
+
+        int pick = 0;
+        if (pi != -1) {
+            if ((nums[pi]+nums[i])%2 == target) {
+                pick += (1 + dp2(nums, i, i+1, target, memo));
+            }
+        } else {
+            pick += (1 + dp2(nums, i, i+1, target, memo));
+        }
+
+
+        int npick = dp2(nums, pi, i+1, target, memo);
+
+        if (pi != -1) {
+            memo[i][pi] = Math.max(pick, npick);
         }
         return Math.max(pick, npick);
     }

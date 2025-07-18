@@ -70,7 +70,7 @@ public class FindMaximumLengthOfValidSubsequenceII {
     }
 
     /*
-        Interesting 2d dp appraoch, very similar
+        Interesting 2d dp approach, very similar
         to my 3d dp approach with a clever trick.
         Fix the result of mod (int this 0 or 1) and
         runt the dp twice. This removes the need to track

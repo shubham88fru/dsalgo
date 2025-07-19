@@ -11,6 +11,11 @@ public class RemoveSubFoldersFromTheFilesystem {
         return mysol(folder);
     }
 
+    /*
+    * This is my soln.
+    * Not sure if its the most optimal soln.
+    * check yt if this is a recurring problem.
+    * */
     private List<String> mysol(String[] folder) {
         TrieNode34 root = new TrieNode34();
         List<String> ans = new ArrayList<>();

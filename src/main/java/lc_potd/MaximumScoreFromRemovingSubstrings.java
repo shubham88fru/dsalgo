@@ -56,7 +56,7 @@ public class MaximumScoreFromRemovingSubstrings {
 
     /// ////////////
     /*
-        My soln. Pretty much similar to aryan's
+        My solution. Pretty much similar to aryan's
      */
     public int maximumGain2(String s, int x, int y) {
         return revise(s, x, y);

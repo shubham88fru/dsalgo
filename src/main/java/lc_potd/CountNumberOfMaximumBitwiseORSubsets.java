@@ -23,6 +23,36 @@ public class CountNumberOfMaximumBitwiseORSubsets {
         return countMemo(nums, 0, 0, maxOr, new HashMap<>());
     }
 
+    /*
+    * My dp.
+    * */
+    private int revise(int[] nums) {
+        int mor = 0;
+        for (int num: nums) mor |= num;
+        Map<String, Integer> memo = new HashMap<>();
+        return dp(nums, 0, 0, mor, memo);
+    }
+
+    private int dp(int[] nums, int i, int curr, int mor, Map<String, Integer> memo) {
+        if (i >= nums.length) {
+            if (curr == mor) return 1;
+            return 0;
+        }
+
+        if (curr > mor) return 0;
+
+        String key = i + "_" + curr;
+        if (memo.containsKey(key)) return memo.get(key);
+
+        int pick = 0;
+        int npick = 0;
+        pick += dp(nums, i+1, curr|nums[i], mor, memo);
+        npick += dp(nums, i+1, curr, mor, memo);
+
+        memo.put(key, pick+npick);
+        return memo.get(key);
+    }
+
     //Dp - memoization soln. (Inspired by mik)
     private int countMemo(int[] nums, int curr, int or, int maxOr, Map<String, Integer> memo) {
         if (curr >= nums.length) {

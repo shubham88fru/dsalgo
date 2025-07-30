@@ -39,4 +39,30 @@ public class LongestSubarrayWIthMaximumBitwiseAnd {
 
         return maxLen;
     }
+
+    /* *
+     My soln
+     */
+    private int revise(int[] nums) {
+        int n = nums.length;
+        int max = -1;
+        for (int num: nums) max = Math.max(num, max);
+
+        int maxLen = 1;
+        int i=0;
+        int j=0;
+        while (i<n) {
+            if (nums[i] == max) {
+                while (j<n && nums[j] == max) j += 1;
+                maxLen = Math.max(maxLen, j-i);
+                i=j;
+            } else {
+                j += 1;
+                i += 1;
+            }
+
+        }
+
+        return maxLen;
+    }
 }

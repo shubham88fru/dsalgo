@@ -9,11 +9,12 @@ public class FruitsInBasketII {
         return brute(fruits, baskets);
     }
 
-    /*
+    /**
     * This is my brute force.
     * Optimal way is to use segment trees for this and
     * part III for this problem. Mik showed the segment
     * tree approach. check if this is a hfq for some company.
+    * @see lc_potd.FruitsInBasketIII for segtree soln.
     * */
     private int brute(int[] fruits, int[] baskets) {
         // int m = fruits.length;

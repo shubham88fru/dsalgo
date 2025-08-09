@@ -10,6 +10,17 @@ public class IsPowerOfTwo {
         return (n%2 == 0) && isPowerOfTwo(n/2);
     }
 
+    /**
+     * Most optimal using bitmagic
+     */
+    private boolean mostOptimal(int n) {
+        if (n <= 0) return false;
+        return ((n&(n-1)) == 0);
+    }
+
+    /*
+        my constant time soln.
+     */
     private boolean revise(int n) {
         if (n < 0) return false;
 

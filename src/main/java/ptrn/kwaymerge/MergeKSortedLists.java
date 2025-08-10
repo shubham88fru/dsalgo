@@ -4,13 +4,43 @@ import java.util.PriorityQueue;
 
 //@link - https://leetcode.com/problems/merge-k-sorted-lists/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4807159151067136
+//       - https://www.youtube.com/watch?v=Q64u-W3l3mA&ab_channel=codestorywithMIK
 public class MergeKSortedLists {
     public ListNode mergeKLists(ListNode[] lists) {
         //return kindaBrute(lists);
         return better(lists);
     }
 
-    //Using heaps.
+    //1. Optimal
+    private ListNode optimal(ListNode[] lists) {
+        if (lists == null || lists.length == 0) return null;
+        return mergeSort(lists, 0, lists.length-1);
+    }
+
+    private ListNode mergeSort(ListNode[] lists, int l, int r) {
+        if (l == r) return lists[l];
+
+        int mid = l + (r-l)/2;
+        ListNode l1 = mergeSort(lists, l, mid);
+        ListNode l2 = mergeSort(lists, mid+1, r);
+
+        return mergeRecursive(l1, l2);
+    }
+
+    private ListNode mergeRecursive(ListNode l1, ListNode l2) {
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
+
+        if (l1.val <= l2.val) {
+            l1.next = mergeRecursive(l1.next, l2);
+            return l1;
+        }
+
+        l2.next = mergeRecursive(l1, l2.next);
+        return l2;
+    }
+
+    //2. Using heaps.
     private ListNode better(ListNode[] lists) {
         PriorityQueue<ListNode> minHeap =
                 new PriorityQueue<>((n1, n2) -> n1.val - n2.val);
@@ -24,7 +54,7 @@ public class MergeKSortedLists {
             minHeap.add(list);
         }
 
-        //untill all nodes processed, keep
+        //until all nodes processed, keep
         //picking the minimum and moving next
         //in the list which had the minimum.
         while (!minHeap.isEmpty()) {
@@ -41,6 +71,7 @@ public class MergeKSortedLists {
         return dummy.next;
     }
 
+    //3. Brute
     private ListNode kindaBrute(ListNode[] lists) {
         int n = lists.length;
         //ATQ.

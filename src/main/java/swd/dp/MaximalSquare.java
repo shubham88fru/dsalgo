@@ -36,4 +36,37 @@ public class MaximalSquare {
         return memo.get(key);
 
     }
+
+    private int revise(char[][] matrix) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        Integer[][] dp = new Integer[(m+1)][(n+1)];
+        int max = 0;
+        for (int i=0; i<m; i++) {
+            for (int j=0; j<n; j++) {
+                if (matrix[i][j] != '0') {
+                    max = Math.max(max, area(matrix, i, j, m, n, dp));
+                }
+            }
+        }
+
+        return max*max;
+    }
+
+    private int area(char[][] matrix, int i, int j, int m, int n, Integer[][] dp) {
+        if (i < 0 || i >= m || j < 0 || j >= n || matrix[i][j] == '0') return 0;
+
+        if (dp[i][j] != null) return dp[i][j];
+
+        dp[i][j] = 1 + Math.min(
+                area(matrix, i, j+1, m, n, dp),
+                Math.min(
+                        area(matrix, i+1, j, m, n, dp),
+                        area(matrix, i+1, j+1, m, n, dp)
+                )
+        );
+
+        return dp[i][j];
+    }
 }

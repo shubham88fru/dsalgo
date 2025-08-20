@@ -1,7 +1,7 @@
 package lc_potd;
 
 //@link - https://leetcode.com/problems/count-square-submatrices-with-all-ones/description/
-//@check -
+//@check - https://www.youtube.com/watch?v=y3kdowdyNMM&ab_channel=codestorywithMIK
 public class CountSquareSubmatricesWithAllOnes {
     /**
         Coded by me but intuition and approach by mik.
@@ -34,7 +34,7 @@ public class CountSquareSubmatricesWithAllOnes {
         say, this func returns x, then it means from point i, j on the matrix, we
         can draw a square of size x*x such that all of the elements of the square are 1s.
         This also means, that if we are able to draw a x*x square consisting of all 1s,
-        then we will certainly be able to draw draw squares of size x-1, x-2, x-3...1
+        then we will certainly be able to draw squares of size x-1, x-2, x-3...1
         (because they'll all just have 1s in them). Concretely, if this func returns x,
         then we know that the count of squares that can be drawn from current point will
         also be x.

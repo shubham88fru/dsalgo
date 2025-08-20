@@ -52,4 +52,37 @@ public class CountSquareSubmatricesWithAllOnes {
 
         return memo[i][j];
     }
+
+    private int revise(int[][] matrix) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        Integer[][] dp = new Integer[(m+1)][(n+1)];
+        int sq = 0;
+        for (int i=0; i<m; i++) {
+            for (int j=0; j<n; j++) {
+                if (matrix[i][j] != 0) {
+                    sq += squares(matrix, i, j, m, n, dp);
+                }
+            }
+        }
+
+        return sq;
+    }
+
+    private int squares(int[][] matrix, int i, int j, int m, int n, Integer[][] dp) {
+        if (i < 0 || i >= m || j < 0 || j >= n || matrix[i][j] == 0) return 0;
+
+        if (dp[i][j] != null) return dp[i][j];
+
+        dp[i][j] = 1 + Math.min(
+                squares(matrix, i, j+1, m, n, dp),
+                Math.min(
+                        squares(matrix, i+1, j, m, n, dp),
+                        squares(matrix, i+1, j+1, m, n, dp)
+                )
+        );
+
+        return dp[i][j];
+    }
 }

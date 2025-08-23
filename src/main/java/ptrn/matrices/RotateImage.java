@@ -30,6 +30,15 @@ public class RotateImage {
         int m = matrix.length;
         int n = matrix[0].length;
 
+        /*
+        * Note that this works inplace
+        * only because for this q, the
+        * matrix is given to be n*n. For
+        * general matrices (n*m), we'll need
+        * a separate transpose matrix of size
+        * m*n and copy the i,j from og matrix
+        * to j,i of the transpose matrix.
+        * */
         for (int i = 0; i<m; i++) {
             for (int j = i; j < n; j++) {
                 int temp = matrix[i][j];

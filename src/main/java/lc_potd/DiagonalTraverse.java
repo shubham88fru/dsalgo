@@ -12,6 +12,9 @@ public class DiagonalTraverse {
      * Coded by me but based on mik's
      * explanation. I'm not sure if this
      * is the most optimal soln though.
+     *
+     * All elements at same diagonal level
+     * will have same value of `i+j`
      */
     private int[] mikssol(int[][] mat) {
         int m = mat.length;

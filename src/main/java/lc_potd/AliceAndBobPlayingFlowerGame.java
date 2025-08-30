@@ -22,6 +22,6 @@ public class AliceAndBobPlayingFlowerGame {
             else o2 += 1;
         }
 
-        return (long)(e1*o2) + (long)(o1*e2);
+        return (e1*o2) + (o1*e2);
     }
 }

@@ -6,6 +6,9 @@ public class AliceAndBobPlayingFlowerGame {
         return pass1(n, m);
     }
 
+    /*
+        My soln.
+     */
     private long pass1(int n, int m) {
         long e1 = 0;
         long o1 = 0;

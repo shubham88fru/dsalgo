@@ -3,8 +3,8 @@ package lc_potd;
 import java.util.Arrays;
 import java.util.Comparator;
 
-//@link - https://leetcode.com/problems/find-the-number-of-ways-to-place-people-i/description/
-public class FindNumberOfWaysToPlacePeopleI {
+//@link - https://leetcode.com/problems/find-the-number-of-ways-to-place-people-ii/
+public class FindNumberOfWaysToPlacePeopleII {
     public int numberOfPairs(int[][] points) {
         return pass1(points);
     }
@@ -41,10 +41,11 @@ public class FindNumberOfWaysToPlacePeopleI {
                 if (ay < by) continue;
 
                 boolean inBetween = false;
+
                 /*
-                * When sorting, this loop can
-                * be removed. Check mik's explanation
-                * */
+                 * When sorting, this loop can
+                 * be removed. Check mik's explanation
+                 * */
                 for (int k=i+1; k<j; k++) {
                     int kx = points[k][0];
                     int ky = points[k][1];

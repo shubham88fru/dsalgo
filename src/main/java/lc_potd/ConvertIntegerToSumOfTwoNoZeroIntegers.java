@@ -9,6 +9,7 @@ public class ConvertIntegerToSumOfTwoNoZeroIntegers {
     /*
         This is a O(n*log(n)) solution.
         Mik showed a O(log(n)) soln as well.
+        check if this is a recurring problem.
      */
     private int[] revise(int n) {
 

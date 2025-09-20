@@ -1,6 +1,6 @@
 package lc_potd;
 
-//@link - https://leetcode.com/problems/design-spreadsheet/description/
+//@link - https://leetcode.com/problems/design-spreadsheet/description
 public class DesignSpreadsheet {
     int[][] spreadsheet;
 

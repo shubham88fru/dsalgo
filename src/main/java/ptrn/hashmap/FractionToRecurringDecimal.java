@@ -91,6 +91,65 @@ public class FractionToRecurringDecimal {
     }
 
     /**
-     * My revision code coming soon..
+     * My revision soln.
+     * Approach is exactly the same and I blind coded
+     * it, but for some reason runs slower than the
+     * edctv og soln above.
      */
+    //type conv to Long is imp. Because input can be Integer.MIN_VALUE
+    //and it will blow up when doing Math.abs on it.
+    private String revise(long numerator, long denominator) {
+        if (numerator == 0) return "0";
+        if (numerator%denominator == 0) return String.valueOf(numerator/denominator);
+
+        boolean neg = false;
+        int index = 1;
+        String frac = ".";
+        if (numerator * denominator < 0) {
+            neg = true;
+        }
+
+        numerator = Math.abs(numerator);
+        denominator = Math.abs(denominator);
+
+        StringBuilder fraction = new StringBuilder();
+        String real = "0";
+
+        Map<Long, Integer> remainders = new HashMap<>();
+        fraction.append(frac);
+        if (numerator < denominator) {
+            remainders.put(numerator, index);
+        } else {
+            real = String.valueOf(numerator/denominator);
+            numerator %= denominator;
+            remainders.put(numerator, index);
+        }
+
+        while (numerator != 0) {
+            if (numerator >= denominator) {
+                fraction.append(String.valueOf(numerator/denominator));
+                numerator %= denominator;
+            } else if (numerator*10 >= denominator) {
+                fraction.append(String.valueOf((numerator*10)/denominator));
+                numerator = (numerator*10)%denominator;
+            } else {
+                fraction.append("0");
+                numerator *= 10;
+            }
+
+            index += 1;
+            if (remainders.containsKey(numerator)) {
+
+                int si = remainders.get(numerator);
+                fraction.insert(si, '(');
+                fraction.append(')');
+                break;
+            }
+            remainders.put(numerator, index);
+        }
+
+        if (neg) return "-" + real + fraction.toString();
+
+        return real + fraction.toString();
+    }
 }

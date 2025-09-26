@@ -96,7 +96,7 @@ public class FractionToRecurringDecimal {
      * it, but for some reason runs slower than the
      * edctv OG soln above.
      */
-    //type conv to Long is imp. Because input can be Integer.MIN_VALUE
+    //Type conv to Long is imp. Because input can be Integer.MIN_VALUE
     //and it will blow up when doing Math.abs on it.
     private String revise(long numerator, long denominator) {
         if (numerator == 0) return "0";

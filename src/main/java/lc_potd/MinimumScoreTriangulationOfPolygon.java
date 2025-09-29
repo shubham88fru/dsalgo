@@ -1,6 +1,7 @@
 package lc_potd;
 
 //@link - https://leetcode.com/problems/minimum-score-triangulation-of-polygon/description/
+//@check - https://www.youtube.com/watch?v=2r2qr0-NZFc
 public class MinimumScoreTriangulationOfPolygon {
     public int minScoreTriangulation(int[] values) {
         return mikssol(values);

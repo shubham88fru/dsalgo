@@ -6,6 +6,9 @@ public class WaterBottlesII {
         return revise(numBottles, numExchange);
     }
 
+    /*
+     I like this version better.
+     */
     private int revise(int numBottles, int numExchange) {
 
         int f = numBottles;

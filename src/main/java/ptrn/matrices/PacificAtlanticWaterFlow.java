@@ -12,7 +12,7 @@ public class PacificAtlanticWaterFlow {
     * Following is based on my initial intuition to
     * solve the problem. I don't think this is the
     * optimal soln though. This q is part of
-    * nc150 so check optimal solution.
+    * nc150 so check optimal solution when revising.
     * */
     public List<List<Integer>> pacificAtlantic(int[][] heights) {
         List<List<Integer>> ans  = new ArrayList<>();

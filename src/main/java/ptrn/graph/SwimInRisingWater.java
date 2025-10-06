@@ -17,7 +17,7 @@ public class SwimInRisingWater {
 
 
     //1) Greedy using slight modification of dijkstra.
-    // Following is a soln completely based on nc's explanation.
+    // Following is a soln completely based on NC's explanation.
     //Instead of finding all the paths,
     //greedily chose the most likely path
     //per the dijkstra algorithm.

@@ -9,7 +9,7 @@ public class FindTheMinimumAmountOfTimeToBrewPotions {
     }
 
     /**
-     Coded by me based on mik's and editorial soln.
+        Coded by me based on mik's and editorial soln.
      */
     private long mikssol(int[] skill, int[] mana) {
         int n = skill.length;

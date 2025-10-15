@@ -9,15 +9,15 @@ public class AdjacentIncreasingSubarraysDetectionII {
     }
 
     /**
-         Optimal soln.
-         Becomes easy after solving part I of this problem
-         https://leetcode.com/problems/adjacent-increasing-subarrays-detection-i/
+     Optimal soln.
+     Becomes easy after solving part I of this problem
+     <a href="https://leetcode.com/problems/adjacent-increasing-subarrays-detection-i/">...</a>
 
-        @see lc_potd.AdjacentIncreasingSubarraysDetectionI
+     @see AdjacentIncreasingSubarraysDetectionI
 
-        One more approach to solve this problem is to simply
-        use part I's code and do a binary search over 'k' and
-        seeing the larget 'k' that returns true.
+     One more approach to solve this problem is to simply
+     use part I's code and do a binary search over 'k' and
+     seeing the larget 'k' that returns true.
      */
     private int optimal(List<Integer> nums) {
         int n = nums.size();

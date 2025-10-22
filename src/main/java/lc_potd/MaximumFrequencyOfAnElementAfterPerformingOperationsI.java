@@ -1,5 +1,8 @@
 package lc_potd;
 
+import java.util.HashMap;
+import java.util.Map;
+
 //@link - https://leetcode.com/problems/maximum-frequency-of-an-element-after-performing-operations-i/description/?
 //@check - https://www.youtube.com/watch?v=CKha8fqTwBA
 public class MaximumFrequencyOfAnElementAfterPerformingOperationsI {
@@ -8,6 +11,54 @@ public class MaximumFrequencyOfAnElementAfterPerformingOperationsI {
     }
 
     /**
+     Approach 2 -
+     Coded by mea based on mik's explanation for diff
+     array technique.
+     https://www.youtube.com/watch?v=BaEebscdBJM
+
+     Diff array technique in short -
+     1. diff[l] += 1; diff[r+1] -= 1;
+     2. cummulative sum.
+
+     The difference between this and Appproach 1 is
+     ofcourse that this approach uses diff array technique
+     but also that in approach 1 we were viewing how many
+     nums can be converted to target, but in approach 2
+     its slightly different way of looking at it.
+     */
+    private int miksDiffArrayTechnique(int[] nums, int k, int numOperations) {
+        int max = Integer.MIN_VALUE;
+        for (int num: nums) max = Math.max(num+k, max); //target can be from 0..max+k
+
+        int[] diff = new int[max+2];
+        Map<Integer, Integer> ogFreq = new HashMap<>();
+
+        for (int num: nums) {
+            ogFreq.put(num, ogFreq.getOrDefault(num, 0)+1);
+
+            int l = Math.max(0, num-k);
+            int r = Math.min(max, num+k);
+
+            diff[l] += 1;
+            diff[r+1] -= 1;
+        }
+
+        int maxFreq = 0;
+        for (int target=0; target<=max; target++) {
+            diff[target] += (target == 0 ? 0: diff[target-1]); //how many times this target can be made.
+
+            int targetFreq = ogFreq.getOrDefault(target, 0); //freq of target in og array.
+            int numConversionsNeeded = diff[target] - targetFreq;
+            int maxTargetFreqPossible = targetFreq + Math.min(numOperations, numConversionsNeeded);
+
+            maxFreq = Math.max(maxFreq, maxTargetFreqPossible);
+        }
+
+        return maxFreq;
+    }
+
+    /**
+     * Approach 1 -
      Coded by me completely based on mik's explanation.
      Couldn't even come up with a brute force soln :(
 

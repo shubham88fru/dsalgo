@@ -10,7 +10,7 @@ public class NextGreaterNumericallyBalancedNumber {
     }
 
     /**
-     Backtracking.
+      My Backtracking approach.
      */
     private int approach3(int n) {
         int[] freqs = new int[10];

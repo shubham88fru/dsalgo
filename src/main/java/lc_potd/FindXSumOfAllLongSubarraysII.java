@@ -22,7 +22,6 @@ public class FindXSumOfAllLongSubarraysII {
      code on own. Easy to understand
      but difficult to code,
      maybe will try next time.
-
      */
     public long[] pass2(int[] nums, int k, int x) {
         int n = nums.length;

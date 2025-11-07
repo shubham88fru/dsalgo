@@ -33,7 +33,6 @@ public class PowerGridMaintenance {
             }
         }
 
-        int i = 0;
         List<Integer> ans = new ArrayList<>();
 
         Set<Integer> offline = new HashSet<>();

@@ -1,12 +1,14 @@
 package lc_potd;
 
 //@link - https://leetcode.com/problems/ones-and-zeroes/description/?
-//@check - https://www.youtube.com/watch?v=P_mC0wOTNV4
 public class OnesAndZeros {
     public int findMaxForm(String[] strs, int m, int n) {
         return pass1(strs, m, n);
     }
 
+    /**
+      My soln.
+     */
     private int pass1(String[] strs, int m, int n) {
         Integer[][][] dp = new Integer[strs.length+1][m+1][n+1];
         return dp(strs, dp, 0, m, n);

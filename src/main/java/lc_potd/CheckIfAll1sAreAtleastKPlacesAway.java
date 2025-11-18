@@ -8,7 +8,7 @@ public class CheckIfAll1sAreAtleastKPlacesAway {
     }
 
     /**
-     Better.
+        Better.
      */
     private boolean optimal(int[] nums, int k) {
         int n = nums.length;

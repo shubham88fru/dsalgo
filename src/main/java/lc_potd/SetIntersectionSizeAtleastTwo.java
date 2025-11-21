@@ -13,7 +13,7 @@ public class SetIntersectionSizeAtleastTwo {
      This question was apparently easy for some folks.
      I'm not sure if this is because I'm too dumb or
      they're too smart. This problem is not too difficult
-     too code but coming up with the soln wasn't trivial for me.
+     to code but coming up with the soln wasn't trivial for me.
 
      Coded by me completely based on mik's explanation.
      */

@@ -42,10 +42,9 @@ public class MaximumSubarray {
         int maxSum = Integer.MIN_VALUE;
 
         for (int i=0; i<n; i++) {
-            int prevSum = 0;
+            int sum = 0;
             for (int j=i; j<n; j++) {
-                int sum = prevSum + nums[j];
-                prevSum = sum;
+                sum += nums[j];
                 maxSum = Math.max(maxSum, sum);
             }
         }

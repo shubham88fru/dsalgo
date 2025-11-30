@@ -46,4 +46,52 @@ public class MakeSumDivisibleByP {
 
         return res == n ? -1: res;
     }
+
+    /**
+     After find the `targetSum` a brute
+     force approach will be find the sum of each
+     sub array using two loops. This can be avoided
+     using the prefix sum technique, which helps
+     us get the sum of any subarray in constant time.
+     */
+
+    private int revise(int[] nums, int p) {
+        int n = nums.length;
+
+        long ts = 0;
+        for (int num: nums) ts += num;
+        if (ts%p == 0) return 0;
+        if (ts < p) return -1;
+
+        long targetSum = ts%p;
+
+        /**
+         I had a strong urge to write a sliding window
+         here to find the smallest sub array that sums
+         to target. But that won't really solve the problem
+         always. We need to follow the usual prefix sum sort
+         of pattern that is also used for similar problems
+         like counting sub arrays with sum k etc.
+
+         e.g. of a test case that will fail with sliding
+         window -
+         nums = [26,8,26,3]
+         p = 26
+         */
+        Map<Long, Integer> mp = new HashMap<>();
+        mp.put(0l, -1); //to counter the case when entire subarray needs to be removed.
+        long currSum = 0;
+        int minLen = n;
+        for (int i=0; i<n; i++) {
+            currSum = (currSum + nums[i])%p;
+            long prevSum = (currSum - targetSum + p)%p; //currSum-prevSum = targetSum
+            if (mp.containsKey(prevSum)) minLen = Math.min(minLen, i-mp.get(prevSum));
+
+            mp.put(currSum, i);
+
+        }
+
+        return minLen == n ? -1: minLen;
+
+    }
 }

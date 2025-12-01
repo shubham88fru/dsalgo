@@ -51,13 +51,13 @@ public class TaskScheduler {
         /**
          The optimal strategy to solve this problem is to
          schedule the most frequent task first, then the second most
-         frequency task, ans so on. This is because once we've scheudled the most
+         frequency task, ans so on. This is because once we've scheduled the most
          frequent task, we can get an estimate of the maximum idles time.
 
          The idea is that we'll figure out a plan first for the task that has the highest
          frequncy, this plan will include the times when this task will be scheduled and all
          the gaps between their scheduling accounting for the cooldown rule. We'll then iteratively
-         keep selecting lower frequency taks and try to schedule then in the gaps (whilst stll respecting
+         keep selecting lower frequency tasks and try to schedule then in the gaps (whilst stll respecting
          the cooldown rules) so as to reduce the slots (i.e. idleTime)
          At a given point, idleTime represents the empty slots.
 

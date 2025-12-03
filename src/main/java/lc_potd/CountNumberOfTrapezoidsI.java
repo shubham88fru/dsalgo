@@ -12,6 +12,9 @@ public class CountNumberOfTrapezoidsI {
         return pass2(points);
     }
 
+    /*
+    Need to add notes.
+     */
     private int pass2(int[][] points) {
         int n = points.length;
 

@@ -28,7 +28,7 @@ public class CountMentionsPerUser {
             else if (ts1 > ts2) return 1;
 
             /**
-             Give priority of offline
+             Give priority to offline
              when timestamp is same.
              */
             String e1 = l1.get(0);

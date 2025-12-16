@@ -8,6 +8,7 @@ public class NumberOfSmoothDescentPeriodsOfAStock {
 
     /**
      * My sol.
+     *
      * Sliding window/two pointer.
      */
     private long pass1(int[] prices) {

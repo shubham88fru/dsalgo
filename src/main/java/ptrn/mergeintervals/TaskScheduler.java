@@ -5,18 +5,49 @@ import java.util.*;
 //@link - https://leetcode.com/problems/task-scheduler/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4580085862236160
 //       - https://www.youtube.com/watch?v=s8p8ukTyA2I&t=688s&ab_channel=NeetCode
+//       - https://www.youtube.com/watch?v=rYh-Kkbzsnw
 public class TaskScheduler {
     //T: O(N), S: O(1)
     public int leastInterval(char[] tasks, int n) {
-        return usingHeap(tasks, n);
+        //return minHeap(tasks, n);
+        return maxHeap(tasks, n);
         //return edctvSoln(tasks, n);
     }
 
     //0) nc soln using max heap. optimal.
+    private int maxHeap(char[] tasks, int n) {
 
+        int[] freq = new int[26];
+        for (char ch : tasks) {
+            freq[ch - 'A']++;
+        }
+
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        for (int i = 0; i < 26; i++) {
+            if (freq[i] > 0) {
+                pq.offer(freq[i]);
+            }
+        }
+
+        int time = 0;
+        while (!pq.isEmpty()) {
+            int cycle = n + 1;
+            List<Integer> store = new ArrayList<>();
+
+            while (cycle-- > 0 && !pq.isEmpty()) {
+                int currentFreq = pq.poll();
+                store.add(currentFreq-1);
+            }
+
+            store.stream().filter(s -> s != 0).forEach(pq::offer);
+
+            time += (pq.isEmpty() ? store.size() : n + 1);
+        }
+        return time;
+    }
 
     //1) My soln using minHeap.
-    private int usingHeap(char[] tasks, int n) {
+    private int minHeap(char[] tasks, int n) {
         PriorityQueue<Pair> pq = new PriorityQueue<>((p1, p2) -> p1.t - p2.t);
 
         int[] minTime = new int[26]; //minimum time after which the character can be picked.
@@ -51,11 +82,11 @@ public class TaskScheduler {
         /**
          The optimal strategy to solve this problem is to
          schedule the most frequent task first, then the second most
-         frequency task, ans so on. This is because once we've scheduled the most
+         frequency task, and so on. This is because once we've scheduled the most
          frequent task, we can get an estimate of the maximum idles time.
 
          The idea is that we'll figure out a plan first for the task that has the highest
-         frequncy, this plan will include the times when this task will be scheduled and all
+         frequency, this plan will include the times when this task will be scheduled and all
          the gaps between their scheduling accounting for the cooldown rule. We'll then iteratively
          keep selecting lower frequency tasks and try to schedule then in the gaps (whilst stll respecting
          the cooldown rules) so as to reduce the slots (i.e. idleTime)

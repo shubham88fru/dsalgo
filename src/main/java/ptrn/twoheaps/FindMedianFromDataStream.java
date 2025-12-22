@@ -60,6 +60,33 @@ public class FindMedianFromDataStream {
     }
 }
 
+// Mik's approach coded by me.
+class MedianFinder {
+    private PriorityQueue<Integer> minHeap;
+    private PriorityQueue<Integer> maxHeap;
+
+    public MedianFinder() {
+        minHeap = new PriorityQueue<>();
+        maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+    }
+
+    public void addNum(int num) {
+        if (!maxHeap.isEmpty() && num > maxHeap.peek()) minHeap.add(num);
+        else maxHeap.add(num);
+
+        if (minHeap.size() > maxHeap.size()) maxHeap.add(minHeap.remove());
+        if (maxHeap.size() - minHeap.size() > 1) minHeap.add(maxHeap.remove());
+
+    }
+
+    public double findMedian() {
+        if ((minHeap.size() + maxHeap.size())%2 == 0) {
+            return (minHeap.peek() + maxHeap.peek())/2.0;
+        }
+
+        return maxHeap.peek();
+    }
+}
 /**
  * Your MedianFinder object will be instantiated and called as such:
  * MedianFinder obj = new MedianFinder();

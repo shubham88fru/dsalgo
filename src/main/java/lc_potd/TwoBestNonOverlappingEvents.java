@@ -15,7 +15,7 @@ public class TwoBestNonOverlappingEvents {
     }
 
     /*
-        First off, I couldn't never think (probably) that this
+        First off, I could never think (probably) that this
         could be solved using knapsack pattern. However, mik
         said so and I tried. Look how the below soln would run but
         then there's no way I could have possibly memoized it.
@@ -38,7 +38,7 @@ public class TwoBestNonOverlappingEvents {
     /*
         This is probably first of a kind of a question where to optimize the
         changing values in the recursion call, I have to use binary search
-        in a recurisve code. Crazy.
+        in a recursive code. Crazy.
 
         Written by me but completely based on mik's approach.
     */
@@ -50,6 +50,13 @@ public class TwoBestNonOverlappingEvents {
 
         int attend = 0;
         if (left > 0) {
+            /**
+             * Optimization:
+             * Since the events array is sorted by start time,
+             * instead of just doing `i+1` we'd rather do a
+             * bs and find the first event after curr whose
+             * start time is after curr's end time.
+             */
             attend = events[curr][2] + dpModified(events, bs(events, events[curr][1]), left-1, cache);
         }
 

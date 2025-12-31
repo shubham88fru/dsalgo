@@ -2,14 +2,49 @@ package ptrn.unionfind;
 
 //@link - https://leetcode.com/problems/last-day-where-you-can-still-cross/description/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4918162916376576
-
-/**
- * As usual, again copy pasta from edctv. @check, has good visual explanation for the problem.
- * It also has explanation for solving this problem using a combination of Binary search
- * and BFS or DFS.
- */
 public class LastDayWhereYouCanStillCross {
-    public int latestDayToCross(int rows, int cols, int[][] waterCells) {
+    public int latestDayToCross(int row, int col, int[][] cells) {
+         return pass1(row, col, cells);
+         //return dsu(row, col, cells);
+    }
+
+    /**
+     1.
+     This is my initial intuition apart from
+     brute force. Mik also had the same approach.
+     */
+    private int pass1(int row, int col, int[][] cells) {
+        int n = cells.length, ans = 1, l = 0, r = n-1;
+
+        while (l <= r) {
+            int mid = l + (r-l)/2;
+            int[][] island = new int[row][col];
+            fill(island, cells, mid);
+            boolean possible = false;
+            for (int j=0; j<col; j++) {
+                if (island[0][j] == 0 && dfs(island, row, col, 0, j)) {
+                    possible = true;
+                    break;
+                }
+            }
+            if (possible) {
+                l = mid + 1;
+                ans = mid + 1;
+            } else {
+                r = mid - 1;
+            }
+        }
+
+        return ans;
+    }
+
+    //2. DSU Soln. Copied from edctv.
+    /**
+     * As usual, again copy pasta from edctv. @check, has good visual explanation for the problem.
+     * It also has explanation for solving this problem using a combination of Binary search
+     * and BFS or DFS.
+     */
+    private int dsu(int rows, int cols, int[][] waterCells) {
         // create a variable to keep track of the number of days
         int day = 0;
 
@@ -69,7 +104,31 @@ public class LastDayWhereYouCanStillCross {
         return day;
     }
 
-    // helper functions
+    //3. Brute force.
+    //Flood each day and for each day
+    //traverse the grid to see a path exists.
+
+
+    //Helpers
+    private boolean dfs(int[][] island, int m, int n, int i, int j) {
+        if (i >= m) return true;
+
+        if (i < 0 || j < 0 || j >= n || island[i][j] != 0) return false;
+
+        island[i][j] = -1;
+        boolean up = dfs(island, m, n, i-1, j);
+        boolean right = dfs(island, m, n, i, j+1);
+        boolean down = dfs(island, m, n, i+1, j);
+        boolean left = dfs(island, m, n, i, j-1);
+
+        return up || right || down || left;
+    }
+
+    private void fill(int[][] island, int[][] cells, int idx) {
+        for (int i=0; i<=idx; i++) {
+            island[cells[i][0]-1][cells[i][1]-1] = 1;
+        }
+    }
 
     // maps the index of the element in 2-D matrix to an index of the 1-D array (reps)
     private int findIndex(int currentRow, int currentCol, int cols) {

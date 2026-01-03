@@ -7,8 +7,65 @@ import java.util.List;
 //@check - https://www.youtube.com/watch?v=Qz8F-nC8oxQ&t=1284s&ab_channel=codestorywithMIK
 public class NumberOfWaysToPaintNBy3Grid {
     public int numOfWays(int n) {
-        return pass2(n);
+        // return pass2(n);
+        return mikssol(n);
     }
+
+    private int mikssol(int n) {
+        List<String> possibilities = new ArrayList<>();
+        char[] colors = {'R', 'Y', 'G'};
+        generatePossibilities(possibilities, colors, "");
+
+        int ans = 0;
+        for (int i=0; i<possibilities.size(); i++) {
+            Integer[][] memo = new Integer[13][n+1];
+            ans = (ans + dp(i, n-1, possibilities, memo))%1000000007;
+        }
+
+        return ans;
+    }
+
+    private int dp(int pi, int n, List<String> possibilities, Integer[][] memo) {
+        if (n <= 0) return 1;
+
+        if (memo[pi][n] != null) return memo[pi][n];
+
+        int res = 0;
+        for (int i=0; i<12; i++) {
+            if (i == pi) continue;
+
+            String prev = possibilities.get(pi);
+            boolean okay = true;
+            for (int col=0; col<3; col+=1) {
+                String next = possibilities.get(i);
+                if (prev.charAt(col) == next.charAt(col)) {
+                    okay = false;
+                    break;
+                }
+            }
+
+            if (okay) {
+                res = (res + dp(i, n-1, possibilities, memo))%1000000007;
+            }
+        }
+
+        memo[pi][n] = res;
+        return res;
+    }
+
+    private void generatePossibilities(List<String> possibilities, char[] colors, String perm) {
+        if (perm.length() == 3) {
+            possibilities.add(perm);
+            return;
+        }
+
+        for (char ch: colors) {
+            if (perm.length() == 0 || perm.charAt(perm.length()-1) != ch) {
+                generatePossibilities(possibilities, colors, perm+ch);
+            }
+        }
+    }
+
 
     /**
      * @see lc_potd.PaintingGridWithThreeDifferentColors

@@ -13,6 +13,7 @@ public class FourDivisors {
      how to efficiently get factors
      of a number -
      1. Only need to check till sqrt(num)
+     - Important: keep collecting pairs.
      2. Beware of duplicate counting e.g. 2*2 = 4.
 
      The above is basically sieve of eratosthenes
@@ -30,7 +31,7 @@ public class FourDivisors {
                 if (num%d == 0) {
                     if (d != num/d) count += 2;
                     else count += 1;
-                    sum += (d + num/d);
+                    sum += (d + num/d); //d and num/d both found.
                     if (count > 4) break;
                 }
                 d += 1;

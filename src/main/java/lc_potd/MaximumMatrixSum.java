@@ -4,6 +4,12 @@ package lc_potd;
 public class MaximumMatrixSum {
 
     //my sol.
+    /**
+     * The most important point of the problem is
+     * that no matter what, since we can apply the
+     * ops any number of times, we can reduce the
+     * negative count to 0 or 1.
+     * */
     public long maxMatrixSum(int[][] matrix) {
         int negCnt = 0;
         int minMag = Integer.MAX_VALUE;

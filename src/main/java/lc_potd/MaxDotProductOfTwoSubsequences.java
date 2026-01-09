@@ -16,9 +16,9 @@ public class MaxDotProductOfTwoSubsequences {
     }
 
     /**
-     This was almost the same as my approach `dp()` but
-     slightly clever to account for empty subsets case.
-     Took hint from mik for this.
+         This was almost the same as my approach `dp()` but
+         slightly clever to account for empty subsets case.
+         Took hint from mik for this.
      */
     private int dp2(int[] nums1, int[] nums2, int n1, int n2, int i, int j, Integer[][] memo) {
         if (i >= n1 || j >= n2) return -99999999;

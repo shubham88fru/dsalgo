@@ -1,6 +1,6 @@
 package lc_potd;
 
-//@link - https://leetcode.com/problems/maximum-product-of-splitted-binary-tree/description/?
+//@link - https://leetcode.com/problems/maximum-product-of-splitted-binary-tree/description/
 public class MaximumProductOfSplittedBinaryTree {
     public int maxProduct(TreeNode root) {
         // return revise(root);

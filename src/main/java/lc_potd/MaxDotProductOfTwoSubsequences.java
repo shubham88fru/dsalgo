@@ -43,8 +43,8 @@ public class MaxDotProductOfTwoSubsequences {
     }
 
     /**
-     My initial approach, works but
-     give TLE because its 3d dp.
+         My initial approach, works but
+         give TLE because its 3d dp.
      */
     private int dp(int[] nums1, int[] nums2, int n1, int n2, int i, int j, int p, Integer[][][] memo) {
         if (i >= n1 || j >= n2) {

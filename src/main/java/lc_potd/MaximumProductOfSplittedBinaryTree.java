@@ -15,7 +15,7 @@ public class MaximumProductOfSplittedBinaryTree {
     }
 
     private long dfs2(TreeNode root, long[] ans, long ts) {
-        if (root == null) return 0l;
+        if (root == null) return 0;
 
         long left = dfs2(root.left, ans, ts);
         long right = dfs2(root.right, ans, ts);

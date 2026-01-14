@@ -8,13 +8,13 @@ public class SeparateSquaresI {
     }
 
     /**
-     I had a hunch that we'd need to use
-     binary search and that at a high level
-     how'd we go about solving this problem,
-     however there were some details around
-     the binary search implementation etc
-     specifically due to the precision, which
-     I could come up with myself.
+         I had a hunch that we'd need to use
+         binary search and that at a high level
+         how'd we go about solving this problem,
+         however there were some details around
+         the binary search implementation etc
+         specifically due to the precision, which
+         I could come up with myself.
      */
     private double mikssol(int[][] squares) {
         int minY = Integer.MAX_VALUE;

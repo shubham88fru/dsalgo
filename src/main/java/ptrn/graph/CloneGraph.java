@@ -69,6 +69,59 @@ public class CloneGraph {
 
         return clonedNode;
     }
+
+    //My very clean dfs.
+    private Node clone3(Node node, Map<Node, Node> visited) {
+        if (node == null) return null;
+
+        Node cloned = new Node(node.val, new ArrayList<>());
+        visited.put(node, cloned);
+
+        for (Node ng: node.neighbors) {
+            if (!visited.containsKey(ng)) visited.get(node).neighbors.add(clone3(ng, visited));
+            else visited.get(node).neighbors.add(visited.get(ng));
+        }
+
+        return visited.get(node);
+    }
+
+    //My cleaner dfs.
+    private Node clone2(Node node, Set<Node> visited, Map<Integer, Node> mp) {
+        if (node == null) return null;
+
+        Node cloned;
+        if (!mp.containsKey(node.val)) cloned = new Node(node.val, new ArrayList<>());
+        else cloned = mp.get(node.val);
+        visited.add(node);
+        mp.put(node.val, cloned);
+
+        for (Node ng: node.neighbors) {
+            if (!visited.contains(ng)) mp.get(node.val).neighbors.add(clone2(ng, visited, mp));
+            else mp.get(node.val).neighbors.add(mp.get(ng.val));
+        }
+
+        return mp.get(node.val);
+    }
+
+    //My not so clean dfs.
+    private void clone1(Node node, Set<Node> visited, Map<Integer, Node> mp) {
+        if (visited.contains(node) || node == null) return;
+
+        Node cloned;
+        if (!mp.containsKey(node.val)) cloned = new Node(node.val, new ArrayList<>());
+        else cloned = mp.get(node.val);
+        visited.add(node);
+        mp.put(node.val, cloned);
+
+        for (Node ng: node.neighbors) {
+            Node clonedNg;
+            if (mp.containsKey(ng.val)) clonedNg = mp.get(ng.val);
+            else clonedNg = new Node(ng.val, new ArrayList<>());
+            mp.put(ng.val, clonedNg);
+            mp.get(node.val).neighbors.add(clonedNg);
+            clone1(ng, visited, mp);
+        }
+    }
 }
 
 class Node {

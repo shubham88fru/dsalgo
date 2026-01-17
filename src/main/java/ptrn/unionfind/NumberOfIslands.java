@@ -5,7 +5,7 @@ package ptrn.unionfind;
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5996925221601280
 public class NumberOfIslands {
     public int numIslands(char[][] grid) {
-         return sol1(grid); //using dfs.
+         return revise(grid); //using dfs.
 
     }
 
@@ -27,63 +27,31 @@ public class NumberOfIslands {
      */
 
     //1. Using simple dfs
-    private int sol1(char[][] grid) {
+    private int revise(char[][] grid) {
         int m = grid.length;
         int n = grid[0].length;
 
-        boolean[][] visited = new boolean[m][n];
         int islands = 0;
-
-        //This problem basically boils down to finding
-        //no. of disconnected components. Bunch of 1's connected
-        //together (up, left, down, right) form one island.
-        for (int i = 0; i < m; i += 1) {
-            for (int j = 0; j < n; j += 1) {
-                //Assuming each position in the matrix is a vertex
-                //in the graph, run a dfs from each vertex if that vertex
-                //is not already part of an already accounted component.
-                //No. of islands will be equal to no. of disconnected components
-                if (visited[i][j] != true && grid[i][j] != '0') {
-                    dfs(grid, m, n, i, j, visited);
+        for (int i=0; i<m; i++) {
+            for (int j=0; j<n; j++) {
+                if (grid[i][j] == '1') {
+                    mark(grid, i, j, m, n);
                     islands += 1;
                 }
             }
         }
+
         return islands;
     }
 
-    //DFS on a graph.
-    private void dfs(char[][] grid, int m, int n, int i, int j, boolean[][] visited) {
-        //out of bounds
-        if (i < 0 || i >= m || j < 0 || j >= n) return;
+    private void mark(char[][] grid, int i, int j, int m, int n) {
 
-        //already visited or a water('0')
-        if (visited[i][j] || grid[i][j] == '0') return;
+        if (i < 0 || i >= m || j < 0 || j >= n || grid[i][j] != '1') return;
 
-        visited[i][j] = true;
-
-        int row, col;
-
-        //Each vertex is connected to up, down, left and right.
-        //up
-        row = i-1;
-        col = j;
-        dfs(grid, m, n, row, col, visited);
-
-        //down
-        row = i+1;
-        col = j;
-        dfs(grid, m, n, row, col, visited);
-
-        //right
-        row = i;
-        col = j+1;
-        dfs(grid, m, n, row, col, visited);
-
-        //left
-        row = i;
-        col = j-1;
-        dfs(grid, m, n, row, col, visited);
-
+        grid[i][j] = '#';
+        mark(grid, i-1, j, m, n);
+        mark(grid, i, j+1, m, n);
+        mark(grid, i+1, j, m, n);
+        mark(grid, i, j-1, m, n);
     }
 }

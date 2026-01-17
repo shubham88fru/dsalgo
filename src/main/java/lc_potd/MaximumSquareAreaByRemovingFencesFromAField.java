@@ -12,8 +12,8 @@ public class MaximumSquareAreaByRemovingFencesFromAField {
     }
 
     /**
-     Avoid sorting by keeping
-     track of absolute diffs.
+         Avoid sorting by keeping
+         track of absolute diffs.
      */
     private int mikssolOptimal(int m, int n, int[] hFences, int[] vFences) {
         //populate horizontals.

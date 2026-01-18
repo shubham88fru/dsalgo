@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 //@link - https://www.lintcode.com/problem/663/
-//      - https://leetcode.com/problems/walls-and-gates/description/
+//      - https://leetcode.com/problems/walls-and-gates/description
 public class WallsAndGates {
     /**
      * @param rooms: m x n 2D grid

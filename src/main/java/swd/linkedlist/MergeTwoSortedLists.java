@@ -3,8 +3,38 @@ package swd.linkedlist;
 //@link - https://leetcode.com/problems/merge-two-sorted-lists/description/
 public class MergeTwoSortedLists {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        return mergeTwoSortedListIterative1(list1, list2);
+        // return mergeTwoSortedListIterative1(list1, list2);
         //return mergeTwoSortedListIterative2(list1, list2);
+        return revise(list1, list2);
+    }
+
+    //0. My clean soln.
+    private ListNode revise(ListNode l1, ListNode l2) {
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
+
+        ListNode dummy = new ListNode(-1);
+        ListNode prev = dummy;
+        ListNode c1 = l1;
+        ListNode c2 = l2;
+
+        while (c1 != null && c2 != null) {
+            if (c1.val <= c2.val) {
+                prev.next = c1;
+                prev = c1;
+                ListNode nxt = c1.next;
+                c1.next = c2;
+                c1 = nxt;
+            } else {
+                prev.next = c2;
+                prev = c2;
+                ListNode nxt = c2.next;
+                c2.next = c1;
+                c2 = nxt;
+            }
+        }
+
+        return dummy.next;
     }
 
     //1) Without using dummy node.

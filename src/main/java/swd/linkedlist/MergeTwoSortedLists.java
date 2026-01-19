@@ -8,7 +8,7 @@ public class MergeTwoSortedLists {
         return revise(list1, list2);
     }
 
-    //0. My clean soln.
+    //0. My cleaner soln.
     private ListNode revise(ListNode l1, ListNode l2) {
         if (l1 == null) return l2;
         if (l2 == null) return l1;

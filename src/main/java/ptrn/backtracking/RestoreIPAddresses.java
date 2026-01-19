@@ -6,14 +6,70 @@ import java.util.List;
 
 //@link - https://leetcode.com/problems/restore-ip-addresses/description/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/4629257998565376
-//@tag - TO_REVISIT
 public class RestoreIPAddresses {
+
+
+    public List<String> restoreIpAddresses(String str) {
+        // return edctvSol(str);
+        return revise(str);
+    }
+
+    /**
+     * Following is my backtracking soln.
+     * Has slight corner cases that I could
+     * only handle after trying out test cases,
+     * but is extremely simpler and intuitive
+     * than edctv's soln. Maybe it can
+     * be made even simpler.
+     */
+    private List<String> revise(String s) {
+
+        List<String> ans = new ArrayList<>();
+        backtrack(new StringBuffer(s), 0, 3, ans);
+
+        return ans;
+    }
+
+    private void backtrack(StringBuffer s, int i, int dot, List<String> ans) {
+
+        if (i >= s.length() && dot < 0) {
+            ans.add(s.substring(0, s.length()-1).toString());
+            return;
+        }
+
+        if (dot < 0) return;
+
+        for (int j=i+1; j<=Math.min(s.length(), i+3); j++) {
+            if (validSlice(s, i, j, dot-1)) {
+                s.insert(j, ".");
+                backtrack(s, j+1, dot-1, ans);
+                s.deleteCharAt(j);
+            }
+        }
+
+    }
+
+    private boolean validSlice(StringBuffer s, int i, int j, int dot) {
+        int len = j-i;
+
+        if (len <=0) return false;
+        if (len > 3) return false;
+        String sub = s.substring(i, j).toString();
+
+        if (len > 1 && sub.charAt(0) == '0') return false;
+        if (Integer.parseInt(sub) > 255) return false;
+        return true;
+    }
+
+    /**
+     * Following is Edctv soln.
+     * Unnecessarily complicated.
+     */
     private int n;
     private String s;
     private LinkedList<String> segments;
     private ArrayList<String> result;
-
-    public List<String> restoreIpAddresses(String str) {
+    private List<String> edctvSol(String str) {
         n = str.length();
         s = str;
         // creating empty lists for storing valid IP addresses,
@@ -23,8 +79,6 @@ public class RestoreIPAddresses {
         backtrack(-1, 3);
         return result;
     }
-
-
 
     public boolean valid(String segment) {
         int m = segment.length(); // storing the length of each segment

@@ -36,6 +36,9 @@ public class LongestRepeatingCharacterReplacement {
         return maxLen;
     }
 
+    /*
+        Coded by me based on mik's soln.
+    */
     private int edctvSol(String s, int k) {
         Map<Character, Integer> mp = new HashMap<>();
 

@@ -8,10 +8,10 @@ import java.util.Map;
 public class LongestRepeatingCharacterReplacement {
     public int characterReplacement(String s, int k) {
         // return edctvSol(s, k);
-        return stadardSlidingWindowTemplate(s, k);
+        return standardSlidingWindowTemplate(s, k);
     }
 
-    private int stadardSlidingWindowTemplate(String s, int k) {
+    private int standardSlidingWindowTemplate(String s, int k) {
         int n = s.length();
         int l = 0, r = 0, maxLen = 0, dominantCharFreq = 0;
         Map<Character, Integer> mp = new HashMap<>();

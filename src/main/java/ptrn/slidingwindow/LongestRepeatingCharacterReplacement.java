@@ -37,7 +37,7 @@ public class LongestRepeatingCharacterReplacement {
     }
 
     /*
-        Coded by me based on mik's soln.
+        Coded by me based on edctv's soln.
     */
     private int edctvSol(String s, int k) {
         Map<Character, Integer> mp = new HashMap<>();

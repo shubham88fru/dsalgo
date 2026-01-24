@@ -10,11 +10,9 @@ public class ThreeSumClosest {
     }
 
     /**
-
          Core idea of the brute force solution
          implemented using the optimal
          approach of the 3 sum problem.
-
      */
     private int optimal(int[] nums, int target) {
         int n = nums.length;

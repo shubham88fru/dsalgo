@@ -16,7 +16,7 @@ public class MinimumDifferenceBetweenHighestAndLowestOfKScores {
         //need to find all k combs. Instead, sorting will group
         //all the elements as close as they can be (which is what
         //we need to minimize the max-min diff). And so,
-        //iterating over the goups of k contiguous elements in sliding
+        //iterating over the groups of k contiguous elements in sliding
         //window will the best options of k elements to find the answer.
         while (r < nums.length) {
             //once we have k elements of the group..

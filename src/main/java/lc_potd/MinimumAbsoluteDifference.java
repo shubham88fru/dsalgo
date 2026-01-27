@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-//@link - https://leetcode.com/problems/minimum-absolute-difference/?
+//@link - https://leetcode.com/problems/minimum-absolute-difference
 public class MinimumAbsoluteDifference {
     public List<List<Integer>> minimumAbsDifference(int[] arr) {
         //Sorting will ensure that all closer (magnitude wise) elements

@@ -9,7 +9,8 @@ public class MinimumAbsoluteDifference {
     public List<List<Integer>> minimumAbsDifference(int[] arr) {
         //Sorting will ensure that all closer (magnitude wise) elements
         //stay close to each other and so, we are guaranteed that
-        //pairs in a sorted array will have the min diff, whatever it may be.
+        //pairs in a sorted array will have the min diff,
+        // whatever it may be.
         Arrays.sort(arr);
         List<List<Integer>> ans = new ArrayList<>();
         int minDiff = Integer.MAX_VALUE;

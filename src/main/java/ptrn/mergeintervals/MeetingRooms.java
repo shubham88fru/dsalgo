@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.List;
 
 //@link - https://neetcode.io/problems/meeting-schedule
+//      - https://leetcode.com/problems/meeting-rooms/description/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6207468695977984
 public class MeetingRooms {
     public boolean canAttendMeetings(List<Interval> intervals) {

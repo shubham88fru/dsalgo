@@ -10,7 +10,7 @@ public class MinimumDifferenceBetweenHighestAndLowestOfKScores {
         int min = Integer.MAX_VALUE;
         int l = 0;
         int r = 0;
-        //It's unituitive how sliding window would be
+        //It's unintuitive how sliding window would be
         //able to check all possible k combs. But actually,
         //if the array is sorted, for this problem, we don't
         //need to find all k combs. Instead, sorting will group

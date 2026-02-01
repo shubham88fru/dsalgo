@@ -4,6 +4,46 @@ package ptrn.twopointers;
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6319371854282752
 public class ValidPalindrome {
     public boolean isPalindrome(String str) {
+        // return sol1(str);
+        return revise(str);
+    }
+
+    /**
+     2. Brute force.
+     Using StringBuilder/Buffer iterate
+     the entire string and delete/update the
+     string if the char is not valid.
+     Then, on the resultant string perform
+     valid palindrome.
+     */
+
+    /**
+     1. Optimal.
+     Using two pointers.
+     */
+
+    private boolean revise(String s) {
+        int n = s.length();
+
+        if (n == 1) return true;
+
+        int l = 0, r = n-1;
+        while (l <= r) {
+            while (l <= r && !Character.isLetterOrDigit(s.charAt(l))) l += 1;
+            while (l <= r && !Character.isLetterOrDigit(s.charAt(r))) r -= 1;
+
+            if (l > r) break;
+
+            if (Character.toLowerCase(s.charAt(l)) !=
+                    Character.toLowerCase(s.charAt(r))) return false;
+            l += 1;
+            r -= 1;
+        }
+
+        return true;
+    }
+
+    private boolean sol1(String str) {
         //convert all to lowercase,
         //makes it easier to compare the two pointers
         String s = str.toLowerCase();

@@ -7,11 +7,19 @@ import java.util.PriorityQueue;
 //       - https://www.youtube.com/watch?v=Q64u-W3l3mA&ab_channel=codestorywithMIK
 public class MergeKSortedLists {
     public ListNode mergeKLists(ListNode[] lists) {
-        //return kindaBrute(lists);
-        return better(lists);
+        // return brute(lists);
+        // return pq(lists);
+        // return pq2(lists);
+        return optimal(lists);
     }
 
-    //1. Optimal
+    /**
+     TC wise its the same as the optimized
+     priority queue approach, however, the
+     plus point is that it doesn't take
+     extra space unlike the priority queue
+     approach.
+     */
     private ListNode optimal(ListNode[] lists) {
         if (lists == null || lists.length == 0) return null;
         return mergeSort(lists, 0, lists.length-1);
@@ -24,7 +32,15 @@ public class MergeKSortedLists {
         ListNode l1 = mergeSort(lists, l, mid);
         ListNode l2 = mergeSort(lists, mid+1, r);
 
-        return mergeRecursive(l1, l2);
+        /**
+         This is the merge step of
+         merge sort algo. Can be
+         iterative or recursive.
+         The recursive merge is very
+         confusing, so using iterative
+         merge.
+         */
+        return mergeTwoSortedLists(l1, l2);
     }
 
     private ListNode mergeRecursive(ListNode l1, ListNode l2) {
@@ -40,88 +56,111 @@ public class MergeKSortedLists {
         return l2;
     }
 
-    //2. Using heaps.
-    private ListNode better(ListNode[] lists) {
-        PriorityQueue<ListNode> minHeap =
-                new PriorityQueue<>((n1, n2) -> n1.val - n2.val);
-        ListNode dummy = new ListNode(-1);
-        ListNode curr = dummy;
+    /**
+     Optimized pq approach. Instead of blindly
+     putting all elements to pq, we only put
+     the heads of each list to start, and then
+     keep moving pointers. This way, there are
+     at max only k elements in pq (where k is the)
+     size of lists[]) at any time.
+     Therefore, TC is nlog(k), where n is total num
+     of nodes across all the lists.
+     */
+    private ListNode pq2(ListNode[] lists) {
+        if (lists == null || lists.length==0) return null;
+        PriorityQueue<ListNode> pq = new PriorityQueue<>((n1, n2) -> n1.val - n2.val);
 
-        //Put all the first nodes of each list
-        //into the heap.
-        for (ListNode list: lists) {
-            if (list == null) continue;
-            minHeap.add(list);
+        int n = lists.length;
+        for (int i=0; i<n; i++) {
+            ListNode head = lists[i];
+            if (head != null) pq.add(head);
         }
 
-        //until all nodes processed, keep
-        //picking the minimum and moving next
-        //in the list which had the minimum.
-        while (!minHeap.isEmpty()) {
-            ListNode min = minHeap.remove();
-            curr.next = min;
-            curr = curr.next;
-
-            //If the list that gave min in this iteration
-            //has next, push it to the minHeap.
-            if (min.next != null) minHeap.add(min.next);
-            min.next = null;
+        ListNode dummy = new ListNode(-1);
+        ListNode p = dummy;
+        while (!pq.isEmpty()) {
+            ListNode node = pq.remove();
+            p.next = node;
+            p = node;
+            if (node.next != null) pq.add(node.next);
         }
 
         return dummy.next;
+
     }
 
-    //3. Brute
-    private ListNode kindaBrute(ListNode[] lists) {
+    /**
+     A dumb pq approach. Blindly put all
+     nodes in the pq and then poll.
+
+     TC: nlog(n) where n is total number of
+     elements across all lists[]
+     */
+    private ListNode pq(ListNode[] lists) {
+        if (lists == null || lists.length==0) return null;
+        PriorityQueue<ListNode> pq = new PriorityQueue<>((n1, n2) -> n1.val - n2.val);
+
         int n = lists.length;
-        //ATQ.
-        if (n == 0) return null;
-
-        //Keep merging in pairs successively.
-        ListNode ans = lists[0];
-        for (int i=1; i < n; i++) {
-            ans = mergeBrute(ans, lists[i]);
-        }
-        return ans;
-    }
-
-    private ListNode mergeBrute(ListNode l1, ListNode l2) {
-        ListNode dummy = new ListNode(-1);
-
-        ListNode curr1 = l1;
-        ListNode curr2 = l2;
-        ListNode curr3 = dummy;
-        while (curr1 != null && curr2 != null) {
-            if (curr1.val <= curr2.val) {
-                //If element of list1 is smallest,
-                //add it to end of ans list and move
-                //to next element.
-                ListNode next = curr1.next;
-                curr3.next = curr1;
-                curr3 = curr3.next;
-
-                curr1.next = null;
-                curr1 = next;
-            } else {
-                //otherwise, if list2's element is
-                //smaller, add it to and list and move
-                //to the next element.
-                ListNode next = curr2.next;
-                curr3.next = curr2;
-                curr3 = curr3.next;
-
-                curr2.next = null;
-                curr2 = next;
+        for (int i=0; i<n; i++) {
+            ListNode head = lists[i];
+            while (head != null) {
+                pq.add(head);
+                ListNode next = head.next;
+                head.next = null;
+                head = next;
             }
         }
 
-        //Finally, add any remaining
-        //elements in any of the lists
-        //to the ans list.
-        if (curr1 != null) {
-            curr3.next = curr1;
-        } else {
-            curr3.next = curr2;
+        ListNode dummy = new ListNode(-1);
+        ListNode p = dummy;
+        while (!pq.isEmpty()) {
+            ListNode next = pq.remove();
+            p.next = next;
+            p = next;
+        }
+
+        return dummy.next;
+
+    }
+
+    /**
+     Merge 2 lists successively.
+     TC: O(k*n), where k is number of
+     lists and n is the total number
+     of nodes across all lists.
+     */
+    private ListNode brute(ListNode[] lists) {
+        if (lists == null || lists.length==0) return null;
+
+        int n = lists.length;
+        ListNode merged = lists[0];
+        for (int i=1; i<n; i++) {
+            merged = mergeTwoSortedLists(merged, lists[i]);
+        }
+
+        return merged;
+    }
+
+    private ListNode mergeTwoSortedLists(ListNode l1, ListNode l2) {
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
+
+        ListNode dummy = new ListNode(-1);
+        ListNode p = dummy;
+        while (l1 != null && l2 != null) {
+            if (l1.val <= l2.val) {
+                p.next = l1;
+                ListNode next = l1.next;
+                l1.next = l2;
+                p = l1;
+                l1 = next;
+            } else {
+                p.next = l2;
+                ListNode next = l2.next;
+                l2.next = l1;
+                p = l2;
+                l2 = next;
+            }
         }
 
         return dummy.next;

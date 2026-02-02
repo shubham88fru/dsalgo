@@ -8,6 +8,32 @@ import java.util.stream.Collectors;
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6559519430934528
 public class RemoveAllAdjacentDuplicatesInString {
     public String removeDuplicates(String s) {
+//        return edctvSol(s);
+        return optimal(s);
+    }
+
+    /**
+     * Below soln is more than enough.
+     * Don't really need a stack like the
+     * soln below.
+     */
+    private String optimal(String s) {
+        int n = s.length();
+        StringBuffer sb = new StringBuffer();
+
+        for (int i=0; i<n; i++) {
+            if (sb.isEmpty()) sb.append(s.charAt(i));
+            else if (sb.charAt(sb.length()-1) == s.charAt(i)) {
+                sb.deleteCharAt(sb.length()-1);
+            } else {
+                sb.append(s.charAt(i));
+            }
+        }
+
+        return sb.toString();
+    }
+
+    private String edctvSol(String s) {
         //initialize a stack.
         Deque<Character> stack = new ArrayDeque<>();
         for (char ch: s.toCharArray()) {

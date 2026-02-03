@@ -6,64 +6,48 @@ import java.util.List;
 //@link - https://leetcode.com/problems/spiral-matrix/description/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6292043317641216
 public class SpiralMatrix {
-    //1) My soln. Edctv soln is diff.
+
     public List<Integer> spiralOrder(int[][] matrix) {
-        int m = matrix.length;
-        int n = matrix[0].length;
-        //start from top left
-        int i = 0;
-        int j = 0;
-        List<Integer> ans = new ArrayList<>();
-        int[][] visited = new int[m][n];
+        return revise(matrix);
+    }
 
-        //visit the first cell.
-        ans.add(matrix[i][j]);
-        visited[i][j] = -1;
+    //1) My soln. Edctv soln is diff.
+    private List<Integer> revise(int[][] matrix) {
+        int m = matrix.length, n = matrix[0].length;
+        int tb = 0, rb = n-1, bb = m-1, lb = 0; //boundaries - top, right, bottom, and left.
+        List<Integer> traversal = new ArrayList<>();
 
-        //If can move right, down, left or up..
-        while (canMove(i, j+1, m, n, visited)
-                || canMove(i+1, j, m, n, visited)
-                || canMove(i, j-1, m, n, visited)
-                || canMove(i-1, j, m, n, visited)
-        ) {
-            //Note: This order matters. To move in a spiral
-            //fashion - we first move right, then down, then left and then up.
-            //After all this we repeat.
-
-            //As long as can move right, keep moving right.
-            while (canMove(i, j+1, m, n, visited)) {
-                //visit.
-                ans.add(matrix[i][j+1]);
-                visited[i][j+1] = -1;
-                j += 1;
+        while (true) {
+            for (int j=lb; j<=rb; j++) {
+                traversal.add(matrix[tb][j]);
             }
+            tb += 1;
 
-            //Then, as long as can move down, move down.
-            while (canMove(i+1, j, m, n, visited)) {
-                //visit.
-                ans.add(matrix[i+1][j]);
-                visited[i+1][j] = -1;
-                i += 1;
-            }
+            if (tb > bb) break;
 
-            //Then, as long as can move left, move left.
-            while (canMove(i, j-1, m, n, visited) ) {
-                //visit.
-                ans.add(matrix[i][j-1]);
-                visited[i][j-1] = -1;
-                j -= 1;
+            for (int i=tb; i<=bb; i++) {
+                traversal.add(matrix[i][rb]);
             }
+            rb -= 1;
 
-            //Then, as long as can move up, move up.
-            while (canMove(i-1, j, m, n, visited)) {
-                //visit.
-                ans.add(matrix[i-1][j]);
-                visited[i-1][j] = -1;
-                i -= 1;
+            if (rb < lb) break;
+
+            for (int j=rb; j>=lb; j--) {
+                traversal.add(matrix[bb][j]);
             }
+            bb -= 1;
+
+            if (bb < tb) break;
+
+            for (int i=bb; i>=tb; i--) {
+                traversal.add(matrix[i][lb]);
+            }
+            lb += 1;
+
+            if (lb > rb) break;
         }
 
-        return ans;
+        return traversal;
     }
 
     //2) Edctv soln.
@@ -94,9 +78,4 @@ public class SpiralMatrix {
         return result;
     }
 
-    //checks if can move to suplied position.
-    //The position should be in bouds and not have been visited already.
-    private boolean canMove(int i, int j, int m, int n, int[][] visited) {
-        return (i >=0 && i < m) && (j >=0 && j < n) && (visited[i][j] != -1);
-    }
 }

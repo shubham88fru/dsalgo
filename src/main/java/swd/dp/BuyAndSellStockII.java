@@ -5,29 +5,82 @@ import java.util.Map;
 
 //@link - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
 public class BuyAndSellStockII {
-    //Can do any no. of transactions
-    /** SWD SOLN **/
     public int maxProfit(int[] prices) {
-        return bestTimeToBuyAndSellForMaxProfit(prices, 0, 1, new HashMap<String, Integer>());
+        // return recursion(prices);
+        // return optimal2(prices);
+        return optimal(prices);
     }
 
-    private int bestTimeToBuyAndSellForMaxProfit(int[] prices, int currentDay, int canBuy, Map<String, Integer> memo) {
-        if (currentDay>=prices.length) return 0;
+    /**
+     Even better version of optimal2.
+     See LC soln if confused. Basically,
+     instead of find each peak-valley,
+     we can continuously keep summing
+     subsequent low-highs and it will
+     eventually be same as summing
+     peak-valley. See the diagram in
+     LC editorial to understand.
+     */
+    private int optimal(int[] prices) {
+        int n = prices.length;
 
-        String key = currentDay + "-" + canBuy;
-
-        if (memo.containsKey(key)) return memo.get(key);
-
-        int idle = bestTimeToBuyAndSellForMaxProfit(prices, currentDay+1, canBuy, memo);
-        if (canBuy == 1) {
-            int buy = -prices[currentDay]
-                    + bestTimeToBuyAndSellForMaxProfit(prices, currentDay+1, 0, memo);
-            memo.put(key, Math.max(idle, buy));
-        } else {
-            int sell = prices[currentDay]
-                    + bestTimeToBuyAndSellForMaxProfit(prices, currentDay+1, 1, memo);
-            memo.put(key, Math.max(idle, sell));
+        int maxProfit = 0;
+        for (int i=1; i<n; i++) {
+            if (prices[i] > prices[i-1]) maxProfit += (prices[i] - prices[i-1]);
         }
-        return memo.get(key);
+
+        return maxProfit;
+    }
+
+    /**
+     If you think of it, this part
+     is very similar to optimal approach of
+     part 1 variant. The difference being that
+     here we'll add every peak-valley pair
+     because we can buy sell multiple times.
+     */
+    private int optimal2(int[] prices) {
+        int n = prices.length;
+
+        int i = 0, maxProfit = 0;
+        while (i < n-1) {
+            while (i < n-1 && prices[i] >= prices[i+1]) i+= 1; //find a valley.
+
+            if (i == n) return maxProfit;
+
+            int valley = prices[i];
+
+            while (i < n-1 && prices[i] <= prices[i+1]) i += 1; //find the peak.
+
+            int peak = prices[i];
+            maxProfit += (peak - valley);
+        }
+
+        return maxProfit;
+    }
+
+    private int recursion(int[] prices) {
+        int n = prices.length;
+
+        Integer[][] dp = new Integer[n+1][3];
+        return dp2(prices, 0, 1, dp);
+    }
+
+    private int dp2(int[] prices, int i, int t, Integer[][] dp) {
+        if (i >= prices.length) return 0;
+
+        if (dp[i][t] != null) return dp[i][t];
+
+        int buy = 0, sell = 0;
+        if (t == 1) {
+            buy = -prices[i] + dp2(prices, i+1, 0, dp);
+        } else {
+            sell = prices[i] + dp2(prices, i+1, 1, dp);
+        }
+
+        int hold = dp2(prices, i+1, t, dp);
+
+        dp[i][t] = Math.max(buy, Math.max(sell, hold));
+        return dp[i][t];
     }
 }

@@ -27,6 +27,7 @@ class SnapshotArray {
 
     public int snap() {
         //snapshots.put(snapid + 1, new HashMap<Integer, Integer>(snapshots.get(snapId)));
+
         /**
          * Optimization.
          * Put empty map, don't copy the previous values to the next snapshot.

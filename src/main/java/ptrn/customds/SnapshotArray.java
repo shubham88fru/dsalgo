@@ -21,12 +21,10 @@ import java.util.TreeMap;
  * SC: O(n + k)
  */
 class SnapshotArray2 {
-    int[] arr;
     int sid = 0;
     Map<Integer, TreeMap<Integer, Integer>> snapshots = new HashMap<>();
 
     public SnapshotArray2(int length) {
-        arr = new int[length];
         for (int i=0; i<length; i++) {
             snapshots.put(i, new TreeMap<>());
             snapshots.get(i).put(0, 0); //default value of array is zero.

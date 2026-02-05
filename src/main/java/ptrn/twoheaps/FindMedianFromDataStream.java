@@ -71,11 +71,13 @@ class MedianFinder {
     }
 
     public void addNum(int num) {
-        if (!maxHeap.isEmpty() && num > maxHeap.peek()) minHeap.add(num);
-        else maxHeap.add(num);
+        if (maxHeap.isEmpty()) maxHeap.add(num); //start with max heap.
+        else if (num <= maxHeap.peek()) maxHeap.add(num);
+        else minHeap.add(num);
 
         if (minHeap.size() > maxHeap.size()) maxHeap.add(minHeap.remove());
         if (maxHeap.size() - minHeap.size() > 1) minHeap.add(maxHeap.remove());
+
 
     }
 

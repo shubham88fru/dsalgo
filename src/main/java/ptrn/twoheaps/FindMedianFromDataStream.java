@@ -22,7 +22,7 @@ public class FindMedianFromDataStream {
 
     public void addNum(int num) {
         cnt += 1;
-        //first num goes to the maxhep.
+        //first num goes to the maxheap.
         if (maxHeap.isEmpty() && minHeap.isEmpty()) {
             maxHeap.add(num);
         } else {

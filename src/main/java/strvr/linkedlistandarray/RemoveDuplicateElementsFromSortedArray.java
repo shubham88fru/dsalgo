@@ -13,10 +13,14 @@ public class RemoveDuplicateElementsFromSortedArray {
     }
 
     /**
-     Optimal - majorly same as
-     the better sol, just a smart way
-     to not use set to keep track of
-     elements that were seen before.
+         Optimal - majorly same as
+         the better sol, just a smart way
+         to not use set to keep track of
+         elements that were seen before.
+
+         Note: this works only because
+         it's given that the array is sorted.
+         otherwise, we can't do this without a set.
      */
     private int revise2(int[] arr) {
         int n = arr.length;
@@ -32,7 +36,10 @@ public class RemoveDuplicateElementsFromSortedArray {
     }
 
     /**
-     My Better soln.
+      My Better soln.
+      The downside is that I'm using a
+      set. However, this approach will work
+      even when the given array is not sorted.
      */
     private int revise(int[] arr) {
         int n = arr.length;

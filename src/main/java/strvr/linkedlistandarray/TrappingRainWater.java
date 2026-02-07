@@ -10,6 +10,11 @@ public class TrappingRainWater {
     }
 
     //1) Optimal soln - T: O(N), S: O(1)
+    /**
+     * Bit tricky to come up with directly, and
+     * even think about. But try few examples
+     * on paper, will make sense.
+     */
     private int trapOptimal(int[] height) {
         int n = height.length;
         int left = 0;

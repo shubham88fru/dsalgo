@@ -21,7 +21,7 @@ public class TrappingRainWater {
         while (left <= right) {
             if (height[left] <= height[right]){
                 if (height[left] >= maxLeft) maxLeft = height[left];
-                else res += maxLeft - height[left];
+                else res += maxLeft-height[left];
                 left += 1;
             } else {
                 if (height[right] >= maxRight) maxRight = height[right];

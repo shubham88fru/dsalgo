@@ -11,6 +11,18 @@ public class LongestRepeatingCharacterReplacement {
         return standardSlidingWindowTemplate(s, k);
     }
 
+    /**
+     * Following is coded by me to convert edctv's
+     * approach to standard sliding window template
+     * that is easy for me reason about.
+     * This is soln is more intuitive to me and is
+     * accepted on LC. However, I'm not about this edge
+     * case -
+     * When releasing the window, might be releasing that
+     * char that had contributed to the maxFreq, but
+     * we aren't updating the maxFreq when releasing the char.
+     * So, I'm not sure why it doesn't matter.
+     */
     private int standardSlidingWindowTemplate(String s, int k) {
         int n = s.length();
         int l = 0, r = 0, maxLen = 0, dominantCharFreq = 0;

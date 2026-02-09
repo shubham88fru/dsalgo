@@ -45,6 +45,33 @@ public class RemoveNthNodeFromEnd {
     //Find the length of the list, and then do another iteration
     //to delete length-nth node from front.
     //T: O(N), S: O(1)
+    private ListNode brute(ListNode head, int n) {
+        int tl = 0;
+        ListNode curr = head;
+        while (curr != null) {
+            curr = curr.next;
+            tl += 1;
+        }
+
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode prev = dummy;
+
+        int moves = tl-n;
+        if (moves == 0) return head.next;
+
+        curr = head;
+        while (moves > 0) {
+            prev = curr;
+            curr = curr.next;
+            moves -= 1;
+        }
+
+        prev.next = curr.next;
+
+        return dummy.next;
+
+    }
 }
 
 class ListNode {

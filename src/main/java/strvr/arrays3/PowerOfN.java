@@ -6,7 +6,8 @@ public class PowerOfN {
     public double myPow(double x, int n) {
         //return powerBruteIterative(x, n);
         //return powerBruteRecursive(x, n);
-        return raiseToOptimal(x, n);
+        //return raiseToOptimal(x, n);
+        return optimal(x, n);
     }
 
     //1) Optimal solution: T: O(logN), S: O(1)
@@ -36,6 +37,24 @@ public class PowerOfN {
         if (n < 0) ans = 1.0/ans;
         return ans;
 
+    }
+
+    private double optimal(double x, int n) {
+        double pow = binaryExponentiation(x, n);
+        if (n < 0) return 1/pow;
+        return pow;
+    }
+
+    private double binaryExponentiation(double x, int n) {
+        if (n == 0) return 1.0;
+
+        double half = binaryExponentiation(x, n/2);
+        double ans = half * half;
+        if (n%2 != 0) {
+            ans *= x;
+        }
+
+        return ans;
     }
 
     //2) Brute force solutions.

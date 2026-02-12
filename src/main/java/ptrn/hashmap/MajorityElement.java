@@ -1,5 +1,6 @@
 package ptrn.hashmap;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,9 +14,21 @@ public class MajorityElement {
         has a frequency more than n/2
      */
     public int majorityElement(int[] nums) {
+        //return sortApproach(nums);
         //return majorityElementBrute(nums);
         //return majorityElementBetter(nums);
         return majorityElementOptimal(nums);
+    }
+
+    //0) Sorting approach.
+    //Since it is guaranteed that there's only one element
+    //that has frequency larger than n/2, after sorting
+    //the majority element will definitely cross the mid.
+    private int sortApproach(int[] nums) {
+        int n = nums.length;
+        Arrays.sort(nums);
+
+        return nums[n/2];
     }
 
     //1) Optimal approach: T: O(N), S: O(1)

@@ -19,6 +19,8 @@ public class MinimumNumberOfOperationsToReduceAnIntegerTo0 {
         return minMovesToMakeZeroMemoized(n, new Integer[n+1]);
     }
 
+    //0) With memo.
+    //TC: O(log(n))
     private int minMovesToMakeZeroMemoized(int n, Integer[] memo) {
         /*
             If reached a number that is already a power of
@@ -54,6 +56,8 @@ public class MinimumNumberOfOperationsToReduceAnIntegerTo0 {
         because, reducing a power to two to
         0 only takes one operation.
     */
+    //1) w/o memo.
+    //TC: O(log(n)ˆ2)
     private int minMovesToMakeZero(int n) {
         /*
             If reached a number that is already a power of

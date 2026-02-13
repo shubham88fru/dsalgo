@@ -21,21 +21,24 @@ public class ValidPalindrome {
      1. Optimal.
      Using two pointers.
      */
-
     private boolean revise(String s) {
         int n = s.length();
+        int l=0, r=n-1;
 
-        if (n == 1) return true;
+        while (l < r) {
+            char lch = s.charAt(l), rch = s.charAt(r);
+            if (!Character.isLetterOrDigit(lch)) {
+                l += 1;
+                continue;
+            }
 
-        int l = 0, r = n-1;
-        while (l <= r) {
-            while (l <= r && !Character.isLetterOrDigit(s.charAt(l))) l += 1;
-            while (l <= r && !Character.isLetterOrDigit(s.charAt(r))) r -= 1;
+            if (!Character.isLetterOrDigit(rch)) {
+                r -= 1;
+                continue;
+            }
 
-            if (l > r) break;
+            if (Character.toLowerCase(lch) != Character.toLowerCase(rch)) return false;
 
-            if (Character.toLowerCase(s.charAt(l)) !=
-                    Character.toLowerCase(s.charAt(r))) return false;
             l += 1;
             r -= 1;
         }

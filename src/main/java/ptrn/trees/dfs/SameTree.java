@@ -1,9 +1,6 @@
 package ptrn.trees.dfs;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 //@link - https://leetcode.com/problems/same-tree/description/
 //@swd - https://takeuforward.org/data-structure/check-if-two-trees-are-identical/
@@ -156,6 +153,38 @@ public class SameTree {
 
             queue.addLast(new NodePair(p.left, q.left));
             queue.addLast(new NodePair(p.right, q.right));
+        }
+
+        return true;
+    }
+
+    /*
+        Cleaner BFS
+     */
+    private boolean bfs(TreeNode p, TreeNode q) {
+
+        /*
+            Note using a linkedlist impl of queue.
+            ArrayDeque won't allow adding null and
+            therefore code will become messy.
+        */
+        Deque<TreeNode> qu = new LinkedList<>();
+        qu.add(p);
+        qu.add(q);
+
+        while (!qu.isEmpty()) {
+            TreeNode f = qu.removeFirst();
+            TreeNode s = qu.removeFirst();
+
+            if (f == null && s == null) continue;
+            if (f == null || s == null) return false;
+            if (f.val != s.val) return false;
+
+            qu.add(f.left);
+            qu.add(s.left);
+
+            qu.add(f.right);
+            qu.add(s.right);
         }
 
         return true;

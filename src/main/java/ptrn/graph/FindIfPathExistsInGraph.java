@@ -4,7 +4,7 @@ import java.util.*;
 
 //@link - https://leetcode.com/problems/find-if-path-exists-in-graph/description/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5758360890376192
-public class FindIfPathExists {
+public class FindIfPathExistsInGraph {
     /*
         This problem looks like a simple graph traversal problem,
         but both BFS and DFS give TLE. People mentioned this problem works

@@ -15,7 +15,6 @@ public class LargestNumber {
         }
 
         if (onlyZeros) return "0";
-
         Comparator<Integer> cmp = this::cmp;
 
         ans.sort(cmp);

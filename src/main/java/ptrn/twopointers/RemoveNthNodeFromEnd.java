@@ -1,5 +1,8 @@
 package ptrn.twopointers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //@link - https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/
 //@strvr - https://takeuforward.org/data-structure/remove-n-th-node-from-the-end-of-a-linked-list/
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5146995137970176
@@ -39,6 +42,26 @@ public class RemoveNthNodeFromEnd {
 
         //dummy next points to head of the linked list.
         return dummy.next;
+    }
+
+    //2) Extra space soln.
+    //Idk if this will cut it in the interview, but easier to code.
+    private ListNode extraSpace(ListNode head, int n) {
+        List<ListNode> lst = new ArrayList<>();
+        while (head != null) {
+            lst.add(head);
+            head = head.next;
+        }
+
+        int m = lst.size();
+        if (m-n > 0) {
+            lst.get(m-n-1).next = lst.get(m-n).next;
+        } else {
+            ListNode nxt = lst.get(0).next;
+            lst.get(0).next = null;
+            return nxt;
+        }
+        return lst.get(0);
     }
 
     //2) Brute force

@@ -30,7 +30,7 @@ public class SearchInA2DMatrix {
         return false;
     }
 
-    //works with the code for part II of this
+    //Also works with the code for part II of this
     //problem as well
     private boolean suboptimal(int[][] matrix, int target) {
         int m = matrix.length;

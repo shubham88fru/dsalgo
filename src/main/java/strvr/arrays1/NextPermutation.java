@@ -30,7 +30,7 @@ public class NextPermutation {
 
         //If no such breakpoint (i.e. -1) it means the
         //array is the sorted in descending order so ATQ, we'll
-        //return the first permuation (ascending order)
+        //return the first permutation (ascending order)
         if (breakPoint == -1) reverse(0, nums.length-1, nums);
 
             //otherwise, we'll find the smallest element greater than the

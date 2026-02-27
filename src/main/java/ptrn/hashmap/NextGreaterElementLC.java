@@ -10,44 +10,27 @@ import java.util.Map;
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5054135541170176
 public class NextGreaterElementLC {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
-        //get next greater for all elements in num2
-        Map<Integer, Integer> mp = getNextLargerElements(nums2);
-        int[] ans = new int[nums1.length];
-
-        //then lookup elements in num1 and get their
-        //next greater.
-        for (int i=0; i<nums1.length; i++) {
-            ans[i] = mp.get(nums1[i]);
-        }
-
-        return ans;
+        return optimal(nums1, nums2);
     }
 
+    private int[] optimal(int[] nums1, int[] nums2) {
+        int n1 = nums1.length, n2 = nums2.length;
 
-    private Map<Integer, Integer> getNextLargerElements(int[] arr) {
+        Map<Integer, Integer> mp = new HashMap<>();
         Deque<Integer> stack = new ArrayDeque<>();
-        Map<Integer, Integer> ans = new HashMap<>();
 
-        //since need to find next greater (i.e. to the right of elements)
-        //start iterating from end of the list.
-        for (int i=arr.length-1; i >= 0; i--) {
-            if (stack.isEmpty()) {
-                ans.put(arr[i], -1);
-            } else if (arr[i] >= stack.peekFirst()) {
-                while (!stack.isEmpty() && arr[i] >= stack.peekFirst()) {
-                    stack.removeFirst();
-                }
-
-                if (stack.isEmpty()) ans.put(arr[i], -1);
-                else {
-                    ans.put(arr[i], stack.peekFirst());
-                }
-
-            } else {
-                ans.put(arr[i], stack.peekFirst());
+        for (int i=0; i<n2; i++) {
+            while (!stack.isEmpty() && nums2[i] > stack.peekFirst()) {
+                mp.put(stack.peekFirst(), nums2[i]);
+                stack.removeFirst();
             }
+            stack.addFirst(nums2[i]);
+        }
 
-            stack.addFirst(arr[i]);
+        int[] ans = new int[n1];
+        for (int i=0; i<n1; i++) {
+            if (mp.containsKey(nums1[i])) ans[i] = mp.get(nums1[i]);
+            else ans[i] = -1;
         }
 
         return ans;

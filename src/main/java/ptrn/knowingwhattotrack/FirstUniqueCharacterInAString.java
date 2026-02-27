@@ -28,6 +28,23 @@ public class FirstUniqueCharacterInAString {
         return -1;
     }
 
+    private int revise(String s) {
+        int n = s.length();
+        int[] freq = new int[26];
+
+        for (int i=0; i<n; i++) {
+            char ch = s.charAt(i);
+            freq[ch-'a'] += 1;
+        }
+
+        for (int i=0; i<n; i++) {
+            char ch = s.charAt(i);
+            if (freq[ch-'a'] == 1) return i;
+        }
+
+        return -1;
+    }
+
     //Using LinkedHashMap. My soln.
     //T: O(2n)
     private int sol2(String s) {

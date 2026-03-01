@@ -1,26 +1,32 @@
 package lc_potd;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 //@link - https://leetcode.com/problems/minimum-deletions-to-make-string-balanced/description/
 public class MinimumDeletionsToMakeStringBalanced {
     public int minimumDeletions(String s) {
+        return stack(s);
+    }
 
-        /**
-         * On next encounter, retry or check a video.
-         */
-        /////////NOT MY SOLN////////////
+    /*
+      My stack soln.
+     */
+    private int stack(String s) {
         int n = s.length();
-        int[] f = new int[n + 1];
-        int b = 0;
-        for (int i = 1; i <= n; ++i) {
-            if (s.charAt(i - 1) == 'b') {
-                f[i] = f[i - 1];
-                ++b;
+        Deque<Character> stack = new ArrayDeque<>();
+        int ops = 0;
+        for (int i=0; i<n; i++) {
+            char ch = s.charAt(i);
+            if (stack.isEmpty() || ch == 'b' || (stack.peekFirst() == 'a')) {
+                stack.addFirst(ch);
             } else {
-                f[i] = Math.min(f[i - 1] + 1, b);
+                ops +=1;
+                stack.removeFirst();
             }
         }
-        return f[n];
-        /////////NOT MY SOLN////////////
+
+        return ops;
     }
 
 

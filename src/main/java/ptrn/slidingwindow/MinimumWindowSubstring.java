@@ -10,6 +10,82 @@ public class MinimumWindowSubstring {
         return minWindowSub(s, t);
     }
 
+    //0) Same sliding window soln
+    //but based on my standard sliding window template.
+    private String standardSlidingWindowTemplate(String s, String t) {
+        int n = s.length();
+
+        Map<Character, Integer> window = new HashMap<>();
+        Map<Character, Integer> tMap = new HashMap<>();
+        for (int i=0; i<t.length(); i++) {
+            char ch = t.charAt(i);
+            tMap.put(ch, tMap.getOrDefault(ch, 0)+1);
+            window.put(ch, 0);
+        }
+
+        int reqSize = tMap.size();
+        int currSize = 0;
+        int l=0, r=0, minLen = Integer.MAX_VALUE, i=-1, j=-1;
+
+        /*
+            NOTE: In sliding window questions
+            where we need to shrink even after r
+            reaches n, we take `l < n` as our breaking
+            condition instead of `r < n`
+        */
+        while (l < n) {
+            /*
+                Acquire till we have taken
+                enough to have all chars from t.
+            */
+            while (r < n && reqSize != currSize) {
+                char ch = s.charAt(r);
+                if (window.containsKey(ch)) {
+                    window.put(ch, window.getOrDefault(ch, 0)+1);
+                    /*
+                        LC map's value comparision is a bit
+                        wonky. The `==` doesn't work even if
+                        values are same for large values.
+                        Therefore, using .equals()
+                    */
+                    if (window.get(ch).equals(tMap.get(ch))) currSize += 1;
+                }
+
+                r += 1;
+            }
+
+            /*
+                At this point, if we have
+                seen all chars from t,
+                record the length.
+            */
+            if (reqSize == currSize) {
+                if (r-l < minLen) {
+                    minLen = r-l;
+                    i = l;
+                    j = r;
+                }
+            }
+
+            /*
+                Release and see if
+                we have lost a char
+                that was needed for
+                the window to be valid.
+            */
+            char toRem = s.charAt(l);
+            if (window.containsKey(toRem)) {
+                window.put(toRem, window.get(toRem)-1);
+                if (window.get(toRem) < tMap.get(toRem)) currSize -= 1;
+            }
+            l += 1;
+
+        }
+
+
+        return minLen == Integer.MAX_VALUE ? "": s.substring(i, j);
+    }
+
     //1) Optimal solution - using sliding window.
     //T: O(m+n) ; m & n are lengths of s and t.
     private String minWindowSub(String s, String t) {

@@ -73,39 +73,26 @@ public class ArraySubsets {
      * array, must also be after it in the subsequence.
      * For subsequences also, we can use the pick/notpick pattern.
      */
-    private List<List<Integer>> subsets(int[] nums, List<Integer> subset, int currIdx) {
+    private void bt2(int[] nums, int i, List<Integer> sub, List<List<Integer>> subs) {
+        subs.add(new ArrayList<>(sub));
 
-        //When at end of array, means we've made all choices,
-        //and we have a subset. So, store in array and move on.
-        if (currIdx >= nums.length) {
-            List<List<Integer>> subsets = new ArrayList<>();
-            //Here we store a new copy (separate from original subset)
-            //in the final answer, so that our backtracking (deleting)
-            //doesn't effect the final answer.
-            subsets.add(new ArrayList<>(subset));
-            return subsets;
+        for (int j=i; j<nums.length; j++) {
+            sub.add(nums[j]);
+            bt2(nums, j+1, sub, subs);
+            sub.remove(sub.size()-1);
+        }
+    }
+
+    private void bt1(int[] nums, int i, List<Integer> sub, List<List<Integer>> subs) {
+        if (i >= nums.length) {
+            subs.add(new ArrayList<>(sub));
+            return;
         }
 
-        //Two choices -
-        //1) Don't include curr el in the ans.
-        List<List<Integer>> includeMeNot = subsets(nums, subset, currIdx+1);
+        sub.add(nums[i]);
+        bt1(nums, i+1, sub, subs);
+        sub.remove(sub.size()-1);
 
-        //2) Include the curr el in the ans.
-        subset.add(nums[currIdx]);
-        List<List<Integer>> includeMe = subsets(nums, subset, currIdx+1);
-
-        //when returning from current recursive call - backtrack.
-        //so that we undo the change we did to the list.
-        //if we don't backtrack, the addition that we did for the `consider`
-        //case will add the element to the list and since list is passed by reference
-        //all subsequent calls will have that element added.
-        //By backtracking, we are basically returning the list to the state it
-        //was in the previous recursive call.
-        subset.remove(subset.size()-1);
-
-        //Merge answers in `includeMe` and `includeMeNot` array into one list ans return.
-        List<List<Integer>> all = Stream.concat(includeMe.stream(), includeMeNot.stream())
-                .collect(Collectors.toList());
-        return all;
+        bt1(nums, i+1, sub, subs);
     }
 }

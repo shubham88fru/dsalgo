@@ -21,7 +21,7 @@ public class IncreasingTripletSubsequence {
         for (int n: nums) {
             if (n <= f) f = n;
             else if (n <= s) s = n;
-            else return true;
+            else return true; //we have a num that's neither smallest, nor second smallest!
         }
         return false;
     }

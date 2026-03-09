@@ -14,6 +14,11 @@ public class ThreeSumClosest {
          implemented using the optimal
          approach of the 3 sum problem.
      */
+    /**
+     Core idea of the brute force solution
+     implemented using the optimal
+     approach of the 3 sum problem.
+     */
     private int optimal(int[] nums, int target) {
         int n = nums.length;
         Arrays.sort(nums);
@@ -42,13 +47,7 @@ public class ThreeSumClosest {
                     j += 1;
                 } else if (nums[j] + nums[k] > tg) {
                     k -= 1;
-                } else {
-                    while (j < k && nums[j] == nums[j-1]) j += 1;
-                    while (k > j && nums[k] == nums[k-1]) k -= 1;
-
-                    j += 1;
-                    k -= 1;
-                }
+                } else return sum;
             }
 
             i += 1;

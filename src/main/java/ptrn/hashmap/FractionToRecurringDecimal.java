@@ -31,7 +31,7 @@ public class FractionToRecurringDecimal {
         sb.append(num/den);
 
         //The remainder is what we'll perform
-        //step by step divsion on to get the portion
+        //step by step division on to get the portion
         //after the decimal.
         num = num%den;
 

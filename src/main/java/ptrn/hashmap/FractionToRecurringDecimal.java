@@ -46,7 +46,7 @@ public class FractionToRecurringDecimal {
 
         //otherwise, the answer is going to be
         //a decimal. Add a decimal and multiply
-        //the num (remiander) by 10 as we'd normally
+        //the num (remainder) by 10 as we'd normally
         //do when adding a decimal during division.
         sb.append('.');
         num = num*10;
@@ -56,7 +56,7 @@ public class FractionToRecurringDecimal {
          step-by-step division. At each step, we'll keep
          track of the remainder and check if we have already
          seen the remainder, if so, then all subsequent steps
-         will only be a repeatition and so, we can break and just
+         will only be a repetition and so, we can break and just
          return the answer by adding proper parens.
          */
 

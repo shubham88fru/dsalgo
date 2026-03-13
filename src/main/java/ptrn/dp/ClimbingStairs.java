@@ -75,4 +75,31 @@ public class ClimbingStairs {
     }
 
     //Sol 3: check ectv for bottom-up approach.
+
+    /*
+        This is basically fibonnaci.
+        The idea is to basically think
+        of this problem from opposite side.
+        i.e. to reach the nth stair, we can
+        eventually only come from n-1 or n-2th
+        stair, coz only 1 and 2 steps are allowed.
+        Therefore, the number of ways to reach the
+        nth stair is basically the sum of ways to
+        reach n-1 and n-2th stairs and so on.
+    */
+    private int budp(int n) {
+        if (n == 0) return 0;
+        if (n <= 1) return 1;
+        if (n == 2) return 2;
+
+        int[] dp = new int[n+1];
+        dp[1] = 1;
+        dp[2] = 2;
+
+        for (int i=3; i<=n; i++) {
+            dp[i] = dp[i-1] + dp[i-2];
+        }
+
+        return dp[n];
+    }
 }

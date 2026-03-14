@@ -7,6 +7,31 @@ public class RunLengthEncoding {
         return rle(s);
     }
 
+    /*
+        My soln.
+     */
+    private static String revise(String s) {
+        int n = s.length();
+        int l=0, r=0, count=1;
+        StringBuilder sb = new StringBuilder();
+
+        while (l < n) {
+            while (r < n-1 && s.charAt(r) == s.charAt(r+1)) {
+                r += 1;
+                count += 1;
+            }
+
+            sb.append(s.charAt(l));
+            sb.append(count);
+
+            r += 1;
+            l = r;
+            count = 1;
+        }
+
+        return sb.toString();
+    }
+
     private static String rle(String s) {
         int n = s.length();
 
@@ -25,28 +50,6 @@ public class RunLengthEncoding {
 
             count = 0;
             l = r;
-        }
-
-        return sb.toString();
-    }
-
-    private static String revise(String s) {
-        int n = s.length();
-        int l=0, r=0, count=1;
-        StringBuilder sb = new StringBuilder();
-
-        while (l < n) {
-            while (r < n-1 && s.charAt(r) == s.charAt(r+1)) {
-                r += 1;
-                count += 1;
-            }
-
-            sb.append(s.charAt(l));
-            sb.append(count);
-
-            r += 1;
-            l = r;
-            count = 1;
         }
 
         return sb.toString();

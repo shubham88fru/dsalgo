@@ -71,6 +71,69 @@ class TrieNode {
     }
 }
 
+/// /////////////////////////
+/*
+My revise soln using array instead of
+hashmap
+ */
+class Trie3 {
+    TrieNode2 root = new TrieNode2('\0');
+    public Trie3() {
+
+    }
+
+    public void insert(String word) {
+        int n = word.length();
+        TrieNode2 curr = root;
+
+        for (int i=0; i<n; i++) {
+            char ch = word.charAt(i);
+            if (curr.nodes[ch-'a'] == null) {
+                TrieNode2 node = new TrieNode2(ch);
+                curr.nodes[ch-'a'] = node;
+            }
+            curr = curr.nodes[ch-'a'];
+        }
+        curr.isEndOfWord = true;
+    }
+
+    public boolean search(String word) {
+        int n = word.length();
+        TrieNode2 curr = root;
+
+        for (int i=0; i<n; i++) {
+            char ch = word.charAt(i);
+            if (curr.nodes[ch-'a'] == null) return false;
+            curr = curr.nodes[ch-'a'];
+        }
+
+        return curr.isEndOfWord;
+    }
+
+    public boolean startsWith(String prefix) {
+        int n = prefix.length();
+        TrieNode2 curr = root;
+
+        for (int i=0; i<n; i++) {
+            char ch = prefix.charAt(i);
+            if (curr.nodes[ch-'a'] == null) return false;
+            curr = curr.nodes[ch-'a'];
+        }
+
+        return true;
+    }
+}
+
+class TrieNode2 {
+    char ch;
+    TrieNode2[] nodes = new TrieNode2[26];
+    boolean isEndOfWord;
+
+    public TrieNode2(char ch) {
+        this.ch = ch;
+    }
+}
+
 /**
  * Your Trie object will be instantiated and called as such:
  * Trie obj = new Trie();

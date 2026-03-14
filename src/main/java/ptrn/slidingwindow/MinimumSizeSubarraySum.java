@@ -4,6 +4,35 @@ package ptrn.slidingwindow;
 //@check - https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/5293912693669888
 public class MinimumSizeSubarraySum {
     public int minSubArrayLen(int target, int[] nums) {
+//        return edctvSol(target, nums);
+        return slidingWindowTemplate(target, nums);
+    }
+
+    /*
+        Re-wrote to match my sliding window template
+     */
+    private int slidingWindowTemplate(int p, int[] nums) {
+        int n = nums.length;
+        int l=0, r=0, sum=0, len = Integer.MAX_VALUE;
+
+        while (l < n) {
+            while (r < n && sum < p) {
+                sum += nums[r];
+                r += 1;
+            }
+
+            if (sum >= p) {
+                len = Math.min(len, r-l);
+            }
+
+            sum -= nums[l];
+            l += 1;
+        }
+
+        return len == Integer.MAX_VALUE ? 0: len;
+    }
+
+    private int edctvSol(int target, int[] nums) {
         int start = 0;
         int end  = 0;
         int n = nums.length;

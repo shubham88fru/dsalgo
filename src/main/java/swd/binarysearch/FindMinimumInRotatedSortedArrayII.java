@@ -32,4 +32,30 @@ public class FindMinimumInRotatedSortedArrayII {
 
         return nums[start];
     }
+
+    /*
+        My revision soln. Not 100% sure on why we need
+        to do certain things, but is of the same template
+        as my soln for the part I of this problem, so
+        maybe a bit easier to memorize (if needed) ;)
+     */
+    private int revise(int[] nums) {
+        int n=nums.length, min=Integer.MAX_VALUE, l=0, r=n-1;
+
+        while (l <= r) {
+            int mid = (l + r) >> 1;
+            if (nums[l] < nums[mid]) {
+                min = Math.min(min, nums[l]);
+                l = mid + 1;
+            } else if (nums[r] > nums[mid]) {
+                min = Math.min(min, nums[mid]);
+                r = mid; //note
+            } else {
+                min = Math.min(min, nums[r]);
+                r -= 1; //note
+            }
+        }
+
+        return min;
+    }
 }

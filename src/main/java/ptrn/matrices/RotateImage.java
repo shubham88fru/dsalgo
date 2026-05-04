@@ -38,6 +38,7 @@ public class RotateImage {
         * a separate transpose matrix of size
         * m*n and copy the i,j from og matrix
         * to j,i of the transpose matrix.
+        *
         * */
         for (int i = 0; i<m; i++) {
             for (int j = i; j < n; j++) {

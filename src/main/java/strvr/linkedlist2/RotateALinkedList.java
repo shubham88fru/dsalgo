@@ -24,7 +24,7 @@ public class RotateALinkedList {
         curr.next = head;
 
         //rotating k times means, last k nodes will
-        //come in front and n-kth node from the start (in oringial)
+        //come in front and n-kth node from the start (in original)
         //will become the new last node.
         int newLastNodePos = (size - (k%size)); //only need to rotate k%size
         ListNode newLastNode = null;

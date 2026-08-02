@@ -10,7 +10,7 @@ public class PredictTheWinner {
         return mikssol(nums);
     }
 
-    /*
+    /**
         Coded by me based on mik's approach.
         This problem is based on Game Strategy.
         Any game related problem that mentions
@@ -20,7 +20,7 @@ public class PredictTheWinner {
         important thing to note is -
             1. In your turn do/select your best/max/anything to reduce other's score.
             2. In other's turn assume the worst/min/anything to reduce your score.
-        @see
+        @see {@link lc_potd.GridGame}
 
         Mik also showed a second approach to solve such problems.
     */

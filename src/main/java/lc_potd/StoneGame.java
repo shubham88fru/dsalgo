@@ -1,5 +1,6 @@
 package lc_potd;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,5 +32,38 @@ public class StoneGame {
 
         memo.put(key, (pickP1 || pickP2));
         return memo.get(key);
+    }
+
+    /**
+        This sol is based on mik's gametheory explanation.
+        @see {@link lc_potd.PredictTheWinner}
+        @see {@link lc_potd.GridGame}
+    */
+    private boolean revise(int[] piles) {
+        int n = piles.length;
+        int ts = Arrays.stream(piles).sum();
+        Integer[][] dp = new Integer[n+1][n+1];
+        int aliceScore = gametheory(piles, dp, 0, n-1);
+
+        return aliceScore > ts - aliceScore;
+    }
+
+    private int gametheory(int[] piles, Integer[][] dp, int i, int j) {
+        if (i > j) return 0;
+
+        if (dp[i][j] != null) return dp[i][j];
+
+        int l = piles[i] + Math.min(
+                gametheory(piles, dp, i+1, j-1),
+                gametheory(piles, dp, i+2, j)
+        );
+
+        int r = piles[j] + Math.min(
+                gametheory(piles, dp, i+1, j-1),
+                gametheory(piles, dp, i, j-2)
+        );
+
+        dp[i][j] =  Math.max(l, r);
+        return dp[i][j];
     }
 }

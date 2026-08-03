@@ -13,6 +13,11 @@ public class StoneGameIII {
          @see {@link lc_potd.StoneGame}
          @see {@link lc_potd.PredictTheWinner}
          @see {@link lc_potd.GridGame}
+
+        This is based on mik's approach for other
+        similar problem. Mik had the same idea for
+        this problem but was slightly different and
+        perhaps cleaner as well.
     */
     private String revise(int[] piles) {
         int n = piles.length;

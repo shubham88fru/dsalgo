@@ -1,4 +1,4 @@
-package hellointerview;
+package hellointerview.twopointers;
 
 //@link - https://www.hellointerview.com/learn/code/two-pointers/move-zeroes
 public class MoveZeroes {
